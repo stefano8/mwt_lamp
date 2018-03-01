@@ -51,18 +51,7 @@
     </style>
 </head>
 <body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-            <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}" class="">Login</a>
-                <a href="{{ route('register') }}" class="">Register</a>
-                @endauth
-        </div>
-    @endif
-</div>
+
 
 
 
@@ -86,6 +75,17 @@
                     <li class="menu-item"><a href="{{ url('/live-cameras') }}">Live cameras</a></li>
                     <li class="menu-item"><a href="{{ url('/photos') }}">Photos</a></li>
                     <li class="menu-item"><a href="{{ url('/contact') }}">Contact</a></li>
+
+                    @if (Route::has('login'))
+                        <div class="top-right links">
+                            @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                            @else
+                    <li class="menu-item " ><a style="background: #009ad8;color: white;" href="{{ route('login') }}">Login</a></li>
+                    <li class="menu-item "><a style="background: #009ad8;color: white;" href="{{ route('register') }}">Register</a></li>
+                                @endauth
+                        </div>
+                    @endif
                 </ul> <!-- .menu -->
             </div> <!-- .main-navigation -->
 
