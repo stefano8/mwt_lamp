@@ -31,12 +31,17 @@ Route::get('/live-cameras', function () {
     return view('live-cameras');
 });
 
+Route::get('/single', function () {
+    return view('single');
+});
+
+
+//admin
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('admin/aggiungi-itinerari', 'AggiungiItinerariController@index')->name('aggiungi-itinerari');
 
-Route::get('/single', function () {
-    return view('single');
-});
+

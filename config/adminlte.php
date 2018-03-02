@@ -108,6 +108,49 @@ return [
     */
 
     'menu' => [
+
+        'GESTIONE SISTEMA',
+        [
+            'text' => 'Blog',
+            'url'  => 'admin/blog',
+            'can'  => 'manage-blog',
+        ],
+        [
+            'text' => 'Itinerari',
+            'url'  => 'admin/aggiungi-itinerari',
+        ],
+        [
+            'text' => 'Blog',
+            'url'  => 'admin/blog',
+            'can'  => 'manage-blog',
+        ],
+        [
+            'text' => 'Eventi',
+            'url'  => 'admin/',
+        ],
+        [
+            'text' => 'Blog',
+            'url'  => 'admin/blog',
+            'can'  => 'manage-blog',
+        ],
+        [
+            'text' => 'News',
+            'url'  => 'admin/',
+        ],
+
+        'GESTIONE UTENZA',
+        [
+            'text' => 'Blog',
+            'url'  => 'admin/blog',
+            'can'  => 'manage-blog',
+        ],
+        [
+            'text' => 'Utenti',
+            'url'  => 'admin/',
+        ],
+
+
+
         'MAIN NAVIGATION',
         [
             'text' => 'Blog',
