@@ -24,7 +24,7 @@
                             </address>
 
                             <a href="#"><img src="images/icon-phone.png" alt="">+1 800 314 235</a>
-                            <a href="#"><img src="images/icon-envelope.png" alt="">contact@companyname.com</a>
+                            <a href="#"><img src="images/icon-envelope.png" alt=""></a>
                         </div>
                     </div>
                 </div>
