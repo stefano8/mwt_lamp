@@ -42,6 +42,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('admin/itinerari', 'ItinerariController@index')->name('itinerari');
+Route::get('admin/itinerary/index', 'ItineraryController@index')->name('itinerary');
+Route::get('admin/itinerary/create', 'ItineraryController@create')->name('itinerary.create');
+Route::get('admin/itinerary/save', 'ItineraryController@save')->name('itinerary.save');
+
+Route::get('admin/itinerary/{id}/edit', 'AlbumController@edit')->name('itinerary.edit');
+Route::get('admin/itinerary/{id}/delete', 'AlbumController@delete')->name('itinerary.delete');
 
 

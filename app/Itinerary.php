@@ -16,6 +16,6 @@ class Itinerary extends Model
      * @var array
      */
     protected $hidden = [
-        'remember_token','created_at','updated_at_at'
+        'remember_token','created_at','updated_at'
     ];
 }

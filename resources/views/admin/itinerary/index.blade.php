@@ -10,17 +10,19 @@
         <!-- Main content -->
         <section class="content">
             <!-- Second Data Table -->
+            <div>
+                <a href="{{url('admin/itinerary/create')}}" type="submit" class="btn btn-primary" style="float: right; width: 100px; margin-bottom: 10px;">Add</a>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                    <div class="panel panel-danger table-edit">
+                    <div class="panel panel-primary" id="hidepanel1">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                    <span>
-                                    <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff"
-                                       data-hc="white"></i>
-                                    Itinerari</span>
+                                <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                Itinerary
                             </h3>
+
                         </div>
                         <div class="panel-body">
                             <div id="sample_editable_1_wrapper" class="">
@@ -68,10 +70,10 @@
                                             <td>{{ $itineraries->difficolty}}</td>
                                             <td>{{ $itineraries->difference }}</td>
                                             <td>
-                                            <a class="edit" href="javascript:;">Edit</a>
+                                                <a href="admin/{{$itineraries->id}}/edit" class="btn btn-primary">Edit</a>
                                             </td>
                                             <td>
-                                            <a class="delete" href="javascript:;">Delete</a>
+                                                <a href="admin/{{$itineraries->id}}/delete"  class="btn btn-danger">Delete</a>
                                             </td>
                                     </tr>
                                     @endforeach

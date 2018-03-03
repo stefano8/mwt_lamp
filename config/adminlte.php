@@ -117,8 +117,8 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Itinerari',
-            'url'  => 'admin/itinerari',
+            'text' => 'Itinerary',
+            'url'  => 'admin/itinerary/index',
         ],
         [
             'text' => 'Blog',
@@ -126,7 +126,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Eventi',
+            'text' => 'Events',
             'url'  => 'admin/',
         ],
         [
@@ -146,7 +146,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Utenti',
+            'text' => 'Users',
             'url'  => 'admin/',
         ],
         [
@@ -155,7 +155,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Gruppi',
+            'text' => 'Groups',
             'url'  => 'admin/',
         ],
 
