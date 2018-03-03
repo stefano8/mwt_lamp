@@ -8,9 +8,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Itinerary;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
-class AggiungiItinerariController extends Controller
+class ItinerariController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -29,7 +32,9 @@ class AggiungiItinerariController extends Controller
      */
     public function index()
     {
-        return view('admin/aggiungi-itinerari');
+        $itinerary = DB::table('itinerary')->get();
+
+        return view('admin/itinerari', ['itinerary' => $itinerary]);
     }
 }
 

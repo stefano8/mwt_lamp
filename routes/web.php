@@ -42,6 +42,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('admin/aggiungi-itinerari', 'AggiungiItinerariController@index')->name('aggiungi-itinerari');
+Route::get('admin/itinerari', 'ItinerariController@index')->name('itinerari');
 
 

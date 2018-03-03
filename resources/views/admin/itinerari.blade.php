@@ -29,22 +29,22 @@
                                     <thead class="table_head">
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1"
-                                            rowspan="1" colspan="1">Username
+                                            rowspan="1" colspan="1">Id
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
                                             colspan="1" aria-label="
                                                  Full Name
-                                            : activate to sort column ascending">Full Name
+                                            : activate to sort column ascending">Name
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
                                             colspan="1" aria-label="
                                                  Points
-                                            : activate to sort column ascending">Points
+                                            : activate to sort column ascending">Difficolty
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
                                             colspan="1" aria-label="
                                                  Notes
-                                            : activate to sort column ascending">Notes
+                                            : activate to sort column ascending">Difference
                                         </th>
 
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
@@ -60,19 +60,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr role="row" class="odd" data-id="1">
-                                        <td class="sorting_1">Tatyana</td>
-                                        <td>Tatyana Nilson</td>
-                                        <td>1234</td>
-                                        <td class="center">power user</td>
 
-                                        <td>
-                                        <a class="edit" href="javascript:;">Edit</a>
-                                        </td>
-                                        <td>
+                                    @foreach($itinerary as $itineraries )
+                                    <tr role="row" class="odd" data-id="1">
+                                            <td>{{ $itineraries->id }}</td>
+                                            <td>{{ $itineraries->name }}</td>
+                                            <td>{{ $itineraries->difficolty}}</td>
+                                            <td>{{ $itineraries->difference }}</td>
+                                            <td>
+                                            <a class="edit" href="javascript:;">Edit</a>
+                                            </td>
+                                            <td>
                                             <a class="delete" href="javascript:;">Delete</a>
-                                        </td>
+                                            </td>
                                     </tr>
+                                    @endforeach
 
                                     </tbody>
                                 </table>

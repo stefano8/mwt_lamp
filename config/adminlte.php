@@ -110,6 +110,7 @@ return [
     'menu' => [
 
         'GESTIONE SISTEMA',
+
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
@@ -117,7 +118,7 @@ return [
         ],
         [
             'text' => 'Itinerari',
-            'url'  => 'admin/aggiungi-itinerari',
+            'url'  => 'admin/itinerari',
         ],
         [
             'text' => 'Blog',
@@ -138,7 +139,7 @@ return [
             'url'  => 'admin/',
         ],
 
-        'GESTIONE UTENZA',
+        'GESTIONE UTENTI',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
@@ -148,22 +149,19 @@ return [
             'text' => 'Utenti',
             'url'  => 'admin/',
         ],
-
-
-
-        'MAIN NAVIGATION',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Gruppi',
+            'url'  => 'admin/',
         ],
+
+
+
+
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
