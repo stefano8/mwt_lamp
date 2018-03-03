@@ -12,6 +12,7 @@ use App\Itinerary;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class ItineraryController extends Controller
 {
@@ -68,6 +69,22 @@ class ItineraryController extends Controller
             'difference'      => 'required',
         ]);
     }
+
+    public function firstItinerario(){
+
+        $itinerario = DB::table('itinerary')->first();
+
+        return View::make('news')->with('itinerary', $itinerario);
+        //return view('news', ['itinerary' =>$itinerario ]);
+    }
+
+    public function singleItinerario($id){
+
+        $itinerario = DB::table('itinerary')->where('id', $id)->first();
+
+        return View::make('single')->with('itinerary', $itinerario);
+    }
+
 }
 
 

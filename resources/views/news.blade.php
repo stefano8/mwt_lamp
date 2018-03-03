@@ -17,10 +17,12 @@
                 <div class="row">
                     <div class="content col-md-8">
                         <div class="post">
-                            <h2 class="entry-title">Nemo enim ipsam voluptatem quia voluptas</h2>
-                            <div class="featured-image"><img src="images/featured-image-1.jpg" alt=""></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nulla rem dolores unde et cum illum odio, enim quis odit eveniet quaerat non libero, consequatur voluptatem harum ad veritatis necessitatibus.</p>
-                            <a href="{{ url('/single') }}" class="button">Read more</a>
+                            @if($itinerary !== NULL)
+                                <h2 class="entry-title"><a href="/single/{{$itinerary->id}}">{{$itinerary->name}}</a></h2>
+                                <div class="featured-image"><img src="images/featured-image-1.jpg" alt=""></div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nulla rem dolores unde et cum illum odio, enim quis odit eveniet quaerat non libero, consequatur voluptatem harum ad veritatis necessitatibus.</p>
+                                <a href="{{ url('/single') }}" class="button">Read more</a>
+                            @endif
                         </div>
 
                         <div class="post">
