@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/news', function () {
+/*Route::get('/news', function () {
     return view('news');
 });
-
+*/
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -27,14 +27,12 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
-Route::get('/live-cameras', function () {
-    return view('live-cameras');
-});
 
-Route::get('/single', function () {
+
+/*Route::get('/single', function () {
     return view('single');
 });
-
+*/
 
 //admin
 
@@ -51,4 +49,7 @@ Route::get('admin/itinerary/{id}/edit', 'ItineraryController@edit')->name('itine
 Route::get('admin/itinerary/{id}/store', 'ItineraryController@store')->name('itinerary.store');
 
 
+
+Route::get('/live-cameras','ItineraryController@getItinerari');
+Route::get('/single/{itineraryId}','ItineraryController@singleItinerario');
 

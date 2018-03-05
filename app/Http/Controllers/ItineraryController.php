@@ -12,6 +12,7 @@ use App\Itinerary;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class ItineraryController extends Controller
 {
@@ -111,6 +112,22 @@ class ItineraryController extends Controller
             'description' => 'required',
         ]);
     }
+
+    public function getItinerari(){
+
+        $itinerari = DB::table('itinerary')->get();
+
+        return View::make('live-cameras')->with('itineraries', $itinerari);
+
+    }
+
+    public function singleItinerario($id){
+
+        $itinerario = DB::table('itinerary')->where('id', $id)->first();
+
+        return View::make('single')->with('itinerary', $itinerario);
+    }
+
 }
 
 
