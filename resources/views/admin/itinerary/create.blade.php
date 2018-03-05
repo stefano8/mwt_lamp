@@ -12,32 +12,31 @@
 
 </div>
 <div class="panel-body">
-    <form class="form-horizontal" action=" {{route('itinerary.save')}} " method="get">
+    <form id="itineraryForm" class="form-horizontal" action=" {{route('itinerary.save')}} " method="get">
         <fieldset>
 
             <div class="form-group">
                 <label class="col-md-3 control-label" for="name">Name</label>
                 <div class="col-md-9">
-                    <input id="name" name="name" type="text" placeholder="Itinary name" class="form-control"></div>
+                    <input id="name" name="name" type="text" placeholder="Itinary name" class="form-control" required></div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="difficolty">Difficolty</label>
                 <div class="col-md-9">
-                    <input id="difficolty" name="difficolty" type="text" placeholder="Difficolty" class="form-control"></div>
+                    <input id="difficolty" name="difficolty" type="text" placeholder="Difficolty" class="form-control" required></div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label" for="difference">Difference</label>
                 <div class="col-md-9">
-                    <input id="difference" name="difference" type="text" placeholder="Difference" class="form-control"></div>
+                    <input id="difference" name="difference" type="text" placeholder="Difference" class="form-control" required></div>
             </div>
-            <!-- description body
             <div class="form-group">
                 <label class="col-md-3 control-label" for="message">Description</label>
                 <div class="col-md-9">
                     <textarea class="form-control resize_vertical" id="description" name="description" placeholder="Please enter your message here..." rows="5"></textarea>
                 </div>
             </div>
-            -->
+
 
             <!-- Form actions -->
             <div class="form-group">
@@ -50,3 +49,36 @@
 </div>
 </div>
 @endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#itineraryForm').bootstrapValidator({
+                message: "errore",
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    name: {
+                        validators: {
+                            notEmpty: {  }
+                        }
+                    },
+                    difficolty: {
+                        validators: {
+                            notEmpty: {  }
+                        }
+                    },
+                    difference: {
+                        validators: {
+                            notEmpty: {  }
+                        }
+                    },
+
+                },
+            });
+        });
+    </script>
+@stop

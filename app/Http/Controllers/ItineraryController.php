@@ -48,17 +48,59 @@ class ItineraryController extends Controller
 
         $this->validateItems($request);
 
-        $itinerary = DB::table('itinerary')
+             DB::table('itinerary')
                     ->insert([
                         'name'       => $request['name'],
                         'difficolty' => $request['difficolty'],
                         'difference' => $request['difference'],
+                        'description' => $request['description'],
                     ]);
-
 
         return redirect('admin/itinerary/index');
 
     }
+
+
+    public function delete($id)
+    {
+
+        DB::table('itinerary')
+            ->where('id', $id)
+            ->delete();
+
+        return redirect()->back();
+
+
+    }
+
+
+    public function edit($id)
+    {
+            $itinerary = DB::table('itinerary')
+                        ->where('id', $id)
+                        ->first();
+
+        return view('admin/itinerary/edit', ['itinerary' => $itinerary]);
+    }
+
+
+    public function store($id,  Request $request)
+    {
+        $this->validateItems($request);
+
+        $itinerary = DB::table('itinerary')
+                        ->where('id', $id)
+                        ->update([
+                            'name'       => $request['name'],
+                            'difficolty' => $request['difficolty'],
+                            'difference' => $request['difference'],
+                            'description' => $request['description'],
+                        ]);
+
+
+        return redirect('admin/itinerary/index', ['itinerary' => $itinerary]);
+    }
+
 
     public function validateItems(Request $request)
     {
@@ -66,6 +108,7 @@ class ItineraryController extends Controller
             'name'            => 'required',
             'difficolty'      => 'required',
             'difference'      => 'required',
+            'description' => 'required',
         ]);
     }
 }

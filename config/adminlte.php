@@ -118,6 +118,7 @@ return [
         ],
         [
             'text' => 'Itinerary',
+            'icon_color' => 'aqua',
             'url'  => 'admin/itinerary/index',
         ],
         [
@@ -127,6 +128,7 @@ return [
         ],
         [
             'text' => 'Events',
+            'icon_color' => 'aqua',
             'url'  => 'admin/',
         ],
         [
@@ -136,6 +138,7 @@ return [
         ],
         [
             'text' => 'News',
+            'icon_color' => 'aqua',
             'url'  => 'admin/',
         ],
 
@@ -147,6 +150,7 @@ return [
         ],
         [
             'text' => 'Users',
+            'icon_color' => 'yellow',
             'url'  => 'admin/',
         ],
         [
@@ -156,6 +160,7 @@ return [
         ],
         [
             'text' => 'Groups',
+            'icon_color' => 'yellow',
             'url'  => 'admin/',
         ],
 
@@ -211,19 +216,7 @@ return [
                 ],
             ],
         ],
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
-        ],
+
     ],
 
     /*
