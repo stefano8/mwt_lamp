@@ -50,13 +50,15 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($itineraries as $itinerario)
                 <div class="col-md-3 col-sm-6">
                     <div class="live-camera">
                         <figure class="live-camera-cover"><img src="images/live-camera-1.jpg" alt=""></figure>
-                        <h3 class="location">New York</h3>
+                        <h3 class="location">{{$itinerario->name}}</h3>
                         <small class="date">8 oct, 8:00AM</small>
                     </div>
                 </div>
+                @endforeach
                 <div class="col-md-3 col-sm-6">
                     <div class="live-camera">
                         <figure class="live-camera-cover"><img src="images/live-camera-2.jpg" alt=""></figure>

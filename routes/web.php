@@ -27,9 +27,7 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
-Route::get('/live-cameras', function () {
-    return view('live-cameras');
-});
+
 
 /*Route::get('/single', function () {
     return view('single');
@@ -46,9 +44,9 @@ Route::get('admin/itinerary/index', 'ItineraryController@index')->name('itinerar
 Route::get('admin/itinerary/create', 'ItineraryController@create')->name('itinerary.create');
 Route::get('admin/itinerary/save', 'ItineraryController@save')->name('itinerary.save');
 
-Route::get('admin/itinerary/{id}/edit', 'AlbumController@edit')->name('itinerary.edit');
-Route::get('admin/itinerary/{id}/delete', 'AlbumController@delete')->name('itinerary.delete');
+Route::get('admin/itinerary/{id}/edit', 'ItineraryController@edit')->name('itinerary.edit');
+Route::get('admin/itinerary/{id}/delete', 'ItineraryController@delete')->name('itinerary.delete');
 
-Route::get('/news','ItineraryController@firstItinerario');
+Route::get('/live-cameras','ItineraryController@getItinerari');
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerario');
 

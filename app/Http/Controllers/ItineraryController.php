@@ -70,12 +70,12 @@ class ItineraryController extends Controller
         ]);
     }
 
-    public function firstItinerario(){
+    public function getItinerari(){
 
-        $itinerario = DB::table('itinerary')->first();
+        $itinerari = DB::table('itinerary')->get();
 
-        return View::make('news')->with('itinerary', $itinerario);
-        //return view('news', ['itinerary' =>$itinerario ]);
+        return View::make('live-cameras')->with('itineraries', $itinerari);
+
     }
 
     public function singleItinerario($id){
