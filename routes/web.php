@@ -49,7 +49,6 @@ Route::get('admin/itinerary/{id}/edit', 'ItineraryController@edit')->name('itine
 Route::get('admin/itinerary/{id}/store', 'ItineraryController@store')->name('itinerary.store');
 
 
-
 Route::get('/live-cameras','ItineraryController@getItinerari');
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerario');
 

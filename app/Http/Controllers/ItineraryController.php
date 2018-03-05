@@ -92,10 +92,10 @@ class ItineraryController extends Controller
         $itinerary = DB::table('itinerary')
                         ->where('id', $id)
                         ->update([
-                            'name'       => $request['name'],
-                            'difficolty' => $request['difficolty'],
-                            'difference' => $request['difference'],
-                            'description' => $request['description'],
+                            'name'          => $request['name'],
+                            'difficolty'    => $request['difficolty'],
+                            'difference'    => $request['difference'],
+                            'description'   => $request['description'],
                         ]);
 
 
@@ -109,7 +109,7 @@ class ItineraryController extends Controller
             'name'            => 'required',
             'difficolty'      => 'required',
             'difference'      => 'required',
-            'description' => 'required',
+            'description'     => 'required',
         ]);
     }
 
