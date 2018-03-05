@@ -116,7 +116,7 @@ class ItineraryController extends Controller
 
     //frontend
 
-    public function getItinerari()
+    public function getItineraries()
     {
 
         $itinerari = DB::table('itinerary')->get();
@@ -126,7 +126,7 @@ class ItineraryController extends Controller
 
     }
 
-    public function singleItinerario($id)
+    public function singleItinerary($id)
     {
 
         $itinerario = DB::table('itinerary')

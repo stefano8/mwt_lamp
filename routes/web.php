@@ -27,13 +27,7 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
-Route::get('/live-cameras', function () {
-    return view('live-cameras');
-});
 
-Route::get('/single', function () {
-    return view('single');
-});
 
 
 //admin
@@ -52,3 +46,5 @@ Route::get('admin/itinerary/{id}/store', 'ItineraryController@store')->name('iti
 
 
 
+Route::get('/live-cameras','ItineraryController@getItineraries');
+Route::get('/single/{itineraryId}','ItineraryController@singleItinerary');
