@@ -26,11 +26,10 @@ class ItineraryController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+    //backend
+
     public function index()
     {
         $itinerary = DB::table('itinerary')->get();
@@ -39,23 +38,25 @@ class ItineraryController extends Controller
     }
 
 
-    public function create(){
+    public function create()
+    {
 
         return view('admin/itinerary/create');
     }
 
 
-    public function save(Request $request){
+    public function save(Request $request)
+    {
 
         $this->validateItems($request);
 
-             DB::table('itinerary')
-                    ->insert([
-                        'name'       => $request['name'],
-                        'difficolty' => $request['difficolty'],
-                        'difference' => $request['difference'],
-                        'description' => $request['description'],
-                    ]);
+        DB::table('itinerary')
+            ->insert([
+                'name'          => $request['name'],
+                'difficolty'    => $request['difficolty'],
+                'difference'    => $request['difference'],
+                'description'   => $request['description'],
+            ]);
 
         return redirect('admin/itinerary/index');
 
@@ -77,55 +78,62 @@ class ItineraryController extends Controller
 
     public function edit($id)
     {
-            $itinerary = DB::table('itinerary')
-                        ->where('id', $id)
-                        ->first();
+        $itinerary = DB::table('itinerary')
+            ->where('id', $id)
+            ->first();
 
         return view('admin/itinerary/edit', ['itinerary' => $itinerary]);
     }
 
 
-    public function store($id,  Request $request)
+    public function store($id, Request $request)
     {
         $this->validateItems($request);
 
-        $itinerary = DB::table('itinerary')
-                        ->where('id', $id)
-                        ->update([
-                            'name'          => $request['name'],
-                            'difficolty'    => $request['difficolty'],
-                            'difference'    => $request['difference'],
-                            'description'   => $request['description'],
-                        ]);
+        DB::table('itinerary')
+            ->where('id', $id)
+            ->update([
+                'name'          => $request['name'],
+                'difficolty'    => $request['difficolty'],
+                'difference'    => $request['difference'],
+                'description'   => $request['description'],
+            ]);
 
 
-        return redirect('admin/itinerary/index', ['itinerary' => $itinerary]);
+        return redirect('admin/itinerary/index');
     }
 
 
     public function validateItems(Request $request)
     {
         $this->validate($request, [
-            'name'            => 'required',
-            'difficolty'      => 'required',
-            'difference'      => 'required',
-            'description'     => 'required',
+            'name' => 'required',
+            'difficolty'    => 'required',
+            'difference'    => 'required',
+            'description'   => 'required',
         ]);
     }
 
-    public function getItinerari(){
+    //frontend
+
+    public function getItinerari()
+    {
 
         $itinerari = DB::table('itinerary')->get();
 
-        return View::make('live-cameras')->with('itineraries', $itinerari);
+        return View::make('live-cameras')
+            ->with('itineraries', $itinerari);
 
     }
 
-    public function singleItinerario($id){
+    public function singleItinerario($id)
+    {
 
-        $itinerario = DB::table('itinerary')->where('id', $id)->first();
+        $itinerario = DB::table('itinerary')
+            ->where('id', $id)->first();
 
-        return View::make('single')->with('itinerary', $itinerario);
+        return View::make('single')
+            ->with('itinerary', $itinerario);
     }
 
 }
