@@ -79,7 +79,7 @@
                     @if (Route::has('login'))
                         <div class="top-right links">
                             @auth
-                            <a href="{{ url('/home') }}">Home</a>
+                            <a href="{{ url('/home') }}">Dashboard</a>
                             @else
                     <li class="menu-item " ><a style="background: #009ad8;color: white;" href="{{ route('login') }}">Login</a></li>
                     <li class="menu-item "><a style="background: #009ad8;color: white;" href="{{ route('register') }}">Register</a></li>

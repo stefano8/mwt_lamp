@@ -32,7 +32,7 @@ class ItineraryController extends Controller
 
     public function index()
     {
-        $itinerary = DB::table('itinerary')->get();
+        $itinerary = DB::table('itineraries')->get();
 
         return view('admin/itinerary/index', ['itinerary' => $itinerary]);
     }
@@ -50,7 +50,7 @@ class ItineraryController extends Controller
 
         $this->validateItems($request);
 
-        DB::table('itinerary')
+        DB::table('itineraries')
             ->insert([
                 'name'          => $request['name'],
                 'difficolty'    => $request['difficolty'],
@@ -66,7 +66,7 @@ class ItineraryController extends Controller
     public function delete($id)
     {
 
-        DB::table('itinerary')
+        DB::table('itineraries')
             ->where('id', $id)
             ->delete();
 
@@ -78,7 +78,7 @@ class ItineraryController extends Controller
 
     public function edit($id)
     {
-        $itinerary = DB::table('itinerary')
+        $itinerary = DB::table('itineraries')
             ->where('id', $id)
             ->first();
 
@@ -90,7 +90,7 @@ class ItineraryController extends Controller
     {
         $this->validateItems($request);
 
-        DB::table('itinerary')
+        DB::table('itineraries')
             ->where('id', $id)
             ->update([
                 'name'          => $request['name'],
@@ -119,7 +119,7 @@ class ItineraryController extends Controller
     public function getItineraries()
     {
 
-        $itinerari = DB::table('itinerary')->get();
+        $itinerari = DB::table('itineraries')->get();
 
         return View::make('live-cameras')
             ->with('itineraries', $itinerari);
@@ -129,7 +129,7 @@ class ItineraryController extends Controller
     public function singleItinerary($id)
     {
 
-        $itinerario = DB::table('itinerary')
+        $itinerario = DB::table('itineraries')
             ->where('id', $id)->first();
 
         return View::make('single')

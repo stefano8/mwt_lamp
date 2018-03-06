@@ -11,6 +11,8 @@
 |
 */
 
+//frontend
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,10 +29,12 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
+Route::get('/live-cameras','ItineraryController@getItineraries')->name('itinerary.list');
+
+Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
 
 
-
-//admin
+//backend - admin
 
 Auth::routes();
 
@@ -45,6 +49,3 @@ Route::get('admin/itinerary/{id}/delete', 'ItineraryController@delete')->name('i
 Route::get('admin/itinerary/{id}/store', 'ItineraryController@store')->name('itinerary.store');
 
 
-
-Route::get('/live-cameras','ItineraryController@getItineraries')->name('itinerary.list');
-Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
