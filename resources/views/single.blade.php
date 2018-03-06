@@ -11,7 +11,7 @@
                 <div class="content col-md-8">
                     <div class="post single">
                         @if($itinerary !== NULL)
-                            <h2 class="entry-title">{{$itinerary->id}}</h2>
+                            <h2 class="entry-title">{{$itinerary->name}}</h2>
                             <div class="featured-image"><img src="images/featured-image-1.jpg" alt=""></div>
 
                             <div class="entry-content">
