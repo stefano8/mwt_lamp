@@ -117,7 +117,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Itinerary',
+            'text' => 'Itineraries',
             'icon_color' => 'aqua',
             'url'  => 'admin/itinerary/index',
         ],
@@ -126,21 +126,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text' => 'Events',
-            'icon_color' => 'aqua',
-            'url'  => 'admin/',
-        ],
-        [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text' => 'News',
-            'icon_color' => 'aqua',
-            'url'  => 'admin/',
-        ],
+
 
         'GESTIONE UTENTI',
         [
@@ -151,7 +137,7 @@ return [
         [
             'text' => 'Users',
             'icon_color' => 'yellow',
-            'url'  => 'admin/',
+            'url'  => 'admin/user/index',
         ],
         [
             'text' => 'Blog',
@@ -161,7 +147,7 @@ return [
         [
             'text' => 'Groups',
             'icon_color' => 'yellow',
-            'url'  => 'admin/',
+            'url'  => 'admin/group/index',
         ],
 
 

@@ -48,4 +48,19 @@ Route::get('admin/itinerary/{id}/edit', 'ItineraryController@edit')->name('itine
 Route::get('admin/itinerary/{id}/delete', 'ItineraryController@delete')->name('itinerary.delete');
 Route::get('admin/itinerary/{id}/store', 'ItineraryController@store')->name('itinerary.store');
 
+//rotte per CRUD su utenti
+Route::get('admin/user/index', 'UserController@index')->name('user');
+Route::get('admin/user/{id}/edit', 'UserController@edit')->name('user.edit');
+Route::get('admin/user/{id}/delete', 'UserController@delete')->name('user.delete');
+Route::get('admin/user/{id}/store', 'UserController@store')->name('user.store');
+Route::get('admin/user/{id}/assign', 'UserController@saveAssignment')->name('user.saveAssignment');
+
+
+//rotte per CRUD su gruppi
+Route::get('admin/group/index', 'GroupController@index')->name('group');
+Route::get('admin/group/create', 'GroupController@create')->name('group.create');
+Route::get('admin/group/save', 'GroupController@save')->name('group.save');
+Route::get('admin/group/{id}/edit', 'GroupController@edit')->name('group.edit');
+Route::get('admin/group/{id}/delete', 'GroupController@delete')->name('group.delete');
+Route::get('admin/group/{id}/store', 'GroupController@store')->name('group.store');
 

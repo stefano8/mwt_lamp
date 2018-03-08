@@ -110,7 +110,7 @@
             <main class="main-content">
                 <div class="fullwidth-block">
                     <div class="container">
-                        <h2 class="section-title">Live cameras</h2>
+                        <h2 class="section-title">Itineraries</h2>
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="live-camera">

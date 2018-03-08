@@ -61,8 +61,8 @@
             <a href="{{ url('/') }}" class="branding">
                 <img style="width: 80px; height: 80px" src="{!! asset('images/logom.png') !!}" alt="" class="logo">
                 <div class="logo-type">
-                    <h1 class="site-title">Application name</h1>
-                    <small class="site-description">app</small>
+                    <h1 class="site-title">MontainApp</h1>
+                    <small class="site-description">Nature Hikes</small>
                 </div>
             </a>
 
@@ -71,9 +71,9 @@
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
                     <li class="menu-item current-menu-item"><a href="{{ url('/') }}">Home</a></li>
+                    <li class="menu-item"><a href="{{ url('/live-cameras') }}">Itineraries</a></li>
                     <li class="menu-item"><a href="{{ url('/news') }}">News</a></li>
-                    <li class="menu-item"><a href="{{ url('/live-cameras') }}">Live cameras</a></li>
-                    <li class="menu-item"><a href="{{ url('/photos') }}">Photos</a></li>
+                    <li class="menu-item"><a href="{{ url('/photos') }}">Events</a></li>
                     <li class="menu-item"><a href="{{ url('/contact') }}">Contact</a></li>
 
                     @if (Route::has('login'))
