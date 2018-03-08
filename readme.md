@@ -2,5 +2,5 @@
 
 ## About Project
 
-MOntainApp is a web application 
+MontainApp is a web application ...
 
