@@ -14,9 +14,16 @@
             </h3>
         </div>
         <div class="panel-body">
-            <form id="itineraryForm" class="form-horizontal" action=" {{route('user.saveAssignment', $user->id)}} "
+            <form id="itineraryForm" class="form-horizontal" action=" {{url('admin/user/{user_id}/{group_id}/saveAssign')}} "
                   method="get">
                 <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="name">Id</label>
+                        <div class="col-md-9">
+                            <input name="user_id" type="text" id="user_id" value="{{$user->id}}" class="form-control"
+                                   ></div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="name">Name</label>
                         <div class="col-md-9">
@@ -35,7 +42,7 @@
                         <div class="col-md-9">
                             @foreach($group as $groups)
                         <label class="checkbox-inline">
-                            &nbsp;<input type="checkbox" class="custom-checkbox" value="{{$groups->name}}" >&nbsp;{{$groups->name}}
+                            &nbsp;<input type="checkbox" class="custom-checkbox" name="group_id" id="group_id" value="{{$groups->id}}" >&nbsp;{{$groups->name}}
                         </label>
                             @endforeach
                         </div>

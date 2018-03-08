@@ -25,6 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $user = DB::table('users')->get();
 
         return view('admin/user/index', ['user' => $user]);
@@ -87,7 +88,7 @@ class UserController extends Controller
 
 
     //funzione per assegnare gruppi
-    public function saveAssignment($id){
+    public function showAssignment($id){
 
         $user = DB::table('users')
             ->where('id', $id)
@@ -97,6 +98,18 @@ class UserController extends Controller
             ->get();
 
         return view('admin/user/assign', ['user' => $user], ['group' => $group]);
+
+    }
+
+    public function saveAssignment(Request $request){
+
+        DB::table('users_groups')
+            ->insert([
+                'user_id'          => $request['user_id'],
+                'group_id'         => $request['group_id'],
+            ]);
+
+        return redirect('admin/user/index');
 
     }
 

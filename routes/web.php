@@ -53,7 +53,8 @@ Route::get('admin/user/index', 'UserController@index')->name('user');
 Route::get('admin/user/{id}/edit', 'UserController@edit')->name('user.edit');
 Route::get('admin/user/{id}/delete', 'UserController@delete')->name('user.delete');
 Route::get('admin/user/{id}/store', 'UserController@store')->name('user.store');
-Route::get('admin/user/{id}/assign', 'UserController@saveAssignment')->name('user.saveAssignment');
+Route::get('admin/user/{user_id}/assign', 'UserController@showAssignment')->name('user.showAssignment');
+Route::get('admin/user/{user_id}/{group_id}/saveAssign', 'UserController@saveAssignment')->name('user.saveAssignment');
 
 
 //rotte per CRUD su gruppi
