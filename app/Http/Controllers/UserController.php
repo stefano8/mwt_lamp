@@ -26,10 +26,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = DB::table('users')
+       /* $user = DB::table('users')
             ->leftJoin('users_groups', 'users.id', '=', 'users_groups.group_id')
             ->select('users.id' ,'users.name', 'users.email', 'users_groups.group_id')
-            ->get();
+            ->get();*/
+       $user = DB::table('users')->get();
 
 
 
