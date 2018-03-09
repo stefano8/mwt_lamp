@@ -50,7 +50,8 @@
                                             <a href="{{$groups->id}}/edit" class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <a href="{{$groups->id}}/delete" class="btn btn-danger ">Delete</a>
+                                            <a href="{{$groups->id}}/delete" class="btn btn-danger"
+                                               onclick="javascript:confirm('Sei sicuro di voler eliminare questo elemento?')" disabled>Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

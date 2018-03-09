@@ -53,12 +53,6 @@
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered table-striped" id="users">
                                                             <tr>
-                                                                <td>Id User</td>
-                                                                <td>
-                                                                    <a href="#" data-pk="1" class="editable" data-title="Edit User Name">{{$user->id}}</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
                                                                 <td>User Name</td>
                                                                 <td>
                                                                     <a href="#" data-pk="1" class="editable" data-title="Edit User Name">{{$user->name}}</a>

@@ -47,7 +47,8 @@
                                             <a href="{{$users->id}}/edit" class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <a href="{{$users->id}}/delete" class="btn btn-danger ">Delete</a>
+                                            <a href="{{$users->id}}/delete" class="btn btn-danger"
+                                               onclick="javascript:confirm('Sei sicuro di voler eliminare questo elemento?')">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
