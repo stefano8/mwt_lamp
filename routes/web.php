@@ -40,6 +40,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 //rotte per CRUD su itinerari
 Route::get('admin/itinerary/index', 'ItineraryController@index')->name('itinerary');
 Route::get('admin/itinerary/create', 'ItineraryController@create')->name('itinerary.create');
@@ -55,6 +56,8 @@ Route::get('admin/user/{id}/delete', 'UserController@delete')->name('user.delete
 Route::get('admin/user/{id}/store', 'UserController@store')->name('user.store');
 Route::get('admin/user/{user_id}/assign', 'UserController@showAssignment')->name('user.showAssignment');
 Route::get('admin/user/{user_id}/{group_id}/saveAssign', 'UserController@saveAssignment')->name('user.saveAssignment');
+//mio profilo backend
+Route::get('admin/settings', 'UserController@settings')->name('user.settings');
 
 
 //rotte per CRUD su gruppi

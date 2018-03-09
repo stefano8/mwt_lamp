@@ -33,7 +33,6 @@ class UserController extends Controller
 
 
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -111,6 +110,16 @@ class UserController extends Controller
 
         return redirect('admin/user/index');
 
+    }
+
+
+    //funzione per profilo
+    public function settings(){
+
+        $user = DB::table('users')
+            ->first();
+
+        return view('admin/settings', ['user' => $user]);
     }
 
 
