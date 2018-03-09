@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -25,8 +26,18 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = DB::table('users')
+            ->leftJoin('users_groups', 'users.id', '=', 'users_groups.group_id')
+            ->select('users.id' ,'users.name', 'users.email', 'users_groups.group_id')
+            ->get();
 
-        $user = DB::table('users')->get();
+
+
+        /* $user_group = DB::table('users_groups')
+             ->where('users_groups.user_id', '=', 1)
+             ->select('users_groups.group_id')
+             ->first();
+         */
 
         return view('admin/user/index', ['user' => $user]);
     }
@@ -130,4 +141,13 @@ class UserController extends Controller
             'email'         => 'required',
         ]);
     }
+
+    /*public function showDash(){
+
+        $user_group = DB::table('users_groups')
+            ->where('users_groups.user_id', '=', Auth::user()->id)
+            ->first();
+
+        return view('welcome', ['user_group' => $user_group]);
+    }*/
 }

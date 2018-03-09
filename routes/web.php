@@ -11,6 +11,11 @@
 |
 */
 
+
+/*Route::get('/', 'UserController@showDash' , function () {
+    return view('welcome');
+});*/
+
 //frontend
 
 Route::get('/', function () {

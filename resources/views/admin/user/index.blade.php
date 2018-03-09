@@ -40,15 +40,20 @@
                                         <td>{{ $users->id }}</td>
                                         <td>{{ $users->name }}</td>
                                         <td>{{ $users->email}}</td>
-                                        <td>
-                                            <a href="{{$users->id}}/assign" class="btn btn-success">Assign</a>
-                                        </td>
+                                        @if(Auth::check() && Auth::user()->id == $users->id)
+                                            <td>
+
+                                            </td>
+                                        @else
+                                            <td>
+                                                <a href="{{$users->id}}/assign" class="btn btn-success">Assign</a>
+                                            </td>
+                                        @endif
                                         <td>
                                             <a href="{{$users->id}}/edit" class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <a href="{{$users->id}}/delete" class="btn btn-danger"
-                                               onclick="javascript:confirm('Sei sicuro di voler eliminare questo elemento?')">Delete</a>
+                                            <a href="{{$users->id}}/delete" class="btn btn-danger ">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
