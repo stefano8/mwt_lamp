@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
+use App\User;
+use App\UserGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +34,6 @@ class UserController extends Controller
             ->select('users.id' ,'users.name', 'users.email', 'users_groups.group_id')
             ->get();*/
        $user = DB::table('users')->get();
-
 
 
         /* $user_group = DB::table('users_groups')
@@ -88,11 +90,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function delete($id)
     {
-        DB::table('users')
-            ->where('id', $id)
-            ->delete();
+        $user = User::find($id);
+
+
+            $user->groupRel()->wherePivot('user_id','=',$id)->detach();
+
+            DB::table('users')
+                ->where('id', $id)
+                ->delete();
+
 
         return redirect()->back();
     }
@@ -101,12 +111,25 @@ class UserController extends Controller
     //funzione per assegnare gruppi
     public function showAssignment($id){
 
-        $user = DB::table('users')
+        /*$user = DB::table('users')
             ->where('id', $id)
-            ->first();
+            ->first();*/
 
         $group = DB::table('groups')
             ->get();
+
+
+
+        $user = User::find($id);
+
+        //conto quanti users_group per user = $id ci sono
+        $countUsersGroups = User::find($id)->groupRel()->wherePivot('user_id', '=', $id)->count();
+
+        //conto i gruppi
+        $countGroup = Group::all()->count();
+
+
+
 
         return view('admin/user/assign', ['user' => $user], ['group' => $group]);
 
@@ -114,12 +137,69 @@ class UserController extends Controller
 
     public function saveAssignment(Request $request){
 
-        DB::table('users_groups')
+       /* DB::table('users_groups')
             ->insert([
                 'user_id'          => $request['user_id'],
                 'group_id'         => $request['group_id'],
-            ]);
+            ]);*/
 
+
+        $ngroup = Group::all()->count();
+
+
+        $user = User::find($request['user_id']);
+
+        $var= 0;
+        $var1 = $request['group_id'];
+        foreach ($user->groupRel as $role)
+        {
+
+            if($role->pivot->group_id != $var1 ){
+
+                $var = $var +1;
+            }else{
+
+                $var = $var - 1;
+            }
+
+        }
+
+
+        if($var < $ngroup && $var !== 0 && $var >= 1){
+
+            DB::table('users_groups')
+                ->insert([
+                    'user_id'          => $request['user_id'],
+                    'group_id'         => $request['group_id'],
+                ]);
+
+        }
+
+        //se label assegned non c'è allora inserisce
+        if(!isset( $_GET['group'])){
+            DB::table('users_groups')
+                ->insert([
+                    'user_id'          => $request['user_id'],
+                    'group_id'         => $request['group_id'],
+                ]);
+
+        }
+
+
+
+
+
+        /*$user = User::find($request['user_id']);
+
+
+        foreach ($user->groupRel as $role)
+        {
+            $role->pivot->group_id = $request['group_id'];
+            $role->pivot->save();
+        }
+
+
+*/
         return redirect('admin/user/index');
 
     }
@@ -151,4 +231,21 @@ class UserController extends Controller
 
         return view('welcome', ['user_group' => $user_group]);
     }*/
+
+
+    //rimuove il gruppo selezionato
+    public function removeAssignment($userId,$groupId)
+    {
+
+        $user = User::find($userId);
+
+
+        $user->groupRel()->wherePivot('user_id','=',$userId)
+                        ->wherePivot('group_id' , '=', $groupId)
+                        ->detach();
+
+
+        return redirect()->back();
+    }
+
 }

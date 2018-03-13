@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserGroup extends Model
+class ItineraryCategory extends Model
 {
-
-    protected $table = 'users_groups';
+    protected $table = 'itineraries_categories';
 
     protected $fillable = [
-        'id','user_id', 'group_id'
+        'id','itinerary_id', 'category_id'
     ];
 
     /**

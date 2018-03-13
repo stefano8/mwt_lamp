@@ -61,6 +61,8 @@ Route::get('admin/user/{id}/delete', 'UserController@delete')->name('user.delete
 Route::get('admin/user/{id}/store', 'UserController@store')->name('user.store');
 Route::get('admin/user/{user_id}/assign', 'UserController@showAssignment')->name('user.showAssignment');
 Route::get('admin/user/{user_id}/{group_id}/saveAssign', 'UserController@saveAssignment')->name('user.saveAssignment');
+Route::get('admin/user/{user_id}/{group_id}/remove', 'UserController@removeAssignment')->name('user.remove');
+
 //mio profilo backend
 Route::get('admin/settings', 'UserController@settings')->name('user.settings');
 
@@ -72,4 +74,8 @@ Route::get('admin/group/save', 'GroupController@save')->name('group.save');
 Route::get('admin/group/{id}/edit', 'GroupController@edit')->name('group.edit');
 Route::get('admin/group/{id}/delete', 'GroupController@delete')->name('group.delete');
 Route::get('admin/group/{id}/store', 'GroupController@store')->name('group.store');
+
+
+//rotte per CRUD su categorie
+Route::get('admin/category/index', 'CategoryController@index')->name('category');
 

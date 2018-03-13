@@ -112,9 +112,10 @@ return [
         'GESTIONE SISTEMA',
 
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Category',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/category/index',
+
         ],
         [
             'text' => 'Itineraries',
