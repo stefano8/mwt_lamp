@@ -244,8 +244,6 @@ class UserController extends Controller
                         ->wherePivot('group_id' , '=', $groupId)
                         ->detach();
 
-
         return redirect()->back();
     }
-
 }

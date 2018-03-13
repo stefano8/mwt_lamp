@@ -86,7 +86,7 @@ method="get">
     @foreach($group as $groups)
 
         <label class="checkbox-inline">
-            <input type="checkbox" class="custom-checkbox" name="group_id" id="group_id" value="{{$groups->id}}" >&nbsp;{{$groups->name}}
+            <input type="checkbox" class="custom-checkbox" name="group_id" id="group_id" value="{{$groups->id}}">&nbsp;{{$groups->name}}
         </label>
 
     @endforeach
