@@ -46,6 +46,7 @@ class GroupController extends Controller
             ->insert([
                 'name'          => $request['name'],
                 'description'   => $request['description'],
+                'created_at'    => now()
             ]);
 
         return redirect('admin/group/index');
@@ -85,6 +86,7 @@ class GroupController extends Controller
             ->update([
                 'name'          => $request['name'],
                 'description'   => $request['description'],
+                'updated_at'    => now()
             ]);
 
 

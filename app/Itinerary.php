@@ -57,5 +57,13 @@ class Itinerary extends Model
 
     }
 
+    //un Itinerario N image
+    public function itineraryImage(){
+
+        return $this->hasMany('App\Image', 'itinerary_id');
+
+    }
+
+
 
 }

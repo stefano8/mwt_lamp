@@ -8,11 +8,12 @@
 
     <aside class="right-side">
         <div>
-            <a href="{{route('itinerary.create')}}" type="submit" class="btn btn-primary"
+            <a href="{{route('event.create')}}" type="submit" class="btn btn-primary"
                style="float: right; width: 100px; margin-bottom: 10px;">
                 Add
             </a>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -20,7 +21,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Itineraries
+                            Events
                         </h3>
 
                     </div>
@@ -31,11 +32,13 @@
                                 <thead class="table_head">
                                 <tr role="row">
                                     <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Difficolty</th>
-                                    <th>Difference</th>
-                                    <th>Duration</th>
+                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Body</th>
+                                    <th>Address</th>
                                     <th>Description</th>
+                                    <th>Itinerary ID</th>
+
 
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -43,19 +46,21 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach ($itinerary as $itineraries )
+                                @foreach ($event as $events )
                                     <tr role="row" class="odd" data-id="1">
-                                        <td>{{ $itineraries->id }}</td>
-                                        <td>{{ $itineraries->name }}</td>
-                                        <td>{{ $itineraries->difficolty}}</td>
-                                        <td>{{ $itineraries->difference }}</td>
-                                        <td>{{ $itineraries->duration }}</td>
-                                        <td>{{ $itineraries->description }}</td>
+                                        <td>{{ $events->id }}</td>
+                                        <td>{{ $events->date }}</td>
+                                        <td>{{ $events->title }}</td>
+                                        <td>{{ $events->body }}</td>
+                                        <td>{{ $events->address }}</td>
+                                        <td>{{ $events->description}}</td>
+                                        <td>{{ $events->itinerary_id}}</td>
+
                                         <td>
-                                            <a href="{{$itineraries->id}}/edit" class="btn btn-primary">Edit</a>
+                                            <a href="{{$events->id}}/edit" class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <a href="{{$itineraries->id}}/delete" class="btn btn-danger">Delete</a>
+                                            <a href="{{route('event.delete', $events->id)}}" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

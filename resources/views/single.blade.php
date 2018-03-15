@@ -12,7 +12,13 @@
                     <div class="post single">
                         @if($itinerary !== NULL)
                             <h2 class="entry-title">{{$itinerary->name}}</h2>
-                            <div class="featured-image"><img src="images/featured-image-1.jpg" alt=""></div>
+                            <div class="featured-image">
+                                @foreach($image as $images)
+                                <figure class="live-camera-cover">
+                                    <img src="{{$images->path}}" alt="foto">
+                                </figure>
+                                @endforeach
+                            </div>
 
                             <div class="entry-content">
                                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores.</p>
@@ -29,12 +35,56 @@
                             </div>
                         @endif
 
+                </div>
+
+<!--form per inserire recensione-->
+                    <div class="col-md-6 col-md-offset-1">
+                        <h2 class="section-title">Write review</h2>
+                        <form action="{{route('review.insert', $itinerary->id)}}" class="contact-form">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input style="width: 200%;" name="title" id="title" type="text" placeholder="Title"></div>
+                            </div>
+                            <textarea style="width: 200%;" name="body" id="body" placeholder="Message..."></textarea>
+
+                            <div class="text-right">
+                                <input type="submit" placeholder="Send review">
+                            </div>
+                        </form>
                     </div>
 
+
+<!--per vedere tutte le recensioni-->
+                    <div class="col-md-6 col-md-offset-1">
+                        <h2 class="section-title">All Review</h2>
+                        @foreach($review as $reviews)
+                        <form action="#" class="contact-form" style="width: 200%;" >
+                            <div class="sidebar col-md-122">
+                                <div class="widget top-rated">
+                                    <ul>
+                                        <li>
+                                            <div class="rating">
+                                                <strong>{{$reviews->title}}</strong>
+                                            </div>
+                                            <h3 class="entry-title">
+                                                <a href="#">{{$reviews->body}}</a>
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                        @endforeach
+                    </div>
                 </div>
+
+
+
+
+
                 <div class="sidebar col-md-3 col-md-offset-1">
                     <div class="widget">
-                        <h3 class="widget-title">Hot News</h3>
+                        <h3 class="widget-title">News</h3>
                         <ul class="arrow-list">
                             <li><a href="#">Accusamus dignissimos</a></li>
                             <li><a href="#">Ducimus praesentium</a></li>
@@ -71,6 +121,7 @@
             </div>
         </div>
     </div>
+
     </main> <!-- .main-content -->
 
 

@@ -10,44 +10,52 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                Update Itinerary
+                Update Event
             </h3>
         </div>
         <div class="panel-body">
-            <form id="itineraryForm" class="form-horizontal" action=" {{route('itinerary.store', $itinerary->id)}} "
+            <form id="itineraryForm" class="form-horizontal" action=" {{route('event.store', $event->id)}} "
                   method="get">
                 <fieldset>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="name">Name</label>
+                        <label class="col-md-3 control-label" for="title">Title</label>
                         <div class="col-md-9">
-                            <input id="name" name="name" type="text" value="{{$itinerary->name}}" class="form-control"
+                            <input id="title" name="title" type="text" value="{{$event->title}}" class="form-control"
                                    required></div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="difficolty">Difficolty</label>
+                        <label class="col-md-3 control-label" for="body">Body</label>
                         <div class="col-md-9">
-                            <input id="difficolty" name="difficolty" type="text" value="{{$itinerary->difficolty}}"
+                            <input id="body" name="body" type="text" value="{{$event->body}}"
                                    class="form-control" required></div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="difference">Difference</label>
+                        <label class="col-md-3 control-label" for="address">Address</label>
                         <div class="col-md-9">
-                            <input id="difference" name="difference" type="text" value="{{$itinerary->difference}}"
-                                   class="form-control" required></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="duration">Duration</label>
-                        <div class="col-md-9">
-                            <input id="duration" name="duration" type="text" value="{{$itinerary->duration}}"
+                            <input id="address" name="address" type="text" value="{{$event->address}}"
                                    class="form-control" required></div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="message">Description</label>
                         <div class="col-md-9">
                             <input class="form-control resize_vertical" id="description" name="description"
-                                   value="{{$itinerary->description}}" rows="5">
+                                   value="{{$event->description}}" rows="5">
                         </div>
                     </div>
+                    <!-- selectbox per itinerari -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="itinerary_id">Itinerary</label>
+                        <div class="col-md-9">
+                            <select class="form-control resize_vertical"  id="itinerary_id" name="itinerary_id" required>
+                                @foreach($itinerary as $itineraries)
+                                    <option value="{{$itineraries->id}}" {{$event->itinerary_id == $itineraries->id ? 'selected="selected"' : ''}}>
+                                        {{$itineraries->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
 
 
                     <!-- Form actions -->

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
 class UserController extends Controller
 {
     /**
@@ -239,8 +240,7 @@ class UserController extends Controller
 
         $user = User::find($userId);
 
-
-        $user->groupRel()->wherePivot('user_id','=',$userId)
+        $user->groupRel->wherePivot('user_id','=',$userId)
                         ->wherePivot('group_id' , '=', $groupId)
                         ->detach();
 

@@ -49,7 +49,7 @@ method="get">
 <input id="group" name="group" type="text" value="{{$role->name}}"
        class="form-control" readonly="readonly">
 
-    <a href="/admin/user/{{$user->id}}/{{$role->id}}/remove" class="btn btn-danger">Remove</a>
+    <a href="{{url('admin/user/{user_id}/{group_id}/remove')}}" class="btn btn-danger">Remove</a>
 
 
     @endforeach

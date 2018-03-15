@@ -10,7 +10,7 @@ class Event extends Model
     protected $table = 'events';
 
     protected $fillable = [
-        'id', 'title', 'description', 'date','address', 'body'
+        'id', 'title', 'description', 'date', 'address', 'body'
     ];
 
 
@@ -18,6 +18,13 @@ class Event extends Model
     public function itineraryRel(){
 
         return $this->belongsTo('App\User');
+
+    }
+
+    //un Evento per una image
+    public function eventImage(){
+
+        return $this->belongsTo('App\Image');
 
     }
 

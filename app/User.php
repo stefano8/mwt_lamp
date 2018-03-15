@@ -59,11 +59,10 @@ class User extends Authenticatable
 
     }
 
-    //un utente un voto a più itinerari
+    //un utente una image
+    public function userImage(){
 
-    public function voteRel()
-    {
-
+        return $this->hasOne('App\Image');
 
 
     }

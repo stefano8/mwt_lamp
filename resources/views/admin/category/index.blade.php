@@ -8,7 +8,7 @@
 
     <aside class="right-side">
         <div>
-            <a href="{{route('itinerary.create')}}" type="submit" class="btn btn-primary"
+            <a href="{{route('category.create')}}" type="submit" class="btn btn-primary"
                style="float: right; width: 100px; margin-bottom: 10px;">
                 Add
             </a>
@@ -20,7 +20,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Itineraries
+                            Categories
                         </h3>
 
                     </div>
@@ -32,8 +32,6 @@
                                 <tr role="row">
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Difficolty</th>
-                                    <th>Difference</th>
                                     <th>Description</th>
 
                                     <th>Edit</th>
@@ -46,8 +44,6 @@
                                     <tr role="row" class="odd" data-id="1">
                                         <td>{{ $categories->id }}</td>
                                         <td>{{ $categories->name }}</td>
-                                        <td>{{ $categories->difficolty}}</td>
-                                        <td>{{ $categories->difference }}</td>
                                         <td>{{ $categories->description }}</td>
                                         <td>
                                             <a href="{{$categories->id}}/edit" class="btn btn-primary">Edit</a>

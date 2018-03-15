@@ -81,7 +81,9 @@
                         <div class="top-right links">
                             @auth
 
+                            {{--@if($user = Auth::user() && $role == 'admin')}}--}}
                             <a href="{{ url('/home') }}">Dashboard</a>
+                            {{--@endif--}}
 
                             <li class="menu-item ">
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">

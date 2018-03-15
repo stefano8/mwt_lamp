@@ -16,4 +16,12 @@ class News extends Model
         'id', 'title', 'body', 'date'
     ];
 
+
+    //una news una image
+    public function newsImage(){
+
+        return $this->hasOne('App\Image');
+
+
+    }
 }

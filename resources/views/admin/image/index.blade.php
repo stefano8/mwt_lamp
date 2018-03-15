@@ -8,10 +8,10 @@
 
     <aside class="right-side">
         <div>
-            <a href="{{route('itinerary.create')}}" type="submit" class="btn btn-primary"
-               style="float: right; width: 100px; margin-bottom: 10px;">
-                Add
-            </a>
+        <a href="{{route('image.create')}}" type="submit" class="btn btn-primary"
+           style="float: right; width: 100px; margin-bottom: 10px;">
+            Add
+        </a>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -20,7 +20,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Itineraries
+                            Images
                         </h3>
 
                     </div>
@@ -31,31 +31,30 @@
                                 <thead class="table_head">
                                 <tr role="row">
                                     <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Difficolty</th>
-                                    <th>Difference</th>
-                                    <th>Duration</th>
-                                    <th>Description</th>
+                                    <th>Title</th>
+                                    <th>Path</th>
+                                    <th>Itinerary ID</th>
+
 
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                @foreach ($itinerary as $itineraries )
+                                @foreach ($image as $images )
                                     <tr role="row" class="odd" data-id="1">
-                                        <td>{{ $itineraries->id }}</td>
-                                        <td>{{ $itineraries->name }}</td>
-                                        <td>{{ $itineraries->difficolty}}</td>
-                                        <td>{{ $itineraries->difference }}</td>
-                                        <td>{{ $itineraries->duration }}</td>
-                                        <td>{{ $itineraries->description }}</td>
-                                        <td>
-                                            <a href="{{$itineraries->id}}/edit" class="btn btn-primary">Edit</a>
+
+
+                                    <td>{{ $images->id }}</td>
+                                    <td>{{ $images->title }}</td>
+                                    <td>{{ $images->path}}</td>
+                                    <td>{{ $images->itinerary_id}}</td>
+
+                                         <td>
+                                            <a href="{{$images->id}}/edit"  class="btn btn-primary">Edit</a>
                                         </td>
                                         <td>
-                                            <a href="{{$itineraries->id}}/delete" class="btn btn-danger">Delete</a>
+                                            <a href="{{$images->id}}/delete" class="btn btn-danger ">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -72,3 +71,8 @@
     </aside>
 
 @stop
+
+
+
+
+

@@ -112,7 +112,7 @@ return [
         'GESTIONE SISTEMA',
 
         [
-            'text' => 'Category',
+            'text' => 'Categories',
             'icon_color' => 'aqua',
             'url'  => 'admin/category/index',
 
@@ -123,27 +123,62 @@ return [
             'url'  => 'admin/itinerary/index',
         ],
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Events',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/event/index',
         ],
+
+
+        'GESTIONE IMMAGINI',
+        [
+            'text' => 'Images',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/image/index',
+        ],
+        [
+            'text'    => 'Assign Image',
+            'icon'    => 'share',
+            'submenu' => [
+                [
+                    'text' => 'Assign to Itineraries',
+                    'url'  => 'admin/image/assign/itinerary',
+                ],
+                [
+                    'text'    => 'Assign to Users',
+                    'url'     => 'admin/image/assign/user',
+
+                ],
+                [
+                    'text'    => 'Assign to Events',
+                    'url'     => 'admin/image/assign/event',
+
+                ],
+                [
+                    'text'    => 'Assign to News',
+                    'url'     => 'admin/image/assign/news',
+
+                ],
+                ],
+
+            ],
+
+
+        'GESTIONE RECENSIONI',
+
+        [
+            'text' => 'Reviews',
+            'icon_color' => 'gray',
+            'url'  => 'admin/review/index',
+        ],
+
+
 
 
         'GESTIONE UTENTI',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text' => 'Users',
             'icon_color' => 'yellow',
             'url'  => 'admin/user/index',
-        ],
-        [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
         ],
         [
             'text' => 'Groups',
@@ -160,11 +195,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'user',
         ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
+
         [
             'text'    => 'Multilevel',
             'icon'    => 'share',

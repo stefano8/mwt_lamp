@@ -59,57 +59,7 @@
                     </div>
                 </div>
                 @endforeach
-                <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-2.jpg" alt=""></figure>
-                        <h3 class="location">Los Angeles</h3>
-                        <small class="date">8 oct, 8:00AM</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-3.jpg" alt=""></figure>
-                        <h3 class="location">Chicago</h3>
-                        <small class="date">8 oct, 8:00AM</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-4.jpg" alt=""></figure>
-                        <h3 class="location">London</h3>
-                        <small class="date">8 oct, 8:00AM</small>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-5.jpg" alt=""></figure>
-                        <h3 class="location">New York</h3>
-                        <small class="date">8 oct, 8:00AM</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-6.jpg" alt=""></figure>
-                        <h3 class="location">Los Angeles</h3>
-                        <small class="date">8 oct, 8:00AM</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-7.jpg" alt=""></figure>
-                        <h3 class="location">Chicago</h3>
-                        <small class="date">8 oct, 8:00AM</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-8.jpg" alt=""></figure>
-                        <h3 class="location">London</h3>
-                        <small class="date">8 oct, 8:00AM</small>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

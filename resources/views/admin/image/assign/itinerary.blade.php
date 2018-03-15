@@ -7,12 +7,6 @@
     <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
 
     <aside class="right-side">
-        <div>
-            <a href="{{route('itinerary.create')}}" type="submit" class="btn btn-primary"
-               style="float: right; width: 100px; margin-bottom: 10px;">
-                Add
-            </a>
-        </div>
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -37,8 +31,7 @@
                                     <th>Duration</th>
                                     <th>Description</th>
 
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Assign</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,10 +45,7 @@
                                         <td>{{ $itineraries->duration }}</td>
                                         <td>{{ $itineraries->description }}</td>
                                         <td>
-                                            <a href="{{$itineraries->id}}/edit" class="btn btn-primary">Edit</a>
-                                        </td>
-                                        <td>
-                                            <a href="{{$itineraries->id}}/delete" class="btn btn-danger">Delete</a>
+                                            <a href="{{$itineraries->id}}/assignItinerary" class="btn btn-success">Assign</a>
                                         </td>
                                     </tr>
                                 @endforeach

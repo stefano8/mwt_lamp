@@ -36,6 +36,11 @@
                     <textarea class="form-control resize_vertical" id="description" name="description" placeholder="Please enter your message here..." rows="5"></textarea>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="duration">Duration</label>
+                <div class="col-md-9">
+                    <input id="duration" name="duration" type="text" placeholder="Duration" class="form-control" required></div>
+            </div>
 
 
             <!-- Form actions -->
