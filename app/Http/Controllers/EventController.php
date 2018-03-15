@@ -108,6 +108,7 @@ class EventController extends Controller
         $this->validate($request, [
             'title'         => 'required',
             'body'          => 'required',
+
             'address'       => 'required',
             'description'   => 'required',
             'itinerary_id'  => 'required',
