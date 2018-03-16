@@ -34,7 +34,7 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
-Route::get('/live-cameras','ItineraryController@getItineraries')->name('itinerary.list');
+Route::get('/live-cameras/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');
 
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
 

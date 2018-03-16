@@ -15,26 +15,15 @@
                             <div class="featured-image">
                                 @foreach($image as $images)
                                 <figure class="live-camera-cover">
-                                    <img src="{{$images->path}}" alt="foto">
+                                    <img src="{{$images->path}}" alt="foto" style="width: 300px; height: 223px;"> {{--src="{{URL::asset($images->path)}}"--}}
+
                                 </figure>
                                 @endforeach
                             </div>
-
                             <div class="entry-content">
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores.</p>
-
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-
-                                <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati iusto minima, iste doloremque culpa blanditiis mollitia nisi aliquid illum accusantium numquam. Pariatur, velit. Sapiente ipsum excepturi sunt, eveniet eaque, qui?</p>
-                                </blockquote>
-
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum.</p>
-
-                                <p>Dlorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit beatae vitae dicta sunt explicabo e veritatis et quasi architecto beatae vitae dicta sunt explicabo earum rerum.</p>
+                                <p>{{$itinerary->description}}</p>
                             </div>
                         @endif
-
                 </div>
 
 <!--form per inserire recensione-->
@@ -84,13 +73,11 @@
 
                 <div class="sidebar col-md-3 col-md-offset-1">
                     <div class="widget">
-                        <h3 class="widget-title">News</h3>
+                        <h3 class="widget-title">Features</h3>
                         <ul class="arrow-list">
-                            <li><a href="#">Accusamus dignissimos</a></li>
-                            <li><a href="#">Ducimus praesentium</a></li>
-                            <li><a href="#">Voluptatum deleniti corrupti</a></li>
-                            <li><a href="#">Wuos dolores excepturi sint</a></li>
-                            <li><a href="#">Occaecati provident dolor</a></li>
+                            <li><a href="#">Difficolty: {{$itinerary->difficolty}}</a></li>
+                            <li><a href="#">Difference: {{$itinerary->difference}}</a></li>
+                            <li><a href="#">Duration: {{$itinerary->duration}}</a></li>
                         </ul>
                     </div>
 

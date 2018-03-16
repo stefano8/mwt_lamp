@@ -122,18 +122,22 @@ class ItineraryController extends Controller
 
     //frontend
 
-    public function getItineraries()
+    public function getItineraries($id)
     {
 
-        $itinerary = DB::table('itineraries')->get();
-
-        $image = DB::table('images')
-            ->select('*')
+        $itinerary = DB::table('itineraries')
             ->get();
 
-        return View::make('live-cameras')
+
+        $image = DB::table('images')
+            //->where('itinerary_id', '=', 1)
+            ->first();
+
+        /*return View::make('live-cameras')
             ->with('itineraries', $itinerary)
             ->with('images', $image);
+         */
+        return view('live-cameras', ['itineraries' => $itinerary], ['image' => $image]);
 
     }
 
@@ -149,13 +153,14 @@ class ItineraryController extends Controller
             ->where('itinerary_id','=', $id)
             ->get();
 
-        $image = Image::all()
-            ->where('itinerary_id', '=' , $id);
+        $image = DB::table('images')
+            ->where('itinerary_id', '=' , $id)->get();
 
         return View::make('single')
             ->with('itinerary', $itinerary)
             ->with('review', $review)
             ->with('image', $image);
+
     }
 
 }

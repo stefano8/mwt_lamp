@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="path">Path</label>
                         <div class="col-md-9">
-                            <input id="path" name="path" type="text" placeholder="../public/images/" class="form-control" required></div>
+                            <input id="path" name="path" type="text" placeholder="/mwt_1718/public/images/" class="form-control" required></div>
                     </div>
 
                     <!-- Form actions -->

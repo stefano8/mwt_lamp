@@ -50,14 +50,23 @@
                 </div>
             </div>
             <div class="row">
-                @foreach($itineraries as $itinerario)
-                <div class="col-md-3 col-sm-6">
+                @foreach($itineraries as $itinerary)
+
+
+                    <div class="col-md-3 col-sm-6">
                     <div class="live-camera">
-                        <figure class="live-camera-cover"><img src="images/live-camera-1.jpg" alt=""></figure>
-                        <h3 class="location"><a href="{{route('itinerary.single', $itinerario->id)}}">{{$itinerario->name}}</a></h3>
-                        <small class="date">8 oct, 8:00AM</small>
+                        <figure class="live-camera-cover">
+
+                            <img src="{{$image->path}}" alt="foto" style="width: 190px; height: 190px;">
+
+                        </figure>
+                        <h3 class="location">
+                            <a href="{{route('itinerary.single', $itinerary->id)}}">{{$itinerary->name}}</a>
+                            </h3>
+                        <small class="date">{{$itinerary->created_at}}</small>
                     </div>
                 </div>
+
                 @endforeach
 
             </div>
