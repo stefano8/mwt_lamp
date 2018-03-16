@@ -103,6 +103,13 @@ Route::get('admin/review/{id}/delete', 'ReviewController@delete')->name('review.
 Route::get('single', 'ReviewController@showReview')->name('review.showreview');
 Route::get('{itinerary_id}/single', 'ReviewController@insert')->name('review.insert');
 
+//rotte per CRUD su news
+Route::get('admin/news/index', 'NewsController@index')->name('news');
+Route::get('admin/news/create', 'NewsController@create')->name('news.create');
+Route::get('admin/news/save', 'NewsController@save')->name('news.save');
+Route::get('admin/news/{id}/edit', 'NewsController@edit')->name('news.edit');
+Route::get('admin/news/{id}/delete', 'NewsController@delete')->name('news.delete');
+Route::get('admin/news/{id}/store', 'NewsController@store')->name('news.store');
 
 
 //rotte per CRUD su image
@@ -117,7 +124,7 @@ Route::get('admin/image/{id}/store', 'ImageController@store')->name('image.store
 Route::get('admin/image/assign/itinerary', 'ImageController@assignItinerary')->name('image.assignItinerary');
 Route::get('admin/image/assign/{itinerary_id}/assignItinerary', 'ImageController@showAssignmentItinerary')->name('image.showAssignmentItinerary');
 Route::get('admin/image/assign/{itinerary_id}/saveAssign', 'ImageController@saveAssignmentItinerary')->name('image.saveAssignmentItinerary');
-Route::get('admin/image/assign/{itinerary_id}/remove', 'ImageController@removeAssignmentItinerary')->name('image.removeItinerary');
+Route::get('admin/image/assign/{itinerary_id}/{image_id}/remove', 'ImageController@removeAssignmentItinerary')->name('image.remove');
 
 
 

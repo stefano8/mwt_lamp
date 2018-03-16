@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use App\Itinerary;
+use App\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -113,10 +114,56 @@ class ImageController extends Controller
 
     public function showAssignmentItinerary($id){
 
-        $itinerary = Itinerary::find($id)->imageItinerary;
+        $itinerary = Itinerary::find($id);
 
-        $image = Image::all();
+        $image = Image::all()->where('itinerary_id', '=', $id);
 
-        return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image]);
+        $photo = Image::all();
+
+        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+        return \View::make('admin/image/assign//assignItinerary')
+                    ->with('itinerary', $itinerary)
+                    ->with('image', $image)
+                    ->with('photo', $photo);
+
+
     }
+
+    //rimuove l'immagine associata ad un itinerario
+    public function removeAssignmentItinerary($itinerary_id,$image_id)
+    {
+
+
+        DB::table('images')
+            ->where('id', $image_id)
+            ->where('itinerary_id', $itinerary_id)
+            ->update([
+                'itinerary_id' => null
+            ]);
+
+
+        return redirect()->back();
+    }
+
+    //
+    public function saveAssignmentItinerary(Request $request, $itinerary_id){
+
+        $var = $request['image'];
+
+
+        foreach ($var as $value) {
+
+            DB::table('images')
+                ->where('id', $value)
+                ->update([
+                    'itinerary_id' => $request['itinerary_id'],
+                    'updated_at' => now(),
+                ]);
+        }
+        return redirect()->back();
+
+
+    }
+
 }

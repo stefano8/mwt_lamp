@@ -33,7 +33,7 @@
                                                 <div class="text-center">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="fileinput-new thumbnail img-file">
-                                                            <img src="#" width="200" class="img-responsive" height="150" alt="riot">
+                                                            <img src="#" width="200" class="img-responsive" height="150" alt="userimage">
                                                         </div>
                                                         <div class="fileinput-preview fileinput-exists thumbnail img-max">
                                                         </div>

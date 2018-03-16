@@ -64,6 +64,13 @@ class Itinerary extends Model
 
     }
 
+    //un news per un itinerario
+    public function itineraryNews(){
+
+        return $this->belongsTo('App\News');
+
+    }
+
 
 
 }

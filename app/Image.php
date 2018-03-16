@@ -13,7 +13,7 @@ class Image extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'path', 'title',
+        'id', 'path', 'title', 'itinerary_id'
     ];
 
 

@@ -24,4 +24,12 @@ class News extends Model
 
 
     }
+
+    //una news un itinerario
+    public function newsItinerary(){
+
+        return $this->hasOne('App\Itinerary');
+
+
+    }
 }

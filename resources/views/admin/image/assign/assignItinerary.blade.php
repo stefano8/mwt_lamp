@@ -10,17 +10,17 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                Assign Images - Itineraries
+                Assign Images to Itineraries
             </h3>
         </div>
         <div class="panel-body">
-            <form id="itineraryForm" class="form-horizontal" action=" {{url('admin/image/assign/{itinerary_id}/saveAssignmentItinerary')}} "
+            <form id="itineraryForm" class="form-horizontal" action=" {{url('admin/image/assign/{itinerary_id}/saveAssign')}} "
                   method="get">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="id">Id</label>
-                        <div class="col-md-9">
-                            <input name="id" type="text" id="id" value="{{$itinerary->id}}" class="form-control" readonly="readonly"></div>
+                     <div class="col-md-9">
+                            <input name="itinerary_id" type="text" id="itinerary_id" value="{{$itinerary->id}}" class="form-control" readonly="readonly"></div>
                     </div>
 
                     <div class="form-group">
@@ -35,15 +35,14 @@
 
                     <div class="form-group">
 
-                        <label class="col-md-3 control-label" for="difficolty">Assigned Image</label>
+                        <label class="col-md-3 control-label" for="title">Assigned Image</label>
                         <div class="row">
                             <div class="col-md-4">
-                                @foreach ($itinerary as $item)
+                                @foreach ($image as $item)
 
                                     <input id="title" name="title" type="text" value="{{$item->title}}"
                                            class="form-control" readonly="readonly">
-
-                                    <a href="{{url('admin/image/assign/{itinerary_id}/removeAssignmentItinerary')}}" class="btn btn-danger">Remove</a>
+                                    <a href="/mwt_1718/public/admin/image/assign/{{$itinerary->id}}/{{$item->id}}/remove" class="btn btn-danger">Remove</a>
 
 
                                 @endforeach
@@ -54,26 +53,16 @@
 
 
                     <div class="form-group">
-
-
-
-                        <label class="col-md-3 control-label" for="difficolty">Change Image</label>
-
+                        <label class="col-md-3 control-label" for="image_id">Change Image</label>
                         <div class="col-md-9">
-
-                            @foreach($image as $images)
-
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" class="custom-checkbox" name="group_id" id="group_id" value="{{$images->id}}">&nbsp;{{$images->title}}
-                                </label>
-
+                        <select name="image[]" id="image" multiple class="form-control">
+                            @foreach($photo as $images)
+                            <option name="image_id" id="image_id" value="{{$images->id}}">&nbsp;{{$images->title}}</option>
                             @endforeach
-
-
-
+                        </select>
                         </div>
-
                     </div>
+
 
 
 

@@ -46,10 +46,18 @@
                             <div class="col-md-4">
                                 @foreach ($user->groupRel as $role)
 
-                                    <input id="group" name="group" type="text" value="{{$role->name}}"
+                                    <input id="group" name="group" type="text" value="{{$role->id}} - {{$role->name}}"
                                            class="form-control" readonly="readonly">
 
-                                    <a href="/admin/user/{{$user->id}}/{{$role->id}}/remove" class="btn btn-danger">Remove</a>
+                                    <a href="/mwt_1718/public/admin/user/{{$user->id}}/{{$role->id}}/remove" class="btn btn-danger">Remove</a>
+
+{{--
+{{$user->id}}/{{$role->id}}/remove
+/mwt_1718/public/admin/user/{{$user->id}}/{{$role->id}}/remove
+/admin/user/{{$user->id}}/{{$role->id}}/remove  (per moira)
+{{route('user.remove', $user->id, $role->id)}}
+{{url('admin/user/{user_id}/{group_id}/remove')}}
+--}}
 
 
                                 @endforeach

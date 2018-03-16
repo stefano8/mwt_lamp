@@ -109,6 +109,13 @@ return [
 
     'menu' => [
 
+        'ACCOUNT',
+        [
+            'text' => 'Profile',
+            'url'  => 'admin/settings',
+            'icon' => 'user',
+        ],
+
         'GESTIONE SISTEMA',
 
         [
@@ -126,6 +133,21 @@ return [
             'text' => 'Events',
             'icon_color' => 'aqua',
             'url'  => 'admin/event/index',
+        ],
+        [
+            'text' => 'News',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/news/index',
+        ],
+        [
+            'text' => 'Advices',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/advice/index',
+        ],
+        [
+            'text' => 'Cities',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/city/index',
         ],
 
 
@@ -189,14 +211,9 @@ return [
 
 
 
-        'ACCOUNT SETTINGS',
-        [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
 
-        [
+
+        /*[
             'text'    => 'Multilevel',
             'icon'    => 'share',
             'submenu' => [
@@ -233,7 +250,7 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ],*/
 
     ],
 
