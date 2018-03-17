@@ -38,7 +38,7 @@ class Image extends Model
     //relazione uno a uno con Event
     public function imageEvent()
     {
-        return $this->hasOne('App\Event');
+        return $this->belongsTo('App\Event');
     }
 
 }

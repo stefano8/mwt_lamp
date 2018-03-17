@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Image;
 use App\Itinerary;
+use App\News;
+use App\User;
 use App\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -165,5 +168,207 @@ class ImageController extends Controller
 
 
     }
+
+
+
+    //image for User
+
+    public function assignUser(){
+
+        $user = User::all();
+
+        return view('admin/image/assign/user' , ['user' => $user]);
+
+    }
+
+
+    public function showAssignmentUser($id){
+
+        $user = User::find($id);
+        $imageCount = Image::all()->where('user_id', '=', $id)->count();
+
+        $image = Image::all()->where('user_id', '=', $id);
+
+        $photo = Image::all();
+
+        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+        return \View::make('admin/image/assign/assignUser')
+            ->with('user', $user)
+            ->with('image', $image)
+            ->with('photo', $photo)
+            ->with('imageCount',$imageCount );
+
+
+    }
+
+    //rimuove l'immagine associata ad un user
+    public function removeAssignmentUser($user_id,$image_id)
+    {
+
+
+        DB::table('images')
+            ->where('id', $image_id)
+            ->where('user_id', $user_id)
+            ->update([
+                'user_id' => null
+            ]);
+
+
+        return redirect()->back();
+    }
+
+    //
+    public function saveAssignmentUser(Request $request, $user_id){
+
+        $var = $request['image'];
+
+
+            DB::table('images')
+                ->where('id', $var)
+                ->update([
+                    'user_id' => $request['user_id'],
+                    'updated_at' => now(),
+                ]);
+
+        return redirect()->back();
+
+
+    }
+
+    //image per eventi
+    public function assignEvent(){
+
+        $event = Event::all();
+
+        return view('admin/image/assign/event' , ['event' => $event]);
+
+    }
+
+
+    public function showAssignmentEvent($id){
+
+        $event = Event::find($id);
+
+
+        $imageCount = Image::all()->where('event_id', '=', $id)->count();
+
+        $image = Image::all()->where('event_id', '=', $id);
+
+        $photo = Image::all();
+
+        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+        return \View::make('admin/image/assign/assignEvent')
+            ->with('event', $event)
+            ->with('image', $image)
+            ->with('photo', $photo)
+            ->with('imageCount',$imageCount);
+
+
+    }
+
+    //rimuove l'immagine associata ad un event
+    public function removeAssignmentEvent($event_id,$image_id)
+    {
+
+
+        DB::table('images')
+            ->where('id', $image_id)
+            ->where('event_id', $event_id)
+            ->update([
+                'event_id' => null
+            ]);
+
+
+        return redirect()->back();
+    }
+
+    //
+    public function saveAssignmentEvent(Request $request, $event_id){
+
+        $var = $request['image'];
+
+
+            DB::table('images')
+                ->where('id', $var)
+                ->update([
+                    'event_id' => $request['event_id'],
+                    'updated_at' => now(),
+                ]);
+
+        return redirect()->back();
+
+
+    }
+
+
+    //image per news
+    public function assignNews(){
+
+        $new = News::all();
+
+        return view('admin/image/assign/news' , ['new' => $new]);
+
+    }
+
+
+    public function showAssignmentNews($id){
+
+        $new = News::find($id);
+
+        $imageCount = Image::all()->where('new_id', '=', $id)->count();
+
+
+        $image = Image::all()->where('new_id', '=', $id);
+
+        $photo = Image::all();
+
+        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+        return \View::make('admin/image/assign/assignNews')
+            ->with('new', $new)
+            ->with('image', $image)
+            ->with('photo', $photo)
+            ->with('imageCount', $imageCount);
+
+
+    }
+
+    //rimuove l'immagine associata ad un news
+    public function removeAssignmentNews($new_id,$image_id)
+    {
+
+
+        DB::table('images')
+            ->where('id', $image_id)
+            ->where('new_id', $new_id)
+            ->update([
+                'new_id' => null
+            ]);
+
+
+        return redirect()->back();
+    }
+
+    //
+    public function saveAssignmentNews(Request $request, $new_id){
+
+        $var = $request['image'];
+
+            DB::table('images')
+                ->where('id', $var)
+                ->update([
+                    'new_id' => $request['new_id'],
+                    'updated_at' => now(),
+                ]);
+
+        return redirect()->back();
+
+
+    }
+
+
+
 
 }

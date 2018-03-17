@@ -123,13 +123,23 @@ class UserController extends Controller
 
         $user = User::find($id);
 
+
+        //prendi tutti i gruppi per cui l'utente non ha relazione nella users_groups
+
         //conto quanti users_group per user = $id ci sono
         $countUsersGroups = User::find($id)->groupRel()->wherePivot('user_id', '=', $id)->count();
+        $var = User::find($id)->groupRel()->wherePivot('user_id', '=', $id)->get();
+
+        //per ogni $var prendi i gruppi assegnati poi
+        // $gruppi = Group::find(1)->userRel()->wherePivot('user_id', '=', $id)->where('id', '!=', $var->group_id);
+
+        //echo $gruppi;
+        echo $var;
+
+
 
         //conto i gruppi
-        $countGroup = Group::all()->count();
-
-
+        //$countGroup = Group::all()->count();
 
 
         return view('admin/user/assign', ['user' => $user], ['group' => $group]);
@@ -143,6 +153,8 @@ class UserController extends Controller
                 'user_id'          => $request['user_id'],
                 'group_id'         => $request['group_id'],
             ]);*/
+
+
 
 
         $ngroup = Group::all()->count();

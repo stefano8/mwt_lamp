@@ -126,6 +126,20 @@ Route::get('admin/image/assign/{itinerary_id}/assignItinerary', 'ImageController
 Route::get('admin/image/assign/{itinerary_id}/saveAssign', 'ImageController@saveAssignmentItinerary')->name('image.saveAssignmentItinerary');
 Route::get('admin/image/assign/{itinerary_id}/{image_id}/remove', 'ImageController@removeAssignmentItinerary')->name('image.remove');
 
+//rotte per assegnamento immagini a utenti
+Route::get('admin/image/assign/user', 'ImageController@assignUser')->name('image.assignUser');
+Route::get('admin/image/assign/{user_id}/assignUser', 'ImageController@showAssignmentUser')->name('image.showAssignmentUser');
+Route::get('admin/image/assign/{user_id}/saveAssignUser', 'ImageController@saveAssignmentUser')->name('image.saveAssignmentUser');
+Route::get('admin/image/assign/{user_id}/{image_id}/removeUser', 'ImageController@removeAssignmentUser')->name('image.removeUser');
 
+//rotte per assegnamento immagini a eventi
+Route::get('admin/image/assign/event', 'ImageController@assignEvent')->name('image.assignEvent');
+Route::get('admin/image/assign/{event_id}/assignEvent', 'ImageController@showAssignmentEvent')->name('image.showAssignmentEvent');
+Route::get('admin/image/assign/{event_id}/saveAssignEvent', 'ImageController@saveAssignmentEvent')->name('image.saveAssignmentEvent');
+Route::get('admin/image/assign/{event_id}/{image_id}/removeEvent', 'ImageController@removeAssignmentEvent')->name('image.removeEvent');
 
-
+//rotte per assegnamento immagini a news
+Route::get('admin/image/assign/news', 'ImageController@assignNews')->name('image.assignNews');
+Route::get('admin/image/assign/{news_id}/assignNews', 'ImageController@showAssignmentNews')->name('image.showAssignmentNews');
+Route::get('admin/image/assign/{news_id}/saveAssignNews', 'ImageController@saveAssignmentNews')->name('image.saveAssignmentNews');
+Route::get('admin/image/assign/{news_id}/{image_id}/removeNews', 'ImageController@removeAssignmentNews')->name('image.removeNews');
