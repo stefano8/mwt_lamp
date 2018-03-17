@@ -46,29 +46,30 @@
 										<option value="">Yes</option>
 										<option value="">No</option>
 									</select>
-								</span>
+                    </span>
                 </div>
             </div>
+
+
             <div class="row">
                 @foreach($itineraries as $itinerary)
 
+                    <div class="col-md-6">
+                        <div class="photo">
+                            <div class="photo-preview photo-detail">
+                                <img src="{{$image->path}}" alt="foto" style="width: 190px; height: 190px;">
+                            </div>
+                            <div class="photo-details">
+                                <h3 class="location">
+                                    <a href="{{route('itinerary.single', $itinerary->id)}}">{{$itinerary->name}}</a>
+                                </h3>
+                                <p style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{$itinerary->description}}</p>
+                                <div class="star-rating" title="Rated 1 out of 5"><span style="width:60%"><strong class="rating">1</strong> out of 5</span></div>
+                            </div>
+                        </div>
 
-                    <div class="col-md-3 col-sm-6">
-                    <div class="live-camera">
-                        <figure class="live-camera-cover">
-
-                            <img src="{{$image->path}}" alt="foto" style="width: 190px; height: 190px;">
-
-                        </figure>
-                        <h3 class="location">
-                            <a href="{{route('itinerary.single', $itinerary->id)}}">{{$itinerary->name}}</a>
-                            </h3>
-                        <small class="date">{{$itinerary->created_at}}</small>
                     </div>
-                </div>
-
                 @endforeach
-
             </div>
         </div>
     </div>

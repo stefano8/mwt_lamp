@@ -50,7 +50,7 @@
                                         <td>{{ $news_alias->id }}</td>
                                         <td>{{ $news_alias->date }}</td>
                                         <td>{{ $news_alias->title }}</td>
-                                        <td>{{ $news_alias->body }}</td>
+                                        <td style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{ $news_alias->body }}</td>
                                         <td>{{ $news_alias->image_id }}</td>
                                         <td>{{ $news_alias->itinerary_id}}</td>
 
