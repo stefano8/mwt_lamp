@@ -134,6 +134,10 @@ Route::get('admin/city/{id}/delete', 'CityController@delete')->name('city.delete
 Route::get('admin/city/{id}/store', 'CityController@store')->name('city.store');
 
 
+//rotte per CRUD su città
+Route::get('admin/region/index', 'RegionController@index')->name('region');
+
+
 //rotte per CRUD su image
 Route::get('admin/image/index', 'ImageController@index')->name('image');
 Route::get('admin/image/create', 'ImageController@create')->name('image.create');

@@ -149,6 +149,11 @@ return [
             'icon_color' => 'aqua',
             'url'  => 'admin/city/index',
         ],
+        [
+            'text' => 'Regions',
+            'icon_color' => 'aqua',
+            'url'  => 'admin/region/index',
+        ],
 
 
         'GESTIONE IMMAGINI',
