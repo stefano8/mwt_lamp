@@ -7,7 +7,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
-                <span>Photos</span>
+                <span>Itineraries</span>
             </div>
         </div>
 

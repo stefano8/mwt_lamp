@@ -34,7 +34,7 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
-Route::get('/live-cameras/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');
+Route::get('/itineraries/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');
 
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
 
@@ -56,6 +56,7 @@ Route::get('admin/itinerary/{id}/store', 'ItineraryController@store')->name('iti
 Route::get('admin/itinerary/{user_id}/assign', 'ItineraryController@showAssignment')->name('itinerary.showAssignment');
 Route::get('admin/itinerary/{user_id}/{group_id}/saveAssign', 'ItineraryController@saveAssignment')->name('itinerary.saveAssignment');
 Route::get('admin/itinerary/{user_id}/{group_id}/remove', 'ItineraryController@removeAssignment')->name('itinerary.remove');
+
 
 //rotte per CRUD su utenti
 Route::get('admin/user/index', 'UserController@index')->name('user');
@@ -87,6 +88,7 @@ Route::get('admin/category/{id}/edit', 'CategoryController@edit')->name('categor
 Route::get('admin/category/{id}/delete', 'CategoryController@delete')->name('category.delete');
 Route::get('admin/category/{id}/store', 'CategoryController@store')->name('category.store');
 
+
 //rotte per CRUD su eventi
 Route::get('admin/event/index', 'EventController@index')->name('event');
 Route::get('admin/event/create', 'EventController@create')->name('event.create');
@@ -95,6 +97,7 @@ Route::get('admin/event/{id}/edit', 'EventController@edit')->name('event.edit');
 Route::get('admin/event/{id}/delete', 'EventController@delete')->name('event.delete');
 Route::get('admin/event/{id}/store', 'EventController@store')->name('event.store');
 
+
 //rotte per CRUD su recensioni
 Route::get('admin/review/index', 'ReviewController@index')->name('review');
 Route::get('admin/review/{id}/approve', 'ReviewController@approve')->name('review.approve');
@@ -102,6 +105,7 @@ Route::get('admin/review/{id}/delete', 'ReviewController@delete')->name('review.
 //frontend
 Route::get('single', 'ReviewController@showReview')->name('review.showreview');
 Route::get('{itinerary_id}/single', 'ReviewController@insert')->name('review.insert');
+
 
 //rotte per CRUD su news
 Route::get('admin/news/index', 'NewsController@index')->name('news');
@@ -112,6 +116,24 @@ Route::get('admin/news/{id}/delete', 'NewsController@delete')->name('news.delete
 Route::get('admin/news/{id}/store', 'NewsController@store')->name('news.store');
 
 
+//rotte per CRUD su consigli
+Route::get('admin/advice/index', 'AdviceController@index')->name('advice');
+Route::get('admin/advice/create', 'AdviceController@create')->name('advice.create');
+Route::get('admin/advice/save', 'AdviceController@save')->name('advice.save');
+Route::get('admin/advice/{id}/edit', 'AdviceController@edit')->name('advice.edit');
+Route::get('admin/advice/{id}/delete', 'AdviceController@delete')->name('advice.delete');
+Route::get('admin/advice/{id}/store', 'AdviceController@store')->name('advice.store');
+
+
+//rotte per CRUD su città
+Route::get('admin/city/index', 'CityController@index')->name('city');
+Route::get('admin/city/create', 'CityController@create')->name('city.create');
+Route::get('admin/city/save', 'CityController@save')->name('city.save');
+Route::get('admin/city/{id}/edit', 'CityController@edit')->name('city.edit');
+Route::get('admin/city/{id}/delete', 'CityController@delete')->name('city.delete');
+Route::get('admin/city/{id}/store', 'CityController@store')->name('city.store');
+
+
 //rotte per CRUD su image
 Route::get('admin/image/index', 'ImageController@index')->name('image');
 Route::get('admin/image/create', 'ImageController@create')->name('image.create');
@@ -119,6 +141,7 @@ Route::get('admin/image/save', 'ImageController@save')->name('image.save');
 Route::get('admin/image/{id}/edit', 'ImageController@edit')->name('image.edit');
 Route::get('admin/image/{id}/delete', 'ImageController@delete')->name('image.delete');
 Route::get('admin/image/{id}/store', 'ImageController@store')->name('image.store');
+
 
 //rotte per assegnamento immagini a itinerari
 Route::get('admin/image/assign/itinerary', 'ImageController@assignItinerary')->name('image.assignItinerary');

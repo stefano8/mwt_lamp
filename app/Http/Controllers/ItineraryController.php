@@ -133,11 +133,7 @@ class ItineraryController extends Controller
             //->where('itinerary_id', '=', 1)
             ->first();
 
-        /*return View::make('live-cameras')
-            ->with('itineraries', $itinerary)
-            ->with('images', $image);
-         */
-        return view('live-cameras', ['itineraries' => $itinerary], ['image' => $image]);
+        return view('itineraries', ['itineraries' => $itinerary], ['image' => $image]);
 
     }
 

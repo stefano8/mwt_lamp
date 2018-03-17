@@ -71,7 +71,7 @@
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
                     <li class="menu-item current-menu-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="menu-item"><a href="{{ url('/live-cameras/{itinerary_id}') }}">Itineraries</a></li>
+                    <li class="menu-item"><a href="{{ url('/itineraries/{itinerary_id}') }}">Itineraries</a></li>
                     <li class="menu-item"><a href="{{ url('/advices') }}">Advices</a></li>
                     <li class="menu-item"><a href="{{ url('/news') }}">News</a></li>
                     <li class="menu-item"><a href="{{ url('/photos') }}">Events</a></li>
