@@ -59,7 +59,7 @@
     <div class="site-header">
         <div class="container">
             <a href="{{ url('/') }}" class="branding">
-                <img style="width: 80px; height: 80px" src="{!! asset('images/logom.png') !!}" alt="" class="logo">
+                <img style="width: 100px; height: 100px" src="{!! asset('images/logom.png') !!}" alt="" class="logo">
                 <div class="logo-type">
                     <h1 class="site-title">MontainApp</h1>
                     <small class="site-description">Nature Hikes</small>
@@ -98,9 +98,9 @@
                                 </form>
                             </div></li>
                         @else
-                    <li class="menu-item " ><a style="background: #009ad8;color: white;" href="{{ route('login') }}">Login</a></li>
-                    <li class="menu-item "><a style="background: #009ad8;color: white;" href="{{ route('register') }}">Register</a></li>
-                            @endauth
+                        <li class="menu-item " ><a style="background: #009ad8;color: white;" href="{{ route('login') }}">Login</a></li>
+                        <li class="menu-item "><a style="background: #009ad8;color: white;" href="{{ route('register') }}">Register</a></li>
+                                @endauth
                         </div>
                     @endif
                 </ul> <!-- .menu -->

@@ -134,7 +134,7 @@ class UserController extends Controller
         // $gruppi = Group::find(1)->userRel()->wherePivot('user_id', '=', $id)->where('id', '!=', $var->group_id);
 
         //echo $gruppi;
-        echo $var;
+        //echo $var;
 
 
 
