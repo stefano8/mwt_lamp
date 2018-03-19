@@ -44,7 +44,7 @@
                                     <tr role="row" class="odd" data-id="1">
                                         <td>{{ $categories->id }}</td>
                                         <td>{{ $categories->name }}</td>
-                                        <td style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{ $categories->description }}</td>
+                                        <td>{{ $categories->description }}</td>
                                         <td>
                                             <a href="{{$categories->id}}/edit" class="btn btn-primary">Edit</a>
                                         </td>

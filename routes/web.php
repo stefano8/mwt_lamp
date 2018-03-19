@@ -53,9 +53,9 @@ Route::get('admin/itinerary/save', 'ItineraryController@save')->name('itinerary.
 Route::get('admin/itinerary/{id}/edit', 'ItineraryController@edit')->name('itinerary.edit');
 Route::get('admin/itinerary/{id}/delete', 'ItineraryController@delete')->name('itinerary.delete');
 Route::get('admin/itinerary/{id}/store', 'ItineraryController@store')->name('itinerary.store');
-Route::get('admin/itinerary/{user_id}/assign', 'ItineraryController@showAssignment')->name('itinerary.showAssignment');
-Route::get('admin/itinerary/{user_id}/{group_id}/saveAssign', 'ItineraryController@saveAssignment')->name('itinerary.saveAssignment');
-Route::get('admin/itinerary/{user_id}/{group_id}/remove', 'ItineraryController@removeAssignment')->name('itinerary.remove');
+Route::get('admin/itinerary/{itinerary_id}/assign', 'ItineraryController@showAssignment')->name('itinerary.showAssignment');
+Route::get('admin/itinerary/{itinerary_id}/{category_id}/saveAssign', 'ItineraryController@saveAssignment')->name('itinerary.saveAssignment');
+Route::get('admin/itinerary/{itinerary_id}/{category_id}/remove', 'ItineraryController@removeAssignment')->name('itinerary.remove');
 
 
 //rotte per CRUD su utenti
@@ -170,3 +170,5 @@ Route::get('admin/image/assign/news', 'ImageController@assignNews')->name('image
 Route::get('admin/image/assign/{news_id}/assignNews', 'ImageController@showAssignmentNews')->name('image.showAssignmentNews');
 Route::get('admin/image/assign/{news_id}/saveAssignNews', 'ImageController@saveAssignmentNews')->name('image.saveAssignmentNews');
 Route::get('admin/image/assign/{news_id}/{image_id}/removeNews', 'ImageController@removeAssignmentNews')->name('image.removeNews');
+
+

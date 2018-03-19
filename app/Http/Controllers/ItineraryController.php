@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Image;
 use App\Itinerary;
 use Illuminate\Http\Request;
@@ -158,6 +159,106 @@ class ItineraryController extends Controller
             ->with('image', $image);
 
     }
+
+
+
+
+    //assegnamento di categorie a itinerari
+
+
+    public function showAssignment($id){
+
+        /*$user = DB::table('users')
+            ->where('id', $id)
+            ->first();*/
+
+        $category = DB::table('categories')
+            ->get();
+
+
+        $itinerary = Itinerary::find($id);
+
+
+        return view('admin/itinerary/assign', ['itinerary' => $itinerary], ['category' => $category]);
+
+    }
+
+
+
+
+    public function saveAssignment(Request $request){
+
+        $ngroup = Category::all()->count();
+
+
+        $itinerary = Itinerary::find($request['itinerary_id']);
+
+        $var= 0;
+        $var1 = $request['category_id'];
+        foreach ($itinerary->categoryRel as $role)
+        {
+
+            if($role->pivot->category_id != $var1 ){
+
+                $var = $var +1;
+            }else{
+
+                $var = $var - 1;
+            }
+
+        }
+
+
+        if($var < $ngroup && $var !== 0 && $var >= 1){
+
+            DB::table('itineraries_categories')
+                ->insert([
+                    'itinerary_id'          => $request['itinerary_id'],
+                    'category_id'         => $request['category_id'],
+                ]);
+
+        }
+
+        //se label assegned non c'è allora inserisce
+        if(!isset( $_GET['category'])){
+            DB::table('itineraries_categories')
+                ->insert([
+                    'itinerary_id'          => $request['itinerary_id'],
+                    'category_id'         => $request['category_id'],
+                ]);
+
+        }
+
+        /*$user = User::find($request['user_id']);
+
+
+        foreach ($user->groupRel as $role)
+        {
+            $role->pivot->group_id = $request['group_id'];
+            $role->pivot->save();
+        }
+
+
+*/
+        return redirect('admin/itinerary/index');
+
+    }
+
+
+
+    //rimuove il gruppo selezionato
+    public function removeAssignment($itineraryId,$categoryId)
+    {
+
+        $itinerary = Itinerary::find($itineraryId);
+
+        $itinerary->categoryRel()->wherePivot('itinerary_id','=',$itineraryId)
+                                ->wherePivot('category_id' , '=', $categoryId)
+                                ->detach();
+
+        return redirect()->back();
+    }
+
 
 }
 

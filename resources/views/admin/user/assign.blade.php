@@ -49,7 +49,7 @@
                                     <input id="group" name="group" type="text" value="{{$role->id}} - {{$role->name}}"
                                            class="form-control" readonly="readonly">
 
-                                    <a href="/mwt_1718/public/admin/user/{{$user->id}}/{{$role->id}}/remove" class="btn btn-danger">Remove</a>
+                                    <a href="/admin/user/{{$user->id}}/{{$role->id}}/remove" class="btn btn-danger">Remove</a>
 
 {{--
 {{$user->id}}/{{$role->id}}/remove

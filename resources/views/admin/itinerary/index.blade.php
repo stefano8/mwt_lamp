@@ -37,6 +37,7 @@
                                     <th>Duration</th>
                                     <th>Description</th>
 
+                                    <td>Assign Category</td>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -50,7 +51,10 @@
                                         <td>{{ $itineraries->difficolty}}</td>
                                         <td>{{ $itineraries->difference }}</td>
                                         <td>{{ $itineraries->duration }}</td>
-                                        <td style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{ $itineraries->description }}</td>
+                                        <td>{{ $itineraries->description }}</td>
+                                        <td>
+                                            <a href="{{$itineraries->id}}/assign" class="btn btn-success">Assign Category</a>
+                                        </td>
                                         <td>
                                             <a href="{{$itineraries->id}}/edit" class="btn btn-primary">Edit</a>
                                         </td>
