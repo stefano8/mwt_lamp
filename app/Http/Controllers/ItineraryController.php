@@ -185,7 +185,6 @@ class ItineraryController extends Controller
 
 
 
-
     public function saveAssignment(Request $request){
 
         $ngroup = Category::all()->count();

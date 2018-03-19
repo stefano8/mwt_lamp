@@ -45,7 +45,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 //rotte per CRUD su itinerari
 Route::get('admin/itinerary/index', 'ItineraryController@index')->name('itinerary');
 Route::get('admin/itinerary/create', 'ItineraryController@create')->name('itinerary.create');

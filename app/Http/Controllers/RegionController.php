@@ -21,5 +21,4 @@ class RegionController extends Controller
 
         return view('admin/region/index', ['region' => $region]);
     }
-
 }
