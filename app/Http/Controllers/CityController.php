@@ -18,7 +18,7 @@ class CityController extends Controller
 
     public function index()
     {
-        $city = DB::table('cities')->get();
+        $city = DB::table('cities')->paginate(10);
 
         return view('admin/city/index', ['city' => $city]);
     }
@@ -87,7 +87,7 @@ class CityController extends Controller
             ->where('id', $id)
             ->update([
                 'name'              => $request['name'],
-                'region_id'         => $request['region_id'],
+                'region_id'         => $request['reg'],
                 'updated_at'        => now(),
             ]);
 

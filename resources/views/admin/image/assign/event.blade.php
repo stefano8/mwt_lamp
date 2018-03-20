@@ -46,6 +46,7 @@
 
                                 </tbody>
                             </table>
+                            {{ $event->links() }}
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>

@@ -52,6 +52,10 @@
 </head>
 <body>
 
+<a  href="{{ route('profile') }}">Profile</a>
+
+
+<a  href="{{ route('wishlist') }}">Wishlist</a>
 
 
 
@@ -61,7 +65,7 @@
             <a href="{{ url('/') }}" class="branding">
                 <img style="width: 100px; height: 100px" src="{!! asset('images/logom.png') !!}" alt="" class="logo">
                 <div class="logo-type">
-                    <h1 class="site-title">MontainApp</h1>
+                    <h1 class="site-title">MontainTrack</h1>
                     <small class="site-description">Nature Hikes</small>
                 </div>
             </a>
@@ -78,6 +82,9 @@
                     <li class="menu-item"><a href="{{ url('/contact') }}">Contact</a></li>
 
                     @if (Route::has('login'))
+
+
+
                         <div class="top-right links">
                             @auth
 

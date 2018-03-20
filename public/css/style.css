@@ -7,6 +7,9 @@
 /*=========================================== 
  * Importing CSS Libraries
  *===========================================*/
+/*menu*/
+
+
 article,
 aside,
 details,
@@ -1127,6 +1130,11 @@ form textarea {
       font-size: 16px;
       font-size: 1.1428571429em;
       color: white; }
+    .site-title:first-letter{
+      color: #009ad8;
+      font-size: 35px;
+    }
+
     .site-header .branding .site-description {
       font-size: 10px;
       font-size: 0.7142857143em;

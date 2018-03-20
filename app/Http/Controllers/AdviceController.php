@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Advice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +25,7 @@ class AdviceController extends Controller
 
     public function index()
     {
-        $advice = DB::table('advices')->get();
+        $advice = Advice::paginate(10);
 
         return view('admin/advice/index', ['advice' => $advice]);
     }

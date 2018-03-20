@@ -1,8 +1,15 @@
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+
 @extends('frame')
 
 
 @section('content')
-
 
 
     <div class="fullwidth-block">
@@ -10,6 +17,46 @@
             <div class="row">
                 <div class="content col-md-8">
                     <div class="post single">
+<!--per media voti-->
+                        <div class="col-md-12">
+                            <p>All Votes:
+                                <a href="#" id="1" name="1">
+                                    <span id="1" class="fa fa-star checked"></span>
+                                </a>
+                                <a href="#" id="2" name="2">
+                                    <span id="2" class="fa fa-star checked"></span>
+                                </a>
+                                <a href="#" id="3" name="3">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="#" id="4" name="4">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="#" id="5" name="5">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
+                            </p>
+                        </div>
+<!--per inserire voti-->
+                        <div class="col-md-12">
+                            <p>Your Vote:
+                                <a href="#" id="1" name="1">
+                                    <span id="1" class="fa fa-star "></span>
+                                </a>
+                                <a href="#" id="2" name="2">
+                                    <span id="2" class="fa fa-star "></span>
+                                </a>
+                                <a href="#" id="3" name="3">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="#" id="4" name="4">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="#" id="5" name="5">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
+                            </p>
+                        </div>
                         @if($itinerary !== NULL)
                             <h2 class="entry-title">{{$itinerary->name}}</h2>
                             <div class="featured-image">
@@ -19,12 +66,30 @@
 
                                 </figure>
                                 @endforeach
+
                             </div>
+
                             <div class="entry-content">
                                 <p>{{$itinerary->description}}</p>
                             </div>
                         @endif
-                </div>
+
+                        {{--@if($wishlist )--}}
+                            <div class="col-sm-9">
+                            <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">Add to wishlist</a>
+                            </div>
+                        {{--@else()--}}
+                            <div class="col-sm-9">
+                                <a class="fa fa-heart button" href="{{route('itinerary.removewishlist', $itinerary->id)}}">Remove from wishlist</a>
+                            </div>
+                        {{--@endif--}}
+                            <div class="col-sm-3">
+                                <a class="fa fa-check button" href="">marks as already seen</a>
+                            </div>
+                    </div>
+
+
+
 
 <!--form per inserire recensione-->
                     <div class="col-md-6 col-md-offset-1">
@@ -43,8 +108,10 @@
                     </div>
 
 
+
+
 <!--per vedere tutte le recensioni-->
-                    <div class="col-md-6 col-md-offset-1">
+                    <div class="col-md-9 ">
                         <h2 class="section-title">All Review</h2>
                         @foreach($review as $reviews)
                         <form action="#" class="contact-form" style="width: 200%;" >

@@ -30,9 +30,7 @@ class ImageController extends Controller
 
     public function index()
     {
-        $image = Image::all();
-
-
+        $image = Image::paginate(10);
 
         return view('admin/image/index' , ['image' => $image]);
     }
@@ -109,7 +107,7 @@ class ImageController extends Controller
 
     public function assignItinerary(){
 
-        $itinerary = Itinerary::all();
+        $itinerary = Itinerary::paginate(10);
 
         return view('admin/image/assign/itinerary' , ['itinerary' => $itinerary]);
 
@@ -175,7 +173,7 @@ class ImageController extends Controller
 
     public function assignUser(){
 
-        $user = User::all();
+        $user = User::paginate(10);
 
         return view('admin/image/assign/user' , ['user' => $user]);
 
@@ -239,7 +237,7 @@ class ImageController extends Controller
     //image per eventi
     public function assignEvent(){
 
-        $event = Event::all();
+        $event = Event::paginate(10);
 
         return view('admin/image/assign/event' , ['event' => $event]);
 
@@ -306,7 +304,7 @@ class ImageController extends Controller
     //image per news
     public function assignNews(){
 
-        $new = News::all();
+        $new = News::paginate(10);
 
         return view('admin/image/assign/news' , ['new' => $new]);
 

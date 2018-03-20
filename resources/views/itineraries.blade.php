@@ -65,12 +65,15 @@
                                 </h3>
                                 <p style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{$itinerary->description}}</p>
                                 <div class="star-rating" title="Rated 1 out of 5"><span style="width:60%"><strong class="rating">1</strong> out of 5</span></div>
+
                             </div>
+
                         </div>
 
                     </div>
                 @endforeach
             </div>
+            <a style="background-color: #008CBA;" class="btn btn-primary">{{ $itineraries->links() }}</a>
         </div>
     </div>
 

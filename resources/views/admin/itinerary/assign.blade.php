@@ -41,7 +41,7 @@
                                     <input id="category" name="category" type="text" value="{{$itineCate->name}}"
                                            class="form-control" readonly="readonly">
 
-                                    <a href="/admin/itinerary/{{$itinerary->id}}/{{$itineCate->id}}/remove" class="btn btn-danger">Remove</a>
+                                    <a href="/mwt_1718/public/admin/itinerary/{{$itinerary->id}}/{{$itineCate->id}}/remove" class="btn btn-danger ">Remove</a>
 
 {{--/mwt_1718/public--}}
 

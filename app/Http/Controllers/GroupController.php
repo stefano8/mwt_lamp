@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +25,7 @@ class GroupController extends Controller
 
     public function index()
     {
-        $group = DB::table('groups')->get();
+        $group = Group::paginate(5);
 
         return view('admin/group/index', ['group' => $group]);
     }

@@ -67,6 +67,12 @@ class User extends Authenticatable
 
     }
 
+    //un utente n voti
+    public function userVote(){
+
+        return $this->hasMany('App\Vote');
+
+    }
 
 
 

@@ -46,7 +46,7 @@
 
                                 </tbody>
                             </table>
-                        </div>
+                            {{ $new->links() }}
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>
                 </div>

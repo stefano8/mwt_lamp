@@ -44,6 +44,7 @@
 
                                 </tbody>
                             </table>
+                            {{ $itinerary->links() }}
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>

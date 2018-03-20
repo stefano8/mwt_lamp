@@ -20,7 +20,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Itineraries
+                            Itineraries ({{ $itinerary->total() }}  total itineraries)
                         </h3>
 
                     </div>
@@ -51,7 +51,7 @@
                                         <td>{{ $itineraries->difficolty}}</td>
                                         <td>{{ $itineraries->difference }}</td>
                                         <td>{{ $itineraries->duration }}</td>
-                                        <td>{{ $itineraries->description }}</td>
+                                        <td style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{ $itineraries->description }}</td>
                                         <td>
                                             <a href="{{$itineraries->id}}/assign" class="btn btn-success">Assign Category</a>
                                         </td>
@@ -63,9 +63,9 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
+                            {{ $itinerary->links() }}
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +19,7 @@ class EventController extends Controller
 
     public function index()
     {
-        $event = DB::table('events')->get();
+        $event = Event::paginate(10);
 
         return view('admin/event/index', ['event' => $event]);
     }

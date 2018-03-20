@@ -20,7 +20,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Images
+                            Images ({{ $image->total() }}  total images)
                         </h3>
 
                     </div>
@@ -61,6 +61,7 @@
 
                                 </tbody>
                             </table>
+                            {{ $image->links() }}
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>

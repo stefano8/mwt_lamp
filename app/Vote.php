@@ -20,6 +20,13 @@ class Vote extends Model
 
     }
 
+    //un voto per un utente
+    public function voteUser(){
+
+        return $this->belongsTo('App\User');
+
+    }
+
 
 
 

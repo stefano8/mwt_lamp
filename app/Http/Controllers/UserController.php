@@ -34,7 +34,7 @@ class UserController extends Controller
             ->leftJoin('users_groups', 'users.id', '=', 'users_groups.group_id')
             ->select('users.id' ,'users.name', 'users.email', 'users_groups.group_id')
             ->get();*/
-       $user = DB::table('users')->get();
+       $user = User::paginate(10);
 
 
         /* $user_group = DB::table('users_groups')

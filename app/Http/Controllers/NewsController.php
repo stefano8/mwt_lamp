@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +19,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $news = DB::table('news')->get();
+        $news = News::paginate(10);
 
         return view('admin/news/index', ['news' => $news]);
     }
@@ -108,5 +109,12 @@ class NewsController extends Controller
         ]);
     }
 
+
+    public function getNews(){
+
+        $news = DB::table('news')->get();
+
+        return view('news', ['news'=>$news]);
+    }
 
 }

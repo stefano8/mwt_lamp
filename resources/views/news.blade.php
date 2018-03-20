@@ -16,28 +16,16 @@
             <div class="container">
                 <div class="row">
                     <div class="content col-md-8">
+                        @foreach($news as $newss)
                         <div class="post">
-                            @if($itinerary !== NULL)
-                                <h2 class="entry-title"><a href="/single/{{$itinerary->id}}">{{$itinerary->name}}</a></h2>
+                                <h2 class="entry-title"><a href="/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
                                 <div class="featured-image"><img src="images/featured-image-1.jpg" alt=""></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nulla rem dolores unde et cum illum odio, enim quis odit eveniet quaerat non libero, consequatur voluptatem harum ad veritatis necessitatibus.</p>
-                                <a href="{{ url('/single') }}" class="button">Read more</a>
-                            @endif
+                                <p>{{$newss->body}}</p>
+                                <a href="#" class="button">Read more</a>
                         </div>
+                        @endforeach
 
-                        <div class="post">
-                            <h2 class="entry-title">Nemo enim ipsam voluptatem quia voluptas</h2>
-                            <div class="featured-image"><img src="images/featured-image-2.jpg" alt=""></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nulla rem dolores unde et cum illum odio, enim quis odit eveniet quaerat non libero, consequatur voluptatem harum ad veritatis necessitatibus.</p>
-                            <a href="{{ url('/single') }}" class="button">Read more</a>
-                        </div>
 
-                        <div class="post">
-                            <h2 class="entry-title">Nemo enim ipsam voluptatem quia voluptas</h2>
-                            <div class="featured-image"><img src="images/featured-image-3.jpg" alt=""></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nulla rem dolores unde et cum illum odio, enim quis odit eveniet quaerat non libero, consequatur voluptatem harum ad veritatis necessitatibus.</p>
-                            <a href="{{ url('/single') }}" class="button">Read more</a>
-                        </div>
                     </div>
                     <div class="sidebar col-md-3 col-md-offset-1">
                         <div class="widget">

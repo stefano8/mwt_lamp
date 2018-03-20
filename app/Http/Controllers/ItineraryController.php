@@ -34,7 +34,8 @@ class ItineraryController extends Controller
 
     public function index()
     {
-        $itinerary = DB::table('itineraries')->get();
+        //$itinerary = DB::table('itineraries')->get();
+        $itinerary = Itinerary::paginate(10);
 
         return view('admin/itinerary/index', ['itinerary' => $itinerary]);
     }
@@ -120,47 +121,6 @@ class ItineraryController extends Controller
             'duration'      => 'required',
         ]);
     }
-
-    //frontend
-
-    public function getItineraries($id)
-    {
-
-        $itinerary = DB::table('itineraries')
-            ->get();
-
-
-        $image = DB::table('images')
-            //->where('itinerary_id', '=', 1)
-            ->first();
-
-        return view('itineraries', ['itineraries' => $itinerary], ['image' => $image]);
-
-    }
-
-
-    public function singleItinerary($id)
-    {
-
-        $itinerary = DB::table('itineraries')
-            ->where('id', $id)->first();
-
-        $review = DB::table('reviews')
-            ->where('approved', 1)
-            ->where('itinerary_id','=', $id)
-            ->get();
-
-        $image = DB::table('images')
-            ->where('itinerary_id', '=' , $id)->get();
-
-        return View::make('single')
-            ->with('itinerary', $itinerary)
-            ->with('review', $review)
-            ->with('image', $image);
-
-    }
-
-
 
 
     //assegnamento di categorie a itinerari
@@ -257,6 +217,50 @@ class ItineraryController extends Controller
 
         return redirect()->back();
     }
+
+
+
+    //frontend
+
+    public function getItineraries($id)
+    {
+
+        $itinerary = Itinerary::paginate(10);
+
+
+        $image = DB::table('images')
+            //->where('itinerary_id', '=', 1)
+            ->first();
+
+        return view('itineraries', ['itineraries' => $itinerary], ['image' => $image]);
+
+    }
+
+
+    public function singleItinerary($id)
+    {
+
+        $itinerary = DB::table('itineraries')
+            ->where('id', $id)->first();
+
+        $review = DB::table('reviews')
+            ->where('approved', 1)
+            ->where('itinerary_id','=', $id)
+            ->get();
+
+        $image = DB::table('images')
+            ->where('itinerary_id', '=' , $id)->get();
+
+        return View::make('single')
+            ->with('itinerary', $itinerary)
+            ->with('review', $review)
+            ->with('image', $image);
+
+    }
+
+
+
+
 
 
 }

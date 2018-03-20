@@ -16,7 +16,9 @@
     return view('welcome');
 });*/
 
-//frontend
+/**
+ * FRONT-END
+ **/
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,12 +36,27 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
-Route::get('/itineraries/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
 
+//rotte per wishlist
+Route::get('/wishlist','WishlistController@index')->name('wishlist');
+
+//rotte per itinerari
+Route::get('/itineraries/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');
+Route::get('/itineraries/{itineraryId}/add','ItineraryController@addToWishlist')->name('itinerary.addwishlist');
+Route::get('/itineraries/{itineraryId}/remove','ItineraryController@removeToWishlist')->name('itinerary.removewishlist');
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
 
+//rotta news
+Route::get('/news','NewsController@getNews')->name('newsf');
 
-//backend - admin
+
+
+/**
+ * BECK-END - admin
+ **/
 
 Auth::routes();
 
@@ -133,7 +150,7 @@ Route::get('admin/city/{id}/delete', 'CityController@delete')->name('city.delete
 Route::get('admin/city/{id}/store', 'CityController@store')->name('city.store');
 
 
-//rotte per CRUD su città
+//rotte per CRUD su regioni
 Route::get('admin/region/index', 'RegionController@index')->name('region');
 
 

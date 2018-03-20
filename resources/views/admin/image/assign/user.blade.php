@@ -46,6 +46,7 @@
 
                                 </tbody>
                             </table>
+                            {{ $user->links() }}
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>

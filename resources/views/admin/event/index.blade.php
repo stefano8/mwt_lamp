@@ -21,7 +21,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Events
+                            Events ({{ $event->total() }}  total events)
                         </h3>
 
                     </div>
@@ -67,6 +67,7 @@
 
                                 </tbody>
                             </table>
+                            {{ $event->links() }}
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
                     </div>

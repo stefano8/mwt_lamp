@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\View;
 
            public function index()
            {
-               $category = DB::table('categories')->get();
+               $category = Category::paginate(10);
 
                return view('admin/category/index', ['category' => $category]);
            }
