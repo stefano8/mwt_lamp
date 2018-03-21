@@ -11,10 +11,13 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Image;
 use App\Itinerary;
+use App\Vote;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use PhpParser\Node\Expr\Cast\Int_;
 
 class ItineraryController extends Controller
 {
@@ -239,7 +242,6 @@ class ItineraryController extends Controller
 
     public function singleItinerary($id)
     {
-
         $itinerary = DB::table('itineraries')
             ->where('id', $id)->first();
 
@@ -251,14 +253,71 @@ class ItineraryController extends Controller
         $image = DB::table('images')
             ->where('itinerary_id', '=' , $id)->get();
 
+        $user = Auth::user()->id;
+
+        $voteUser = Vote::all()
+            ->where('itinerary_id', $id)
+            ->where('user_id', $user)
+            ->first();
+
+        $mediaVote = Vote::all()
+            ->where('itinerary_id', $id);
+
+        $voteNumber = Vote::all()
+            ->where('itinerary_id', $id)
+            ->count();
+
+        $somma = 0;
+
+        foreach ($mediaVote as $vote){
+            $somma += $vote->vote;
+        }
+
+        $media = ((int)($somma/$voteNumber));
+
         return View::make('single')
             ->with('itinerary', $itinerary)
             ->with('review', $review)
-            ->with('image', $image);
+            ->with('image', $image)
+            ->with('user', $user)
+            ->with('voteUser', $voteUser)
+            ->with('media', $media);
+
+
 
     }
 
 
+
+    public function addvote($itineraryId, $userId, $value){
+
+        $voteSingle = Vote::all()
+            ->where('itinerary_id', $itineraryId)
+            ->where('user_id', $userId)
+            ->first();
+
+        if ($voteSingle != null){
+            DB::table('votes')
+                ->where('itinerary_id',$itineraryId)
+                ->where('user_id',$userId)
+                ->update([
+                    'vote' => $value,
+                    'updated_at' => now(),
+                ]);
+
+        } else {
+            DB::table('votes')
+                ->insert([
+                    'vote' => $value,
+                    'itinerary_id' => $itineraryId,
+                    'user_id' => $userId,
+                    'created_at' => now(),
+
+                ]);
+        }
+
+        return redirect()->back();
+    }
 
 
 

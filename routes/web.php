@@ -49,8 +49,12 @@ Route::get('/itineraries/{itineraryId}/add','ItineraryController@addToWishlist')
 Route::get('/itineraries/{itineraryId}/remove','ItineraryController@removeToWishlist')->name('itinerary.removewishlist');
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
 
+//rotte per voti
+Route::get('/single/{itineraryId}/{userId}/{value}','ItineraryController@addvote')->name('itinerary.addvote');
+
 //rotta news
 Route::get('/news','NewsController@getNews')->name('newsf');
+
 
 
 

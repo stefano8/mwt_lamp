@@ -18,47 +18,115 @@
                 <div class="content col-md-8">
                     <div class="post single">
 <!--per media voti-->
-                        <div class="col-md-12">
-                            <p>All Votes:
-                                <a href="#" id="1" name="1">
-                                    <span id="1" class="fa fa-star checked"></span>
-                                </a>
-                                <a href="#" id="2" name="2">
-                                    <span id="2" class="fa fa-star checked"></span>
-                                </a>
-                                <a href="#" id="3" name="3">
-                                    <span id="3" class="fa fa-star"></span>
-                                </a>
-                                <a href="#" id="4" name="4">
-                                    <span id="4" class="fa fa-star"></span>
-                                </a>
-                                <a href="#" id="5" name="5">
-                                    <span id="5" class="fa fa-star"></span>
-                                </a>
-                            </p>
-                        </div>
-<!--per inserire voti-->
-                        <div class="col-md-12">
-                            <p>Your Vote:
-                                <a href="#" id="1" name="1">
-                                    <span id="1" class="fa fa-star "></span>
-                                </a>
-                                <a href="#" id="2" name="2">
-                                    <span id="2" class="fa fa-star "></span>
-                                </a>
-                                <a href="#" id="3" name="3">
-                                    <span id="3" class="fa fa-star"></span>
-                                </a>
-                                <a href="#" id="4" name="4">
-                                    <span id="4" class="fa fa-star"></span>
-                                </a>
-                                <a href="#" id="5" name="5">
-                                    <span id="5" class="fa fa-star"></span>
-                                </a>
-                            </p>
-                        </div>
+
                         @if($itinerary !== NULL)
                             <h2 class="entry-title">{{$itinerary->name}}</h2>
+                            <div class="col-md-12">
+                                <p>All Votes:
+                                    @if($media == '0')
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1">
+                                            <span id="1" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                            <span id="2" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                            <span id="3" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                            <span id="4" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                            <span id="5" class="fa fa-star"></span>
+                                        </a>
+
+                                    @elseif($media == '1')
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                            <span id="1" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                            <span id="2" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                            <span id="3" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                            <span id="4" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                            <span id="5" class="fa fa-star"></span>
+                                        </a>
+
+                                    @elseif($media == '2')
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                            <span id="1" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                            <span id="2" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                            <span id="3" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                            <span id="4" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                            <span id="5" class="fa fa-star"></span>
+                                        </a>
+
+                                    @elseif($media == '3')
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                            <span id="1" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                            <span id="2" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                            <span id="3" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                            <span id="4" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                            <span id="5" class="fa fa-star"></span>
+                                        </a>
+
+                                    @elseif($media == '4')
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                            <span id="1" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                            <span id="2" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                            <span id="3" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                            <span id="4" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                            <span id="5" class="fa fa-star"></span>
+                                        </a>
+
+                                    @elseif($media)
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                            <span id="1" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                            <span id="2" class="fa fa-star "></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                            <span id="3" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                            <span id="4" class="fa fa-star"></span>
+                                        </a>
+                                        <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5" class="checked">
+                                            <span id="5" class="fa fa-star"></span>
+                                        </a>
+                                    @endif
+                                </p>
+                            </div>
                             <div class="featured-image">
                                 @foreach($image as $images)
                                 <figure class="live-camera-cover">
@@ -105,6 +173,118 @@
                                 <input type="submit" placeholder="Send review">
                             </div>
                         </form>
+                    </div>
+<!--per inserire voti-->
+
+                    {{--<option value="{{$itineraries->id}}" {{$news->itinerary_id == $itineraries->id ? 'selected="selected"' : ''}}>
+                                        {{$itineraries->name}}
+                                    </option>
+                    --}}
+                    <div class="col-md-6     col-md-offset-3">
+                        <p >Your Vote:
+                            @if($voteUser == null)
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1">
+                                    <span id="1" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                    <span id="2" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
+
+                            @elseif($voteUser->vote == '1')
+                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                <span id="1" class="fa fa-star "></span>
+                            </a>
+                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                <span id="2" class="fa fa-star "></span>
+                            </a>
+                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                <span id="3" class="fa fa-star"></span>
+                            </a>
+                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                <span id="4" class="fa fa-star"></span>
+                            </a>
+                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                <span id="5" class="fa fa-star"></span>
+                            </a>
+
+                            @elseif($voteUser->vote == '2')
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                    <span id="1" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                    <span id="2" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
+
+                            @elseif($voteUser->vote == '3')
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                    <span id="1" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                    <span id="2" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
+
+                            @elseif($voteUser->vote == '4')
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                    <span id="1" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                    <span id="2" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
+
+                            @elseif($voteUser->vote == '5')
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                    <span id="1" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                    <span id="2" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5" class="checked">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
+                            @endif
+                        </p>
                     </div>
 
 

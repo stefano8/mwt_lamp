@@ -70,15 +70,12 @@ class RegisterController extends Controller
 
         ]);*/
 
-
-        $user = User::create([
+        User::create([
         'name' => $data['name'],
         'email' => $data['email'],
         'password' => bcrypt($data['password'])
         ]);
 
-        $usergroup = UserGroup::create([
 
-        ]);
     }
 }
