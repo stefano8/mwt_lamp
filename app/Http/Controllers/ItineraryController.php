@@ -38,6 +38,7 @@ class ItineraryController extends Controller
     {
         $itinerary = Itinerary::paginate(10);
 
+
         return view('admin/itinerary/index', ['itinerary' => $itinerary]);
     }
 
@@ -73,6 +74,44 @@ class ItineraryController extends Controller
 
     public function delete($id)
     {
+        $itinerary = Itinerary::find($id);
+
+        //delete categorie_itinerari
+        $itinerary->categoryRel()->wherePivot('itinerary_id','=',$id)
+                    ->detach();
+
+        //delete event relazionati a itinerari
+        $itinerary->eventRel()->where('itinerary_id','=',$id)->delete();
+
+        //news
+
+        DB::table('images')
+            ->where('itinerary_id','=', $id)
+            ->delete();
+
+        DB::table('news')
+            ->where('itinerary_id', $id)
+            ->delete();
+
+        //image
+        $itinerary->itineraryImage()->where('itinerary_id','=',$id)->delete();
+
+        //rewiew
+        DB::table('reviews')
+            ->where('itinerary_id', $id)
+            ->delete();
+        //$itinerary->itineraryRewiew()->where('itinerary_id','=',$id)->delete();
+
+
+        //voti
+        $itinerary->itineraryVote()->where('itinerary_id','=',$id)->delete();
+
+        //visti
+        $itinerary->itineraryView()->wherePivot('itinerary_id','=',$id)->detach();
+
+        //wishlist
+        $itinerary->toPossess()->wherePivot('itinerary_id','=',$id)->detach();
+
 
         DB::table('itineraries')
             ->where('id', $id)
@@ -278,7 +317,13 @@ class ItineraryController extends Controller
             $somma += $vote->vote;
         }
 
-        $media = ((int)($somma/$voteNumber));
+
+        if($voteNumber !== 0){
+
+            $media = ((int)($somma/$voteNumber));
+        }else{
+            $media = 0;
+        }
 
         return View::make('single')
             ->with('itinerary', $itinerary)

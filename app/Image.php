@@ -13,7 +13,7 @@ class Image extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'path', 'title', 'itinerary_id'
+        'id', 'path', 'title', 'itinerary_id','new_id'
     ];
 
 
@@ -32,7 +32,7 @@ class Image extends Model
     //relazione uno a uno con News
     public function imageNews()
     {
-        return $this->belongsTo('App\News');
+        return $this->belongsTo('App\News' , 'new_id');
     }
 
     //relazione uno a uno con Event

@@ -39,7 +39,7 @@ class Itinerary extends Model
     //un Itinerario N Eventi
     public function eventRel(){
 
-        return $this->hasMany('App\Event');
+        return $this->hasMany('App\Event', 'itinerary_id');
 
     }
 
@@ -53,7 +53,7 @@ class Itinerary extends Model
     //un itinerario n voti
     public function itineraryVote(){
 
-        return $this->hasMany('App\Vote');
+        return $this->hasMany('App\Vote', 'itinerary_id');
 
     }
 
@@ -67,9 +67,18 @@ class Itinerary extends Model
     //un news per un itinerario
     public function itineraryNews(){
 
-        return $this->belongsTo('App\News');
+        return $this->belongsTo('App\News', 'itinerary_id');
 
     }
+
+    //
+    public function itineraryRewiew(){
+
+        return $this->hasMany('App\Image', 'itinerary_id');
+
+    }
+
+
 
 
 

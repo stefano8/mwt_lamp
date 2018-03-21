@@ -13,7 +13,7 @@ class News extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'title', 'body', 'date'
+        'id', 'title', 'body', 'date', 'itinerary_id'
     ];
 
 
@@ -28,7 +28,7 @@ class News extends Model
     //una news un itinerario
     public function newsItinerary(){
 
-        return $this->hasOne('App\Itinerary');
+        return $this->hasOne('App\Itinerary', 'itinerary_id');
 
 
     }

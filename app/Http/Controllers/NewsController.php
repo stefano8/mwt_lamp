@@ -61,6 +61,12 @@ class NewsController extends Controller
      */
     public function delete($id)
     {
+
+        DB::table('images')
+            ->where('new_id','=', $id)
+            ->delete();
+
+
         DB::table('news')
             ->where('id', $id)
             ->delete();

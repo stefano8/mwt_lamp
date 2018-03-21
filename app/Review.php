@@ -12,7 +12,7 @@ class Review extends Model
     protected $table = 'reviews';
 
     protected $fillable = [
-        'id', 'approved', 'body', 'date', 'title'
+        'id', 'approved', 'body', 'date', 'title','itinerary_id'
     ];
 
     //relazione uno a molti con User (una recensione è scritta da un utente)
@@ -21,6 +21,14 @@ class Review extends Model
         return $this->belongsTo('App\User');
 
     }
+
+    public function itineraryRel(){
+
+        return $this->belongsTo('App\Itinerary');
+
+    }
+
+
 
 
 
