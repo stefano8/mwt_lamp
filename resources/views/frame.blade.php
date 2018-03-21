@@ -141,7 +141,7 @@
                 </div>
             </div>
 
-            <p class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+            <p class="colophon">Copyright 2018 MasterWebTechnology. Designed by Stefano and Moira. All rights reserved</p>
         </div>
     </footer> <!-- .site-footer -->
 </div>

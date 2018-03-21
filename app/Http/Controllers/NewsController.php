@@ -47,6 +47,8 @@ class NewsController extends Controller
                 'created_at'        => now()
             ]);
 
+        flash('Success')->success();
+
         return redirect('admin/news/index');
 
     }
@@ -62,6 +64,8 @@ class NewsController extends Controller
         DB::table('news')
             ->where('id', $id)
             ->delete();
+
+        flash('Deleted')->error();
 
         return redirect()->back();
     }
@@ -94,6 +98,8 @@ class NewsController extends Controller
                 'itinerary_id'      => $request['itinerary_id'],
                 'updated_at'        => now(),
             ]);
+
+        flash('Success')->success();
 
 
         return redirect('admin/news/index');

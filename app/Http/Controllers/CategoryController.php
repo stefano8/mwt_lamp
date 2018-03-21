@@ -52,6 +52,8 @@ use Illuminate\Support\Facades\View;
                        'created_at'     => now(),
                    ]);
 
+                flash('Success')->success();
+
                return redirect('admin/category/index');
 
            }
@@ -64,7 +66,11 @@ use Illuminate\Support\Facades\View;
                    ->where('id', $id)
                    ->delete();
 
+                   flash('Deleted')->error();
+
                return redirect()->back();
+
+
 
 
            }
@@ -89,8 +95,10 @@ use Illuminate\Support\Facades\View;
                    ->update([
                        'name'          => $request['name'],
                        'description'   => $request['description'],
-                       'update_at'     => now(),
+                       'updated_at'     => now(),
                    ]);
+
+                   flash('Success')->success();
 
 
                return redirect('admin/category/index');

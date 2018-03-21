@@ -6,8 +6,8 @@
     <main class="main-content">
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>Live cameras</span>
+            <a href="#">Home</a>
+            <span>Itineraries</span>
         </div>
     </div>
 
@@ -15,38 +15,24 @@
         <div class="container">
             <div class="filter">
                 <div class="country filter-control">
-                    <label for="">Country</label>
+                    <label for="">Categories</label>
                     <span class="select control">
-									<select name="" id="">
-										<option value="">All Countries</option>
-									</select>
-								</span>
+                    <select href="" name="" id="" >
+                        @foreach($category as $categories)
+                            <option  value="{{$categories->id}}">
+                                <a href="{{route('filtercategory', $categories->id)}}">{{$categories->name}}</a>
+                            </option>
+                        @endforeach
+                    </select>
+					</span>
                 </div>
-                <div class="count filter-control">
-                    <label for="">Show per page</label>
-                    <span class="select control">
-									<select name="" id="">
-										<option value="">1</option>
-										<option value="">2</option>
-										<option value="">3</option>
-										<option value="">4</option>
-										<option value="">5</option>
-										<option value="">6</option>
-										<option value="">7</option>
-										<option value="">8</option>
-										<option value="">9</option>
-										<option value="">10</option>
-									</select>
-								</span>
-                </div>
-                <div class="quality filter-control">
-                    <label for="">Only high quality</label>
-                    <span class="select control">
-									<select name="" id="">
-										<option value="">Yes</option>
-										<option value="">No</option>
-									</select>
-                    </span>
+
+                <div class="country filter-control">
+                    <form action="{{route('search')}}" class="">
+                        <input style="background-color: transparent; " type="text" size="122%" name="itinerary_name" id="itinerary_name" placeholder="Find itinerary...">
+                        <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
+                        <input type="submit" value="Find">
+                    </form>
                 </div>
             </div>
 
@@ -65,12 +51,10 @@
                                 </h3>
                                 <p style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{$itinerary->description}}</p>
                                 <div class="star-rating" title="Rated 1 out of 5"><span style="width:60%"><strong class="rating">1</strong> out of 5</span></div>
-
                             </div>
-
                         </div>
-
                     </div>
+
                 @endforeach
             </div>
             <a style="background-color: #008CBA;" class="btn btn-primary">{{ $itineraries->links() }}</a>

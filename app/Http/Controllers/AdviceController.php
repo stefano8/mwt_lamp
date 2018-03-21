@@ -51,6 +51,8 @@ class AdviceController extends Controller
                 'created_at'    => now()
             ]);
 
+        flash('Success')->success();
+
         return redirect('admin/advice/index');
 
     }
@@ -63,7 +65,10 @@ class AdviceController extends Controller
             ->where('id', $id)
             ->delete();
 
+        flash('Deleted')->error();
+
         return redirect()->back();
+
 
 
     }
@@ -91,6 +96,8 @@ class AdviceController extends Controller
                 'description'   => $request['description'],
                 'updated_at'    => now()
             ]);
+
+        flash('Success')->success();
 
 
         return redirect('admin/advice/index');

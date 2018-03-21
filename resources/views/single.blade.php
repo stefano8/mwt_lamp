@@ -143,18 +143,25 @@
                         @endif
 
                         {{--@if($wishlist )--}}
-                            <div class="col-sm-9">
+                            <div class="col-sm-6">
                             <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">Add to wishlist</a>
                             </div>
                         {{--@else()--}}
-                            <div class="col-sm-9">
-                                <a class="fa fa-heart button" href="{{route('itinerary.removewishlist', $itinerary->id)}}">Remove from wishlist</a>
+                            <div class="col-sm-6">
+                                <a class="fa fa-heart button" href="{{route('itinerary.removewishlist', $itinerary->id, $user)}}">Remove from wishlist</a>
                             </div>
                         {{--@endif--}}
-                            <div class="col-sm-3">
-                                <a class="fa fa-check button" href="">marks as already seen</a>
+
+                        {{--@if($marks )--}}
+                            <div class="col-sm-6">
+                                <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">marks as already seen</a>
                             </div>
-                    </div>
+                        {{--@else()--}}
+                            <div class="col-sm-6">
+                                <a class="fa fa-heart button" href="{{route('itinerary.removecollection', $itinerary->id, $user)}}">Unseen</a>
+                            </div>
+                        {{--@endif--}}
+                        </div>
 
 
 
@@ -174,12 +181,10 @@
                             </div>
                         </form>
                     </div>
-<!--per inserire voti-->
 
-                    {{--<option value="{{$itineraries->id}}" {{$news->itinerary_id == $itineraries->id ? 'selected="selected"' : ''}}>
-                                        {{$itineraries->name}}
-                                    </option>
-                    --}}
+
+
+<!--per inserire voti-->
                     <div class="col-md-6     col-md-offset-3">
                         <p >Your Vote:
                             @if($voteUser == null)
@@ -200,21 +205,21 @@
                                 </a>
 
                             @elseif($voteUser->vote == '1')
-                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
-                                <span id="1" class="fa fa-star "></span>
-                            </a>
-                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
-                                <span id="2" class="fa fa-star "></span>
-                            </a>
-                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
-                                <span id="3" class="fa fa-star"></span>
-                            </a>
-                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
-                                <span id="4" class="fa fa-star"></span>
-                            </a>
-                            <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
-                                <span id="5" class="fa fa-star"></span>
-                            </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                    <span id="1" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                    <span id="2" class="fa fa-star "></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                    <span id="3" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                    <span id="4" class="fa fa-star"></span>
+                                </a>
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                    <span id="5" class="fa fa-star"></span>
+                                </a>
 
                             @elseif($voteUser->vote == '2')
                                 <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
@@ -324,31 +329,25 @@
                         <ul class="arrow-list">
                             <li><a href="#">Difficolty: {{$itinerary->difficolty}}</a></li>
                             <li><a href="#">Difference: {{$itinerary->difference}}</a></li>
-                            <li><a href="#">Duration: {{$itinerary->duration}}</a></li>
+                            <li><a href="#">Duration:   {{$itinerary->duration}}</a></li>
                         </ul>
                     </div>
 
                     <div class="widget">
                         <h3 class="widget-title">Categories</h3>
                         <ul class="arrow-list">
-                            <li><a href="#">Nemo enim ipsam</a></li>
-                            <li><a href="#">Voluptatem voluptas</a></li>
-                            <li><a href="#">Aspernatur aut odit</a></li>
-                            <li><a href="#">Consequuntur magni</a></li>
-                            <li><a href="#">Dolores ratione</a></li>
-                            <li><a href="#">Voluptatem nesciunt</a></li>
-                            <li><a href="#">Neque porro quisquam</a></li>
-                            <li><a href="#">Dolorem ipsum quia</a></li>
+                            @foreach($category as $categories)
+                            <li><a href="#">{{$categories->name}}</a></li>
+                            @endforeach
+
                         </ul>
                     </div>
 
                     <div class="widget top-rated">
-                        <h3 class="widget-title">Top rated posts</h3>
+                        <h3 class="widget-title">Top Itinerary</h3>
                         <ul>
-                            <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                            <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                            <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                            <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
+                            <li><h3 class="entry-title"><a href="#">{{$itinerary->name}}</a>
+                                </h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
                         </ul>
                     </div>
                 </div>

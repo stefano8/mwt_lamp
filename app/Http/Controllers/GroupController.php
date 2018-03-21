@@ -50,6 +50,8 @@ class GroupController extends Controller
                 'created_at'    => now()
             ]);
 
+        flash('Success')->success();
+
         return redirect('admin/group/index');
 
     }
@@ -61,6 +63,8 @@ class GroupController extends Controller
         DB::table('groups')
             ->where('id', $id)
             ->delete();
+
+        flash('Deleted')->error();
 
         return redirect()->back();
 
@@ -90,6 +94,7 @@ class GroupController extends Controller
                 'updated_at'    => now()
             ]);
 
+        flash('Success')->success();
 
         return redirect('admin/group/index');
     }

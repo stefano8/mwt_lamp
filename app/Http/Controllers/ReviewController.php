@@ -34,6 +34,8 @@ class ReviewController extends Controller
                 'approved'          => 1,
             ]);
 
+        flash('Approved')->success();
+
         return redirect('admin/review/index');
 
     }
@@ -43,6 +45,8 @@ class ReviewController extends Controller
         DB::table('reviews')
             ->where('id', $id)
             ->delete();
+
+        flash('Deleted')->error();
 
         return redirect()->back();
     }

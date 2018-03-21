@@ -53,6 +53,8 @@ class ImageController extends Controller
                 'created_at'    => now()
             ]);
 
+        flash('Success')->success();
+
         return redirect('admin/image/index');
 
     }
@@ -64,6 +66,8 @@ class ImageController extends Controller
         DB::table('images')
             ->where('id', $id)
             ->delete();
+
+        flash('Deleted')->error();
 
         return redirect()->back();
 
@@ -93,6 +97,7 @@ class ImageController extends Controller
                 'updated_at'    => now(),
             ]);
 
+        flash('Success')->success();
 
         return redirect('admin/image/index');
     }

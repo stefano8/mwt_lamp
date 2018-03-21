@@ -40,6 +40,9 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
 
+//rota per ricerca
+Route::get('/search','ItineraryController@search')->name('search');
+
 //rotte per wishlist
 Route::get('/wishlist','WishlistController@index')->name('wishlist');
 
@@ -47,6 +50,10 @@ Route::get('/wishlist','WishlistController@index')->name('wishlist');
 Route::get('/itineraries/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');
 Route::get('/itineraries/{itineraryId}/add','ItineraryController@addToWishlist')->name('itinerary.addwishlist');
 Route::get('/itineraries/{itineraryId}/remove','ItineraryController@removeToWishlist')->name('itinerary.removewishlist');
+
+Route::get('/itineraries/{itineraryId}/seen','ItineraryController@addToCollection')->name('itinerary.addcollection');
+Route::get('/itineraries/{itineraryId}/unseen','ItineraryController@removeToCollection')->name('itinerary.removecollection');
+
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
 
 //rotte per voti
@@ -54,6 +61,10 @@ Route::get('/single/{itineraryId}/{userId}/{value}','ItineraryController@addvote
 
 //rotta news
 Route::get('/news','NewsController@getNews')->name('newsf');
+
+//rotta per filro dicategorie su itinerari
+Route::get('/itineraries/{categoryId}','ItineraryController@filterCategory')->name('filtercategory');
+
 
 
 

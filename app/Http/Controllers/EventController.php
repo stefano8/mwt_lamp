@@ -48,6 +48,8 @@ class EventController extends Controller
                 'created_at'        => now()
             ]);
 
+        flash('Success')->success();
+
         return redirect('admin/event/index');
 
     }
@@ -64,6 +66,8 @@ class EventController extends Controller
         DB::table('events')
             ->where('id', $id)
             ->delete();
+
+        flash('Deleted')->error();
 
         return redirect()->back();
     }
@@ -99,6 +103,7 @@ class EventController extends Controller
                 'updated_at'        => now(),
             ]);
 
+        flash('Success')->success();
 
         return redirect('admin/event/index');
     }

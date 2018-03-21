@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
+use App\Itinerary;
+use App\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,12 +13,18 @@ class WishlistController extends Controller
 
     public function index(){
 
-        $itineraries = DB::table('itineraries')->get();
+        $itinerary = Itinerary::paginate(10);
 
-        $image = DB::table('images')->first();
+        $image = DB::table('images')
+            ->first();
 
-        return view('wishlist', ['itineraries'=>$itineraries], ['image'=>$image]);
+
+        return View::make('wishlists')
+            ->with('itineraries', $itinerary)
+            ->with('image', $image);
     }
+
+
 
 
 }

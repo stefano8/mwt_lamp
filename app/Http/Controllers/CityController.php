@@ -44,6 +44,8 @@ class CityController extends Controller
                 'created_at'        => now()
             ]);
 
+        flash('Success')->success();
+
         return redirect('admin/city/index');
 
     }
@@ -59,6 +61,8 @@ class CityController extends Controller
         DB::table('cities')
             ->where('id', $id)
             ->delete();
+
+        flash('Deleted')->error();
 
         return redirect()->back();
     }
@@ -91,6 +95,7 @@ class CityController extends Controller
                 'updated_at'        => now(),
             ]);
 
+        flash('Success')->success();
 
         return redirect('admin/city/index');
     }

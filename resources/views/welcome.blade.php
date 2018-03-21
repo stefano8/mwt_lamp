@@ -4,8 +4,9 @@
 @section('content')
             <div class="hero" data-bg-image="{!! asset('images/banner.jpg') !!}">
                 <div class="container">
-                    <form action="#" class="find-location">
-                        <input type="text" placeholder="Find your location...">
+                    <form action="{{route('search')}}" class="find-location">
+                        <input type="text" name="itinerary_name" id="itinerary_name" placeholder="Find Itinerary...">
+                        <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
                         <input type="submit" value="Find">
                     </form>
 

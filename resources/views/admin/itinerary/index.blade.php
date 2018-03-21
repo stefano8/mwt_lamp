@@ -6,6 +6,10 @@
 @section('content')
     <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
 
+    <div class="container">
+        @include('flash::message')
+    </div>
+
     <aside class="right-side">
         <div>
             <a href="{{route('itinerary.create')}}" type="submit" class="btn btn-primary"
@@ -13,6 +17,8 @@
                 Add
             </a>
         </div>
+
+
         <div class="row">
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->

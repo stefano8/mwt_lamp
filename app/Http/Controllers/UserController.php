@@ -81,6 +81,7 @@ class UserController extends Controller
                 'email'         => $request['email'],
             ]);
 
+        flash('Success')->success();
 
         return redirect('admin/user/index');
     }
@@ -104,6 +105,7 @@ class UserController extends Controller
                 ->where('id', $id)
                 ->delete();
 
+        flash('Deleted')->error();
 
         return redirect()->back();
     }

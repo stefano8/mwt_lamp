@@ -6,6 +6,11 @@
 @section('content')
     <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
 
+    <div class="container">
+        @include('flash::message')
+    </div>
+
+
     <aside class="right-side">
         <div>
             <a href="{{route('group.create')}}" type="submit" class="btn btn-primary"
