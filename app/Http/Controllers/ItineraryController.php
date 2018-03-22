@@ -262,20 +262,19 @@ class ItineraryController extends Controller
 
         $itinerary = Itinerary::paginate(10);
 
-        $image = DB::table('images')
-            //->where('itinerary_id', '=', $id)
-            ->first();
 
-        /*$itinerayImage = DB::table('images')
-            ->first();
+        /* $image = DB::table('images')
+            //->where('itinerary_id', '=', $id)
+            ->first();*/
+
 
         //$itinerayImage->imageItinerary()->wherePivot('itinerary_id','=',$id)->first();
-*/
+
         $category = Category::all();
 
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
-            ->with('image', $image)
+           // ->with('image', $image)
             //->with('itineraryImage', $itinerayImage)
             ->with('category', $category);
     }
@@ -545,9 +544,42 @@ class ItineraryController extends Controller
     }
 
     //funzione per filtrare itinerari per categorie
-    public function filterCategory($id){
-        //
+    public function filterCategory($id)
+    {
+
+
+        $itineraries = Itinerary::all();
+
+        $itineraries->categoryRel()
+            ->wherePivot('category_id', '=', $id)->get();
+
+        foreach ($itineraries as $itinerariess){
+            $itinerari = DB::table('itineraries')->where('id', $itinerariess->itinerary_id);
+
+         }
+
+        return $this->getItinerariesCate($itineraries);
+
     }
+
+    public function getItinerariesCate($itineraries){
+
+        $itinerary = Itinerary::paginate(10);
+
+        //prendi gli itinerari
+
+
+        $category = Category::all();
+
+        return View::make('itineraries')
+            ->with('itineraries', $itinerary)
+
+            ->with('category', $category);
+
+
+
+    }
+
 
 
 }

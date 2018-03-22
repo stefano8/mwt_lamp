@@ -55,7 +55,7 @@
 
 
                 <div class="col-md-12 col-md-offset-1">
-                    <br><br><br><h2 class="section-title">Itinerary Collection</h2>
+                    <br><br><br><h2 class="section-title">Itinerary Wishlist</h2>
 
                     <div class="row">
                         <div class="col-sm-6">

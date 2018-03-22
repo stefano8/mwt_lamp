@@ -121,6 +121,7 @@ class ImageController extends Controller
     public function showAssignmentItinerary($id){
 
         $itinerary = Itinerary::find($id);
+        $imageCount = Image::all()->where('itinerary_id', '=', $id)->count();
 
         $image = Image::all()->where('itinerary_id', '=', $id);
 
@@ -131,7 +132,8 @@ class ImageController extends Controller
         return \View::make('admin/image/assign//assignItinerary')
                     ->with('itinerary', $itinerary)
                     ->with('image', $image)
-                    ->with('photo', $photo);
+                    ->with('photo', $photo)
+                     ->with('imageCount',$imageCount);
 
 
     }

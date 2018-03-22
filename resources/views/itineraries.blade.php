@@ -42,9 +42,11 @@
 
                     <div class="col-md-6">
                         <div class="photo">
+
                             <div class="photo-preview photo-detail">
-                                <img src="{{$image->path}}" alt="foto" style="width: 190px; height: 190px;">
+                                <img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto" style="width: 190px; height: 190px;">{{$itinerary->itineraryImage()->first()->path}}
                             </div>
+
                             <div class="photo-details">
                                 <h3 class="location">
                                     <a href="{{route('itinerary.single', $itinerary->id)}}">{{$itinerary->name}}</a>

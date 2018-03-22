@@ -52,16 +52,17 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="image_id">Change Image</label>
-                        <div class="col-md-9">
-                        <select name="image[]" id="image" multiple class="form-control">
-                            @foreach($photo as $images)
-                            <option name="image_id" id="image_id" value="{{$images->id}}">&nbsp;{{$images->title}}</option>
-                            @endforeach
-                        </select>
+                    @if($imageCount == 0)
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="image_id">Change Image</label>
+                            <div class="col-md-9">
+                                <select name="image" id="image" class="form-control">
+                                    @foreach($photo as $images)
+                                        <option name="image_id" id="image_id" value="{{$images->id}}">&nbsp;{{$images->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
 
 
@@ -73,6 +74,7 @@
                             <button type="submit" class="btn btn-responsive btn-primary btn-sm">Assign</button>
                         </div>
                     </div>
+                    @endif
                 </fieldset>
             </form>
         </div>
