@@ -1,0 +1,801 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Creato il: Mar 22, 2018 alle 12:16
+-- Versione del server: 5.6.35
+-- Versione PHP: 7.1.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `mwt_1`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `advices`
+--
+
+CREATE TABLE `advices` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `advices`
+--
+
+INSERT INTO `advices` (`id`, `title`, `body`, `description`, `created_at`, `updated_at`) VALUES
+(2, 'Consiglio 1', 'body consiglio 1', 'desc consiglio 1', '2018-03-17 12:15:21', '2018-03-21 14:48:31');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Alpinismo', 'descrizione della categoria alpinismo', NULL, NULL),
+(2, 'Trekking', 'categoria di trekking', '2018-03-21 08:01:20', '2018-03-21 08:02:29'),
+(3, 'Ciaspole', 'Categorie ciaspole', '2018-03-21 08:01:50', '2018-03-21 16:12:18'),
+(4, 'Scialpinistico', 'categoria sciaplinistico', '2018-03-21 08:02:06', '2018-03-21 14:47:33');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `cities`
+--
+
+CREATE TABLE `cities` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `region_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `cities`
+--
+
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`, `region_id`) VALUES
+(1, 'L\'aquila', '2018-03-17 13:37:00', '2018-03-21 14:48:39', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `information` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `information`, `created_at`, `updated_at`) VALUES
+(1, 'Stefano Corsetti, s.corsetti@hotmailit', '2018-03-20 23:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `events`
+--
+
+INSERT INTO `events` (`id`, `date`, `title`, `body`, `address`, `description`, `created_at`, `updated_at`, `itinerary_id`) VALUES
+(2, '2018-03-14', 'Nuovo itinerario', '', 'via portonaccio, 33', 'description evento 1', '2018-03-14 15:16:43', '2018-03-15 08:08:38', 1),
+(5, '2018-03-21', 'evento sulla neve', 'finalemnte', 'via roma', 'desc', '2018-03-21 14:47:58', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`, `description`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'descrizione admin', NULL, NULL, NULL),
+(2, 'normal user', 'descrizione normal user', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `images`
+--
+
+CREATE TABLE `images` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `new_id` int(10) UNSIGNED DEFAULT NULL,
+  `event_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `images`
+--
+
+INSERT INTO `images` (`id`, `path`, `title`, `created_at`, `updated_at`, `itinerary_id`, `user_id`, `new_id`, `event_id`) VALUES
+(1, '/mwt_1718/public/images/gransasso.JPG', 'gransasso', '2018-03-15 09:00:18', '2018-03-17 14:39:24', 1, NULL, NULL, NULL),
+(3, '/public/images/icon-compass.png', 'prova2', NULL, '2018-03-17 14:39:16', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `itineraries`
+--
+
+CREATE TABLE `itineraries` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `difficolty` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `difference` double NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `duration` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `itineraries`
+--
+
+INSERT INTO `itineraries` (`id`, `name`, `difficolty`, `difference`, `remember_token`, `created_at`, `updated_at`, `description`, `duration`) VALUES
+(1, 'Gran Sasso', 'difficile', 2912, NULL, NULL, NULL, 'Il Gran Sasso (o Gran Sasso d\'Italia) è il massiccio montuoso più alto degli Appennini continentali, situato nell\'Appennino centrale, interamente in Abruzzo, come parte della dorsale più orientale dell\'Appennino abruzzese, al confine fra le province di L\'Aquila, Teramo e Pescara.\r\n\r\nConfina a nord con i territori di Fano Adriano, Pietracamela, Isola del Gran Sasso d\'Italia, Castelli e Arsita, a est con le Gole di Popoli, a sud-ovest direttamente con la piana di Assergi, più a valle con L\'Aquila, a sud è limitato da Campo Imperatore e a valle dalla Piana di Navelli, mentre a ovest-nord-ovest confina con la catena dei Monti della Laga e il Lago di Campotosto, da questi separato dall\'alta Valle del Vomano e la Strada statale 80 del Gran Sasso d\'Italia che l\'attraversa.\r\n\r\nIl Gran Sasso d\'Italia è un\'area ambientale tutelata con l\'istituzione del Parco nazionale del Gran Sasso e Monti della Laga. Su di esso ricade la Comunità montana Gran Sasso e la Comunità montana Campo Imperatore-Piana di Navelli.', 123),
+(4, 'itinerario4', 'facile', 12, NULL, NULL, '2018-03-20 10:13:11', 'desc it 4', 3),
+(5, 'itinerario5', 'difficile', 454545, NULL, '2018-03-20 10:13:29', NULL, 'sggsgsgs', 5656),
+(6, 'itinerario6', 'facile', 3434, NULL, '2018-03-20 10:13:43', NULL, 'vfddfdf', 132),
+(7, 'itinerario7', 'media', 6666, NULL, '2018-03-20 10:13:56', NULL, 'hhhhhh', 8989),
+(8, 'itinerario 8', 'media-difficile', 5656, NULL, '2018-03-20 10:14:13', NULL, 'hhhiljòll', 7878),
+(9, 'itinerario9', 'facile', 6666, NULL, '2018-03-20 10:14:28', NULL, 'VVVV', 6666),
+(10, 'itinerario 10', 'facile', 34344, NULL, '2018-03-20 10:14:44', NULL, 'GGG', 666),
+(11, 'ITINERARIO 11', 'difficile', 66666666, NULL, '2018-03-20 10:15:03', NULL, 'gggggg', 777878),
+(12, 'itinerario 12', 'difficile', 2323232, NULL, '2018-03-21 14:34:48', NULL, 'descrizione itinerario 12', 122),
+(13, 'itinerario 13', 'fffff', 6666, NULL, '2018-03-21 14:37:22', NULL, 'vvvvv', 666);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `itineraries_categories`
+--
+
+CREATE TABLE `itineraries_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL,
+  `category_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `itineraries_categories`
+--
+
+INSERT INTO `itineraries_categories` (`id`, `itinerary_id`, `category_id`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2018_03_03_085847_create_itinerary_table', 1),
+(4, '2018_03_05_192307_add_description_to_itinerary_table', 1),
+(5, '2018_03_06_173816_rename_itinerary_table', 1),
+(6, '2018_03_08_153108_create_groups_table', 1),
+(7, '2018_03_08_164142_create_users_groups_table', 1),
+(8, '2018_03_09_170947_add_duration_to_itinerary_table', 1),
+(9, '2018_03_09_171049_create_categories_table', 1),
+(10, '2018_03_09_171342_create_itineraries_categories_table', 1),
+(11, '2018_03_09_171357_create_reviews_table', 1),
+(12, '2018_03_09_171559_create_news_table', 1),
+(13, '2018_03_09_171757_add_foreign_key_to_reviews_table', 1),
+(14, '2018_03_09_171935_create_images_table', 1),
+(15, '2018_03_09_172019_create_votes_table', 1),
+(16, '2018_03_09_172547_add_foreign_key_to_image_table', 1),
+(17, '2018_03_09_172709_create_events_table', 1),
+(18, '2018_03_09_172714_add_foreign_key_to_news_table', 1),
+(19, '2018_03_09_172907_add_foreign_key_to_events_table', 1),
+(20, '2018_03_09_173029_create_itineraries_views_table', 1),
+(21, '2018_03_09_173234_create_regions_table', 1),
+(22, '2018_03_09_173308_create_cities_table', 1),
+(23, '2018_03_09_173403_create_contacts_table', 1),
+(24, '2018_03_09_173540_create_advices_table', 1),
+(25, '2018_03_09_173553_add_foreign_key_to_cities_table', 1),
+(26, '2018_03_13_151636_create_wishlists_table', 1),
+(27, '2018_03_13_152009_rename_itineraries_views_table', 1),
+(28, '2018_03_13_155744_add_foreign_key_to_votes_table', 1),
+(29, '2018_03_16_204420_add_foreign_key_to_image_table', 2),
+(30, '2018_03_20_094852_add_foreign_key_to_votes_table', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `image_id` int(10) UNSIGNED DEFAULT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `news`
+--
+
+INSERT INTO `news` (`id`, `date`, `title`, `body`, `created_at`, `updated_at`, `image_id`, `itinerary_id`) VALUES
+(2, '2018-03-16', 'Nuovo Itinerario: Gran Sasso', 'Il Gran Sasso d\'Italia è un\'area ambientale tutelata con l\'istituzione del Parco nazionale del Gran Sasso e Monti della Laga. Su di esso ricade la Comunità montana Gran Sasso e la Comunità montana Campo Imperatore-Piana di Navelli.\n\nIndice\n1	Descrizione\n1.1	Conformazione\n1.2	Rilievi principali\n1.3	Nevati, nevai, cascate di ghiaccio\n1.4	Cascate\n2	Ambiente\n2.1	Flora\n2.2	Fauna\n3	L\'uomo\n3.1	Origine del nome\n3.2	Seconda guerra mondiale\n3.3	Istituto nazionale di fisica nucleare\n3.4	Il parco nazionale\n3.5	Comuni interessati\n3.6	Territorio e tradizioni\n3.7	Monumenti e luoghi d\'interesse\n3.8	Tragedie ed incidenti\n4	Sport\n4.1	Alpinismo\n4.2	Escursionismo\n4.2.1	Ippovia del Gran Sasso\n4.2.2	Marcia dei Tre Prati\n4.2.3	Rifugi e ostelli\n4.3	Sci alpino\n4.4	Sci nordico\n4.5	Sci alpinismo\n4.6	Ciclismo su strada\n4.7	Ciclismo in mountain bike\n5	Note\n6	Bibliografia\n7	Galleria d\'immagini\n8	Voci correlate\n9	Altri progetti\n10	Collegamenti esterni\nDescrizione\n\nVista del paretone del Corno Grande (versante teramano) prima della frana del 22 agosto 2006\nDai suoi punti più distanti, ovvero il Passo delle Capannelle a nord-ovest e le Gole di Popoli a sud-est, il Gruppo del Gran Sasso misura circa 50 km in lunghezza e 15 km in larghezza con un perimetro di circa 130 km. Orientato da nord-ovest e a ovest a sud-est, come la grande maggioranza dei gruppi montuosi appenninici e preappenninici, ma con caratteristiche ben più aspre di alta montagna, fa parte della dorsale più orientale dell\'Appennino abruzzese assieme alla Maiella più a sud e consta di due sottocatene principali parallele in senso longitudinale: la prima, più orientale e più aspra, si estende dal Monte Corvo (2623 m; nord-ovest) al Vado di Sole (sud-est).\n\nLa sottocatena occidentale, meno elevata e aspra, si estende dal Passo delle Capannelle e dal Monte San Franco (2132 m; nord-ovest) al Monte Capo di Serre (1771 m; sud-est). Al di là di questa zona centrale vi è un\'ampia zona sud-orientale, chiamata dei \"contrafforti occidentali\". Questi sono caratterizzati da numerosi rilievi meno elevati: Monte Ruzza (1643 m), Monte Bolza (1904 m), Monte Camarda (1384 m), Monte Cappucciata (1802 m), Monte Picca (1405 m) e molti altri, fino alle Gole di Popoli.\n\nLe cime maggiori si trovano nella sottocatena settentrionale: il Corno Grande - che consta di quattro vette principali[1]: quella orientale (2903 m), la centrale (2893 m) il torrione cambi (2875 m) e la maggiore, quella occidentale (2912 m,[2] che è anche la vetta più alta di tutti gli Appennini continentali) - e il Corno Piccolo (2655 m). Incastonato dentro una conca e protetto dalle quattro vette che costituiscono il Corno Grande si trova il Ghiacciaio del Calderone, il secondo ghiacciaio più meridionale d\'Europa[3].\n\nAlternativamente il massiccio può essere suddiviso in tre grandi aree latitudinali: la parte settentrionale dal Passo delle Capannelle al Monte Portella che raggruppa le cime maggiori, la parte centrale corrispondente all\'altopiano di Campo Imperatore con le sue cime e la parte meridionale che degrada dolcemente da Campo Imperatore fino alla Valle del Tirino e all\'Altopiano di Navelli con i suoi borghi montani.\n\nNel cuore del massiccio, tra le due sottocatene, è presente il vasto altopiano di Campo Imperatore e tra le cime maggiori la conca di Campo Pericoli, oltre che profonde valli che ridiscendono tra le suddette cime (es. Val Chiarino, Val Maone, Valle del Venacquaro, Valle dell\'Inferno).\n\n', '2018-03-16 11:42:56', '2018-03-16 11:48:25', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `regions`
+--
+
+CREATE TABLE `regions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `regions`
+--
+
+INSERT INTO `regions` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Piemonte', NULL, NULL),
+(2, 'Valle d\'Aosta', NULL, NULL),
+(3, 'Lombardia', NULL, NULL),
+(4, 'Trentino-Alto Adige', NULL, NULL),
+(5, 'Veneto', NULL, NULL),
+(6, 'Friuli-Venezia Giulia', NULL, NULL),
+(7, 'Liguria', NULL, NULL),
+(8, 'Emilia-Romagna', NULL, NULL),
+(9, 'Toscana', NULL, NULL),
+(10, 'Umbria', NULL, NULL),
+(11, 'Marche', NULL, NULL),
+(12, 'Lazio', NULL, NULL),
+(13, 'Abruzzo', NULL, NULL),
+(14, 'Molise', NULL, NULL),
+(15, 'Campania', NULL, NULL),
+(16, 'Puglia', NULL, NULL),
+(17, 'Basilicata', NULL, NULL),
+(18, 'Calabria', NULL, NULL),
+(19, 'Sicilia', NULL, NULL),
+(20, 'Sardegna', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `approved` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `date`, `title`, `body`, `approved`, `created_at`, `updated_at`, `user_id`, `itinerary_id`) VALUES
+(6, '2018-03-14', 'provait3', 'shhsh', 0, NULL, NULL, 1, NULL),
+(7, '2018-03-14', 'porva4', 'prova4', 0, NULL, NULL, 1, NULL),
+(8, '2018-03-14', 'recensione3', 'recensione3 per itinerario3', 1, NULL, NULL, 1, 1),
+(9, '2018-03-14', 'prova4', 'desc prova 4', 1, NULL, NULL, 1, NULL),
+(11, '2018-03-15', 'hhhh', 'hhhh', 0, NULL, NULL, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Stefano', 's.corsetti@hotmail.it', '$2y$10$fSnQYa4Mnf7CVrxHgs6eEujI/54FnljbZ6MdBR/PdtcJiXchrrb4K', 'v88pas8N43G20EPdfQxbcd0YhfO7btJF5p2ptmKbj0MazTIOBScewFMV0aOx', '2018-03-13 15:30:59', '2018-03-13 15:30:59'),
+(4, 'Mario', 'mario@prova.it', '$2y$10$Wvh/QLxxedPlQRoUXDqdtOaNJcYfblc.PLJNS0wh2ducbHhsDVffG', 'zfTuu8QAUesUEVxl40Y7vs0EgEVWsLbbxo9Js7KuNzegIhkIL2W7Mx4JX0Z7', '2018-03-16 07:34:11', '2018-03-16 07:34:11'),
+(5, 'prova', 'prova1@info.it', '$2y$10$DRzp7ABnq62GC8DVx2AwXe/gw4NUFGIUCiFB39JE5xcSna2SUsrNi', NULL, '2018-03-20 20:33:31', '2018-03-20 20:33:31'),
+(7, 'prova', 'prova14@info.it', '$2y$10$1d7SJThs3DvBrkqSGm/UB.daQEIscWuYfVdl1zSM61dg6uVlGdCqe', NULL, '2018-03-20 20:35:10', '2018-03-20 20:35:10'),
+(9, 'paolo', 'paolo@info.it', '$2y$10$7UwhIH4wimJjeDQ8cUpuHujV0zJJj7Q4v0hpixzZw8ENGXwxiNoh6', 'cgSFOQb12K9kDbONsaqJ0FgIXTyjdNGJRJd6DtzkcXqaoTcdTf0qZ3buLEwY', '2018-03-21 07:42:51', '2018-03-21 07:42:51');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `users_groups`
+--
+
+CREATE TABLE `users_groups` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `group_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `users_groups`
+--
+
+INSERT INTO `users_groups` (`id`, `user_id`, `group_id`, `created_at`, `updated_at`) VALUES
+(11, 4, 2, NULL, NULL),
+(12, NULL, NULL, '2018-03-20 20:33:31', '2018-03-20 20:33:31');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `views`
+--
+
+CREATE TABLE `views` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `views`
+--
+
+INSERT INTO `views` (`id`, `user_id`, `itinerary_id`, `created_at`, `updated_at`) VALUES
+(3, 1, 1, '2018-03-21 19:33:20', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `votes`
+--
+
+CREATE TABLE `votes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `vote` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `votes`
+--
+
+INSERT INTO `votes` (`id`, `vote`, `created_at`, `updated_at`, `itinerary_id`, `user_id`) VALUES
+(1, 1, NULL, NULL, 1, 4),
+(4, 2, '2018-03-20 20:23:36', '2018-03-20 20:24:15', 1, 1),
+(5, 5, '2018-03-20 20:36:37', NULL, 1, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `itinerary_id` int(10) UNSIGNED DEFAULT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indici per le tabelle scaricate
+--
+
+--
+-- Indici per le tabelle `advices`
+--
+ALTER TABLE `advices`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cities_region_id_foreign` (`region_id`);
+
+--
+-- Indici per le tabelle `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `events_itinerary_id_foreign` (`itinerary_id`);
+
+--
+-- Indici per le tabelle `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `groups_name_unique` (`name`);
+
+--
+-- Indici per le tabelle `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `images_itinerary_id_foreign` (`itinerary_id`),
+  ADD KEY `images_user_id_foreign` (`user_id`),
+  ADD KEY `images_new_id_foreign` (`new_id`),
+  ADD KEY `images_event_id_foreign` (`event_id`);
+
+--
+-- Indici per le tabelle `itineraries`
+--
+ALTER TABLE `itineraries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `itineraries_categories`
+--
+ALTER TABLE `itineraries_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `itineraries_categories_itinerary_id_foreign` (`itinerary_id`),
+  ADD KEY `itineraries_categories_category_id_foreign` (`category_id`);
+
+--
+-- Indici per le tabelle `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `news_image_id_foreign` (`image_id`),
+  ADD KEY `news_itinerary_id_foreign` (`itinerary_id`);
+
+--
+-- Indici per le tabelle `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indici per le tabelle `regions`
+--
+ALTER TABLE `regions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reviews_user_id_foreign` (`user_id`),
+  ADD KEY `reviews_itinerary_id_foreign` (`itinerary_id`);
+
+--
+-- Indici per le tabelle `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indici per le tabelle `users_groups`
+--
+ALTER TABLE `users_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `users_groups_user_id_foreign` (`user_id`),
+  ADD KEY `users_groups_group_id_foreign` (`group_id`);
+
+--
+-- Indici per le tabelle `views`
+--
+ALTER TABLE `views`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `itineraries_views_user_id_foreign` (`user_id`),
+  ADD KEY `itineraries_views_itinerary_id_foreign` (`itinerary_id`);
+
+--
+-- Indici per le tabelle `votes`
+--
+ALTER TABLE `votes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `votes_itinerary_id_foreign` (`itinerary_id`),
+  ADD KEY `votes_user_id_foreign` (`user_id`);
+
+--
+-- Indici per le tabelle `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `wishlists_itinerary_id_foreign` (`itinerary_id`),
+  ADD KEY `wishlists_user_id_foreign` (`user_id`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `advices`
+--
+ALTER TABLE `advices`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT per la tabella `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT per la tabella `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT per la tabella `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT per la tabella `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT per la tabella `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT per la tabella `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT per la tabella `itineraries`
+--
+ALTER TABLE `itineraries`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT per la tabella `itineraries_categories`
+--
+ALTER TABLE `itineraries_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT per la tabella `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT per la tabella `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT per la tabella `regions`
+--
+ALTER TABLE `regions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT per la tabella `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT per la tabella `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT per la tabella `users_groups`
+--
+ALTER TABLE `users_groups`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT per la tabella `views`
+--
+ALTER TABLE `views`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT per la tabella `votes`
+--
+ALTER TABLE `votes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT per la tabella `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `cities`
+--
+ALTER TABLE `cities`
+  ADD CONSTRAINT `cities_region_id_foreign` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`);
+
+--
+-- Limiti per la tabella `events`
+--
+ALTER TABLE `events`
+  ADD CONSTRAINT `events_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`);
+
+--
+-- Limiti per la tabella `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `images_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
+  ADD CONSTRAINT `images_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`),
+  ADD CONSTRAINT `images_new_id_foreign` FOREIGN KEY (`new_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `images_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Limiti per la tabella `itineraries_categories`
+--
+ALTER TABLE `itineraries_categories`
+  ADD CONSTRAINT `itineraries_categories_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `itineraries_categories_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`);
+
+--
+-- Limiti per la tabella `news`
+--
+ALTER TABLE `news`
+  ADD CONSTRAINT `news_image_id_foreign` FOREIGN KEY (`image_id`) REFERENCES `images` (`id`),
+  ADD CONSTRAINT `news_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`);
+
+--
+-- Limiti per la tabella `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`),
+  ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Limiti per la tabella `users_groups`
+--
+ALTER TABLE `users_groups`
+  ADD CONSTRAINT `users_groups_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`),
+  ADD CONSTRAINT `users_groups_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Limiti per la tabella `views`
+--
+ALTER TABLE `views`
+  ADD CONSTRAINT `itineraries_views_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`),
+  ADD CONSTRAINT `itineraries_views_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Limiti per la tabella `votes`
+--
+ALTER TABLE `votes`
+  ADD CONSTRAINT `votes_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`),
+  ADD CONSTRAINT `votes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Limiti per la tabella `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD CONSTRAINT `wishlists_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`),
+  ADD CONSTRAINT `wishlists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
