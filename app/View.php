@@ -13,4 +13,6 @@ class View extends Model
         'id','itinerary_id', 'user_id'
     ];
 
+
+
 }

@@ -457,6 +457,78 @@ class ItineraryController extends Controller
 
     }
 
+    //lista collection sul profilo
+    public function showProfile(){
+
+        $user = Auth::user()->id;
+
+        $userName = DB::table('users')->where('id',$user)->first();
+
+        //views
+        $collection = DB::table('views')->where('user_id',$user)->get();
+
+        //echo ((string)($collection));
+        $arrayImageC = [];
+        $arrayItinerary = [];
+        $i = 0;
+
+        foreach($collection as $collections){
+
+            $image = DB::table('images')->where('itinerary_id',$collections->itinerary_id)->first();
+            //array per nome itineraio oppure con la relaizone di imagine verso itinerario ci riprendtiamo il nome
+            $itinerario = DB::table('itineraries')->where('id', $image->itinerary_id)->first();
+
+            $arrayItinerary[$i] = $itinerario->name;
+            $arrayImageC[$i] = $image->path;
+            $i ++;
+
+        }
+
+        //wishlist
+
+        $wishlist = DB::table('wishlists')->where('user_id',$user)->get();
+
+        //echo ((string)($collection));
+        $arrayImageW = [];
+        $arrayItineraryW = [];
+        $a = 0;
+
+        foreach($wishlist as $wishlists){
+
+            $image = DB::table('images')->where('itinerary_id',$wishlists->itinerary_id)->first();
+            //array per nome itineraio oppure con la relaizone di imagine verso itinerario ci riprendtiamo il nome
+            $itinerario = DB::table('itineraries')->where('id', $image->itinerary_id)->first();
+
+            $arrayItineraryW[$a] = $itinerario->name;
+            $arrayImageW[$a] = $image->path;
+            $a ++;
+
+        }
+
+
+
+
+        return View::make('profile')
+            ->with('arrayItinerary', $arrayItinerary)
+            ->with('user', $user)
+            ->with('userName', $userName)
+            ->with('arrayImageC', $arrayImageC)
+            ->with('arrayImageW', $arrayImageW)
+            ->with('arrayItineraryW', $arrayItineraryW);
+
+    }
+
+
+    public function showSingleItinerary($nameItinerary){
+
+
+        $itinerario = DB::table('itineraries')->where('name', $nameItinerary)->first();
+        $id = $itinerario->id;
+
+       return $this->singleItinerary($id);
+
+    }
+
     //funzione per la ricerca di itinerari della schermata principale (per nome)
     public function search(Request $request)
     {

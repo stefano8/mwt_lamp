@@ -36,9 +36,6 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
 
 //rota per ricerca
 Route::get('/search','ItineraryController@search')->name('search');
@@ -64,6 +61,10 @@ Route::get('/news','NewsController@getNews')->name('newsf');
 
 //rotta per filro dicategorie su itinerari
 Route::get('/itineraries/{categoryId}','ItineraryController@filterCategory')->name('filtercategory');
+
+//profilo
+Route::get('/profile','ItineraryController@showProfile')->name('profile');
+Route::get('/itinerario/{nameItinerary}', 'ItineraryController@showSingleItinerary')->name('profile.collection');
 
 
 
