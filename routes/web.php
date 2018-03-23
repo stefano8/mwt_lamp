@@ -28,6 +28,10 @@ Route::get('/news', function () {
     return view('news');
 });
 
+Route::get('/advices', function () {
+    return view('advices');
+});
+
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -39,9 +43,6 @@ Route::get('/photos', function () {
 
 //rota per ricerca
 Route::get('/search','ItineraryController@search')->name('search');
-
-//rotte per wishlist
-Route::get('/wishlist','WishlistController@index')->name('wishlist');
 
 //rotte per itinerari
 Route::get('/itineraries/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');

@@ -52,26 +52,18 @@
 </head>
 <body>
 
-<a  href="{{ route('profile') }}">Profile</a>
-
-
-<a  href="{{ route('wishlist') }}">Wishlist</a>
-
-
 
 <div class="site-content">
     <div class="site-header">
         <div class="container">
-            <a href="{{ url('/') }}" class="branding">
+            <a href="{{ url('/') }}" style="margin-right:50%; margin-left: 45%;">
                 <img style="width: 100px; height: 100px" src="{!! asset('images/logom.png') !!}" alt="" class="logo">
                 <div class="logo-type">
-                    <h1 class="site-title">MontainTrack</h1>
-                    <small class="site-description">Nature Hikes</small>
                 </div>
             </a>
 
             <!-- Default snippet for navigation -->
-            <div class="main-navigation">
+            <div class="main-navigation" style="float: left; margin-left: 80px">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
                     <li class="menu-item current-menu-item"><a href="{{ url('/') }}">Home</a></li>
@@ -79,18 +71,22 @@
                     <li class="menu-item"><a href="{{ url('/advices') }}">Advices</a></li>
                     <li class="menu-item"><a href="{{ url('/news') }}">News</a></li>
                     <li class="menu-item"><a href="{{ url('/photos') }}">Events</a></li>
-                    <li class="menu-item"><a href="{{ url('/contact') }}">Contact</a></li>
+                    <!--<li class="menu-item"><a href="{{ url('/contact') }}">Contact</a></li>-->
 
                     @if (Route::has('login'))
+
 
 
 
                         <div class="top-right links">
                             @auth
 
+
                             {{--@if($user = Auth::user() && $role == 'admin')}}--}}
                             <a href="{{ url('/home') }}">Dashboard</a>
                             {{--@endif--}}
+
+                            <li class="menu-item"><a href="{{ route('profile') }}">Profile</a></li>
 
                             <li class="menu-item ">
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -103,7 +99,8 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            </div></li>
+                            </div>
+                            </li>
                         @else
                         <li class="menu-item " ><a style="background: #009ad8;color: white;" href="{{ route('login') }}">Login</a></li>
                         <li class="menu-item "><a style="background: #009ad8;color: white;" href="{{ route('register') }}">Register</a></li>

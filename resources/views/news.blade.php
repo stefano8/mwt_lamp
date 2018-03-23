@@ -19,7 +19,7 @@
                         @foreach($news as $newss)
                         <div class="post">
                                 <h2 class="entry-title"><a href="/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
-                                <div class="featured-image"><img src="images/featured-image-1.jpg" alt=""></div>
+                                <div class="featured-image"><img src="" alt=""></div>
                                 <p>{{$newss->body}}</p>
                                 <a href="#" class="button">Read more</a>
                         </div>
