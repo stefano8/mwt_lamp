@@ -20,9 +20,7 @@
  * FRONT-END
  **/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/news', function () {
     return view('news');
@@ -40,6 +38,9 @@ Route::get('/photos', function () {
     return view('photos');
 });
 
+
+//welcome
+Route::get('/', 'BaseController@index')->name('base');
 
 //rota per ricerca
 Route::get('/search','ItineraryController@search')->name('search');
@@ -66,6 +67,8 @@ Route::get('/itine/{categoryId}','ItineraryController@filterCategory')->name('fi
 //profilo
 Route::get('/profile','ItineraryController@showProfile')->name('profile');
 Route::get('/itinerario/{nameItinerary}', 'ItineraryController@showSingleItinerary')->name('profile.collection');
+
+
 
 
 

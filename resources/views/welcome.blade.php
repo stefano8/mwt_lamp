@@ -113,115 +113,61 @@
                     <div class="container">
                         <h2 class="section-title">Itineraries</h2>
                         <div class="row">
+                            @foreach($itineraries as $itinerary)
                             <div class="col-md-3 col-sm-6">
                                 <div class="live-camera">
-                                    <figure class="live-camera-cover"><img src="{!! asset('images/live-camera-1.jpg') !!}" alt=""></figure>
-                                    <h3 class="location">New York</h3>
-                                    <small class="date">8 oct, 8:00AM</small>
+                                    <figure class="live-camera-cover"><img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></figure>
+                                    <h3 class="location">{{$itinerary->name}}</h3>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="live-camera">
-                                    <figure class="live-camera-cover"><img src="{!! asset('images/live-camera-2.jpg') !!}" alt=""></figure>
-                                    <h3 class="location">Los Angeles</h3>
-                                    <small class="date">8 oct, 8:00AM</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="live-camera">
-                                    <figure class="live-camera-cover"><img src="{!! asset('images/live-camera-3.jpg') !!}" alt=""></figure>
-                                    <h3 class="location">Chicago</h3>
-                                    <small class="date">8 oct, 8:00AM</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="live-camera">
-                                    <figure class="live-camera-cover"><img src="{!! asset('images/live-camera-4.jpg') !!}" alt=""></figure>
-                                    <h3 class="location">London</h3>
-                                    <small class="date">8 oct, 8:00AM</small>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
 
                 <div class="fullwidth-block" data-bg-color="#262936">
                     <div class="container">
+                        <h2 class="section-title">Events</h2>
+
                         <div class="row">
+                            @foreach($events as $event)
                             <div class="col-md-4">
                                 <div class="news">
-                                    <div class="date">06.10</div>
-                                    <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
+                                    <div class="date" style="line-height: 0.5;">{{$event->date}}</div>
+                                    <h3 style="margin:1px 14px 20px;"><a href="" style="margin-right: 5px; ">{{$event->title}}</a></h3>
+                                    <p style="margin:1px 14px 20px; display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;" >{{$event->body}}</p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="news">
-                                    <div class="date">06.10</div>
-                                    <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                                    <p>Nobis architecto consequatur ab, ea, eum autem aperiam accusantium placeat vitae facere explicabo temporibus minus distinctio cum optio quis, dignissimos eius aspernatur fuga. Praesentium totam, corrupti beatae amet expedita veritatis.</p>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="fullwidth-block">
+                    <div class="container">
+                        <div class="col-md-5">
+                            <div class="contact-details">
+                                <div class="map" data-latitude="-6.897789" data-longitude="107.621735"></div>
+                                <div class="contact-info">
+                                    <address>
+                                        <img src="images/icon-marker.png" alt="">
+                                        <p>Company CorsDiS <br>
+                                            via Federico Trecco 8, L'Aquila</p>
+                                    </address>
+
+                                    <a href="#"><img src="images/icon-phone.png" alt="">+1 800 314 235</a>
+                                    <a href="#"><img src="images/icon-envelope.png" alt=""></a>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="news">
-                                    <div class="date">06.10</div>
-                                    <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                                    <p>Enim impedit officiis placeat qui recusandae doloremque possimus, iusto blanditiis, quam optio delectus maiores. Possimus rerum, velit cum natus eos. Cumque pariatur beatae asperiores, esse libero quas ad dolorem. Voluptates.</p>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-1">
+                            <h2 class="section-title">About us</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur inventore ducimus, facilis, numquam id soluta omnis eius recusandae nesciunt vero repellat harum cum. Nisi facilis odit hic, ipsum sed!</p>
+
                         </div>
                     </div>
                 </div>
 
-                <div class="fullwidth-block">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h2 class="section-title">Application features</h2>
-                                <ul class="arrow-feature">
-                                    <li>
-                                        <h3>Natus error sit voluptatem accusantium</h3>
-                                        <p>Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</p>
-                                    </li>
-                                    <li>
-                                        <h3>Natus error sit voluptatem accusantium</h3>
-                                        <p>Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</p>
-                                    </li>
-                                    <li>
-                                        <h3>Natus error sit voluptatem accusantium</h3>
-                                        <p>Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4">
-                                <h2 class="section-title">Weather analyssis</h2>
-                                <ul class="arrow-list">
-                                    <li><a href="#">Accusantium doloremque laudantium rem aperiam</a></li>
-                                    <li><a href="#">Eaque ipsa quae ab illo inventore veritatis quasi</a></li>
-                                    <li><a href="#">Architecto beatae vitae dicta sunt explicabo</a></li>
-                                    <li><a href="#">Nemo enim ipsam voluptatem quia voluptas</a></li>
-                                    <li><a href="#">Aspernatur aut odit aut fugit, sed quia consequuntur</a></li>
-                                    <li><a href="#">Magni dolores eos qui ratione voluptatem sequi</a></li>
-                                    <li><a href="#">Neque porro quisquam est qui dolorem ipsum quia</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4">
-                                <h2 class="section-title">Awesome Photos</h2>
-                                <div class="photo-grid">
-                                    <a href="#"><img src="{!! asset('images/thumb-1.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-2.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-3.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-4.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-5.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-6.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-7.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-8.jpg') !!}" alt="#"></a>
-                                    <a href="#"><img src="{!! asset('images/thumb-9.jpg') !!}" alt="#"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </main> <!-- .main-content -->
 
 @endsection

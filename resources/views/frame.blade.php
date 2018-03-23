@@ -123,10 +123,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <form action="#" class="subscribe-form">
-                        <input type="text" placeholder="Enter your email to subscribe...">
-                        <input type="submit" value="Subscribe">
-                    </form>
+
                 </div>
                 <div class="col-md-3 col-md-offset-1">
                     <div class="social-links">
