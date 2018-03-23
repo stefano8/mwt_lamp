@@ -19,28 +19,23 @@
 /**
  * FRONT-END
  **/
+Route::get('/', 'BaseController@index')->name('base');
 
-
+Route::get('/advices', 'AdviceController@getAdvices')->name('adviceget');
 
 Route::get('/news', function () {
     return view('news');
 });
 
-Route::get('/advices', function () {
-    return view('advices');
-});
 
 Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/photos', function () {
-    return view('photos');
+Route::get('/events', function () {
+    return view('events');
 });
 
-
-//welcome
-Route::get('/', 'BaseController@index')->name('base');
 
 //rota per ricerca
 Route::get('/search','ItineraryController@search')->name('search');
@@ -67,8 +62,6 @@ Route::get('/itine/{categoryId}','ItineraryController@filterCategory')->name('fi
 //profilo
 Route::get('/profile','ItineraryController@showProfile')->name('profile');
 Route::get('/itinerario/{nameItinerary}', 'ItineraryController@showSingleItinerary')->name('profile.collection');
-
-
 
 
 

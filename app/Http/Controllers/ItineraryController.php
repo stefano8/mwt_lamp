@@ -31,7 +31,6 @@ class ItineraryController extends Controller
     }
 
 
-
     //backend
 
     public function index()
@@ -57,12 +56,12 @@ class ItineraryController extends Controller
 
         DB::table('itineraries')
             ->insert([
-                'name'          => $request['name'],
-                'difficolty'    => $request['difficolty'],
-                'difference'    => $request['difference'],
-                'description'   => $request['description'],
-                'duration'      => $request['duration'],
-                'created_at'    => now()
+                'name' => $request['name'],
+                'difficolty' => $request['difficolty'],
+                'difference' => $request['difference'],
+                'description' => $request['description'],
+                'duration' => $request['duration'],
+                'created_at' => now()
             ]);
 
         flash('Success')->success();
@@ -77,16 +76,16 @@ class ItineraryController extends Controller
         $itinerary = Itinerary::find($id);
 
         //delete categorie_itinerari
-        $itinerary->categoryRel()->wherePivot('itinerary_id','=',$id)
-                    ->detach();
+        $itinerary->categoryRel()->wherePivot('itinerary_id', '=', $id)
+            ->detach();
 
         //delete event relazionati a itinerari
-        $itinerary->eventRel()->where('itinerary_id','=',$id)->delete();
+        $itinerary->eventRel()->where('itinerary_id', '=', $id)->delete();
 
         //news
 
         DB::table('images')
-            ->where('itinerary_id','=', $id)
+            ->where('itinerary_id', '=', $id)
             ->delete();
 
         DB::table('news')
@@ -94,7 +93,7 @@ class ItineraryController extends Controller
             ->delete();
 
         //image
-        $itinerary->itineraryImage()->where('itinerary_id','=',$id)->delete();
+        $itinerary->itineraryImage()->where('itinerary_id', '=', $id)->delete();
 
         //rewiew
         DB::table('reviews')
@@ -104,13 +103,13 @@ class ItineraryController extends Controller
 
 
         //voti
-        $itinerary->itineraryVote()->where('itinerary_id','=',$id)->delete();
+        $itinerary->itineraryVote()->where('itinerary_id', '=', $id)->delete();
 
         //visti
-        $itinerary->itineraryView()->wherePivot('itinerary_id','=',$id)->detach();
+        $itinerary->itineraryView()->wherePivot('itinerary_id', '=', $id)->detach();
 
         //wishlist
-        $itinerary->toPossess()->wherePivot('itinerary_id','=',$id)->detach();
+        $itinerary->toPossess()->wherePivot('itinerary_id', '=', $id)->detach();
 
 
         DB::table('itineraries')
@@ -142,12 +141,12 @@ class ItineraryController extends Controller
         DB::table('itineraries')
             ->where('id', $id)
             ->update([
-                'name'          => $request['name'],
-                'difficolty'    => $request['difficolty'],
-                'difference'    => $request['difference'],
-                'description'   => $request['description'],
-                'duration'      => $request['duration'],
-                'updated_at'    => now()
+                'name' => $request['name'],
+                'difficolty' => $request['difficolty'],
+                'difference' => $request['difference'],
+                'description' => $request['description'],
+                'duration' => $request['duration'],
+                'updated_at' => now()
             ]);
 
         flash('Success')->success();
@@ -160,11 +159,11 @@ class ItineraryController extends Controller
     public function validateItems(Request $request)
     {
         $this->validate($request, [
-            'name'          => 'required',
-            'difficolty'    => 'required',
-            'difference'    => 'required',
-            'description'   => 'required',
-            'duration'      => 'required',
+            'name' => 'required',
+            'difficolty' => 'required',
+            'difference' => 'required',
+            'description' => 'required',
+            'duration' => 'required',
         ]);
     }
 
@@ -172,7 +171,8 @@ class ItineraryController extends Controller
     //assegnamento di categorie a itinerari
 
 
-    public function showAssignment($id){
+    public function showAssignment($id)
+    {
 
         /*$user = DB::table('users')
             ->where('id', $id)
@@ -190,23 +190,22 @@ class ItineraryController extends Controller
     }
 
 
-
-    public function saveAssignment(Request $request){
+    public function saveAssignment(Request $request)
+    {
 
         $ngroup = Category::all()->count();
 
 
         $itinerary = Itinerary::find($request['itinerary_id']);
 
-        $var= 0;
+        $var = 0;
         $var1 = $request['category_id'];
-        foreach ($itinerary->categoryRel as $role)
-        {
+        foreach ($itinerary->categoryRel as $role) {
 
-            if($role->pivot->category_id != $var1 ){
+            if ($role->pivot->category_id != $var1) {
 
-                $var = $var +1;
-            }else{
+                $var = $var + 1;
+            } else {
 
                 $var = $var - 1;
             }
@@ -214,22 +213,22 @@ class ItineraryController extends Controller
         }
 
 
-        if($var < $ngroup && $var !== 0 && $var >= 1){
+        if ($var < $ngroup && $var !== 0 && $var >= 1) {
 
             DB::table('itineraries_categories')
                 ->insert([
-                    'itinerary_id'          => $request['itinerary_id'],
-                    'category_id'         => $request['category_id'],
+                    'itinerary_id' => $request['itinerary_id'],
+                    'category_id' => $request['category_id'],
                 ]);
 
         }
 
         //se label assegned non c'è allora inserisce
-        if(!isset( $_GET['category'])){
+        if (!isset($_GET['category'])) {
             DB::table('itineraries_categories')
                 ->insert([
-                    'itinerary_id'          => $request['itinerary_id'],
-                    'category_id'           => $request['category_id'],
+                    'itinerary_id' => $request['itinerary_id'],
+                    'category_id' => $request['category_id'],
                 ]);
 
         }
@@ -239,20 +238,18 @@ class ItineraryController extends Controller
     }
 
 
-
     //rimuove il gruppo selezionato
-    public function removeAssignment($itineraryId,$categoryId)
+    public function removeAssignment($itineraryId, $categoryId)
     {
 
         $itinerary = Itinerary::find($itineraryId);
 
-        $itinerary->categoryRel()->wherePivot('itinerary_id','=',$itineraryId)
-                                ->wherePivot('category_id' , '=', $categoryId)
-                                ->detach();
+        $itinerary->categoryRel()->wherePivot('itinerary_id', '=', $itineraryId)
+            ->wherePivot('category_id', '=', $categoryId)
+            ->detach();
 
         return redirect()->back();
     }
-
 
 
     //frontend
@@ -274,7 +271,7 @@ class ItineraryController extends Controller
 
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
-           // ->with('image', $image)
+            // ->with('image', $image)
             //->with('itineraryImage', $itinerayImage)
             ->with('category', $category);
     }
@@ -290,11 +287,11 @@ class ItineraryController extends Controller
 
         $review = DB::table('reviews')
             ->where('approved', 1)
-            ->where('itinerary_id','=', $id)
+            ->where('itinerary_id', '=', $id)
             ->get();
 
         $image = DB::table('images')
-            ->where('itinerary_id', '=' , $id)->get();
+            ->where('itinerary_id', '=', $id)->get();
 
         $user = Auth::user()->id;
 
@@ -312,15 +309,15 @@ class ItineraryController extends Controller
 
         $somma = 0;
 
-        foreach ($mediaVote as $vote){
+        foreach ($mediaVote as $vote) {
             $somma += $vote->vote;
         }
 
 
-        if($voteNumber !== 0){
+        if ($voteNumber !== 0) {
 
-            $media = ((int)($somma/$voteNumber));
-        }else{
+            $media = ((int)($somma / $voteNumber));
+        } else {
             $media = 0;
         }
 
@@ -334,22 +331,22 @@ class ItineraryController extends Controller
             ->with('category', $category);
 
 
-
     }
 
 
     //funzione per dare un nuovo voto oppure modificare il voto precedente
-    public function addvote($itineraryId, $userId, $value){
+    public function addvote($itineraryId, $userId, $value)
+    {
 
         $voteSingle = Vote::all()
             ->where('itinerary_id', $itineraryId)
             ->where('user_id', $userId)
             ->first();
 
-        if ($voteSingle != null){
+        if ($voteSingle != null) {
             DB::table('votes')
-                ->where('itinerary_id',$itineraryId)
-                ->where('user_id',$userId)
+                ->where('itinerary_id', $itineraryId)
+                ->where('user_id', $userId)
                 ->update([
                     'vote' => $value,
                     'updated_at' => now(),
@@ -371,7 +368,8 @@ class ItineraryController extends Controller
 
 
     //funzione per aggiungere un itinerario alla wishlist personale
-    public function addToWishlist($id){
+    public function addToWishlist($id)
+    {
 
         $user = Auth::user()->id;
 
@@ -380,11 +378,11 @@ class ItineraryController extends Controller
             ->where('user_id', $user)
             ->first();
 
-        if($itineraryWish != null){
+        if ($itineraryWish != null) {
 
             //non faccio niente poichè già è presente
 
-        }else{
+        } else {
             DB::table('wishlists')
                 ->insert([
                     'itinerary_id' => $id,
@@ -398,15 +396,16 @@ class ItineraryController extends Controller
     }
 
     //funzione per rimuovere un itinerario dalla wishlist personale
-    public function removeToWishlist($itineraryId){
+    public function removeToWishlist($itineraryId)
+    {
 
         $itinerary = Itinerary::find($itineraryId);
 
         $user = Auth::user()->id;
 
         $itinerary->toPossess()
-            ->wherePivot('itinerary_id','=',$itineraryId)
-            ->wherePivot('user_id' , '=', $user)
+            ->wherePivot('itinerary_id', '=', $itineraryId)
+            ->wherePivot('user_id', '=', $user)
             ->detach();
 
         return redirect()->back();
@@ -414,7 +413,8 @@ class ItineraryController extends Controller
     }
 
     //funzione per aggiungere un itinerario alla collezione personale
-    public function addToCollection($id){
+    public function addToCollection($id)
+    {
 
         $user = Auth::user()->id;
 
@@ -423,11 +423,11 @@ class ItineraryController extends Controller
             ->where('user_id', $user)
             ->first();
 
-        if($itineraryView != null){
+        if ($itineraryView != null) {
 
             //non faccio niente poichè già è presente (già visto)
 
-        }else{
+        } else {
             DB::table('views')
                 ->insert([
                     'itinerary_id' => $id,
@@ -441,15 +441,16 @@ class ItineraryController extends Controller
     }
 
     //funzione per rimuovere un itinerario dalla collezione personale
-    public function removeToCollection($itineraryId){
+    public function removeToCollection($itineraryId)
+    {
 
         $itinerary = Itinerary::find($itineraryId);
 
         $user = Auth::user()->id;
 
         $itinerary->itineraryView()
-            ->wherePivot('itinerary_id','=',$itineraryId)
-            ->wherePivot('user_id' , '=', $user)
+            ->wherePivot('itinerary_id', '=', $itineraryId)
+            ->wherePivot('user_id', '=', $user)
             ->detach();
 
         return redirect()->back();
@@ -457,54 +458,53 @@ class ItineraryController extends Controller
     }
 
     //lista collection sul profilo
-    public function showProfile(){
+    public function showProfile()
+    {
 
         $user = Auth::user()->id;
 
-        $userName = DB::table('users')->where('id',$user)->first();
+        $userName = DB::table('users')->where('id', $user)->first();
 
         //views
-        $collection = DB::table('views')->where('user_id',$user)->get();
+        $collection = DB::table('views')->where('user_id', $user)->get();
 
         //echo ((string)($collection));
         $arrayImageC = [];
         $arrayItinerary = [];
         $i = 0;
 
-        foreach($collection as $collections){
+        foreach ($collection as $collections) {
 
-            $image = DB::table('images')->where('itinerary_id',$collections->itinerary_id)->first();
+            $image = DB::table('images')->where('itinerary_id', $collections->itinerary_id)->first();
             //array per nome itineraio oppure con la relaizone di imagine verso itinerario ci riprendtiamo il nome
             $itinerario = DB::table('itineraries')->where('id', $image->itinerary_id)->first();
 
             $arrayItinerary[$i] = $itinerario->name;
             $arrayImageC[$i] = $image->path;
-            $i ++;
+            $i++;
 
         }
 
         //wishlist
 
-        $wishlist = DB::table('wishlists')->where('user_id',$user)->get();
+        $wishlist = DB::table('wishlists')->where('user_id', $user)->get();
 
         //echo ((string)($collection));
         $arrayImageW = [];
         $arrayItineraryW = [];
         $a = 0;
 
-        foreach($wishlist as $wishlists){
+        foreach ($wishlist as $wishlists) {
 
-            $image = DB::table('images')->where('itinerary_id',$wishlists->itinerary_id)->first();
+            $image = DB::table('images')->where('itinerary_id', $wishlists->itinerary_id)->first();
             //array per nome itineraio oppure con la relaizone di imagine verso itinerario ci riprendtiamo il nome
             $itinerario = DB::table('itineraries')->where('id', $image->itinerary_id)->first();
 
             $arrayItineraryW[$a] = $itinerario->name;
             $arrayImageW[$a] = $image->path;
-            $a ++;
+            $a++;
 
         }
-
-
 
 
         return View::make('profile')
@@ -518,27 +518,28 @@ class ItineraryController extends Controller
     }
 
 
-    public function showSingleItinerary($nameItinerary){
+    public function showSingleItinerary($nameItinerary)
+    {
 
 
         $itinerario = DB::table('itineraries')->where('name', $nameItinerary)->first();
         $id = $itinerario->id;
 
-       return $this->singleItinerary($id);
+        return $this->singleItinerary($id);
 
     }
 
     //funzione per la ricerca di itinerari della schermata principale (per nome)
     public function search(Request $request)
     {
-       $search = $request->itinerary_name;
+        $search = $request->itinerary_name;
 
-       $itinerary = Itinerary::where('name', 'like', "%$search%")
-           ->paginate(10);
+        $itinerary = Itinerary::where('name', 'like', "%$search%")
+            ->paginate(10);
 
-       return view('search', compact('itinerary'));
+        return view('search', compact('itinerary'));
 
-       //echo $search, $itinerary;
+        //echo $search, $itinerary;
 
     }
 
@@ -546,26 +547,25 @@ class ItineraryController extends Controller
     public function filterCategory($id)
     {
 
-       // $itinerary = Itinerary::all();
+        // $itinerary = Itinerary::all();
         //$itineraries = Itinerary::find(1)->categoryRel()->wherePivot('category_id', '=', $id)->get();
 
-       /* $itineraries = $itinerary->categoryRel()->wherePivot('category_id', '=', $id)->get();
-        foreach ($itineraries as $itinerarys) {
+        /* $itineraries = $itinerary->categoryRel()->wherePivot('category_id', '=', $id)->get();
+         foreach ($itineraries as $itinerarys) {
 
-            echo $itinerarys->name;
+             echo $itinerarys->name;
 
-        }*/
+         }*/
 
 
-        $itinerary = Itinerary::whereHas('categoryRel', function ($query) use($id) {
-            $query->where('category_id', '=', $id );
+        $itinerary = Itinerary::whereHas('categoryRel', function ($query) use ($id) {
+            $query->where('category_id', '=', $id);
         })->get();
 
         //$itinerary = DB::table('itineraries_categories')->where('category_id', $id)->get();
 
 
-
-      // $itineraries = DB::table('itineraries')->where('id', $itinerary->itinerary_id);
+        // $itineraries = DB::table('itineraries')->where('id', $itinerary->itinerary_id);
 
 
         $category = Category::all();
@@ -577,8 +577,6 @@ class ItineraryController extends Controller
             ->with('category', $category);
 
     }
-
-
 
 
 }

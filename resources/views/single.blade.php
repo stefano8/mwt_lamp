@@ -17,121 +17,122 @@
                 <div class="content col-md-8">
                     <div class="post single">
 
-<!--per media voti-->
+                        <!--per media voti-->
 
                         @if($itinerary !== NULL)
                             <h2 class="entry-title">{{$itinerary->name}}
 
-                                    @if($media == '0')
-                                        <a>
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a >
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a>
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
+                                @if($media == '0')
+                                    <a>
+                                        <span id="1" class="fa fa-star "></span>
+                                    </a>
+                                    <a>
+                                        <span id="2" class="fa fa-star "></span>
+                                    </a>
+                                    <a>
+                                        <span id="3" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="4" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="5" class="fa fa-star"></span>
+                                    </a>
 
-                                    @elseif($media == '1')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a>
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a>
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
+                                @elseif($media == '1')
+                                    <a class="checked">
+                                        <span id="1" class="fa fa-star "></span>
+                                    </a>
+                                    <a>
+                                        <span id="2" class="fa fa-star "></span>
+                                    </a>
+                                    <a>
+                                        <span id="3" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="4" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="5" class="fa fa-star"></span>
+                                    </a>
 
-                                    @elseif($media == '2')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a >
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
+                                @elseif($media == '2')
+                                    <a class="checked">
+                                        <span id="1" class="fa fa-star "></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="2" class="fa fa-star "></span>
+                                    </a>
+                                    <a>
+                                        <span id="3" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="4" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="5" class="fa fa-star"></span>
+                                    </a>
 
-                                    @elseif($media == '3')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a  class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a  class="checked">
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
+                                @elseif($media == '3')
+                                    <a class="checked">
+                                        <span id="1" class="fa fa-star "></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="2" class="fa fa-star "></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="3" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="4" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="5" class="fa fa-star"></span>
+                                    </a>
 
-                                    @elseif($media == '4')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
+                                @elseif($media == '4')
+                                    <a class="checked">
+                                        <span id="1" class="fa fa-star "></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="2" class="fa fa-star "></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="3" class="fa fa-star"></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="4" class="fa fa-star"></span>
+                                    </a>
+                                    <a>
+                                        <span id="5" class="fa fa-star"></span>
+                                    </a>
 
-                                    @elseif($media)
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
-                                    @endif
+                                @elseif($media)
+                                    <a class="checked">
+                                        <span id="1" class="fa fa-star "></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="2" class="fa fa-star "></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="3" class="fa fa-star"></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="4" class="fa fa-star"></span>
+                                    </a>
+                                    <a class="checked">
+                                        <span id="5" class="fa fa-star"></span>
+                                    </a>
+                                @endif
                             </h2>
 
                             <div class="featured-image">
                                 @foreach($image as $images)
-                                <figure class="live-camera-cover">
-                                    <img src="{{$images->path}}" alt="foto" style="width: 300px; height: 223px;"> {{--src="{{URL::asset($images->path)}}"--}}
+                                    <figure class="live-camera-cover">
+                                        <img src="{{$images->path}}" alt="foto"
+                                             style="width: 300px; height: 223px;"> {{--src="{{URL::asset($images->path)}}"--}}
 
-                                </figure>
+                                    </figure>
                                 @endforeach
 
                             </div>
@@ -143,30 +144,33 @@
 
 
                         {{--@if($wishlist )--}}
-                            <div class="col-sm-6">
-                            <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">Add to wishlist</a>
-                            </div>
+                        <div class="col-sm-6">
+                            <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">Add
+                                to wishlist</a>
+                        </div>
                         {{--@else()--}}
-                            <div class="col-sm-6">
-                                <a class="fa fa-heart button" href="{{route('itinerary.removewishlist', $itinerary->id, $user)}}">Remove from wishlist</a>
-                            </div>
+                        <div class="col-sm-6">
+                            <a class="fa fa-heart button"
+                               href="{{route('itinerary.removewishlist', $itinerary->id, $user)}}">Remove from
+                                wishlist</a>
+                        </div>
                         {{--@endif--}}
 
                         {{--@if($marks )--}}
-                            <div class="col-sm-6">
-                                <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">marks as already seen</a>
-                            </div>
-                        {{--@else()--}}
-                            <div class="col-sm-6">
-                                <a class="fa fa-heart button" href="{{route('itinerary.removecollection', $itinerary->id, $user)}}">Unseen</a>
-                            </div>
-                        {{--@endif--}}
+                        <div class="col-sm-6">
+                            <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">marks
+                                as already seen</a>
                         </div>
+                        {{--@else()--}}
+                        <div class="col-sm-6">
+                            <a class="fa fa-heart button"
+                               href="{{route('itinerary.removecollection', $itinerary->id, $user)}}">Unseen</a>
+                        </div>
+                        {{--@endif--}}
+                    </div>
 
 
-
-
-<!--form per inserire recensione-->
+                    <!--form per inserire recensione-->
                     <div class="col-md-6 col-md-offset-1" style="margin-top: 50px;">
 
 
@@ -174,7 +178,8 @@
                         <form action="{{route('review.insert', $itinerary->id)}}" class="contact-form">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input style="width: 200%;" name="title" id="title" type="text" placeholder="Title"></div>
+                                    <input style="width: 200%;" name="title" id="title" type="text" placeholder="Title">
+                                </div>
                             </div>
                             <textarea style="width: 200%;" name="body" id="body" placeholder="Message..."></textarea>
 
@@ -185,10 +190,9 @@
                     </div>
 
 
-
-<!--per inserire voti-->
+                    <!--per inserire voti-->
                     <div class="col-md-6 col-md-offset-4 " style="margin-top: 50px;">
-                        <h1 >Your Vote:
+                        <h1>Your Vote:
                             @if($voteUser == null)
                                 <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1">
                                     <span id="1" class="fa fa-star "></span>
@@ -295,34 +299,29 @@
                     </div>
 
 
-
-
-<!--per vedere tutte le recensioni-->
+                    <!--per vedere tutte le recensioni-->
                     <div class="col-md-9 " style="margin-top: 50px;">
                         <h2 class="section-title">All Review</h2>
                         @foreach($review as $reviews)
-                        <form action="#" class="contact-form" style="width: 200%;" >
-                            <div class="sidebar col-md-122">
-                                <div class="widget top-rated">
-                                    <ul>
-                                        <li>
-                                            <div class="rating">
-                                                <strong>{{$reviews->title}}</strong>
-                                            </div>
-                                            <h3 class="entry-title">
-                                                <a href="#">{{$reviews->body}}</a>
-                                            </h3>
-                                        </li>
-                                    </ul>
+                            <form action="#" class="contact-form" style="width: 200%;">
+                                <div class="sidebar col-md-122">
+                                    <div class="widget top-rated">
+                                        <ul>
+                                            <li>
+                                                <div class="rating">
+                                                    <strong>{{$reviews->title}}</strong>
+                                                </div>
+                                                <h3 class="entry-title">
+                                                    <a href="#">{{$reviews->body}}</a>
+                                                </h3>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                         @endforeach
                     </div>
                 </div>
-
-
-
 
 
                 <div class="sidebar col-md-3 col-md-offset-1">
@@ -331,7 +330,7 @@
                         <ul class="arrow-list">
                             <li><a href="#">Difficolty: {{$itinerary->difficolty}}</a></li>
                             <li><a href="#">Difference: {{$itinerary->difference}}</a></li>
-                            <li><a href="#">Duration:   {{$itinerary->duration}}</a></li>
+                            <li><a href="#">Duration: {{$itinerary->duration}}</a></li>
                         </ul>
                     </div>
 
@@ -339,19 +338,13 @@
                         <h3 class="widget-title">Categories</h3>
                         <ul class="arrow-list">
                             @foreach($category as $categories)
-                            <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                                <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
                             @endforeach
 
                         </ul>
                     </div>
 
-                    <div class="widget top-rated">
-                        <h3 class="widget-title">Top Itinerary</h3>
-                        <ul>
-                            <li><h3 class="entry-title"><a href="#">{{$itinerary->name}}</a>
-                                </h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </div>

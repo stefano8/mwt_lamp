@@ -15,7 +15,7 @@
 
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
-    <link href= "{!! asset('fonts/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('fonts/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
 
     <!-- Loading main css file -->
     <link rel="stylesheet" href=" {!! asset('css/style.css') !!} ">
@@ -27,9 +27,11 @@
             display: flex;
             justify-content: center;
         }
+
         .position-ref {
             position: relative;
         }
+
         .top-right {
             position: inherit;
             float: right;
@@ -70,8 +72,8 @@
                     <li class="menu-item"><a href="{{ url('/itineraries/{itinerary_id}') }}">Itineraries</a></li>
                     <li class="menu-item"><a href="{{ url('/advices') }}">Advices</a></li>
                     <li class="menu-item"><a href="{{ url('/news') }}">News</a></li>
-                    <li class="menu-item"><a href="{{ url('/photos') }}">Events</a></li>
-                    <!--<li class="menu-item"><a href="{{ url('/contact') }}">Contact</a></li>-->
+                    <li class="menu-item"><a href="{{ url('/events') }}">Events</a></li>
+                <!--<li class="menu-item"><a href="{{ url('/contact') }}">Contact</a></li>-->
 
                     @if (Route::has('login'))
 
@@ -89,21 +91,24 @@
                             <li class="menu-item"><a href="{{ route('profile') }}">Profile</a></li>
 
                             <li class="menu-item ">
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a style="background: #009ad8;color: white;" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a style="background: #009ad8;color: white;" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                                        Logout
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
                             </li>
-                        @else
-                        <li class="menu-item " ><a style="background: #009ad8;color: white;" href="{{ route('login') }}">Login</a></li>
-                        <li class="menu-item "><a style="background: #009ad8;color: white;" href="{{ route('register') }}">Register</a></li>
+                            @else
+                                <li class="menu-item "><a style="background: #009ad8;color: white;"
+                                                          href="{{ route('login') }}">Login</a></li>
+                                <li class="menu-item "><a style="background: #009ad8;color: white;"
+                                                          href="{{ route('register') }}">Register</a></li>
                                 @endauth
                         </div>
                     @endif
@@ -116,7 +121,7 @@
     </div> <!-- .site-header -->
 
 
-@yield('content')
+    @yield('content')
 
 
     <footer class="site-footer">
@@ -135,7 +140,8 @@
                 </div>
             </div>
 
-            <p class="colophon">Copyright 2018 MasterWebTechnology. Designed by Stefano and Moira. All rights reserved</p>
+            <p class="colophon">Copyright 2018 MasterWebTechnology. Designed by Stefano and Moira. All rights
+                reserved</p>
         </div>
     </footer> <!-- .site-footer -->
 </div>

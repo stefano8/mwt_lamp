@@ -111,12 +111,12 @@
             <main class="main-content">
                 <div class="fullwidth-block">
                     <div class="container">
-                        <h2 class="section-title">Itineraries</h2>
+                        <h2 class="section-title">Top Itineraries</h2>
                         <div class="row">
                             @foreach($itineraries as $itinerary)
                             <div class="col-md-3 col-sm-6">
                                 <div class="live-camera">
-                                    <figure class="live-camera-cover"><img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></figure>
+                                    <figure class="live-camera-cover"><img href="" src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></figure>
                                     <h3 class="location">{{$itinerary->name}}</h3>
                                 </div>
                             </div>

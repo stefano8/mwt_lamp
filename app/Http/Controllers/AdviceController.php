@@ -109,7 +109,15 @@ class AdviceController extends Controller
         $this->validate($request, [
             'title'         => 'required',
             'body'          => 'required',
-            'description'   => 'required',
         ]);
+    }
+
+
+    //frontend
+    public function getAdvices(){
+
+        $advices = DB::table('advices')->get();
+
+        return view('advices', ['advices'=>$advices]);
     }
 }
