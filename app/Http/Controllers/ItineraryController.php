@@ -533,8 +533,7 @@ class ItineraryController extends Controller
     {
        $search = $request->itinerary_name;
 
-       $itinerary = DB::table('itineraries')
-           ->where('name', 'like', "%$search%")
+       $itinerary = Itinerary::where('name', 'like', "%$search%")
            ->paginate(10);
 
        return view('search', compact('itinerary'));

@@ -38,7 +38,7 @@
 
                 <div class="country filter-control">
                     <form action="{{route('search')}}">
-                        <input style="background-color: transparent; color: white;" type="text" size="122%" name="itinerary_name" id="itinerary_name" placeholder="Find itinerary...">
+                        <input style="background-color: transparent; color: white;" type="text" size="160%" name="itinerary_name" id="itinerary_name" placeholder="Find itinerary...">
                         <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
                         <input type="submit" value="Find">
                     </form>
@@ -54,7 +54,7 @@
                         <h3 class="widget-title">Categories</h3>
                         <ul class="arrow-list">
                             @foreach($category as $categories)
-                                <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                                <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a></li>
                             @endforeach
 
                         </ul>
@@ -72,7 +72,7 @@
 
                             <div class="photo-preview photo-detail">
 
-                                <img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto" style="width: 190px; height: 190px;">{{$itinerary->itineraryImage()->first()->path}}
+                                <img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto" style="width: 175px; height: 190px;">
                             </div>
 
 
@@ -82,108 +82,7 @@
                                 </h3>
                                 <p style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{$itinerary->description}}</p>
                                 <div class="star-rating" title="Rated 1 out of 5">
-                                    @if($media == '0')
-                                        <a>
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a >
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a>
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
 
-                                    @elseif($media == '1')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a>
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a>
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
-
-                                    @elseif($media == '2')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a >
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
-
-                                    @elseif($media == '3')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a  class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a  class="checked">
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a >
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
-
-                                    @elseif($media == '4')
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a>
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
-
-                                    @elseif($media)
-                                        <a class="checked">
-                                            <span id="1" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="2" class="fa fa-star "></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="3" class="fa fa-star"></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="4" class="fa fa-star"></span>
-                                        </a>
-                                        <a class="checked">
-                                            <span id="5" class="fa fa-star"></span>
-                                        </a>
-                                    @endif
                                 </div>
                             </div>
                         </div>
