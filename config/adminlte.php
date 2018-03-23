@@ -108,7 +108,11 @@ return [
     */
 
     'menu' => [
-
+        [
+            'text' => 'To Site',
+            'url'  => '/',
+            'icon' => 'fas fa-angle-double-left',
+        ],
         'ACCOUNT',
         [
             'text' => 'Profile',
@@ -122,45 +126,53 @@ return [
             'text' => 'Categories',
             'icon_color' => 'aqua',
             'url'  => 'admin/category/index',
+            'icon' => 'fas fa-align-center'
 
         ],
         [
             'text' => 'Itineraries',
             'icon_color' => 'aqua',
             'url'  => 'admin/itinerary/index',
+            'icon' => 'fas fa-archive'
         ],
         [
             'text' => 'Events',
             'icon_color' => 'aqua',
             'url'  => 'admin/event/index',
+            'icon' => 'far fa-calendar'
         ],
         [
             'text' => 'News',
             'icon_color' => 'aqua',
             'url'  => 'admin/news/index',
+            'icon' => 'fas fa-bell'
         ],
         [
             'text' => 'Advices',
             'icon_color' => 'aqua',
             'url'  => 'admin/advice/index',
+            'icon' => 'fas fa-check-circle'
         ],
         [
             'text' => 'Cities',
             'icon_color' => 'aqua',
             'url'  => 'admin/city/index',
+            'icon' => 'fas fa-folder-open'
         ],
         [
             'text' => 'Regions',
             'icon_color' => 'aqua',
             'url'  => 'admin/region/index',
+            'icon' => 'far fa-folder'
         ],
 
 
         'GESTIONE IMMAGINI',
         [
             'text' => 'Images',
-            'icon_color' => 'aqua',
+            'icon_color' => 'red',
             'url'  => 'admin/image/index',
+            'icon' => 'fas fa-camera'
         ],
         [
             'text'    => 'Assign Image',
@@ -196,6 +208,7 @@ return [
             'text' => 'Reviews',
             'icon_color' => 'gray',
             'url'  => 'admin/review/index',
+            'icon' => 'fas fa-align-justify'
         ],
 
 
@@ -206,11 +219,13 @@ return [
             'text' => 'Users',
             'icon_color' => 'yellow',
             'url'  => 'admin/user/index',
+            'icon' => 'fas fa-male'
         ],
         [
             'text' => 'Groups',
             'icon_color' => 'yellow',
             'url'  => 'admin/group/index',
+            'icon' => 'fab fa-black-tie'
         ],
 
 

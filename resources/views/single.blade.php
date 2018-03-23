@@ -1,132 +1,131 @@
-<!-- Font Awesome Icon Library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    .checked {
-        color: orange;
-    }
-</style>
-
 @extends('frame')
 
 
 @section('content')
 
+    <!-- Font Awesome Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
 
     <div class="fullwidth-block">
         <div class="container">
             <div class="row">
                 <div class="content col-md-8">
                     <div class="post single">
+
 <!--per media voti-->
 
                         @if($itinerary !== NULL)
-                            <h2 class="entry-title">{{$itinerary->name}}</h2>
-                            <div class="col-md-12">
-                                <p>All Votes:
+                            <h2 class="entry-title">{{$itinerary->name}}
+
                                     @if($media == '0')
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1">
+                                        <a>
                                             <span id="1" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                        <a >
                                             <span id="2" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                        <a>
                                             <span id="3" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                        <a >
                                             <span id="4" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                        <a >
                                             <span id="5" class="fa fa-star"></span>
                                         </a>
 
                                     @elseif($media == '1')
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                        <a class="checked">
                                             <span id="1" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                        <a>
                                             <span id="2" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                        <a>
                                             <span id="3" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                        <a>
                                             <span id="4" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                        <a>
                                             <span id="5" class="fa fa-star"></span>
                                         </a>
 
                                     @elseif($media == '2')
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                        <a class="checked">
                                             <span id="1" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                        <a class="checked">
                                             <span id="2" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                        <a >
                                             <span id="3" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                        <a>
                                             <span id="4" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                        <a>
                                             <span id="5" class="fa fa-star"></span>
                                         </a>
 
                                     @elseif($media == '3')
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                        <a class="checked">
                                             <span id="1" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                        <a  class="checked">
                                             <span id="2" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                        <a  class="checked">
                                             <span id="3" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                        <a >
                                             <span id="4" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                        <a >
                                             <span id="5" class="fa fa-star"></span>
                                         </a>
 
                                     @elseif($media == '4')
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                        <a class="checked">
                                             <span id="1" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                        <a class="checked">
                                             <span id="2" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                        <a class="checked">
                                             <span id="3" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                        <a class="checked">
                                             <span id="4" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                        <a>
                                             <span id="5" class="fa fa-star"></span>
                                         </a>
 
                                     @elseif($media)
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                        <a class="checked">
                                             <span id="1" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                        <a class="checked">
                                             <span id="2" class="fa fa-star "></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                        <a class="checked">
                                             <span id="3" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                        <a class="checked">
                                             <span id="4" class="fa fa-star"></span>
                                         </a>
-                                        <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5" class="checked">
+                                        <a class="checked">
                                             <span id="5" class="fa fa-star"></span>
                                         </a>
                                     @endif
-                                </p>
-                            </div>
+                            </h2>
+
                             <div class="featured-image">
                                 @foreach($image as $images)
                                 <figure class="live-camera-cover">
@@ -168,7 +167,9 @@
 
 
 <!--form per inserire recensione-->
-                    <div class="col-md-6 col-md-offset-1">
+                    <div class="col-md-6 col-md-offset-1" style="margin-top: 50px;">
+
+
                         <h2 class="section-title">Write review</h2>
                         <form action="{{route('review.insert', $itinerary->id)}}" class="contact-form">
                             <div class="row">
@@ -186,118 +187,118 @@
 
 
 <!--per inserire voti-->
-                    <div class="col-md-6     col-md-offset-3">
-                        <p >Your Vote:
+                    <div class="col-md-6 col-md-offset-4 " style="margin-top: 50px;">
+                        <h1 >Your Vote:
                             @if($voteUser == null)
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1">
                                     <span id="1" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
                                     <span id="2" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
                                     <span id="3" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
                                     <span id="4" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
                                     <span id="5" class="fa fa-star"></span>
                                 </a>
 
                             @elseif($voteUser->vote == '1')
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
                                     <span id="1" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2">
                                     <span id="2" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
                                     <span id="3" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
                                     <span id="4" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
                                     <span id="5" class="fa fa-star"></span>
                                 </a>
 
                             @elseif($voteUser->vote == '2')
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
                                     <span id="1" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
                                     <span id="2" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3">
                                     <span id="3" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
                                     <span id="4" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
                                     <span id="5" class="fa fa-star"></span>
                                 </a>
 
                             @elseif($voteUser->vote == '3')
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
                                     <span id="1" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
                                     <span id="2" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
                                     <span id="3" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4">
                                     <span id="4" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
                                     <span id="5" class="fa fa-star"></span>
                                 </a>
 
                             @elseif($voteUser->vote == '4')
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
                                     <span id="1" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
                                     <span id="2" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
                                     <span id="3" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
                                     <span id="4" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5">
                                     <span id="5" class="fa fa-star"></span>
                                 </a>
 
                             @elseif($voteUser->vote == '5')
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/1" id="1" name="1" class="checked">
                                     <span id="1" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/2" id="2" name="2" class="checked">
                                     <span id="2" class="fa fa-star "></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/3" id="3" name="3" class="checked">
                                     <span id="3" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/4" id="4" name="4" class="checked">
                                     <span id="4" class="fa fa-star"></span>
                                 </a>
-                                <a href="/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5" class="checked">
+                                <a href="/mwt_1718/public/single/{{$itinerary->id}}/{{$user}}/5" id="5" name="5" class="checked">
                                     <span id="5" class="fa fa-star"></span>
                                 </a>
                             @endif
-                        </p>
+                        </h1>
                     </div>
 
 
 
 
 <!--per vedere tutte le recensioni-->
-                    <div class="col-md-9 ">
+                    <div class="col-md-9 " style="margin-top: 50px;">
                         <h2 class="section-title">All Review</h2>
                         @foreach($review as $reviews)
                         <form action="#" class="contact-form" style="width: 200%;" >
@@ -338,7 +339,7 @@
                         <h3 class="widget-title">Categories</h3>
                         <ul class="arrow-list">
                             @foreach($category as $categories)
-                            <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                            <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a></li>
                             @endforeach
 
                         </ul>
@@ -355,8 +356,5 @@
             </div>
         </div>
     </div>
-
     </main> <!-- .main-content -->
-
-
 @endsection

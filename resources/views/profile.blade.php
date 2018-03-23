@@ -19,8 +19,8 @@
                     <form action="#" class="contact-form">
                             <div class="col-md-6"><img style="height: 150px; width: 150px;" src="images/user.png" ></div>
                         <div class="row">
-                            <div class="col-md-6"><input type="text" value="{{$userName->name}}"></div>
-                            <div class="col-md-6"><input type="text" value="{{$userName->email}}"></div>
+                            <div class="col-md-6"><input type="text" disabled value="{{$userName->name}}"></div>
+                            <div class="col-md-6"><input type="text" disabled value="{{$userName->email}}"></div>
                         </div>
                     </form>
                 </div>
@@ -34,7 +34,7 @@
                              @foreach($arrayImageC as $arrayImages)
 
 
-                                    <img src="{{$arrayImages}}"  alt="foto" style="width: 300px; height: 223px;">{{$arrayImages}}
+                                    <img src="{{$arrayImages}}"  alt="foto" style="width: 300px; height: 223px;">
                                 &nbsp;   &nbsp;
 
                             @endforeach
@@ -45,7 +45,7 @@
                         <div class="col-sm-6">
                             @foreach($arrayItinerary as $arrayItinerarys)
 
-                                      <a href="/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
+                                      <a href="/mwt_1718/public/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
                             &nbsp;   &nbsp;
 
                             @endforeach
@@ -62,7 +62,7 @@
                             @foreach($arrayImageW as $arrayImageWs)
 
 
-                                <img src="http://www.disegnidacolorareonline.com/disegni-da-stampare-e-colorare/sport/pallone-da-calcio-sport-da-colorare"  alt="foto" style="width: 300px; height: 223px;">{{$arrayImageWs}}
+                                <img src="{{$arrayImageWs}}"  alt="foto" style="width: 300px; height: 223px;">
                                 &nbsp;   &nbsp;
 
                             @endforeach
@@ -73,7 +73,7 @@
                         <div class="col-sm-6">
                             @foreach($arrayItineraryW as $arrayItineraryWs)
 
-                                <a href="/itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
+                                <a href="/mwt_1718/public/itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
                                 &nbsp;   &nbsp;
 
                             @endforeach
