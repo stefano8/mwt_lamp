@@ -19,7 +19,7 @@
                         <div class="col-md-6">
                             <div class="photo">
                                 <div class="photo-preview photo-detail">
-                                    <img src="" alt="foto itinerario" style="width: 190px; height: 190px;">
+                                    <img src="{{$itineraries->itineraryImage()->first()->path}}" alt="foto itinerario" style="width: 190px; height: 190px;">
                                 </div>
                                 <div class="photo-details">
                                     <h3 class="location">

@@ -262,20 +262,32 @@ class ItineraryController extends Controller
 
         $itinerary = Itinerary::paginate(10);
 
-
-        /* $image = DB::table('images')
-            //->where('itinerary_id', '=', $id)
-            ->first();*/
-
-
-        //$itinerayImage->imageItinerary()->wherePivot('itinerary_id','=',$id)->first();
-
         $category = Category::all();
+
+        $mediaVote = Vote::all();
+
+        $voteNumber = Vote::all()
+            ->where('itinerary_id', $id)
+            ->count();
+
+        $somma = 0;
+
+        foreach ($mediaVote as $vote){
+            $somma += $vote->vote;
+        }
+
+
+        if($voteNumber !== 0){
+
+            $media = ((int)($somma/$voteNumber));
+        }else{
+            $media = 0;
+        }
+
 
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
-           // ->with('image', $image)
-            //->with('itineraryImage', $itinerayImage)
+            ->with('media', $media)
             ->with('category', $category);
     }
 
@@ -533,9 +545,9 @@ class ItineraryController extends Controller
     {
        $search = $request->itinerary_name;
 
-       $itinerary = DB::table('itineraries')
-           ->where('name', 'like', "%$search%")
-           ->paginate(10);
+
+        $itinerary = Itinerary::where('name', 'like', "%$search%")
+            ->paginate(10);
 
        return view('search', compact('itinerary'));
 
