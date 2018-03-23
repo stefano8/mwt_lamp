@@ -14,23 +14,23 @@
     <div class="fullwidth-block">
         <div class="container">
             <div class="filter">
-                <div class="country filter-control">
+               <!-- <div class="country filter-control">
                     <label for="">Categories</label>
                     <span class="select control">
                     <select href="" name="" id="" >
                         <option value="all" selected>All</option>
-                        @foreach($category as $categories)
+                       {{-- @foreach($category as $categories)
                             <option value="{{$categories->id}}">
                                 <a href="/itine/{{$categories->id}}">{{$categories->name}}</a>
                             </option>
-                        @endforeach
+                        @endforeach--}}
                     </select>
 					</span>
-                </div>
+                </div>-->
 
                 <div class="country filter-control">
-                    <form action="{{route('search')}}" class="">
-                        <input style="background-color: transparent; " type="text" size="122%" name="itinerary_name" id="itinerary_name" placeholder="Find itinerary...">
+                    <form action="{{route('search')}}">
+                        <input style="background-color: transparent; color: white;" type="text" size="122%" name="itinerary_name" id="itinerary_name" placeholder="Find itinerary...">
                         <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
                         <input type="submit" value="Find">
                     </form>
@@ -39,6 +39,23 @@
 
 
             <div class="row">
+
+
+                <div class="sidebar col-md-3">
+                    <div class="widget">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="arrow-list">
+                            @foreach($category as $categories)
+                                <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="content col-md-8">
+
                 @foreach($itineraries as $itinerary)
 
                     <div class="col-md-6">
@@ -62,8 +79,12 @@
                     </div>
 
                 @endforeach
-            </div>
+                </div>
 
+
+
+
+            </div>
         </div>
     </div>
 
