@@ -18,9 +18,10 @@
                     <label for="">Categories</label>
                     <span class="select control">
                     <select href="" name="" id="" >
+                        <option value="all" selected>All</option>
                         @foreach($category as $categories)
-                            <option  value="{{$categories->id}}">
-                                <a href="{{route('filtercategory', $categories->id)}}">{{$categories->name}}</a>
+                            <option value="{{$categories->id}}">
+                                <a href="/itine/{{$categories->id}}">{{$categories->name}}</a>
                             </option>
                         @endforeach
                     </select>
@@ -41,11 +42,14 @@
                 @foreach($itineraries as $itinerary)
 
                     <div class="col-md-6">
+
                         <div class="photo">
 
                             <div class="photo-preview photo-detail">
+
                                 <img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto" style="width: 190px; height: 190px;">{{$itinerary->itineraryImage()->first()->path}}
                             </div>
+
 
                             <div class="photo-details">
                                 <h3 class="location">
@@ -59,7 +63,7 @@
 
                 @endforeach
             </div>
-            <a style="background-color: #008CBA;" class="btn btn-primary">{{ $itineraries->links() }}</a>
+
         </div>
     </div>
 

@@ -60,7 +60,7 @@ Route::get('/single/{itineraryId}/{userId}/{value}','ItineraryController@addvote
 Route::get('/news','NewsController@getNews')->name('newsf');
 
 //rotta per filro dicategorie su itinerari
-Route::get('/itineraries/{categoryId}','ItineraryController@filterCategory')->name('filtercategory');
+Route::get('/itine/{categoryId}','ItineraryController@filterCategory')->name('filtercategory');
 
 //profilo
 Route::get('/profile','ItineraryController@showProfile')->name('profile');

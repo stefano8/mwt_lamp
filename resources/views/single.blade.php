@@ -142,6 +142,7 @@
                             </div>
                         @endif
 
+
                         {{--@if($wishlist )--}}
                             <div class="col-sm-6">
                             <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">Add to wishlist</a>
@@ -337,7 +338,7 @@
                         <h3 class="widget-title">Categories</h3>
                         <ul class="arrow-list">
                             @foreach($category as $categories)
-                            <li><a href="#">{{$categories->name}}</a></li>
+                            <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
                             @endforeach
 
                         </ul>

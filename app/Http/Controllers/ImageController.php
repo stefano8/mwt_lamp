@@ -160,15 +160,13 @@ class ImageController extends Controller
         $var = $request['image'];
 
 
-        foreach ($var as $value) {
-
             DB::table('images')
-                ->where('id', $value)
+                ->where('id', $var)
                 ->update([
                     'itinerary_id' => $request['itinerary_id'],
                     'updated_at' => now(),
                 ]);
-        }
+
         return redirect()->back();
 
 

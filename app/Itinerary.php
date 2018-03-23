@@ -46,7 +46,7 @@ class Itinerary extends Model
     //un Itinerario appartiene a più Categorie
     public function categoryRel(){
 
-            return $this->belongsToMany('App\Category','itineraries_categories')->withPivot('id','category_id', 'itinerary_id');
+            return $this->belongsToMany('App\Category','itineraries_categories')->withPivot('id', 'category_id', 'itinerary_id');
 
     }
 

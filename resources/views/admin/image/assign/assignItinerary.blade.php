@@ -42,7 +42,7 @@
 
                                     <input id="title" name="title" type="text" value="{{$item->title}}"
                                            class="form-control" readonly="readonly">
-                                    <a href="/mwt_1718/public/admin/image/assign/{{$itinerary->id}}/{{$item->id}}/remove" class="btn btn-danger">Remove</a>
+                                    <a href="/admin/image/assign/{{$itinerary->id}}/{{$item->id}}/remove" class="btn btn-danger">Remove</a>
 
 
                                 @endforeach
