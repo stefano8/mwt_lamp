@@ -78,10 +78,8 @@
 
                         <div class="top-right links">
                             @auth
-            @if(isset($user->groupRel))
-                            @foreach($user->groupRel as $role)
 
-                                @if($role->name == 'admin')
+                                @if($permission == true)
                                     <a href="{{ url('/home') }}">Dashboard</a>
                                 @endif
                                     <li class="menu-item"><a href="{{ route('profile') }}">Profile</a></li>
@@ -100,8 +98,6 @@
                                             </form>
                                         </div>
                                     </li>
-                            @endforeach
-                @endif
                         @else
                                     <li class="menu-item "><a style="background: #009ad8;color: white;"
                                                               href="{{ route('login') }}">Login</a></li>

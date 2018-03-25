@@ -126,4 +126,6 @@ class AdviceController extends Controller
 
         return view('advices', ['advices'=>$advices],['user' => $user]);
     }
-}
+
+
+    }
