@@ -126,7 +126,7 @@ class NewsController extends Controller
 
     public function getNews(){
 
-        $news = DB::table('news')->get();
+        $news = DB::table('news')->paginate(5);
 
         $id = Auth::user()->id;
 

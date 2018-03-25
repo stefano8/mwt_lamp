@@ -118,7 +118,7 @@ class AdviceController extends Controller
     //frontend
     public function getAdvices(){
 
-        $advices = DB::table('advices')->get();
+        $advices = DB::table('advices')->paginate(10);
 
         $id = Auth::user()->id;
 

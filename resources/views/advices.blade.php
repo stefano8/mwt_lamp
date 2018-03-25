@@ -28,6 +28,8 @@
                         </div>
                 </div>
             </div>
+            <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$advices->links('vendor.pagination.semantic-ui')}}</div>
+
         </div>
 
     </main> <!-- .main-content -->

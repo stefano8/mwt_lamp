@@ -96,7 +96,7 @@
                     </div>
 
                 </div>
-                <div>{{$itineraries->links()}}</div>
+                <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$itineraries->links('vendor.pagination.semantic-ui')}}</div>
             </div>
         </div>
 

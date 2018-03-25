@@ -33,7 +33,7 @@
 
                     @endforeach
                 </div>
-                <a style="background-color: #008CBA;" class="btn btn-primary">{{ $itinerary->links() }}</a>
+                <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$itinerary->links('vendor.pagination.semantic-ui')}}</div>
             </div>
         </div>
 
