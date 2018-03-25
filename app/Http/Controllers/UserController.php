@@ -201,20 +201,6 @@ class UserController extends Controller
         }
 
 
-
-
-
-        /*$user = User::find($request['user_id']);
-
-
-        foreach ($user->groupRel as $role)
-        {
-            $role->pivot->group_id = $request['group_id'];
-            $role->pivot->save();
-        }
-
-
-*/
         return redirect('admin/user/index');
 
     }
@@ -238,15 +224,6 @@ class UserController extends Controller
         ]);
     }
 
-    /*public function showDash(){
-
-        $user_group = DB::table('users_groups')
-            ->where('users_groups.user_id', '=', Auth::user()->id)
-            ->first();
-
-        return view('welcome', ['user_group' => $user_group]);
-    }*/
-
 
     //rimuove il gruppo selezionato
     public function removeAssignment($userId,$groupId)
@@ -260,4 +237,8 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+
+
+
 }

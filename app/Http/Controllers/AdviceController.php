@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Advice;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdviceController extends Controller
@@ -118,6 +120,10 @@ class AdviceController extends Controller
 
         $advices = DB::table('advices')->get();
 
-        return view('advices', ['advices'=>$advices]);
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        return view('advices', ['advices'=>$advices],['user' => $user]);
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
@@ -126,7 +128,11 @@ class NewsController extends Controller
 
         $news = DB::table('news')->get();
 
-        return view('news', ['news'=>$news]);
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        return view('news', ['news'=>$news], ['user'=>$user]);
     }
 
 }

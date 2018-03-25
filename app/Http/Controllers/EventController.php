@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
@@ -119,4 +121,17 @@ class EventController extends Controller
             'itinerary_id'  => 'required',
         ]);
     }
+
+
+    public function getEvent(){
+
+        $event = DB::table('events')->get();
+
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        return view('events', ['event'=>$event], ['user'=>$user]);
+    }
+
 }

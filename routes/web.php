@@ -23,17 +23,10 @@ Route::get('/', 'BaseController@index')->name('base');
 
 Route::get('/advices', 'AdviceController@getAdvices')->name('adviceget');
 
+Route::get('/events', 'EventController@getEvent')->name('eventget');
+
 Route::get('/news', function () {
     return view('news');
-});
-
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/events', function () {
-    return view('events');
 });
 
 

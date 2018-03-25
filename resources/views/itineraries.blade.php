@@ -95,8 +95,8 @@
                         @endforeach
                     </div>
 
-
                 </div>
+                <div>{{$itineraries->links()}}</div>
             </div>
         </div>
 

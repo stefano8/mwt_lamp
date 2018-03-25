@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Image;
 use App\Itinerary;
+use App\User;
 use App\Vote;
 use App\Wishlist;
 use Illuminate\Http\Request;
@@ -257,23 +258,19 @@ class ItineraryController extends Controller
     public function getItineraries($id)
     {
 
-        $itinerary = Itinerary::paginate(10);
-
-
-        /* $image = DB::table('images')
-            //->where('itinerary_id', '=', $id)
-            ->first();*/
-
-
-        //$itinerayImage->imageItinerary()->wherePivot('itinerary_id','=',$id)->first();
+        $itinerary = Itinerary::paginate(2);
 
         $category = Category::all();
 
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
-            // ->with('image', $image)
-            //->with('itineraryImage', $itinerayImage)
-            ->with('category', $category);
+            ->with('category', $category)
+            ->with('user', $user);
     }
 
 
@@ -293,11 +290,13 @@ class ItineraryController extends Controller
         $image = DB::table('images')
             ->where('itinerary_id', '=', $id)->get();
 
-        $user = Auth::user()->id;
+        $user_id = Auth::user()->id;
+
+        $user = User::find($user_id);
 
         $voteUser = Vote::all()
             ->where('itinerary_id', $id)
-            ->where('user_id', $user)
+            ->where('user_id', $user_id)
             ->first();
 
         $mediaVote = Vote::all()
@@ -321,6 +320,16 @@ class ItineraryController extends Controller
             $media = 0;
         }
 
+        $bottoneWishlist = Wishlist::all()
+            ->where('user_id', $user_id)
+            ->where('itinerary_id', $id)
+            ->first();
+
+        $bottoneCollection = \App\View::all()
+            ->where('user_id', $user_id)
+            ->where('itinerary_id', $id)
+            ->first();
+
         return View::make('single')
             ->with('itinerary', $itinerary)
             ->with('review', $review)
@@ -328,7 +337,9 @@ class ItineraryController extends Controller
             ->with('user', $user)
             ->with('voteUser', $voteUser)
             ->with('media', $media)
-            ->with('category', $category);
+            ->with('category', $category)
+            ->with('bottoneCollection', $bottoneCollection)
+            ->with('bottoneWishlist', $bottoneWishlist);
 
 
     }
@@ -461,14 +472,16 @@ class ItineraryController extends Controller
     public function showProfile()
     {
 
-        $user = Auth::user()->id;
 
-        $userName = DB::table('users')->where('id', $user)->first();
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        $userName = DB::table('users')->where('id', $id)->first();
 
         //views
-        $collection = DB::table('views')->where('user_id', $user)->get();
+        $collection = DB::table('views')->where('user_id', $id)->get();
 
-        //echo ((string)($collection));
         $arrayImageC = [];
         $arrayItinerary = [];
         $i = 0;
@@ -487,7 +500,7 @@ class ItineraryController extends Controller
 
         //wishlist
 
-        $wishlist = DB::table('wishlists')->where('user_id', $user)->get();
+        $wishlist = DB::table('wishlists')->where('user_id', $id)->get();
 
         //echo ((string)($collection));
         $arrayImageW = [];
@@ -537,9 +550,13 @@ class ItineraryController extends Controller
         $itinerary = Itinerary::where('name', 'like', "%$search%")
             ->paginate(10);
 
-        return view('search', compact('itinerary'));
 
-        //echo $search, $itinerary;
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        return view('search', compact('itinerary'), ['user' => $user]);
+
 
     }
 
@@ -547,33 +564,22 @@ class ItineraryController extends Controller
     public function filterCategory($id)
     {
 
-        // $itinerary = Itinerary::all();
-        //$itineraries = Itinerary::find(1)->categoryRel()->wherePivot('category_id', '=', $id)->get();
-
-        /* $itineraries = $itinerary->categoryRel()->wherePivot('category_id', '=', $id)->get();
-         foreach ($itineraries as $itinerarys) {
-
-             echo $itinerarys->name;
-
-         }*/
-
-
         $itinerary = Itinerary::whereHas('categoryRel', function ($query) use ($id) {
             $query->where('category_id', '=', $id);
         })->get();
 
-        //$itinerary = DB::table('itineraries_categories')->where('category_id', $id)->get();
-
-
-        // $itineraries = DB::table('itineraries')->where('id', $itinerary->itinerary_id);
 
 
         $category = Category::all();
 
+
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
-            // ->with('image', $image)
-            //->with('itineraryImage', $itinerayImage)
+            ->with('user', $user)
             ->with('category', $category);
 
     }
