@@ -16,49 +16,15 @@
 
         <div class="fullwidth-block" data-bg-color="#262936">
             <div class="container">
+                @foreach($event as $events)
                     <div class="col-md-4">
                         <div class="news">
-                            <div class="date">06.10</div>
-                            <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
+                            <div class="date" style="line-height: 0.5;">{{$events->date}}</div>
+                            <h3 style="margin:1px 14px 20px;"><a href="#">{{$events->title}}</a></h3>
+                            <p style="margin:1px 14px 20px; display: inline-block; width: 200px; height: 100px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;">{{$events->body}}</p>
                         </div>
                     </div>
-                <div class="col-md-4">
-                    <div class="news">
-                        <div class="date">06.10</div>
-                        <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="news">
-                        <div class="date">06.10</div>
-                        <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="news">
-                        <div class="date">06.10</div>
-                        <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="news">
-                        <div class="date">06.10</div>
-                        <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="news">
-                        <div class="date">06.10</div>
-                        <h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
 
