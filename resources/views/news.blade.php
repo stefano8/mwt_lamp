@@ -25,6 +25,7 @@
                         </div>
                         @endforeach
 
+                            <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$news->links('vendor.pagination.semantic-ui')}}</div>
 
                     </div>
                     <div class="sidebar col-md-3 col-md-offset-1">
@@ -62,8 +63,11 @@
                                 <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
                             </ul>
                         </div>
+                        <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$news->links('vendor.pagination.semantic-ui')}}</div>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </main> <!-- .main-content -->

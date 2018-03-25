@@ -258,7 +258,7 @@ class ItineraryController extends Controller
     public function getItineraries($id)
     {
 
-        $itinerary = Itinerary::paginate(2);
+        $itinerary = Itinerary::paginate(10);
 
         $category = Category::all();
 
