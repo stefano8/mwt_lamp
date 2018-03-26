@@ -121,6 +121,7 @@ class AdviceController extends Controller
     public function getAdvices(){
 
         $advices = DB::table('advices')->paginate(10);
+        $permission = false;
 
         if (Auth::check()) {
 
@@ -128,7 +129,7 @@ class AdviceController extends Controller
 
             $user = User::find($id);
 
-            $permission = false;
+
 
             foreach ($user->groupRel as $item) {
 
@@ -152,5 +153,48 @@ class AdviceController extends Controller
         }
     }
 
+    public function singleAdvice($id){
+
+
+        $advices = Advice::find($id);
+
+        $permission = false;
+
+        if (Auth::check()) {
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            return View::make('singleAdvice')
+                ->with('advices', $advices)
+                ->with('user', $user)
+                ->with('permission', $permission);
+
+        } else{
+
+            return view('singleAdvice', ['advices'=>$advices]);
+
+        }
+
+
+
 
     }
+
+
+
+
+}

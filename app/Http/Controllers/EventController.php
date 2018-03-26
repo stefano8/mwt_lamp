@@ -124,7 +124,7 @@ class EventController extends Controller
 
     public function getEvent()
     {
-
+        $permission = false;
         $event = DB::table('events')->get();
 
         if (Auth::check()) {
@@ -133,7 +133,7 @@ class EventController extends Controller
 
             $user = User::find($id);
 
-            $permission = false;
+
 
             foreach ($user->groupRel as $item) {
 
@@ -155,6 +155,46 @@ class EventController extends Controller
 
             return view('events', ['event' => $event]);
         }
+
+    }
+
+    public function singleEvent($id){
+
+        $event = Event::find($id);
+        $permission = false;
+
+        if (Auth::check()) {
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            return \Illuminate\Support\Facades\View::make('singleEvent')
+                ->with('event', $event)
+                ->with('user', $user)
+                ->with('permission', $permission);
+
+
+        } else {
+
+            return view('singleEvent', ['event' => $event]);
+
+        }
+
+
+
 
     }
 

@@ -165,4 +165,40 @@ class NewsController extends Controller
 
     }
 
+
+    public function singleNews($id){
+
+        $news = News::find($id);
+
+        $permission = false;
+
+        if (Auth::check()) {
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+            return \Illuminate\Support\Facades\View::make('singleNews')
+                ->with('news', $news)
+                ->with('user', $user)
+                ->with('permission', $permission);
+        }else {
+
+            return \Illuminate\Support\Facades\View::make('singleNews')
+                ->with('news', $news);
+        }
+
+    }
+
 }

@@ -18,12 +18,18 @@
 Route::get('/', 'BaseController@index')->name('base');
 
 Route::get('/advices', 'AdviceController@getAdvices')->name('adviceget');
+Route::get('/advices/single/{adviceId}', 'AdviceController@singleAdvice')->name('advice.single');
+
 
 Route::get('/events', 'EventController@getEvent')->name('eventget');
+Route::get('/events/single/{eventId}','EventController@singleEvent')->name('event.single');
+
+
 
 Route::get('/news', function () {
     return view('news');
 });
+Route::get('/news/single/{newsId}', 'NewsController@singleNews')->name('news.single');
 
 
 //rota per ricerca

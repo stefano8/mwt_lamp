@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Group;
 use App\Image;
 use App\Itinerary;
 use App\User;
@@ -266,6 +267,33 @@ class ItineraryController extends Controller
 
         $user = User::find($id);
 
+        $permission = false;
+
+        if (Auth::check()) {
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+            return \Illuminate\Support\Facades\View::make('itineraries')
+                ->with('itineraries', $itinerary)
+                ->with('user', $user)
+                ->with('category', $category)
+                ->with('permission', $permission);
+
+        }
+
 
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
@@ -330,17 +358,52 @@ class ItineraryController extends Controller
             ->where('itinerary_id', $id)
             ->first();
 
-        return View::make('single')
-            ->with('itinerary', $itinerary)
-            ->with('review', $review)
-            ->with('image', $image)
-            ->with('user', $user)
-            ->with('voteUser', $voteUser)
-            ->with('media', $media)
-            ->with('category', $category)
-            ->with('bottoneCollection', $bottoneCollection)
-            ->with('bottoneWishlist', $bottoneWishlist);
+        $permission = false;
 
+        if (Auth::check()) {
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            return View::make('single')
+                ->with('itinerary', $itinerary)
+                ->with('review', $review)
+                ->with('image', $image)
+                ->with('user', $user)
+                ->with('voteUser', $voteUser)
+                ->with('media', $media)
+                ->with('category', $category)
+                ->with('bottoneCollection', $bottoneCollection)
+                ->with('bottoneWishlist', $bottoneWishlist)
+                ->with('user', $user)
+                ->with('permission', $permission);
+        }else {
+
+            return View::make('single')
+                ->with('itinerary', $itinerary)
+                ->with('review', $review)
+                ->with('image', $image)
+                ->with('user', $user)
+                ->with('voteUser', $voteUser)
+                ->with('media', $media)
+                ->with('category', $category)
+                ->with('bottoneCollection', $bottoneCollection)
+                ->with('bottoneWishlist', $bottoneWishlist);
+
+        }
 
     }
 
@@ -516,6 +579,31 @@ class ItineraryController extends Controller
             $arrayItineraryW[$a] = $itinerario->name;
             $arrayImageW[$a] = $image->path;
             $a++;
+
+        }
+
+        if (Auth::check()) {
+
+            $permission = false;
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+            return \Illuminate\Support\Facades\View::make('profile')
+                ->with('arrayItinerary', $arrayItinerary)
+                ->with('user', $user)
+                ->with('userName', $userName)
+                ->with('arrayImageC', $arrayImageC)
+                ->with('arrayImageW', $arrayImageW)
+                ->with('arrayItineraryW', $arrayItineraryW)
+                ->with('user', $user)
+                ->with('permission', $permission);
 
         }
 

@@ -20,7 +20,7 @@ class BaseController extends Controller
         $itineraries = Itinerary::take(4)->get();
 
         $events = Event::take(3)->get();
-
+        $permission = false;
 
         //controllo se utente loggato con piu di un gruppo assocciato e uno di questi è admin allora
         //mi setta la variabile permission a true usata nel blade (per controllo bottone dashboard)
@@ -31,7 +31,7 @@ class BaseController extends Controller
 
             $user = User::find($id);
 
-            $permission = false;
+
 
             foreach ($user->groupRel as $item) {
 

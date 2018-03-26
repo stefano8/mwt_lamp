@@ -20,7 +20,7 @@
                     <div class="col-md-4">
                         <div class="news">
                             <div class="date" style="line-height: 0.5;">{{$events->date}}</div>
-                            <h3 style="margin:1px 14px 20px;"><a href="#">{{$events->title}}</a></h3>
+                            <h3 style="margin:1px 14px 20px;"><a href="{{route('event.single', $events->id)}}">{{$events->title}}</a></h3>
                             <p style="margin:1px 14px 20px; display: inline-block; width: 200px; height: 100px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;">{{$events->body}}</p>
                         </div>
                     </div>

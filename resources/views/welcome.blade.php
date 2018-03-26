@@ -116,8 +116,8 @@
                             @foreach($itineraries as $itinerary)
                             <div class="col-md-3 col-sm-6">
                                 <div class="live-camera">
-                                    <figure class="live-camera-cover"><img href="" src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></figure>
-                                    <h3 class="location">{{$itinerary->name}}</h3>
+                                    <figure class="live-camera-cover"><img href="{{route('itinerary.single', $itinerary->id)}}" src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></figure>
+                                    <h3 class="location"><a href="{{route('itinerary.single', $itinerary->id)}}"> {{$itinerary->name}}</a></h3>
                                 </div>
                             </div>
                             @endforeach
@@ -134,8 +134,8 @@
                             @foreach($events as $event)
                             <div class="col-md-4">
                                 <div class="news">
-                                    <div class="date" style="line-height: 0.5;">{{$event->date}}</div>
-                                    <h3 style="margin:1px 14px 20px;"><a href="" style="margin-right: 5px; ">{{$event->title}}</a></h3>
+                                    <div class="date" style="line-height: 0.5;"><a href="{{route('event.single', $event->id)}}">{{$event->date}}</a></div>
+                                    <h3 style="margin:1px 14px 20px;"><a href="{{route('event.single', $event->id)}}" style="margin-right: 5px; ">{{$event->title}}</a></h3>
                                     <p style="margin:1px 14px 20px; display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;" >{{$event->body}}</p>
                                 </div>
                             </div>
