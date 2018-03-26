@@ -638,12 +638,34 @@ class ItineraryController extends Controller
         $itinerary = Itinerary::where('name', 'like', "%$search%")
             ->paginate(10);
 
+        $permission = false;
+
+        if (Auth::check()) {
 
         $id = Auth::user()->id;
 
         $user = User::find($id);
 
-        return view('search', compact('itinerary'), ['user' => $user]);
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            //return view('search', compact('itinerary'), ['user' => $user], ['permission' => $permission]);
+
+            return \Illuminate\Support\Facades\View::make('search')
+                ->with('itinerary', $itinerary)
+                ->with('user', $user)
+                ->with('permission', $permission);
+        }
+
+        //else
+        return view('search', compact('itinerary'));
 
 
     }
@@ -654,20 +676,39 @@ class ItineraryController extends Controller
 
         $itinerary = Itinerary::whereHas('categoryRel', function ($query) use ($id) {
             $query->where('category_id', '=', $id);
-        })->get();
-
+        })->paginate(10);
 
 
         $category = Category::all();
 
+        $permission = false;
+
+        if (Auth::check()) {
 
         $id = Auth::user()->id;
 
         $user = User::find($id);
 
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            return \Illuminate\Support\Facades\View::make('itineraries')
+                ->with('itineraries', $itinerary)
+                ->with('category', $category)
+                ->with('user', $user)
+                ->with('permission', $permission);
+
+        }
+
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
-            ->with('user', $user)
             ->with('category', $category);
 
     }

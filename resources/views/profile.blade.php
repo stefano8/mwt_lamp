@@ -45,7 +45,7 @@
                         <div class="col-sm-6">
                             @foreach($arrayItinerary as $arrayItinerarys)
 
-                                      <a href="/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
+                                      <a href="/mwt_1718/public/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
                             &nbsp;   &nbsp;
 
                             @endforeach
@@ -73,7 +73,7 @@
                         <div class="col-sm-6">
                             @foreach($arrayItineraryW as $arrayItineraryWs)
 
-                                <a href="/itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
+                                <a href="/mwt_1718/public/itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
                                 &nbsp;   &nbsp;
 
                             @endforeach
