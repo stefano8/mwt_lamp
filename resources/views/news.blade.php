@@ -30,39 +30,23 @@
                     </div>
                     <div class="sidebar col-md-3 col-md-offset-1">
                         <div class="widget">
-                            <h3 class="widget-title">Hot News</h3>
+                            <h3 class="widget-title">Top News</h3>
                             <ul class="arrow-list">
-                                <li><a href="#">Accusamus dignissimos</a></li>
-                                <li><a href="#">Ducimus praesentium</a></li>
-                                <li><a href="#">Voluptatum deleniti corrupti</a></li>
-                                <li><a href="#">Wuos dolores excepturi sint</a></li>
-                                <li><a href="#">Occaecati provident dolor</a></li>
-                            </ul>
+                                @foreach($news as $newss)
+                                <li><a href="#">{{$newss->title}}</a></li>
+                                @endforeach
                         </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Categories</h3>
+                            <h3 class="widget-title">Itineraries Categories</h3>
                             <ul class="arrow-list">
-                                <li><a href="#">Nemo enim ipsam</a></li>
-                                <li><a href="#">Voluptatem voluptas</a></li>
-                                <li><a href="#">Aspernatur aut odit</a></li>
-                                <li><a href="#">Consequuntur magni</a></li>
-                                <li><a href="#">Dolores ratione</a></li>
-                                <li><a href="#">Voluptatem nesciunt</a></li>
-                                <li><a href="#">Neque porro quisquam</a></li>
-                                <li><a href="#">Dolorem ipsum quia</a></li>
+                                @foreach($category as $categories)
+                                    <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                                @endforeach
+
                             </ul>
                         </div>
 
-                        <div class="widget top-rated">
-                            <h3 class="widget-title">Top rated posts</h3>
-                            <ul>
-                                <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                                <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                                <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                                <li><h3 class="entry-title"><a href="#">Doloremque laudantium lorem</a></h3><div class="rating"><strong>5.5</strong> (759 rates)</div></li>
-                            </ul>
-                        </div>
                         <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$news->links('vendor.pagination.semantic-ui')}}</div>
 
                     </div>

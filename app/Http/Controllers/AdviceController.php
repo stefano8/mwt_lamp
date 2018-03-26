@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Advice;
+use App\Group;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class AdviceController extends Controller
 {
@@ -120,11 +122,34 @@ class AdviceController extends Controller
 
         $advices = DB::table('advices')->paginate(10);
 
-        $id = Auth::user()->id;
+        if (Auth::check()) {
 
-        $user = User::find($id);
+            $id = Auth::user()->id;
 
-        return view('advices', ['advices'=>$advices],['user' => $user]);
+            $user = User::find($id);
+
+            $permission = false;
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            return View::make('advices')
+                ->with('advices', $advices)
+                ->with('user', $user)
+                ->with('permission', $permission);
+
+        } else{
+
+            return view('advices', ['advices'=>$advices]);
+
+        }
     }
 
 

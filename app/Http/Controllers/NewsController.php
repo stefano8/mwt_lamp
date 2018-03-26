@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\News;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class NewsController extends Controller
 {
@@ -126,13 +128,41 @@ class NewsController extends Controller
 
     public function getNews(){
 
-        $news = DB::table('news')->paginate(5);
+        $news = DB::table('news')->orderBy('date')->paginate(5);
 
-        $id = Auth::user()->id;
+        $category = DB::table('categories')->get();
 
-        $user = User::find($id);
+        if (Auth::check()) {
 
-        return view('news', ['news'=>$news], ['user'=>$user]);
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+            $permission = false;
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            return View::make('news')
+                ->with('news', $news)
+                ->with('user', $user)
+                ->with('category', $category)
+                ->with('permission', $permission);
+
+        } else{
+
+            return view('news', ['news'=>$news], ['category', $category]);
+
+        }
+
+
     }
 
 }
