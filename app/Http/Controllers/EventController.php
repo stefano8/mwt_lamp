@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Group;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,6 @@ class EventController extends Controller
     {
         $this->middleware('auth');
     }
-
 
 
     //backend
@@ -41,13 +41,13 @@ class EventController extends Controller
 
         DB::table('events')
             ->insert([
-                'date'              => now(),
-                'title'             => $request['title'],
-                'body'              => $request['body'],
-                'address'           => $request['address'],
-                'description'       => $request['description'],
-                'itinerary_id'      => $request['itinerary_id'],  //il valore della selectbox
-                'created_at'        => now()
+                'date' => now(),
+                'title' => $request['title'],
+                'body' => $request['body'],
+                'address' => $request['address'],
+                'description' => $request['description'],
+                'itinerary_id' => $request['itinerary_id'],  //il valore della selectbox
+                'created_at' => now()
             ]);
 
         flash('Success')->success();
@@ -60,7 +60,7 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
@@ -85,7 +85,6 @@ class EventController extends Controller
             ->get();
 
 
-
         return view('admin/event/edit', ['event' => $event], ['itinerary' => $itinerary]);
     }
 
@@ -97,12 +96,12 @@ class EventController extends Controller
         DB::table('events')
             ->where('id', $id)
             ->update([
-                'title'             => $request['title'],
-                'body'              => $request['body'],
-                'address'           => $request['address'],
-                'description'       => $request['description'],
-                'itinerary_id'      => $request['itinerary_id'],
-                'updated_at'        => now(),
+                'title' => $request['title'],
+                'body' => $request['body'],
+                'address' => $request['address'],
+                'description' => $request['description'],
+                'itinerary_id' => $request['itinerary_id'],
+                'updated_at' => now(),
             ]);
 
         flash('Success')->success();
@@ -114,24 +113,49 @@ class EventController extends Controller
     public function validateItems(Request $request)
     {
         $this->validate($request, [
-            'title'         => 'required',
-            'body'          => 'required',
-            'address'       => 'required',
-            'description'   => 'required',
-            'itinerary_id'  => 'required',
+            'title' => 'required',
+            'body' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+            'itinerary_id' => 'required',
         ]);
     }
 
 
-    public function getEvent(){
+    public function getEvent()
+    {
 
         $event = DB::table('events')->get();
 
-        $id = Auth::user()->id;
+        if (Auth::check()) {
 
-        $user = User::find($id);
+            $id = Auth::user()->id;
 
-        return view('events', ['event'=>$event], ['user'=>$user]);
+            $user = User::find($id);
+
+            $permission = false;
+
+            foreach ($user->groupRel as $item) {
+
+                $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+                }
+            }
+
+            return \Illuminate\Support\Facades\View::make('events')
+                ->with('event', $event)
+                ->with('user', $user)
+                ->with('permission', $permission);
+
+
+        } else {
+
+            return view('events', ['event' => $event]);
+        }
+
     }
 
 }
