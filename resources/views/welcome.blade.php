@@ -116,7 +116,7 @@
                             @foreach($itineraries as $itinerary)
                             <div class="col-md-3 col-sm-6">
                                 <div class="live-camera">
-                                    <figure class="live-camera-cover"><img href="{{route('itinerary.single', $itinerary->id)}}" src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></figure>
+                                    <figure class="live-camera-cover"><a href="{{route('itinerary.single', $itinerary->id)}}"><img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></a></figure>
                                     <h3 class="location"><a href="{{route('itinerary.single', $itinerary->id)}}"> {{$itinerary->name}}</a></h3>
                                 </div>
                             </div>
