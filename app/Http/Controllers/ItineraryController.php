@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Event;
 use App\Group;
 use App\Image;
 use App\Itinerary;
@@ -75,9 +76,9 @@ class ItineraryController extends Controller
     public function save(Request $request)
     {
 
-        $var = $this->authentication();
+        $permission = $this->authentication();
 
-        if($var){
+        if($permission){
             $this->validateItems($request);
 
             DB::table('itineraries')
@@ -96,7 +97,12 @@ class ItineraryController extends Controller
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
