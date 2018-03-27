@@ -39,88 +39,129 @@ class ItineraryController extends Controller
     {
         $itinerary = Itinerary::paginate(10);
 
+        $var = $this->authentication();
 
-        return view('admin/itinerary/index', ['itinerary' => $itinerary]);
+        if($var){
+
+            return view('admin/itinerary/index', ['itinerary' => $itinerary]);
+
+        }else{
+
+            return view ('auth.login');
+        }
+
+
     }
 
 
     public function create()
     {
 
-        return view('admin/itinerary/create');
+        $var = $this->authentication();
+
+        if($var){
+
+            return view('admin/itinerary/create');
+
+        }else{
+
+            return view ('auth.login');
+        }
+
+
     }
 
 
     public function save(Request $request)
     {
 
-        $this->validateItems($request);
+        $var = $this->authentication();
 
-        DB::table('itineraries')
-            ->insert([
-                'name' => $request['name'],
-                'difficolty' => $request['difficolty'],
-                'difference' => $request['difference'],
-                'description' => $request['description'],
-                'duration' => $request['duration'],
-                'created_at' => now()
-            ]);
+        if($var){
+            $this->validateItems($request);
 
-        flash('Success')->success();
+            DB::table('itineraries')
+                ->insert([
+                    'name' => $request['name'],
+                    'difficolty' => $request['difficolty'],
+                    'difference' => $request['difference'],
+                    'description' => $request['description'],
+                    'duration' => $request['duration'],
+                    'created_at' => now()
+                ]);
 
-        return redirect('admin/itinerary/index');
+            flash('Success')->success();
+
+            return redirect('admin/itinerary/index');
+
+        }else{
+
+            return view ('auth.login');
+        }
+
+
 
     }
 
 
     public function delete($id)
     {
-        $itinerary = Itinerary::find($id);
 
-        //delete categorie_itinerari
-        $itinerary->categoryRel()->wherePivot('itinerary_id', '=', $id)
-            ->detach();
+        $var = $this->authentication();
 
-        //delete event relazionati a itinerari
-        $itinerary->eventRel()->where('itinerary_id', '=', $id)->delete();
+        if($var){
+            $itinerary = Itinerary::find($id);
 
-        //news
+            //delete categorie_itinerari
+            $itinerary->categoryRel()->wherePivot('itinerary_id', '=', $id)
+                ->detach();
 
-        DB::table('images')
-            ->where('itinerary_id', '=', $id)
-            ->delete();
+            //delete event relazionati a itinerari
+            $itinerary->eventRel()->where('itinerary_id', '=', $id)->delete();
 
-        DB::table('news')
-            ->where('itinerary_id', $id)
-            ->delete();
+            //news
 
-        //image
-        $itinerary->itineraryImage()->where('itinerary_id', '=', $id)->delete();
+            DB::table('images')
+                ->where('itinerary_id', '=', $id)
+                ->delete();
 
-        //rewiew
-        DB::table('reviews')
-            ->where('itinerary_id', $id)
-            ->delete();
-        //$itinerary->itineraryRewiew()->where('itinerary_id','=',$id)->delete();
+            DB::table('news')
+                ->where('itinerary_id', $id)
+                ->delete();
 
+            //image
+            $itinerary->itineraryImage()->where('itinerary_id', '=', $id)->delete();
 
-        //voti
-        $itinerary->itineraryVote()->where('itinerary_id', '=', $id)->delete();
-
-        //visti
-        $itinerary->itineraryView()->wherePivot('itinerary_id', '=', $id)->detach();
-
-        //wishlist
-        $itinerary->toPossess()->wherePivot('itinerary_id', '=', $id)->detach();
+            //rewiew
+            DB::table('reviews')
+                ->where('itinerary_id', $id)
+                ->delete();
+            //$itinerary->itineraryRewiew()->where('itinerary_id','=',$id)->delete();
 
 
-        DB::table('itineraries')
-            ->where('id', $id)
-            ->delete();
+            //voti
+            $itinerary->itineraryVote()->where('itinerary_id', '=', $id)->delete();
 
-        flash('Deleted')->error();
+            //visti
+            $itinerary->itineraryView()->wherePivot('itinerary_id', '=', $id)->detach();
 
-        return redirect()->back();
+            //wishlist
+            $itinerary->toPossess()->wherePivot('itinerary_id', '=', $id)->detach();
+
+
+            DB::table('itineraries')
+                ->where('id', $id)
+                ->delete();
+
+            flash('Deleted')->error();
+
+            return redirect()->back();
+
+        }else{
+
+            return view ('auth.login');
+        }
+
 
 
     }
@@ -132,29 +173,55 @@ class ItineraryController extends Controller
             ->where('id', $id)
             ->first();
 
-        return view('admin/itinerary/edit', ['itinerary' => $itinerary]);
+        $var = $this->authentication();
+
+        if($var){
+
+            return view('admin/itinerary/edit', ['itinerary' => $itinerary]);
+
+        }else{
+
+            return view ('auth.login');
+        }
+
+
+
+
     }
 
 
     public function store($id, Request $request)
     {
-        $this->validateItems($request);
 
-        DB::table('itineraries')
-            ->where('id', $id)
-            ->update([
-                'name' => $request['name'],
-                'difficolty' => $request['difficolty'],
-                'difference' => $request['difference'],
-                'description' => $request['description'],
-                'duration' => $request['duration'],
-                'updated_at' => now()
-            ]);
-
-        flash('Success')->success();
+        $var = $this->authentication();
 
 
-        return redirect('admin/itinerary/index');
+        if($var){
+
+            $this->validateItems($request);
+
+            DB::table('itineraries')
+                ->where('id', $id)
+                ->update([
+                    'name' => $request['name'],
+                    'difficolty' => $request['difficolty'],
+                    'difference' => $request['difference'],
+                    'description' => $request['description'],
+                    'duration' => $request['duration'],
+                    'updated_at' => now()
+                ]);
+
+            flash('Success')->success();
+
+            return redirect('admin/itinerary/index');
+
+        }else{
+
+            return view ('auth.login');
+        }
+
+
+
     }
 
 
@@ -186,8 +253,21 @@ class ItineraryController extends Controller
 
         $itinerary = Itinerary::find($id);
 
+        $var = $this->authentication();
 
-        return view('admin/itinerary/assign', ['itinerary' => $itinerary], ['category' => $category]);
+
+        if($var){
+
+            return view('admin/itinerary/assign', ['itinerary' => $itinerary], ['category' => $category]);
+
+
+        }else{
+
+            return view ('auth.login');
+        }
+
+
+
 
     }
 
@@ -195,47 +275,62 @@ class ItineraryController extends Controller
     public function saveAssignment(Request $request)
     {
 
-        $ngroup = Category::all()->count();
+        $autentica = $this->authentication();
 
 
-        $itinerary = Itinerary::find($request['itinerary_id']);
+        if($autentica){
 
-        $var = 0;
-        $var1 = $request['category_id'];
-        foreach ($itinerary->categoryRel as $role) {
+            $ngroup = Category::all()->count();
 
-            if ($role->pivot->category_id != $var1) {
 
-                $var = $var + 1;
-            } else {
+            $itinerary = Itinerary::find($request['itinerary_id']);
 
-                $var = $var - 1;
+            $var = 0;
+            $var1 = $request['category_id'];
+            foreach ($itinerary->categoryRel as $role) {
+
+                if ($role->pivot->category_id != $var1) {
+
+                    $var = $var + 1;
+                }else {
+
+                     $var = $var - 1;
+                }
+
             }
 
-        }
 
+            if ($var < $ngroup && $var !== 0 && $var >= 1) {
 
-        if ($var < $ngroup && $var !== 0 && $var >= 1) {
-
-            DB::table('itineraries_categories')
-                ->insert([
-                    'itinerary_id' => $request['itinerary_id'],
-                    'category_id' => $request['category_id'],
+                DB::table('itineraries_categories')
+                    ->insert([
+                        'itinerary_id' => $request['itinerary_id'],
+                        'category_id' => $request['category_id'],
                 ]);
 
-        }
+            }
 
         //se label assegned non c'è allora inserisce
-        if (!isset($_GET['category'])) {
-            DB::table('itineraries_categories')
-                ->insert([
-                    'itinerary_id' => $request['itinerary_id'],
-                    'category_id' => $request['category_id'],
-                ]);
+            if (!isset($_GET['category'])) {
+                DB::table('itineraries_categories')
+                    ->insert([
+                        'itinerary_id' => $request['itinerary_id'],
+                        'category_id' => $request['category_id'],
+                    ]);
 
+            }
+
+
+            return redirect('admin/itinerary/index');
+
+
+        }else{
+
+            return view ('auth.login');
         }
 
-        return redirect('admin/itinerary/index');
+
+
 
     }
 
@@ -243,14 +338,23 @@ class ItineraryController extends Controller
     //rimuove il gruppo selezionato
     public function removeAssignment($itineraryId, $categoryId)
     {
+        $autentica = $this->authentication();
 
-        $itinerary = Itinerary::find($itineraryId);
+        if($autentica) {
 
-        $itinerary->categoryRel()->wherePivot('itinerary_id', '=', $itineraryId)
-            ->wherePivot('category_id', '=', $categoryId)
-            ->detach();
+            $itinerary = Itinerary::find($itineraryId);
 
-        return redirect()->back();
+            $itinerary->categoryRel()->wherePivot('itinerary_id', '=', $itineraryId)
+                ->wherePivot('category_id', '=', $categoryId)
+                ->detach();
+
+            return redirect()->back();
+
+        }else{
+
+            return view ('auth.login');
+        }
+
     }
 
 
@@ -710,6 +814,37 @@ class ItineraryController extends Controller
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
             ->with('category', $category);
+
+    }
+
+
+
+    public function authentication(){
+
+        $permission = false;
+
+        if(Auth::check()){
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+            if(isset($user->groupRel)){
+
+                foreach ($user->groupRel as $item)
+
+                    $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                if ($group->name == 'admin') {
+
+                    $permission = true;
+
+                }
+
+            }
+        }
+
+        return $permission;
 
     }
 

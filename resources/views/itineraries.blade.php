@@ -56,7 +56,7 @@
                             <h3 class="widget-title">Categories</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
-                                    <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a>
+                                    <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a>
                                     </li>
                                 @endforeach
 
@@ -75,8 +75,8 @@
 
                                     <div class="photo-preview photo-detail">
 
-                                        <img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"
-                                             style="width: 175px; height: 190px;">
+                                      <a href="{{route('itinerary.single', $itinerary->id)}}"><img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"
+                                                        style="width: 175px; height: 190px;"></a>
                                     </div>
 
 

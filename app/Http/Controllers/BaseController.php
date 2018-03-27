@@ -56,4 +56,6 @@ class BaseController extends Controller
             ->with('events', $events);
 
     }
+
+
 }
