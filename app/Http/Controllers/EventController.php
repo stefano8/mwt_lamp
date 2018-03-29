@@ -223,7 +223,7 @@ class EventController extends Controller
     public function getEvent()
     {
         $permission = false;
-        $event = DB::table('events')->get();
+        $event = DB::table('events')->orderBy('date' , 'desc')->get();
 
         if (Auth::check()) {
 

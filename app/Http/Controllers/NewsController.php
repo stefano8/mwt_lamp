@@ -229,7 +229,7 @@ class NewsController extends Controller
 
     public function getNews(){
 
-        $news = DB::table('news')->orderBy('date')->paginate(5);
+        $news = DB::table('news')->orderBy('date','desc')->paginate(5);
 
         $category = DB::table('categories')->get();
 
