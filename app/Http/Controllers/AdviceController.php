@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Advice;
+use App\Event;
 use App\Group;
+use App\Itinerary;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,46 +20,92 @@ class AdviceController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
 
 
     //backend
 
     public function index()
     {
-        $advice = Advice::paginate(10);
 
-        return view('admin/advice/index', ['advice' => $advice]);
+
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $advice = Advice::paginate(10);
+
+            return view('admin/advice/index', ['advice' => $advice]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
     }
 
 
     public function create()
     {
 
-        return view('admin/advice/create');
+        $permission = $this->authentication();
+
+        if($permission){
+
+            return view('admin/advice/create');
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
     }
 
 
     public function save(Request $request)
     {
 
-        $this->validateItems($request);
+        $permission = $this->authentication();
 
-        DB::table('advices')
-            ->insert([
-                'title'         => $request['title'],
-                'body'          => $request['body'],
-                'description'   => $request['description'],
-                'created_at'    => now()
-            ]);
+        if($permission){
 
-        flash('Success')->success();
+            $this->validateItems($request);
 
-        return redirect('admin/advice/index');
+            DB::table('advices')
+                ->insert([
+                    'title'         => $request['title'],
+                    'body'          => $request['body'],
+                    'description'   => $request['description'],
+                    'created_at'    => now()
+                ]);
+
+            flash('Success')->success();
+
+            return redirect('admin/advice/index');
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
 
     }
 
@@ -65,46 +113,92 @@ class AdviceController extends Controller
     public function delete($id)
     {
 
-        DB::table('advices')
-            ->where('id', $id)
-            ->delete();
 
-        flash('Deleted')->error();
+        $permission = $this->authentication();
 
-        return redirect()->back();
+        if($permission){
+            DB::table('advices')
+                ->where('id', $id)
+                ->delete();
 
+            flash('Deleted')->error();
 
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
 
     }
 
 
     public function edit($id)
     {
-        $advice = DB::table('advices')
-            ->where('id', $id)
-            ->first();
 
-        return view('admin/advice/edit', ['advice' => $advice]);
+
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $advice = DB::table('advices')
+                ->where('id', $id)
+                ->first();
+
+            return view('admin/advice/edit', ['advice' => $advice]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
 
 
     public function store($id, Request $request)
     {
-        $this->validateItems($request);
 
-        DB::table('advices')
-            ->where('id', $id)
-            ->update([
-                'title'         => $request['title'],
-                'body'          => $request['body'],
-                'description'   => $request['description'],
-                'updated_at'    => now()
-            ]);
+        $permission = $this->authentication();
 
-        flash('Success')->success();
+        if($permission){
+
+            $this->validateItems($request);
+
+            DB::table('advices')
+                ->where('id', $id)
+                ->update([
+                    'title'         => $request['title'],
+                    'body'          => $request['body'],
+                    'description'   => $request['description'],
+                    'updated_at'    => now()
+                ]);
+
+            flash('Success')->success();
 
 
-        return redirect('admin/advice/index');
+            return redirect('admin/advice/index');
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
     }
 
 
@@ -189,10 +283,41 @@ class AdviceController extends Controller
 
         }
 
+    }
 
 
+
+
+    public function authentication(){
+
+        $permission = false;
+
+        if(Auth::check()){
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+            if(isset($user->groupRel)){
+
+                foreach ($user->groupRel as $item) {
+
+                    $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                    if ($group->name == 'admin') {
+
+                        $permission = true;
+
+                    }
+                }
+
+            }
+        }
+
+        return $permission;
 
     }
+
 
 
 

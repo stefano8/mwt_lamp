@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Group;
 use App\Image;
 use App\Itinerary;
 use App\News;
 use App\User;
 use App\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ImageController extends Controller
@@ -30,32 +32,85 @@ class ImageController extends Controller
 
     public function index()
     {
-        $image = Image::paginate(10);
 
-        return view('admin/image/index' , ['image' => $image]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $image = Image::paginate(10);
+
+            return view('admin/image/index' , ['image' => $image]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
+
     }
 
     public function create()
     {
-        return view('admin/image/create');
+
+        $permission = $this->authentication();
+
+        if($permission){
+
+
+            return view('admin/image/create');
+
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
 
 
     public function save(Request $request)
     {
+        $permission = $this->authentication();
 
-        $this->validateItems($request);
+        if($permission){
 
-        DB::table('images')
-            ->insert([
-                'title'         => $request['title'],
-                'path'          => $request['path'],
-                'created_at'    => now()
-            ]);
+            $this->validateItems($request);
 
-        flash('Success')->success();
+            DB::table('images')
+                ->insert([
+                    'title'         => $request['title'],
+                    'path'          => $request['path'],
+                    'created_at'    => now()
+                ]);
 
-        return redirect('admin/image/index');
+            flash('Success')->success();
+
+            return redirect('admin/image/index');
+
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
 
     }
 
@@ -63,13 +118,29 @@ class ImageController extends Controller
     public function delete($id)
     {
 
-        DB::table('images')
-            ->where('id', $id)
-            ->delete();
+        $permission = $this->authentication();
 
-        flash('Deleted')->error();
+        if($permission){
 
-        return redirect()->back();
+            DB::table('images')
+                ->where('id', $id)
+                ->delete();
+
+            flash('Deleted')->error();
+
+            return redirect()->back();
+
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
 
 
     }
@@ -77,29 +148,65 @@ class ImageController extends Controller
 
     public function edit($id)
     {
-        $image = DB::table('images')
-            ->where('id', $id)
-            ->first();
 
-        return view('admin/image/edit', ['image' => $image]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $image = DB::table('images')
+                ->where('id', $id)
+                ->first();
+
+            return view('admin/image/edit', ['image' => $image]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
     }
 
 
     public function store($id, Request $request)
     {
-        $this->validateItems($request);
 
-        DB::table('images')
-            ->where('id', $id)
-            ->update([
-                'title'         => $request['title'],
-                'path'          => $request['path'],
-                'updated_at'    => now(),
-            ]);
 
-        flash('Success')->success();
+        $permission = $this->authentication();
 
-        return redirect('admin/image/index');
+        if($permission){
+
+            $this->validateItems($request);
+
+            DB::table('images')
+                ->where('id', $id)
+                ->update([
+                    'title'         => $request['title'],
+                    'path'          => $request['path'],
+                    'updated_at'    => now(),
+                ]);
+
+            flash('Success')->success();
+
+            return redirect('admin/image/index');
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
     }
 
     public function validateItems(Request $request)
@@ -112,28 +219,63 @@ class ImageController extends Controller
 
     public function assignItinerary(){
 
-        $itinerary = Itinerary::paginate(10);
 
-        return view('admin/image/assign/itinerary' , ['itinerary' => $itinerary]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $itinerary = Itinerary::paginate(10);
+
+            return view('admin/image/assign/itinerary' , ['itinerary' => $itinerary]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
 
     }
 
     public function showAssignmentItinerary($id){
 
-        $itinerary = Itinerary::find($id);
-        $imageCount = Image::all()->where('itinerary_id', '=', $id)->count();
+        $permission = $this->authentication();
 
-        $image = Image::all()->where('itinerary_id', '=', $id);
+        if($permission){
 
-        $photo = Image::all();
+            $itinerary = Itinerary::find($id);
+            $imageCount = Image::all()->where('itinerary_id', '=', $id)->count();
 
-        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
-        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
-        return \View::make('admin/image/assign//assignItinerary')
-                    ->with('itinerary', $itinerary)
-                    ->with('image', $image)
-                    ->with('photo', $photo)
-                     ->with('imageCount',$imageCount);
+            $image = Image::all()->where('itinerary_id', '=', $id);
+
+            $photo = Image::all();
+
+            //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+            //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+            return \View::make('admin/image/assign//assignItinerary')
+                ->with('itinerary', $itinerary)
+                ->with('image', $image)
+                ->with('photo', $photo)
+                ->with('imageCount',$imageCount);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
+
 
 
     }
@@ -143,21 +285,43 @@ class ImageController extends Controller
     {
 
 
-        DB::table('images')
-            ->where('id', $image_id)
-            ->where('itinerary_id', $itinerary_id)
-            ->update([
-                'itinerary_id' => null
-            ]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            DB::table('images')
+                ->where('id', $image_id)
+                ->where('itinerary_id', $itinerary_id)
+                ->update([
+                    'itinerary_id' => null
+                ]);
 
 
-        return redirect()->back();
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
+
     }
 
     //
     public function saveAssignmentItinerary(Request $request, $itinerary_id){
 
-        $var = $request['image'];
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $var = $request['image'];
 
 
             DB::table('images')
@@ -167,7 +331,18 @@ class ImageController extends Controller
                     'updated_at' => now(),
                 ]);
 
-        return redirect()->back();
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
 
 
     }
@@ -178,29 +353,61 @@ class ImageController extends Controller
 
     public function assignUser(){
 
-        $user = User::paginate(10);
 
-        return view('admin/image/assign/user' , ['user' => $user]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $user = User::paginate(10);
+
+            return view('admin/image/assign/user' , ['user' => $user]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
 
     }
 
 
     public function showAssignmentUser($id){
 
-        $user = User::find($id);
-        $imageCount = Image::all()->where('user_id', '=', $id)->count();
+        $permission = $this->authentication();
 
-        $image = Image::all()->where('user_id', '=', $id);
+        if($permission){
 
-        $photo = Image::all();
+            $user = User::find($id);
+            $imageCount = Image::all()->where('user_id', '=', $id)->count();
 
-        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
-        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
-        return \View::make('admin/image/assign/assignUser')
-            ->with('user', $user)
-            ->with('image', $image)
-            ->with('photo', $photo)
-            ->with('imageCount',$imageCount );
+            $image = Image::all()->where('user_id', '=', $id);
+
+            $photo = Image::all();
+
+            //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+            //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+            return \View::make('admin/image/assign/assignUser')
+                ->with('user', $user)
+                ->with('image', $image)
+                ->with('photo', $photo)
+                ->with('imageCount',$imageCount );
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
 
 
     }
@@ -209,22 +416,43 @@ class ImageController extends Controller
     public function removeAssignmentUser($user_id,$image_id)
     {
 
+        $permission = $this->authentication();
 
-        DB::table('images')
-            ->where('id', $image_id)
-            ->where('user_id', $user_id)
-            ->update([
-                'user_id' => null
-            ]);
+        if($permission){
+
+            DB::table('images')
+                ->where('id', $image_id)
+                ->where('user_id', $user_id)
+                ->update([
+                    'user_id' => null
+                ]);
 
 
-        return redirect()->back();
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
     }
 
     //
     public function saveAssignmentUser(Request $request, $user_id){
 
-        $var = $request['image'];
+
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $var = $request['image'];
 
 
             DB::table('images')
@@ -234,7 +462,18 @@ class ImageController extends Controller
                     'updated_at' => now(),
                 ]);
 
-        return redirect()->back();
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
 
 
     }
@@ -242,31 +481,64 @@ class ImageController extends Controller
     //image per eventi
     public function assignEvent(){
 
-        $event = Event::paginate(10);
 
-        return view('admin/image/assign/event' , ['event' => $event]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $event = Event::paginate(10);
+
+            return view('admin/image/assign/event' , ['event' => $event]);
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
 
     }
 
 
     public function showAssignmentEvent($id){
 
-        $event = Event::find($id);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $event = Event::find($id);
 
 
-        $imageCount = Image::all()->where('event_id', '=', $id)->count();
+            $imageCount = Image::all()->where('event_id', '=', $id)->count();
 
-        $image = Image::all()->where('event_id', '=', $id);
+            $image = Image::all()->where('event_id', '=', $id);
 
-        $photo = Image::all();
+            $photo = Image::all();
 
-        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
-        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
-        return \View::make('admin/image/assign/assignEvent')
-            ->with('event', $event)
-            ->with('image', $image)
-            ->with('photo', $photo)
-            ->with('imageCount',$imageCount);
+            //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+            //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+            return \View::make('admin/image/assign/assignEvent')
+                ->with('event', $event)
+                ->with('image', $image)
+                ->with('photo', $photo)
+                ->with('imageCount',$imageCount);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
 
 
     }
@@ -275,22 +547,40 @@ class ImageController extends Controller
     public function removeAssignmentEvent($event_id,$image_id)
     {
 
+        $permission = $this->authentication();
 
-        DB::table('images')
-            ->where('id', $image_id)
-            ->where('event_id', $event_id)
-            ->update([
-                'event_id' => null
-            ]);
+        if($permission){
+
+            DB::table('images')
+                ->where('id', $image_id)
+                ->where('event_id', $event_id)
+                ->update([
+                    'event_id' => null
+                ]);
 
 
-        return redirect()->back();
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
 
     //
     public function saveAssignmentEvent(Request $request, $event_id){
 
-        $var = $request['image'];
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $var = $request['image'];
 
 
             DB::table('images')
@@ -300,7 +590,19 @@ class ImageController extends Controller
                     'updated_at' => now(),
                 ]);
 
-        return redirect()->back();
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
 
 
     }
@@ -309,31 +611,64 @@ class ImageController extends Controller
     //image per news
     public function assignNews(){
 
-        $new = News::paginate(10);
 
-        return view('admin/image/assign/news' , ['new' => $new]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $new = News::paginate(10);
+
+            return view('admin/image/assign/news' , ['new' => $new]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
 
     }
 
 
     public function showAssignmentNews($id){
 
-        $new = News::find($id);
-
-        $imageCount = Image::all()->where('new_id', '=', $id)->count();
 
 
-        $image = Image::all()->where('new_id', '=', $id);
+        $permission = $this->authentication();
 
-        $photo = Image::all();
+        if($permission){
 
-        //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
-        //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
-        return \View::make('admin/image/assign/assignNews')
-            ->with('new', $new)
-            ->with('image', $image)
-            ->with('photo', $photo)
-            ->with('imageCount', $imageCount);
+            $new = News::find($id);
+
+            $imageCount = Image::all()->where('new_id', '=', $id)->count();
+
+
+            $image = Image::all()->where('new_id', '=', $id);
+
+            $photo = Image::all();
+
+            //return view('admin/image/assign//assignItinerary', ['itinerary' => $itinerary], ['image' => $image], ['photo' => $photo]);
+            //return route('image.showAssignmentItinerary', $itinerary, $image, $photo );
+            return \View::make('admin/image/assign/assignNews')
+                ->with('new', $new)
+                ->with('image', $image)
+                ->with('photo', $photo)
+                ->with('imageCount', $imageCount);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
 
 
     }
@@ -343,21 +678,41 @@ class ImageController extends Controller
     {
 
 
-        DB::table('images')
-            ->where('id', $image_id)
-            ->where('new_id', $new_id)
-            ->update([
-                'new_id' => null
-            ]);
+        $permission = $this->authentication();
+
+        if($permission){
+            DB::table('images')
+                ->where('id', $image_id)
+                ->where('new_id', $new_id)
+                ->update([
+                    'new_id' => null
+                ]);
 
 
-        return redirect()->back();
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
+
+
 
     //
     public function saveAssignmentNews(Request $request, $new_id){
 
-        $var = $request['image'];
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $var = $request['image'];
 
             DB::table('images')
                 ->where('id', $var)
@@ -366,10 +721,53 @@ class ImageController extends Controller
                     'updated_at' => now(),
                 ]);
 
-        return redirect()->back();
+            return redirect()->back();
+
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
 
 
     }
+
+    public function authentication(){
+
+        $permission = false;
+
+        if(Auth::check()){
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+            if(isset($user->groupRel)){
+
+                foreach ($user->groupRel as $item) {
+
+                    $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                    if ($group->name == 'admin') {
+
+                        $permission = true;
+
+                    }
+                }
+
+            }
+        }
+
+        return $permission;
+
+    }
+
 
 
 

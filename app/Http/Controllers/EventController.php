@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Group;
+use App\Itinerary;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,48 +12,92 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
 
     //backend
 
     public function index()
     {
         $event = Event::paginate(10);
+        $permission = $this->authentication();
 
-        return view('admin/event/index', ['event' => $event]);
+        if($permission){
+
+            return view('admin/event/index', ['event' => $event]);
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
+
+
     }
 
 
     public function create()
     {
-        $itinerary = DB::table('itineraries')->get();
 
-        return view('admin/event/create', ['itinerary' => $itinerary]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $itinerary = DB::table('itineraries')->get();
+
+            return view('admin/event/create', ['itinerary' => $itinerary]);
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
 
 
     public function save(Request $request)
     {
-        $this->validateItems($request);
+        $permission = $this->authentication();
 
-        DB::table('events')
-            ->insert([
-                'date' => now(),
-                'title' => $request['title'],
-                'body' => $request['body'],
-                'address' => $request['address'],
-                'description' => $request['description'],
-                'itinerary_id' => $request['itinerary_id'],  //il valore della selectbox
-                'created_at' => now()
-            ]);
+        if($permission){
 
-        flash('Success')->success();
+            $this->validateItems($request);
 
-        return redirect('admin/event/index');
+            DB::table('events')
+                ->insert([
+                    'date' => now(),
+                    'title' => $request['title'],
+                    'body' => $request['body'],
+                    'address' => $request['address'],
+                    'description' => $request['description'],
+                    'itinerary_id' => $request['itinerary_id'],  //il valore della selectbox
+                    'created_at' => now()
+                ]);
+
+            flash('Success')->success();
+
+            return redirect('admin/event/index');
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
 
     }
 
@@ -65,48 +110,101 @@ class EventController extends Controller
      */
     public function delete($id)
     {
-        DB::table('events')
-            ->where('id', $id)
-            ->delete();
+        $permission = $this->authentication();
 
-        flash('Deleted')->error();
+        if($permission){
 
-        return redirect()->back();
+            DB::table('events')
+                ->where('id', $id)
+                ->delete();
+
+            flash('Deleted')->error();
+
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
+
+
     }
 
     public function edit($id)
     {
-        $event = DB::table('events')
-            ->select('*')
-            ->where('id', $id)
-            ->first();
+        $permission = $this->authentication();
 
-        $itinerary = DB::table('itineraries')
-            ->get();
+        if($permission){
+
+            $event = DB::table('events')
+                ->select('*')
+                ->where('id', $id)
+                ->first();
+
+            $itinerary = DB::table('itineraries')
+                ->get();
 
 
-        return view('admin/event/edit', ['event' => $event], ['itinerary' => $itinerary]);
+            return view('admin/event/edit', ['event' => $event], ['itinerary' => $itinerary]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
+
+
+
     }
 
 
     public function store($id, Request $request)
     {
-        $this->validateItems($request);
 
-        DB::table('events')
-            ->where('id', $id)
-            ->update([
-                'title' => $request['title'],
-                'body' => $request['body'],
-                'address' => $request['address'],
-                'description' => $request['description'],
-                'itinerary_id' => $request['itinerary_id'],
-                'updated_at' => now(),
-            ]);
+        $permission = $this->authentication();
 
-        flash('Success')->success();
+        if($permission){
 
-        return redirect('admin/event/index');
+            $this->validateItems($request);
+
+            DB::table('events')
+                ->where('id', $id)
+                ->update([
+                    'title' => $request['title'],
+                    'body' => $request['body'],
+                    'address' => $request['address'],
+                    'description' => $request['description'],
+                    'itinerary_id' => $request['itinerary_id'],
+                    'updated_at' => now(),
+                ]);
+
+            flash('Success')->success();
+
+            return redirect('admin/event/index');
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
 
 
@@ -194,8 +292,38 @@ class EventController extends Controller
         }
 
 
+    }
 
+
+    public function authentication(){
+
+        $permission = false;
+
+        if(Auth::check()){
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+            if(isset($user->groupRel)){
+
+                foreach ($user->groupRel as $item) {
+
+                    $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                    if ($group->name == 'admin') {
+
+                        $permission = true;
+
+                    }
+                }
+
+            }
+        }
+
+        return $permission;
 
     }
+
 
 }

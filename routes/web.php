@@ -36,7 +36,7 @@ Route::get('/news/single/{newsId}', 'NewsController@singleNews')->name('news.sin
 Route::get('/search','ItineraryController@search')->name('search');
 
 //rotte per itinerari
-Route::get('/itineraries/{itineraryId}','ItineraryController@getItineraries')->name('itinerary.list');
+Route::get('/itineraries','ItineraryController@getItineraries')->name('itinerary.list');
 Route::get('/itineraries/{itineraryId}/add','ItineraryController@addToWishlist')->name('itinerary.addwishlist')->middleware('auth');
 Route::get('/itineraries/{itineraryId}/remove','ItineraryController@removeToWishlist')->name('itinerary.removewishlist')->middleware('auth');
 Route::get('/itineraries/{itineraryId}/seen','ItineraryController@addToCollection')->name('itinerary.addcollection')->middleware('auth');
@@ -44,7 +44,7 @@ Route::get('/itineraries/{itineraryId}/unseen','ItineraryController@removeToColl
 Route::get('/single/{itineraryId}','ItineraryController@singleItinerary')->name('itinerary.single');
 
 //rotte per voti
-Route::get('/single/{itineraryId}/{userId}/{value}','ItineraryController@addvote')->name('itinerary.addvote')->middleware('auth');
+Route::get('/single/{itineraryId}/{userId}/{value}','ItineraryController@addvote')->name('itinerary.addvote');
 
 //rotta news
 Route::get('/news','NewsController@getNews')->name('newsf');
@@ -59,7 +59,7 @@ Route::get('/itinerario/{nameItinerary}', 'ItineraryController@showSingleItinera
 
 //recensioni
 Route::get('single', 'ReviewController@showReview')->name('review.showreview');
-Route::get('{itinerary_id}/single', 'ReviewController@insert')->name('review.insert')->middleware('auth');
+Route::get('{itinerary_id}/single', 'ReviewController@insert')->name('review.insert');
 
 
 

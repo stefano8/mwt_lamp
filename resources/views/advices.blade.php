@@ -19,7 +19,7 @@
                                 @foreach($advices as $advice)
                                 <div class="news">
                                     <div class="date" style="background-color: #00a7d0; color: white; border-radius: 15px;">MT</div>
-                                    <h3><a href="/mwt_1718/public/advices/single/{{$advice->id}}">{{$advice->title}}</a></h3>
+                                    <h3><a href="/advices/single/{{$advice->id}}">{{$advice->title}}</a></h3>
                                     <p>{{$advice->body}}</p>
                                 </div>
                                 @endforeach

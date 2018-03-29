@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Group;
 use App\Itinerary;
 use App\User;
@@ -29,15 +30,20 @@ class HomeController extends Controller
     public function index()
     {
 
-        $var = $this->authentication();
+        $permission = $this->authentication();
 
-        if($var){
+        if($permission){
 
             return view('home');
 
         }else{
 
-            return view('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
     }
@@ -58,14 +64,15 @@ class HomeController extends Controller
 
             if(isset($user->groupRel)){
 
-                foreach ($user->groupRel as $item)
+                foreach ($user->groupRel as $item) {
 
                     $group = Group::all()->where('id', $item->pivot->group_id)->first();
 
-                if ($group->name == 'admin') {
+                    if ($group->name == 'admin') {
 
-                    $permission = true;
+                        $permission = true;
 
+                    }
                 }
 
             }

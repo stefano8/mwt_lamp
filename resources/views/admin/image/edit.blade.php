@@ -14,8 +14,7 @@
             </h3>
         </div>
         <div class="panel-body">
-            <form id="itineraryForm" class="form-horizontal" action=" {{route('image.store', $image->id)}} "
-                  method="get">
+            <form id="itineraryForm" class="form-horizontal" action=" {{route('image.store', $image->id)}}"method="get">
                 <fieldset>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="title">Title</label>

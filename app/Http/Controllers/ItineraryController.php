@@ -28,10 +28,6 @@ class ItineraryController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
 
     //backend
@@ -40,15 +36,20 @@ class ItineraryController extends Controller
     {
         $itinerary = Itinerary::paginate(10);
 
-        $var = $this->authentication();
+        $permission = $this->authentication();
 
-        if($var){
+        if($permission){
 
             return view('admin/itinerary/index', ['itinerary' => $itinerary]);
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
@@ -58,15 +59,20 @@ class ItineraryController extends Controller
     public function create()
     {
 
-        $var = $this->authentication();
+        $permission = $this->authentication();
 
-        if($var){
+        if($permission){
 
             return view('admin/itinerary/create');
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
@@ -113,9 +119,9 @@ class ItineraryController extends Controller
     public function delete($id)
     {
 
-        $var = $this->authentication();
+        $permission = $this->authentication();
 
-        if($var){
+        if($permission){
             $itinerary = Itinerary::find($id);
 
             //delete categorie_itinerari
@@ -165,7 +171,12 @@ class ItineraryController extends Controller
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
@@ -175,19 +186,26 @@ class ItineraryController extends Controller
 
     public function edit($id)
     {
-        $itinerary = DB::table('itineraries')
-            ->where('id', $id)
-            ->first();
 
-        $var = $this->authentication();
 
-        if($var){
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $itinerary = DB::table('itineraries')
+                ->where('id', $id)
+                ->first();
 
             return view('admin/itinerary/edit', ['itinerary' => $itinerary]);
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
@@ -199,10 +217,10 @@ class ItineraryController extends Controller
     public function store($id, Request $request)
     {
 
-        $var = $this->authentication();
+        $permission = $this->authentication();
 
 
-        if($var){
+        if($permission){
 
             $this->validateItems($request);
 
@@ -223,7 +241,12 @@ class ItineraryController extends Controller
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
@@ -259,17 +282,22 @@ class ItineraryController extends Controller
 
         $itinerary = Itinerary::find($id);
 
-        $var = $this->authentication();
+        $permission = $this->authentication();
 
 
-        if($var){
+        if($permission){
 
             return view('admin/itinerary/assign', ['itinerary' => $itinerary], ['category' => $category]);
 
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
@@ -281,10 +309,10 @@ class ItineraryController extends Controller
     public function saveAssignment(Request $request)
     {
 
-        $autentica = $this->authentication();
+        $permission = $this->authentication();
 
 
-        if($autentica){
+        if($permission){
 
             $ngroup = Category::all()->count();
 
@@ -332,7 +360,12 @@ class ItineraryController extends Controller
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
 
@@ -344,9 +377,9 @@ class ItineraryController extends Controller
     //rimuove il gruppo selezionato
     public function removeAssignment($itineraryId, $categoryId)
     {
-        $autentica = $this->authentication();
+        $permission = $this->authentication();
 
-        if($autentica) {
+        if($permission) {
 
             $itinerary = Itinerary::find($itineraryId);
 
@@ -358,7 +391,12 @@ class ItineraryController extends Controller
 
         }else{
 
-            return view ('auth.login');
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
         }
 
     }
@@ -366,16 +404,13 @@ class ItineraryController extends Controller
 
     //frontend
 
-    public function getItineraries($id)
+    public function getItineraries()
     {
 
         $itinerary = Itinerary::paginate(10);
 
         $category = Category::all();
 
-        $id = Auth::user()->id;
-
-        $user = User::find($id);
 
         $permission = false;
 
@@ -394,8 +429,10 @@ class ItineraryController extends Controller
                 if ($group->name == 'admin') {
 
                     $permission = true;
+
                 }
             }
+
             return \Illuminate\Support\Facades\View::make('itineraries')
                 ->with('itineraries', $itinerary)
                 ->with('user', $user)
@@ -407,8 +444,8 @@ class ItineraryController extends Controller
 
         return View::make('itineraries')
             ->with('itineraries', $itinerary)
-            ->with('category', $category)
-            ->with('user', $user);
+            ->with('category', $category);
+
     }
 
 
@@ -428,14 +465,6 @@ class ItineraryController extends Controller
         $image = DB::table('images')
             ->where('itinerary_id', '=', $id)->get();
 
-        $user_id = Auth::user()->id;
-
-        $user = User::find($user_id);
-
-        $voteUser = Vote::all()
-            ->where('itinerary_id', $id)
-            ->where('user_id', $user_id)
-            ->first();
 
         $mediaVote = Vote::all()
             ->where('itinerary_id', $id);
@@ -458,23 +487,33 @@ class ItineraryController extends Controller
             $media = 0;
         }
 
-        $bottoneWishlist = Wishlist::all()
-            ->where('user_id', $user_id)
-            ->where('itinerary_id', $id)
-            ->first();
 
-        $bottoneCollection = \App\View::all()
-            ->where('user_id', $user_id)
-            ->where('itinerary_id', $id)
-            ->first();
+
+
 
         $permission = false;
 
         if (Auth::check()) {
+            $var = 1;
 
-            $id = Auth::user()->id;
+            $user_id = Auth::user()->id;
 
-            $user = User::find($id);
+            $user = User::find($user_id);
+
+            $voteUser = Vote::all()
+                ->where('itinerary_id', $id)
+                ->where('user_id', $user_id)
+                ->first();
+
+            $bottoneWishlist = Wishlist::all()
+                ->where('user_id', $user_id)
+                ->where('itinerary_id', $id)
+                ->first();
+
+            $bottoneCollection = \App\View::all()
+                ->where('user_id', $user_id)
+                ->where('itinerary_id', $id)
+                ->first();
 
 
 
@@ -488,6 +527,8 @@ class ItineraryController extends Controller
                 }
             }
 
+
+
             return View::make('single')
                 ->with('itinerary', $itinerary)
                 ->with('review', $review)
@@ -499,19 +540,26 @@ class ItineraryController extends Controller
                 ->with('bottoneCollection', $bottoneCollection)
                 ->with('bottoneWishlist', $bottoneWishlist)
                 ->with('user', $user)
+                ->with('var', $var)
                 ->with('permission', $permission);
+
         }else {
 
+            $var = 0;
             return View::make('single')
                 ->with('itinerary', $itinerary)
                 ->with('review', $review)
                 ->with('image', $image)
-                ->with('user', $user)
-                ->with('voteUser', $voteUser)
+                //->with('user', $user)
+                //->with('voteUser', $voteUser)
                 ->with('media', $media)
-                ->with('category', $category)
-                ->with('bottoneCollection', $bottoneCollection)
-                ->with('bottoneWishlist', $bottoneWishlist);
+                ->with('var', $var)
+                ->with('category', $category);
+                //->with('bottoneCollection', $bottoneCollection)
+            // ->with('bottoneWishlist', $bottoneWishlist);
+
+            //vanno tolti perchè sono cose che servono solo in caso sei loggato, e in più vanno fatti i controlli con isset nel
+            //nel blade altrimenti da errore
 
         }
 
@@ -521,33 +569,86 @@ class ItineraryController extends Controller
     //funzione per dare un nuovo voto oppure modificare il voto precedente
     public function addvote($itineraryId, $userId, $value)
     {
+        if (Auth::check()) {
 
-        $voteSingle = Vote::all()
-            ->where('itinerary_id', $itineraryId)
-            ->where('user_id', $userId)
-            ->first();
-
-        if ($voteSingle != null) {
-            DB::table('votes')
+            $voteSingle = Vote::all()
                 ->where('itinerary_id', $itineraryId)
                 ->where('user_id', $userId)
-                ->update([
-                    'vote' => $value,
-                    'updated_at' => now(),
-                ]);
+                ->first();
 
-        } else {
-            DB::table('votes')
-                ->insert([
-                    'vote' => $value,
-                    'itinerary_id' => $itineraryId,
-                    'user_id' => $userId,
-                    'created_at' => now(),
+            if ($voteSingle != null) {
+                DB::table('votes')
+                    ->where('itinerary_id', $itineraryId)
+                    ->where('user_id', $userId)
+                    ->update([
+                        'vote' => $value,
+                        'updated_at' => now(),
+                    ]);
 
-                ]);
+            } else {
+                DB::table('votes')
+                    ->insert([
+                        'vote' => $value,
+                        'itinerary_id' => $itineraryId,
+                        'user_id' => $userId,
+                        'created_at' => now(),
+
+                    ]);
+            }
+
+            return redirect()->back();
+
+        }else{
+
+            /*$voteUser = Vote::all()
+                ->where('itinerary_id', $itineraryId)
+                ->where('user_id', $userId)
+                ->first();*/
+
+            $itinerary = Itinerary::find($itineraryId);
+            $review = DB::table('reviews')
+                ->where('approved', 1)
+                ->where('itinerary_id', '=', $itineraryId)
+                ->get();
+
+            $image = DB::table('images')
+                ->where('itinerary_id', '=', $itineraryId)->get();
+
+
+            $mediaVote = Vote::all()
+                ->where('itinerary_id', $itineraryId);
+
+            $voteNumber = Vote::all()
+                ->where('itinerary_id', $itineraryId)
+                ->count();
+
+            $somma = 0;
+
+            foreach ($mediaVote as $vote) {
+                $somma += $vote->vote;
+            }
+
+
+            if ($voteNumber !== 0) {
+
+                $media = ((int)($somma / $voteNumber));
+            } else {
+                $media = 0;
+            }
+            $category = DB::table('categories')->get();
+            $var = 0;
+
+            return View::make('single')
+                ->with('itinerary', $itinerary)
+                ->with('review', $review)
+                ->with('image', $image)
+                //->with('user', $user)
+                ->with('var', $var)
+                ->with('media', $media)
+                ->with('category', $category);
+            //->with('bottoneCollection', $bottoneCollection)
+            // ->with('bottoneWishlist', $bottoneWishlist);
         }
-
-        return redirect()->back();
     }
 
 
@@ -837,14 +938,15 @@ class ItineraryController extends Controller
 
             if(isset($user->groupRel)){
 
-                foreach ($user->groupRel as $item)
+                foreach ($user->groupRel as $item) {
 
                     $group = Group::all()->where('id', $item->pivot->group_id)->first();
 
-                if ($group->name == 'admin') {
+                    if ($group->name == 'admin') {
 
-                    $permission = true;
+                        $permission = true;
 
+                    }
                 }
 
             }
@@ -853,7 +955,6 @@ class ItineraryController extends Controller
         return $permission;
 
     }
-
 
 }
 

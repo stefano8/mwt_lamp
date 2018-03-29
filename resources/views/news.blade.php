@@ -18,7 +18,7 @@
                     <div class="content col-md-8">
                         @foreach($news as $newss)
                         <div class="post">
-                                <h2 class="entry-title"><a href="/mwt_1718/public/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
+                                <h2 class="entry-title"><a href="/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
                                 <div class="featured-image"><img src="" alt=""></div>
                                 <p>{{$newss->body}}</p>
                                 <a href="#" class="button">Read more</a>
@@ -41,7 +41,7 @@
                             <h3 class="widget-title">Itineraries Categories</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
-                                    <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                                    <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
 
                             </ul>

@@ -2,51 +2,96 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
+use App\Group;
+use App\Itinerary;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
 
     //backend
 
     public function index()
     {
-        $city = DB::table('cities')->paginate(10);
 
-        return view('admin/city/index', ['city' => $city]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $city = DB::table('cities')->paginate(10);
+
+            return view('admin/city/index', ['city' => $city]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
 
 
     public function create()
-
     {
-        $region = DB::table('regions')->get();
 
-        return view('admin/city/create', ['region' => $region]);
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $region = DB::table('regions')->get();
+
+            return view('admin/city/create', ['region' => $region]);
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
     }
 
 
     public function save(Request $request)
     {
-        $this->validateItems($request);
 
-        DB::table('cities')
-            ->insert([
-                'name'              => $request['name'],
-                'region_id'         => $request['region_id'],  //il valore della selectbox
-                'created_at'        => now()
-            ]);
+        $permission = $this->authentication();
 
-        flash('Success')->success();
+        if($permission){
 
-        return redirect('admin/city/index');
+            $this->validateItems($request);
+
+            DB::table('cities')
+                ->insert([
+                    'name'              => $request['name'],
+                    'region_id'         => $request['region_id'],  //il valore della selectbox
+                    'created_at'        => now()
+                ]);
+
+            flash('Success')->success();
+
+            return redirect('admin/city/index');
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
 
     }
 
@@ -58,46 +103,96 @@ class CityController extends Controller
      */
     public function delete($id)
     {
-        DB::table('cities')
-            ->where('id', $id)
-            ->delete();
 
-        flash('Deleted')->error();
+        $permission = $this->authentication();
 
-        return redirect()->back();
+        if($permission){
+
+            DB::table('cities')
+                ->where('id', $id)
+                ->delete();
+
+            flash('Deleted')->error();
+
+            return redirect()->back();
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
     }
 
     public function edit($id)
     {
-        $city = DB::table('cities')
-            ->select('*')
-            ->where('id', $id)
-            ->first();
 
-        $region = DB::table('regions')
-            ->get();
+        $permission = $this->authentication();
+
+        if($permission){
+
+            $city = DB::table('cities')
+                ->select('*')
+                ->where('id', $id)
+                ->first();
+
+            $region = DB::table('regions')
+                ->get();
 
 
 
-        return view('admin/city/edit', ['city' => $city], ['region' => $region]);
+            return view('admin/city/edit', ['city' => $city], ['region' => $region]);
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
     }
 
 
     public function store($id, Request $request)
     {
-        $this->validateItems($request);
 
-        DB::table('cities')
-            ->where('id', $id)
-            ->update([
-                'name'              => $request['name'],
-                'region_id'         => $request['reg'],
-                'updated_at'        => now(),
-            ]);
+        $permission = $this->authentication();
 
-        flash('Success')->success();
+        if($permission){
 
-        return redirect('admin/city/index');
+            $this->validateItems($request);
+
+            DB::table('cities')
+                ->where('id', $id)
+                ->update([
+                    'name'              => $request['name'],
+                    'region_id'         => $request['reg'],
+                    'updated_at'        => now(),
+                ]);
+
+            flash('Success')->success();
+
+            return redirect('admin/city/index');
+
+        }else{
+
+            $itineraries = Itinerary::take(4)->get();
+            $events = Event::take(3)->get();
+            return \Illuminate\Support\Facades\View::make('welcome')
+                ->with('permission', $permission )
+                ->with('itineraries', $itineraries)
+                ->with('events', $events);
+        }
+
+
     }
 
 
@@ -109,6 +204,38 @@ class CityController extends Controller
         ]);
     }
 
+
+
+
+    public function authentication(){
+
+        $permission = false;
+
+        if(Auth::check()){
+
+            $id = Auth::user()->id;
+
+            $user = User::find($id);
+
+            if(isset($user->groupRel)){
+
+                foreach ($user->groupRel as $item) {
+
+                    $group = Group::all()->where('id', $item->pivot->group_id)->first();
+
+                    if ($group->name == 'admin') {
+
+                        $permission = true;
+
+                    }
+                }
+
+            }
+        }
+
+        return $permission;
+
+    }
 
 }
 
