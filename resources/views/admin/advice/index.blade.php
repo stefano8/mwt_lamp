@@ -52,7 +52,7 @@
                                     <tr role="row" class="odd" data-id="1">
                                         <td>{{ $advices->id }}</td>
                                         <td>{{ $advices->title }}</td>
-                                        <td style="display: inline-block; width: 200px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{ $advices->body }}</td>
+                                        <td>{{ $advices->body }}</td>
                                         <td>{{ $advices->description}}</td>
 
                                         <td>

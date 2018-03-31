@@ -116,7 +116,14 @@
                             @foreach($itineraries as $itinerary)
                             <div class="col-md-3 col-sm-6">
                                 <div class="live-camera">
+
+                                    @if(!isset($itinerary->itineraryImage()->first()->path))
+                                        <figure class="live-camera-cover"><img style="height: 150px; width: 150px;" src="/images/montain.jpg"></figure>
+                                    @else
+
                                     <figure class="live-camera-cover"><a href="{{route('itinerary.single', $itinerary->id)}}"><img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></a></figure>
+
+                                    @endif
                                     <h3 class="location"><a href="{{route('itinerary.single', $itinerary->id)}}"> {{$itinerary->name}}</a></h3>
                                 </div>
                             </div>
@@ -147,16 +154,16 @@
                     <div class="container">
                         <div class="col-md-5">
                             <div class="contact-details">
-                                <div class="map" data-latitude="-6.897789" data-longitude="107.621735"></div>
+                                <div class="map" data-latitude="45.465454" data-longitude="9.186515999999983"></div>
                                 <div class="contact-info">
                                     <address>
-                                        <img src="images/icon-marker.png" alt="">
+                                        <img src="/images/icon-marker.png" alt="">
                                         <p>Company CorsDiS <br>
                                             via Federico Trecco 8, L'Aquila</p>
                                     </address>
 
-                                    <a href="#"><img src="images/icon-phone.png" alt="">+1 800 314 235</a>
-                                    <a href="#"><img src="images/icon-envelope.png" alt=""></a>
+                                    <a href="#"><img src="/images/icon-phone.png" alt="">+1 800 314 235</a>
+                                    <a href="#"><img src="/images/icon-envelope.png" alt=""></a>
                                 </div>
                             </div>
                         </div>

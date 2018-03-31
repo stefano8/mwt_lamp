@@ -74,9 +74,16 @@
                                 <div class="photo">
 
                                     <div class="photo-preview photo-detail">
+                                        @if(!isset($itinerary->itineraryImage()->first()->path))
+                                            <img style="width: 175px; height: 190px;" src="/images/montain.jpg">
+                                        @else
+
 
                                       <a href="{{route('itinerary.single', $itinerary->id)}}"><img src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"
                                                         style="width: 175px; height: 190px;"></a>
+
+
+                                        @endif
                                     </div>
 
 
