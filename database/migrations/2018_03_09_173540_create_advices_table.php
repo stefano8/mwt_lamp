@@ -19,6 +19,7 @@ class CreateAdvicesTable extends Migration
             $table->text('body');
             $table->text('description');
             $table->timestamps();
+
         });
     }
 

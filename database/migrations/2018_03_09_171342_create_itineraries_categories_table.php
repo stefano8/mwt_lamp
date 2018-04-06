@@ -20,6 +20,7 @@ class CreateItinerariesCategoriesTable extends Migration
             $table->foreign('itinerary_id')->references('id')->on('itineraries');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
+
         });
     }
 

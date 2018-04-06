@@ -16,6 +16,7 @@ class AddForeignKeyToEventsTable extends Migration
         Schema::table('events', function (Blueprint $table) {
             $table->integer('itinerary_id')->unsigned()->nullable();
             $table->foreign('itinerary_id')->references('id')->on('itineraries');
+
         });
     }
 

@@ -18,6 +18,7 @@ class AddForeignKeyToVotesTable extends Migration
             $table->integer('itinerary_id')->unsigned()->nullable();
 
             $table->foreign('itinerary_id')->references('id')->on('itineraries');
+
         });
     }
 

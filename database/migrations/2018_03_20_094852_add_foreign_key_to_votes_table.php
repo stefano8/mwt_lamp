@@ -16,6 +16,7 @@ class AddForeignKeyToVotesTable extends Migration
         Schema::table('votes', function (Blueprint $table) {
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

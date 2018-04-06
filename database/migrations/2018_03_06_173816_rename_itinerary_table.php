@@ -14,6 +14,7 @@ class RenameItineraryTable extends Migration
     public function up()
     {
         Schema::rename('itinerary', 'itineraries');
+
     }
 
     /**

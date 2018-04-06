@@ -17,6 +17,7 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->text('information');
             $table->timestamps();
+
         });
     }
 

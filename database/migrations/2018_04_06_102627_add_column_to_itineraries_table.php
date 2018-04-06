@@ -16,6 +16,7 @@ class AddColumnToItinerariesTable extends Migration
         Schema::table('itineraries', function (Blueprint $table) {
             $table->double('latitude');
             $table->double('longitude');
+
         });
     }
 

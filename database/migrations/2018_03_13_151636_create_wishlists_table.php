@@ -20,6 +20,7 @@ class CreateWishlistsTable extends Migration
             $table->foreign('itinerary_id')->references('id')->on('itineraries');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+
         });
     }
 

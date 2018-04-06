@@ -19,6 +19,7 @@ class CreateGroupsTable extends Migration
             $table->text('description');
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 

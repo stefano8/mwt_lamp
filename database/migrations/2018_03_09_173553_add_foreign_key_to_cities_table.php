@@ -16,6 +16,7 @@ class AddForeignKeyToCitiesTable extends Migration
         Schema::table('cities', function (Blueprint $table) {
             $table->integer('region_id')->unsigned()->nullable();
             $table->foreign('region_id')->references('id')->on('regions');
+
         });
     }
 

@@ -15,6 +15,7 @@ class AddDurationToItineraryTable extends Migration
     {
         Schema::table('itineraries', function (Blueprint $table) {
             $table->double('duration');
+
         });
     }
 

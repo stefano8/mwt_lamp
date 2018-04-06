@@ -20,6 +20,7 @@ class CreateItineraryTable extends Migration
             $table->double('difference');
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 

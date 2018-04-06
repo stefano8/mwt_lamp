@@ -18,6 +18,7 @@ class AddForeignKeyToNewsTable extends Migration
             $table->foreign('image_id')->references('id')->on('images');
             $table->integer('itinerary_id')->unsigned()->nullable();
             $table->foreign('itinerary_id')->references('id')->on('itineraries');
+
         });
     }
 

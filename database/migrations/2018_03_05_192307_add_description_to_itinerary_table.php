@@ -15,6 +15,7 @@ class AddDescriptionToItineraryTable extends Migration
     {
         Schema::table('itinerary', function (Blueprint $table) {
             $table->text('description');
+
         });
     }
 

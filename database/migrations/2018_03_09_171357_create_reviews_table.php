@@ -20,7 +20,6 @@ class CreateReviewsTable extends Migration
             $table->text('body');
             $table->tinyInteger('approved');
             $table->timestamps();
-
         });
     }
 

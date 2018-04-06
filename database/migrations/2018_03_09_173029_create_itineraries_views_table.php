@@ -20,6 +20,7 @@ class CreateItinerariesViewsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('itinerary_id')->references('id')->on('itineraries');
             $table->timestamps();
+
         });
     }
 
