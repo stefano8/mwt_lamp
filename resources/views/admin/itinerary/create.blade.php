@@ -41,6 +41,16 @@
                 <div class="col-md-9">
                     <input id="duration" name="duration" type="text" placeholder="Duration" class="form-control" required></div>
             </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="latitude">Latitude</label>
+                <div class="col-md-9">
+                    <input id="latitude" name="latitude" type="text" placeholder="Latitude" class="form-control" required></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="longitude">Longitude</label>
+                <div class="col-md-9">
+                    <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="form-control" required></div>
+            </div>
 
 
             <!-- Form actions -->

@@ -42,6 +42,20 @@
                                    class="form-control" required></div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-3 control-label" for="message">Latitude</label>
+                        <div class="col-md-9">
+                            <input class="form-control resize_vertical" id="latitude" name="latitude"
+                                   value="{{$itinerary->latitude}}" rows="5">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="message">Longitude</label>
+                        <div class="col-md-9">
+                            <input class="form-control resize_vertical" id="longitude" name="longitude"
+                                   value="{{$itinerary->longitude}}" rows="5">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-3 control-label" for="message">Description</label>
                         <div class="col-md-9">
                             <input class="form-control resize_vertical" id="description" name="description"

@@ -96,7 +96,9 @@ class ItineraryController extends Controller
                     'difference' => $request['difference'],
                     'description' => $request['description'],
                     'duration' => $request['duration'],
-                    'created_at' => now()
+                    'latitude' => $request['latitude'],
+                    'longitude' => $request['longitude'],
+                    'created_at' => now(),
                 ]);
 
             flash('Success')->success();
@@ -234,6 +236,8 @@ class ItineraryController extends Controller
                     'difference' => $request['difference'],
                     'description' => $request['description'],
                     'duration' => $request['duration'],
+                    'latitude' => $request['latitude'],
+                    'longitude' => $request['longitude'],
                     'updated_at' => now()
                 ]);
 
@@ -260,10 +264,12 @@ class ItineraryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'difficolty' => 'required',
-            'difference' => 'required',
-            'description' => 'required',
-            'duration' => 'required',
+            'difficolty'    => 'required',
+            'difference'    => 'required',
+            'description'   => 'required',
+            'duration'      => 'required',
+            'latitude'      => 'required',
+            'longitude'     => 'required',
         ]);
     }
 
@@ -455,9 +461,7 @@ class ItineraryController extends Controller
     public function singleItinerary($id)
     {
 
-        Mapper::map(52.381128999999990000, 0.470085000000040000)->circle([['latitude' => 52.381128999999990000, 'longitude' => 0.470085000000040000]], ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 2, 'fillColor' => 'red', 'radius' => 1000]);
-
-       // Mapper::map(42.35437, 13.39622)->polyline([['latitude' => 42.35437, 'longitude' => 13.39622], ['latitude' =>  42.467499, 'longitude' => 13.387123]], ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 2]);
+        Mapper::map(42.5032400, 13.6572100)->circle([['latitude' => 42.5032400, 'longitude' => 13.6572100]], ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 200, 'fillColor' => 'red', 'radius' => 1000]);
 
         $itinerary = DB::table('itineraries')
             ->where('id', $id)->first();

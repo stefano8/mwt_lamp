@@ -132,14 +132,7 @@
                                     <img src="{{$images->path}}" alt="foto"
                                          style="width: 300px; height: 223px;"> {{--src="{{URL::asset($images->path)}}"--}}
 
-
                                 </figure>
-
-                                    <div style="width: 300px; height: 200px;">
-                                        {!! Mapper::render() !!}
-                                    </div>
-
-
                             @endforeach
 
                         </div>
@@ -363,6 +356,15 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="sidebar col-md-3 ">
+                <div class="widget" style="background-color: transparent;">
+                <div style="width: 350px; height: 250px;">
+                    {!! Mapper::render() !!}
+                </div>
+            </div>
+            </div>
+
 
 
             <div class="sidebar col-md-3 col-md-offset-1">
