@@ -146,6 +146,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        /*
+         * Other Package Service Providers...
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
 
 
@@ -153,6 +157,7 @@ return [
          * Package Service Providers...
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -163,7 +168,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Laracasts\Flash\FlashServiceProvider::class,
+
+
+
+
 
     ],
 
