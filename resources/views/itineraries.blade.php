@@ -38,7 +38,7 @@
 
                     <div class="country filter-control">
                         <form action="{{route('search')}}">
-                            <input style="background-color: transparent; color: white;" type="text" size="160%"
+                            <input style="background-color: transparent; color: white;" type="text" size="170%"
                                    name="itinerary_name" id="itinerary_name" placeholder="Find itinerary...">
                             <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                             <!--token che si ha in sessione-->

@@ -13,8 +13,10 @@
 
         <div class="fullwidth-block">
             <div class="container">
-                <div class="fullwidth-block">
-                        <div class="">
+
+                <div class="fullwidth-block" data-bg-color="#262936">
+                    <div class="container">
+
                             <div class="col-md-12">
                                 @foreach($advices as $advice)
                                 <div class="news">
@@ -25,10 +27,13 @@
                                 @endforeach
                             </div>
 
-                        </div>
-                </div>
+
+                    </div>
+
+                <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$advices->links('vendor.pagination.semantic-ui')}}</div>
             </div>
-            <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$advices->links('vendor.pagination.semantic-ui')}}</div>
+
+            </div>
 
         </div>
 

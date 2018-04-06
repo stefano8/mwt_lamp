@@ -16,10 +16,12 @@ use App\Itinerary;
 use App\User;
 use App\Vote;
 use App\Wishlist;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+
 
 class ItineraryController extends Controller
 {
@@ -452,6 +454,11 @@ class ItineraryController extends Controller
     //funzione per mostare la media del voto su ogni itinerario
     public function singleItinerary($id)
     {
+
+        Mapper::map(52.381128999999990000, 0.470085000000040000)->circle([['latitude' => 52.381128999999990000, 'longitude' => 0.470085000000040000]], ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 2, 'fillColor' => 'red', 'radius' => 1000]);
+
+       // Mapper::map(42.35437, 13.39622)->polyline([['latitude' => 42.35437, 'longitude' => 13.39622], ['latitude' =>  42.467499, 'longitude' => 13.387123]], ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 2]);
+
         $itinerary = DB::table('itineraries')
             ->where('id', $id)->first();
 
@@ -955,6 +962,8 @@ class ItineraryController extends Controller
         return $permission;
 
     }
+
+
 
 }
 

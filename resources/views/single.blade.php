@@ -132,10 +132,19 @@
                                     <img src="{{$images->path}}" alt="foto"
                                          style="width: 300px; height: 223px;"> {{--src="{{URL::asset($images->path)}}"--}}
 
+
                                 </figure>
+
+                                    <div style="width: 300px; height: 200px;">
+                                        {!! Mapper::render() !!}
+                                    </div>
+
+
                             @endforeach
 
                         </div>
+
+
 
                         <div class="entry-content">
                             <p>{{$itinerary->description}}</p>
