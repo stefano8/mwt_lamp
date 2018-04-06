@@ -154,7 +154,7 @@
                     <div class="container">
                         <div class="col-md-5">
                             <div class="contact-details">
-                                <div class="map" data-latitude="45.465454" data-longitude="9.186515999999983"></div>
+                                <div class="map" data-latitude="42.3505500" data-longitude="13.3995400"></div>
                                 <div class="contact-info">
                                     <address>
                                         <img src="/images/icon-marker.png" alt="">
@@ -178,3 +178,5 @@
             </main> <!-- .main-content -->
 
 @endsection
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCBTXFGY7-qUK_F1P6iJEmAijv8zJvt-x0&sensor=false&amp;language=it"></script>

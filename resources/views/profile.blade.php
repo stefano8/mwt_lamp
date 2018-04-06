@@ -37,7 +37,7 @@
 
                     <form action="#" class="contact-form">
                         @if(!isset($user->userImage()->first()->path))
-                            <div class="col-md-6"><img style="height: 150px; width: 150px;" src="/images/profile.png"></div>
+                            <div class="col-md-6"><img style="height: 150px; width: 150px;" src="/mwt_1718/public/images/profile.png"></div>
                         @else
 
                             <div class="col-md-6"><img style="height: 150px; width: 150px;" src="{{$user->userImage()->first()->path}}"></div>

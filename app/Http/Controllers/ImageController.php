@@ -801,7 +801,7 @@ class ImageController extends Controller
             DB::table('images')
                 ->where('user_id', $id_user)
                 ->update([
-                    'path' => "/images/$imageName ",
+                    'path' => "/mwt_1718/public/images/$imageName ",
                     'user_id' => $id_user,
                     'title' => 'foto',
                     'updated_at' => now()
@@ -812,7 +812,7 @@ class ImageController extends Controller
             DB::table('images')
                 ->insert([
                     'user_id' => $id_user,
-                    'path' => "/images/$imageName ",
+                    'path' => "/mwt_1718/public/images/$imageName ",
                     'title' => 'foto'
                 ]);
 
