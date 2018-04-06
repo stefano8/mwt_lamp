@@ -461,10 +461,19 @@ class ItineraryController extends Controller
     public function singleItinerary($id)
     {
 
-        Mapper::map(42.5032400, 13.6572100)->circle([['latitude' => 42.5032400, 'longitude' => 13.6572100]], ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 200, 'fillColor' => 'red', 'radius' => 1000]);
+        /*Mapper::map(42.5032400, 13.6572100)
+            ->circle([['latitude' => 42.5032400, 'longitude' => 13.6572100]],
+                ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 200, 'fillColor' => 'red', 'radius' => 1000]
+            );*/
+
 
         $itinerary = DB::table('itineraries')
             ->where('id', $id)->first();
+
+        Mapper::map($itinerary->latitude, $itinerary->longitude)
+            ->circle([['latitude' => $itinerary->latitude, 'longitude' => $itinerary->longitude]],
+                ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 200, 'fillColor' => 'red', 'radius' => 1000]
+            );
 
         $category = DB::table('categories')->get();
 
