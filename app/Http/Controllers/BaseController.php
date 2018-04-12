@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Event;
 use App\Group;
 use App\Itinerary;
@@ -17,9 +18,12 @@ class BaseController extends Controller
     public function index()
     {
 
-        $itineraries = Itinerary::take(4)->get();
+        $itineraries = Itinerary::take(8)->get();
+
+        $contact = Contact::take(1)->first();
 
         $events = Event::take(3)->get();
+
         $permission = false;
 
         //controllo se utente loggato con piu di un gruppo assocciato e uno di questi è admin allora
@@ -47,13 +51,15 @@ class BaseController extends Controller
                 ->with('itineraries', $itineraries)
                 ->with('events', $events)
                 ->with('user', $user)
-                ->with('permission', $permission);
+                ->with('permission', $permission)
+                ->with('contact', $contact);
 
         }  //se non sei loggato
 
         return \Illuminate\Support\Facades\View::make('welcome')
             ->with('itineraries', $itineraries)
-            ->with('events', $events);
+            ->with('events', $events)
+            ->with('contact', $contact);
 
     }
 

@@ -16,6 +16,9 @@
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
     <link href="{!! asset('fonts/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{!! asset('css/YouTubePopUp.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/owl-carousel/owl.carousel.min.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/owl-carousel/owl.theme.default.min.css') !!}">
 
     <!-- Loading main css file -->
     <link rel="stylesheet" href=" {!! asset('css/style.css') !!} ">
@@ -145,6 +148,9 @@
 <script src="{!! asset('js/jquery-1.11.1.min.js') !!}"></script>
 <script src="{!! asset('js/plugins.js') !!}"></script>
 <script src="{!! asset('js/app2.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/YouTubePopUp.jquery.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/jquery.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/jquery.fancybox.min.js') !!}"></script>
 
 
 </body>

@@ -11,6 +11,53 @@
     }
 </style>
 
+@foreach($image as $images)
+    @if($images->title == 'bunner')
+<div class="hero" data-bg-image="{{$images->path}}">
+</div>
+
+    @endif
+@endforeach
+
+<div class="forecast-table">
+    <div class="container">
+        <div class="forecast-container">
+            <div class="today forecast">
+                <div class="forecast-header">
+                    <div class="day"><h1>{{$itinerary->name}}</h1></div>
+                </div> <!-- .forecast-header -->
+                <div class="forecast-content">
+                    <div class="widget">
+                        <ul class="arrow-list">
+                            <h3>Features:</h3>
+                            <li>Difficolty: {{$itinerary->difficolty}}</li>
+                            <li>Difference: {{$itinerary->difference}}</li>
+                            <li>Duration: {{$itinerary->duration}}</li>
+                            <li>Latitude: {{$itinerary->latitude}}</li>
+                            <li>Longitude: {{$itinerary->longitude}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="day">Maps</div>
+                </div> <!-- .forecast-header -->
+                    <div class="degree">
+                        <div >
+                            <div style="background-color: transparent;">
+                                <div style="width: 900px; height: 350px;">
+                                    {!! Mapper::render() !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="fullwidth-block">
     <div class="container">
         <div class="row">
@@ -128,11 +175,13 @@
 
                         <div class="featured-image">
                             @foreach($image as $images)
+                                @if($images->title != 'bunner')
                                 <figure class="live-camera-cover">
                                     <img src="{{$images->path}}" alt="foto"
-                                         style="width: 300px; height: 223px;"> {{--src="{{URL::asset($images->path)}}"--}}
-
+                                         style="width: 300px; height: 223px;">
                                 </figure>
+
+                                @endif
                             @endforeach
 
                         </div>
@@ -357,25 +406,8 @@
                 </div>
             </div>
 
-            <div class="sidebar col-md-3 ">
-                <div class="widget" style="background-color: transparent;">
-                <div style="width: 350px; height: 250px;">
-                    {!! Mapper::render() !!}
-                </div>
-            </div>
-            </div>
-
-
-
             <div class="sidebar col-md-3 col-md-offset-1">
-                <div class="widget">
-                    <h3 class="widget-title">Features</h3>
-                    <ul class="arrow-list">
-                        <li><a href="#">Difficolty: {{$itinerary->difficolty}}</a></li>
-                        <li><a href="#">Difference: {{$itinerary->difference}}</a></li>
-                        <li><a href="#">Duration: {{$itinerary->duration}}</a></li>
-                    </ul>
-                </div>
+
 
                 <div class="widget">
                     <h3 class="widget-title">Categories</h3>

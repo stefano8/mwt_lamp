@@ -19,22 +19,17 @@
             </div>
         </div>
 
+        <div style="height: 60%; width:100%; margin-top: 20px;" class="hero" data-bg-image="{!! asset('images/banner.jpg') !!}">
+            <div class="container">
+
+            </div>
+
+        </div>
+
         <div class="fullwidth-block">
             <div class="container">
                 <div class="filter">
-                <!-- <div class="country filter-control">
-                    <label for="">Categories</label>
-                    <span class="select control">
-                    <select href="" name="" id="" >
-                        <option value="all" selected>All</option>
-                       {{-- @foreach($category as $categories)
-                            <option value="{{$categories->id}}">
-                                <a href="/itine/{{$categories->id}}">{{$categories->name}}</a>
-                            </option>
-                        @endforeach--}}
-                        </select>
-                        </span>
-                    </div>-->
+
 
                     <div class="country filter-control">
                         <form action="{{route('search')}}">

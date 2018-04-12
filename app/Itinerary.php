@@ -9,7 +9,7 @@ class Itinerary extends Model
     protected $table = 'itineraries';
 
     protected $fillable = [
-        'id', 'name', 'difficolty', 'difference', 'duration', 'description'
+        'id', 'name', 'difficolty', 'difference', 'duration', 'description', 'created_at'
     ];
 
     /**

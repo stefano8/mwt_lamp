@@ -9,6 +9,43 @@
  *===========================================*/
 /*menu*/
 
+.video {
+  background-image: url(../images/seconda.jpg);
+  height: 450px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.video::after {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  content: " ";
+}
+
+.video .play-video {
+  text-align: center;
+  margin-top: 170px;
+}
+
+.video .play-video img {
+  position: relative;
+  z-index: 1;
+}
+
+.video .play-video p {
+  font-size: 28px;
+  font-weight: 500;
+  z-index: 999;
+  color: #fff;
+  position: relative;
+  margin-top: 50px;
+}
+
 
 article,
 aside,
