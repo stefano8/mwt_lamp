@@ -233,6 +233,8 @@ class NewsController extends Controller
 
         $category = DB::table('categories')->get();
 
+        $image = DB::table('images')->get();
+
         if (Auth::check()) {
 
             $id = Auth::user()->id;
@@ -255,11 +257,15 @@ class NewsController extends Controller
                 ->with('news', $news)
                 ->with('user', $user)
                 ->with('category', $category)
+                ->with('image', $image)
                 ->with('permission', $permission);
 
         } else{
 
-            return view('news', ['news' => $news], ['category' => $category]);
+            return View::make('news')
+                ->with('news', $news)
+                ->with('category', $category)
+                ->with('image', $image);
 
         }
 

@@ -28,13 +28,19 @@
                                 <div class="live-camera" style="">
 
                                     @if(!isset($itinerary->itineraryImage()->first()->path))
-                                        <figure class="live-camera-cover"><img  src="/images/montain.jpg"></figure>
+                                        <figure class="live-camera-cover">
+                                            <img  src="/images/montain.jpg">
+                                        </figure>
                                     @else
 
-                                    <figure class="live-camera-cover"><a href="{{route('itinerary.single', $itinerary->id)}}"><img style="height: 250px; width: 250px;" src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto"></a></figure>
+                                    <figure>
+                                        <a href="{{route('itinerary.single', $itinerary->id)}}">
+                                            <img style="height: 250px; width: 250px;" src="{{$itinerary->itineraryImage()->first()->path}}" alt="foto">
+                                        </a>
+                                    </figure>
 
                                     @endif
-                                    <h3 class="location"><a href="{{route('itinerary.single', $itinerary->id)}}"> {{$itinerary->name}}</a></h3>
+                                    <h3 style="margin-top: 5%; marg" class="location"><a href="{{route('itinerary.single', $itinerary->id)}}"> {{$itinerary->name}}</a></h3>
                                 </div>
 
                             </div>
@@ -81,7 +87,7 @@
                         </div>
                         <div class="col-md-6 col-md-offset-1">
                             <h2 class="section-title">About us</h2>
-                            <p>{{$contact->information}}</p>
+                            <p>{{$contact->in}}</p>
 
                         </div>
                     </div>

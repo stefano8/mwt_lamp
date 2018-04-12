@@ -18,10 +18,15 @@
                     <div class="content col-md-8">
                         @foreach($news as $newss)
                         <div class="post">
-                                <h2 class="entry-title"><a href="/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
-                                <div class="featured-image"><img src="" alt=""></div>
-                                <p>{{$newss->body}}</p>
-                                <a href="#" class="button">Read more</a>
+                                <h2 class="entry-title"><a href="/mwt_1718/public/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
+
+                            @foreach($image as $images)
+                                @if($images->title == 'news')
+                                    <div class="featured-image"><img src="{{$images->path}}" alt=""></div>
+                                @endif
+                            @endforeach
+                                <p class="trunc">{{$newss->body}}</p>
+                            <a href="/mwt_1718/public/news/single/{{$newss->id}}" class="button">Read more</a>
                         </div>
                         @endforeach
 
