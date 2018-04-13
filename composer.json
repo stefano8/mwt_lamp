@@ -10,6 +10,7 @@
         "fideloper/proxy": "~4.0",
         "genealabs/laravel-maps": "^0.5.6",
         "jeroennoten/laravel-adminlte": "^1.23",
+        "jorenvanhocht/laravel-share": "^2.0",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0"

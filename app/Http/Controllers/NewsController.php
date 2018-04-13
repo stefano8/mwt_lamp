@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Jorenvh\Share\Share;
 
 class NewsController extends Controller
 {
@@ -229,11 +230,14 @@ class NewsController extends Controller
 
     public function getNews(){
 
-        $news = DB::table('news')->orderBy('date','desc')->paginate(5);
+        $news = DB::table('news')->orderBy('date','desc')->paginate(6);
+
+        $topnews = DB::table('news')->orderBy('date','desc')->limit(5)->get();
+
+        $itinerary = DB::table('itineraries')->limit(10)->get();
 
         $category = DB::table('categories')->get();
 
-        $image = DB::table('images')->get();
 
         if (Auth::check()) {
 
@@ -256,16 +260,18 @@ class NewsController extends Controller
             return View::make('news')
                 ->with('news', $news)
                 ->with('user', $user)
+                ->with('itinerary', $itinerary)
+                ->with('topnews', $topnews)
                 ->with('category', $category)
-                ->with('image', $image)
                 ->with('permission', $permission);
 
         } else{
 
             return View::make('news')
                 ->with('news', $news)
-                ->with('category', $category)
-                ->with('image', $image);
+                ->with('topnews', $topnews)
+                ->with('itinerary', $itinerary)
+                ->with('category', $category);
 
         }
 
@@ -277,6 +283,12 @@ class NewsController extends Controller
 
         $news = News::find($id);
 
+        $image = DB::table('images')->where('new_id', $id)->get();
+
+        $itinerary = DB::table('itineraries')->limit(10)->get();
+
+        $event = DB::table('events')->limit(5)->get();
+
         $permission = false;
 
         if (Auth::check()) {
@@ -284,8 +296,6 @@ class NewsController extends Controller
             $id = Auth::user()->id;
 
             $user = User::find($id);
-
-
 
             foreach ($user->groupRel as $item) {
 
@@ -299,10 +309,16 @@ class NewsController extends Controller
             return \Illuminate\Support\Facades\View::make('singleNews')
                 ->with('news', $news)
                 ->with('user', $user)
+                ->with('itinerary', $itinerary)
+                ->with('image', $image)
+                ->with('event', $event)
                 ->with('permission', $permission);
         }else {
 
             return \Illuminate\Support\Facades\View::make('singleNews')
+                ->with('image', $image)
+                ->with('itinerary', $itinerary)
+                ->with('event', $event)
                 ->with('news', $news);
         }
 

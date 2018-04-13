@@ -20,11 +20,7 @@
                         <div class="post">
                                 <h2 class="entry-title"><a href="/mwt_1718/public/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
 
-                            @foreach($image as $images)
-                                @if($images->title == 'news')
-                                    <div class="featured-image"><img src="{{$images->path}}" alt=""></div>
-                                @endif
-                            @endforeach
+
                                 <p class="trunc">{{$newss->body}}</p>
                             <a href="/mwt_1718/public/news/single/{{$newss->id}}" class="button">Read more</a>
                         </div>
@@ -37,9 +33,19 @@
                         <div class="widget">
                             <h3 class="widget-title">Top News</h3>
                             <ul class="arrow-list">
-                                @foreach($news as $newss)
-                                <li><a href="#">{{$newss->title}}</a></li>
+                                @foreach($topnews as $tnewss)
+                                <li><a href="/mwt_1718/public/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
                                 @endforeach
+                        </div>
+
+                        <div class="widget">
+                            <h3 class="widget-title">Itineraries</h3>
+                            <ul class="arrow-list">
+                                @foreach($itinerary as $itineraries)
+                                    <li><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                @endforeach
+
+                            </ul>
                         </div>
 
                         <div class="widget">
@@ -52,7 +58,7 @@
                             </ul>
                         </div>
 
-                        <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$news->links('vendor.pagination.semantic-ui')}}</div>
+
 
                     </div>
                 </div>

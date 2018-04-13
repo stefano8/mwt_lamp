@@ -14,6 +14,7 @@
         <div class="fullwidth-block">
             <div class="container">
 
+
                 <div class="col-md-6 col-md-offset-3">
                     <h2 class="section-title">MyProfile</h2>
 
@@ -79,13 +80,10 @@
                     <br><br><br><h2 class="section-title">Itinerary Collection</h2>
 
                         <div class="row">
-                        <div class="col-sm-6">
+                        <div>
                              @foreach($arrayImageC as $arrayImages)
-
-
-                                    <img src="{{$arrayImages}}"  alt="foto" style="width: 300px; height: 223px;">
+                                    <img src="{{$arrayImages}}"  alt="foto" style="width: 100px; height: 100px;">
                                 &nbsp;   &nbsp;
-
                             @endforeach
                         </div>
 
@@ -93,10 +91,8 @@
 
                         <div class="col-sm-6">
                             @foreach($arrayItinerary as $arrayItinerarys)
-
                                       <a href="/mwt_1718/public/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
                             &nbsp;   &nbsp;
-
                             @endforeach
                         </div>
                         </div>
@@ -107,24 +103,19 @@
                     <br><br><br><h2 class="section-title">Itinerary Wishlist</h2>
 
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div>
                             @foreach($arrayImageW as $arrayImageWs)
-
-
-                                <img src="{{$arrayImageWs}}"  alt="foto" style="width: 300px; height: 223px;">
+                                <img src="{{$arrayImageWs}}"  alt="foto" style="width: 100px; height: 100px;">
                                 &nbsp;   &nbsp;
-
                             @endforeach
                         </div>
 
 
 
-                        <div class="col-sm-6">
+                        <div>
                             @foreach($arrayItineraryW as $arrayItineraryWs)
-
                                 <a href="itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
                                 &nbsp;   &nbsp;
-
                             @endforeach
                         </div>
                     </div>

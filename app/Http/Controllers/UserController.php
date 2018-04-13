@@ -37,18 +37,8 @@ class UserController extends Controller
 
         if($permission){
 
-            /* $user = DB::table('users')
-           ->leftJoin('users_groups', 'users.id', '=', 'users_groups.group_id')
-           ->select('users.id' ,'users.name', 'users.email', 'users_groups.group_id')
-           ->get();*/
+
             $user = User::paginate(10);
-
-
-            /* $user_group = DB::table('users_groups')
-                 ->where('users_groups.user_id', '=', 1)
-                 ->select('users_groups.group_id')
-                 ->first();
-             */
 
             return view('admin/user/index', ['user' => $user]);
 
@@ -185,14 +175,8 @@ class UserController extends Controller
 
         if($permission){
 
-            /*$user = DB::table('users')
-            ->where('id', $id)
-            ->first();*/
-
             $group = DB::table('groups')
                 ->get();
-
-
 
             $user = User::find($id);
 
@@ -202,17 +186,6 @@ class UserController extends Controller
             //conto quanti users_group per user = $id ci sono
             $countUsersGroups = User::find($id)->groupRel()->wherePivot('user_id', '=', $id)->count();
             $var = User::find($id)->groupRel()->wherePivot('user_id', '=', $id)->get();
-
-            //per ogni $var prendi i gruppi assegnati poi
-            // $gruppi = Group::find(1)->userRel()->wherePivot('user_id', '=', $id)->where('id', '!=', $var->group_id);
-
-            //echo $gruppi;
-            //echo $var;
-
-
-
-            //conto i gruppi
-            //$countGroup = Group::all()->count();
 
 
             return view('admin/user/assign', ['user' => $user], ['group' => $group]);

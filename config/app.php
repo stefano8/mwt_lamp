@@ -151,6 +151,7 @@ return [
          */
         Laracasts\Flash\FlashServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
 
 
         /*
@@ -222,7 +223,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
-
+        'Share' => Jorenvh\Share\ShareFacade::class,
 
     ],
 
