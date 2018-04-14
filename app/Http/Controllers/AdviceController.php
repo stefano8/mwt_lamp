@@ -215,6 +215,13 @@ class AdviceController extends Controller
     public function getAdvices(){
 
         $advices = DB::table('advices')->paginate(10);
+
+        $topnews = DB::table('news')->orderBy('date','desc')->limit(5)->get();
+
+        $itinerary = DB::table('itineraries')->limit(10)->get();
+
+        $category = DB::table('categories')->get();
+
         $permission = false;
 
         if (Auth::check()) {
@@ -238,11 +245,18 @@ class AdviceController extends Controller
             return View::make('advices')
                 ->with('advices', $advices)
                 ->with('user', $user)
+                ->with('itinerary', $itinerary)
+                ->with('topnews', $topnews)
+                ->with('category', $category)
                 ->with('permission', $permission);
 
         } else{
 
-            return view('advices', ['advices'=>$advices]);
+            return View::make('advices')
+                ->with('advices', $advices)
+                ->with('topnews', $topnews)
+                ->with('itinerary', $itinerary)
+                ->with('category', $category);
 
         }
     }
@@ -251,6 +265,10 @@ class AdviceController extends Controller
 
 
         $advices = Advice::find($id);
+
+        $itinerary = DB::table('itineraries')->limit(10)->get();
+
+        $category = DB::table('categories')->get();
 
         $permission = false;
 
@@ -275,11 +293,16 @@ class AdviceController extends Controller
             return View::make('singleAdvice')
                 ->with('advices', $advices)
                 ->with('user', $user)
+                ->with('itinerary', $itinerary)
+                ->with('category', $category)
                 ->with('permission', $permission);
 
         } else{
 
-            return view('singleAdvice', ['advices'=>$advices]);
+            return View::make('singleAdvice')
+                ->with('advices', $advices)
+                ->with('itinerary', $itinerary)
+                ->with('category', $category);
 
         }
 

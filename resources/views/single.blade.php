@@ -195,16 +195,16 @@
             @if(isset($bottoneWishlist))
                 @if(!($bottoneWishlist))
                     <div class="col-sm-6">
-                        <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">{{trans('words.addwish')}}</a>
+                        <a style="font-size:20px;" class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">{{trans('words.addwish')}}</a>
                     </div>
                     @else
-                    <div class="col-sm-6">
+                    <div style="font-size:20px;" class="col-sm-6">
                         <a class="fa fa-heart button"
                            href="{{route('itinerary.removewishlist', $itinerary->id, $user->id)}}">{{trans('words.removewish')}}</a>
                     </div>
                 @endif
              @else
-                <div class="col-sm-6">
+                <div style="font-size:20px;" class="col-sm-6">
                     <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">{{trans('words.addwish')}}</a>
                 </div>
               @endif
@@ -212,17 +212,17 @@
 
              @if(isset($bottoneCollection))
                 @if(!($bottoneCollection))
-                    <div class="col-sm-6">
+                    <div style="font-size:20px;" class="col-sm-6">
                         <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">{{trans('words.addcollection')}}</a>
                     </div>
                     @else
-                    <div class="col-sm-6">
+                    <div style="font-size:20px;" class="col-sm-6">
                         <a class="fa fa-heart button"
                            href="{{route('itinerary.removecollection', $itinerary->id, $user->id)}}">{{trans('words.removecollection')}}</a>
                     </div>
                 @endif
              @else
-                <div class="col-sm-6">
+                <div style="font-size:20px;" class="col-sm-6">
                     <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">{{trans('words.addcollection')}}</a>
                 </div>
              @endif

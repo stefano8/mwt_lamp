@@ -51,7 +51,7 @@
                     </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">{{trans('words.events')}}</h3>
+                            <h3 class="widget-title">{{trans('words.cateit')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($event as $events)
                                     <li><a href="/mwt_1718/public/events/single/{{$events->id}}">{{$events->title}}</a></li>

@@ -18,6 +18,11 @@
                     <div class="content col-md-8">
                         @foreach($news as $newss)
                         <div class="post">
+                            <div class="photo-preview photo-detail">
+
+                                <img style="width: 25%; height: auto;" src="{!! asset('images/news1.png') !!}">
+
+                            </div>
                                 <h2 class="entry-title"><a href="/mwt_1718/public/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
 
 
