@@ -22,7 +22,7 @@
 
 
                                 <p class="trunc">{{$newss->body}}</p>
-                            <a href="/mwt_1718/public/news/single/{{$newss->id}}" class="button">Read more</a>
+                            <a href="/mwt_1718/public/news/single/{{$newss->id}}" class="button">{{trans('words.readmore')}}</a>
                         </div>
                         @endforeach
 
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Itineraries</h3>
+                            <h3 class="widget-title">{{trans('words.itineraies')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($itinerary as $itineraries)
                                     <li><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Itineraries Categories</h3>
+                            <h3 class="widget-title">{{trans('words.cateit')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
                                     <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>

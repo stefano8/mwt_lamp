@@ -29,12 +29,12 @@
                 <div class="forecast-content">
                     <div class="widget">
                         <ul class="arrow-list">
-                            <h3>Features:</h3>
-                            <li>Difficolty: {{$itinerary->difficolty}}</li>
-                            <li>Difference: {{$itinerary->difference}}</li>
-                            <li>Duration: {{$itinerary->duration}}</li>
-                            <li>Latitude: {{$itinerary->latitude}}</li>
-                            <li>Longitude: {{$itinerary->longitude}}</li>
+                            <h3>{{trans('words.features')}}:</h3>
+                            <li>{{trans('words.difficolty')}}: {{$itinerary->difficolty}}</li>
+                            <li>{{trans('words.difference')}}: {{$itinerary->difference}}</li>
+                            <li>{{trans('words.duration')}}: {{$itinerary->duration}}</li>
+                            <li>{{trans('words.latitude')}}: {{$itinerary->latitude}}</li>
+                            <li>{{trans('words.longitude')}}: {{$itinerary->longitude}}</li>
                         </ul>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
 
             <div class="forecast">
                 <div class="forecast-header">
-                    <div class="day">Maps</div>
+                    <div class="day">{{trans('words.maps')}}</div>
                 </div> <!-- .forecast-header -->
                     <div class="degree">
                         <div >
@@ -195,20 +195,17 @@
             @if(isset($bottoneWishlist))
                 @if(!($bottoneWishlist))
                     <div class="col-sm-6">
-                        <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">Add
-                            to wishlist</a>
+                        <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">{{trans('words.addwish')}}</a>
                     </div>
                     @else
                     <div class="col-sm-6">
                         <a class="fa fa-heart button"
-                           href="{{route('itinerary.removewishlist', $itinerary->id, $user->id)}}">Remove from
-                            wishlist</a>
+                           href="{{route('itinerary.removewishlist', $itinerary->id, $user->id)}}">{{trans('words.removewish')}}</a>
                     </div>
                 @endif
              @else
                 <div class="col-sm-6">
-                    <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">Add
-                        to wishlist</a>
+                    <a class="fa fa-heart button" href="{{route('itinerary.addwishlist', $itinerary->id)}}">{{trans('words.addwish')}}</a>
                 </div>
               @endif
 
@@ -216,19 +213,17 @@
              @if(isset($bottoneCollection))
                 @if(!($bottoneCollection))
                     <div class="col-sm-6">
-                        <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">Marks
-                            as already seen</a>
+                        <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">{{trans('words.addcollection')}}</a>
                     </div>
                     @else
                     <div class="col-sm-6">
                         <a class="fa fa-heart button"
-                           href="{{route('itinerary.removecollection', $itinerary->id, $user->id)}}">Unseen</a>
+                           href="{{route('itinerary.removecollection', $itinerary->id, $user->id)}}">{{trans('words.removecollection')}}</a>
                     </div>
                 @endif
              @else
                 <div class="col-sm-6">
-                    <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">Marks
-                        as already seen</a>
+                    <a class="fa fa-check button" href="{{route('itinerary.addcollection', $itinerary->id)}}">{{trans('words.addcollection')}}</a>
                 </div>
              @endif
                 </div>
@@ -238,14 +233,14 @@
                 <div class="col-md-6 col-md-offset-1" style="margin-top: 50px;">
 
 
-                    <h2 class="section-title">Write review</h2>
+                    <h2 class="section-title">{{trans('words.writereview')}}</h2>
                     <form action="{{route('review.insert', $itinerary->id)}}" class="contact-form">
                         <div class="row">
                             <div class="col-md-12">
-                                <input style="width: 200%;" name="title" id="title" type="text" placeholder="Title">
+                                <input style="width: 200%;" name="title" id="title" type="text" placeholder="{{trans('words.title')}}">
                             </div>
                         </div>
-                        <textarea style="width: 200%;" name="body" id="body" placeholder="Message..."></textarea>
+                        <textarea style="width: 200%;" name="body" id="body" placeholder="{{trans('words.msg')}}"></textarea>
 
                         <div class="text-right">
                             <input type="submit" placeholder="Send review">
@@ -256,7 +251,7 @@
 
                 <!--per inserire voti-->
                 <div class="col-md-6 col-md-offset-4 " style="margin-top: 50px;">
-                    <h1>Your Vote:
+                    <h1>{{trans('words.yourvote')}}:
                         @if($var == 0)
                             <a href="" id="1" name="1">
                                 <span id="1" class="fa fa-star "></span>
@@ -384,7 +379,7 @@
 
                 <!--per vedere tutte le recensioni-->
                 <div class="col-md-9 " style="margin-top: 50px;">
-                    <h2 class="section-title">All Review</h2>
+                    <h2 class="section-title">{{trans('words.allreview')}}</h2>
                     @foreach($review as $reviews)
                         <form action="#" class="contact-form" style="width: 200%;">
                             <div class="sidebar col-md-122">
@@ -410,7 +405,7 @@
 
 
                 <div class="widget">
-                    <h3 class="widget-title">Categories</h3>
+                    <h3 class="widget-title">{{trans('words.categories')}}</h3>
                     <ul class="arrow-list">
                         @foreach($category as $categories)
                             <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a></li>

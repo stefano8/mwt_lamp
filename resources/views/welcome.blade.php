@@ -5,9 +5,9 @@
             <div style="height: 60%; width:100%;" class="hero" data-bg-image="{!! asset('images/terza.jpg') !!}">
                 <div class="container">
                   <form action="{{route('search')}}" class="find-location" >
-                        <input type="text" name="itinerary_name" id="itinerary_name" placeholder="Find Itinerary...">
+                        <input type="text" name="itinerary_name" id="itinerary_name" placeholder="{{trans('words.finditineraries')}}">
                         <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
-                        <input type="submit" value="Find">
+                        <input type="submit" value="{{trans('words.find')}}">
                     </form>
                 </div>
                 <div class="boxtesto" style="margin-left: 1100px; margin-right: 1px;">
@@ -21,7 +21,7 @@
             <main class="main-content">
                 <div class="fullwidth-block">
                     <div class="container">
-                        <h2 class="section-title">Top Itineraries</h2>
+                        <h2 class="section-title">{{trans('words.topitineraries')}}</h2>
                         <div class="row">
                             @foreach($itineraries as $itinerary)
                             <div class="col-md-3 col-sm-6">
@@ -57,7 +57,7 @@
                         <a id="video" href="https://www.youtube.com/watch?v=Q6dsRpVyyWs">
                             <img  src="{!! asset('images/play.png') !!}" alt="" /></a>
                         <p>
-                            Watch the Trail Video
+                            {{trans('words.video')}}
                         </p>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                 <div class="contact-info">
                                     <address>
                                         <img src="/images/icon-marker.png" alt="">
-                                        <p>Company CorsDiS <br>
+                                        <p>Company Mwt2018 <br>
                                             via Federico Trecco 8, L'Aquila</p>
                                     </address>
 
@@ -86,8 +86,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-md-offset-1">
-                            <h2 class="section-title">About us</h2>
-                            <p>{{$contact->in}}</p>
+                            <h2 class="section-title">{{trans('words.aboutas')}}</h2>
+                            <p>{{$contact->information}}</p>
 
                         </div>
                     </div>

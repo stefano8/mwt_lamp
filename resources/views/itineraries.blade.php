@@ -15,7 +15,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="#">Home</a>
-                <span>Itineraries</span>
+                <span>{{trans('words.itineraies')}}</span>
             </div>
         </div>
 
@@ -34,10 +34,10 @@
                     <div class="country filter-control">
                         <form action="{{route('search')}}">
                             <input style="background-color: transparent; color: white;" type="text" size="170%"
-                                   name="itinerary_name" id="itinerary_name" placeholder="Find itinerary...">
+                                   name="itinerary_name" id="itinerary_name" placeholder="{{trans('words.finditineraries')}}">
                             <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                             <!--token che si ha in sessione-->
-                            <input type="submit" value="Find">
+                            <input type="submit" value="{{trans('words.find')}}">
                         </form>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 
                     <div class="sidebar col-md-3">
                         <div class="widget">
-                            <h3 class="widget-title">Categories</h3>
+                            <h3 class="widget-title">{{trans('words.categories')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
                                     <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a>

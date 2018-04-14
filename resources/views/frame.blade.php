@@ -72,10 +72,10 @@
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
                     <li class="menu-item current-menu-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="menu-item"><a href="{{ url('/itineraries') }}">Itineraries</a></li>
-                    <li class="menu-item"><a href="{{ url('/advices') }}">Advices</a></li>
+                    <li class="menu-item"><a href="{{ url('/itineraries') }}">{{trans('words.itineraies')}}</a></li>
+                    <li class="menu-item"><a href="{{ url('/advices') }}">{{trans('words.advices')}}</a></li>
                     <li class="menu-item"><a href="{{ url('/news') }}">News</a></li>
-                    <li class="menu-item"><a href="{{ url('/events') }}">Events</a></li>
+                    <li class="menu-item"><a href="{{ url('/events') }}">{{trans('words.events')}}</a></li>
 
                     @if (Route::has('login'))
 
@@ -85,7 +85,7 @@
                                 @if($permission == true)
                                     <a href="{{ url('/home') }}">Dashboard</a>
                                 @endif
-                                    <li class="menu-item"><a href="{{ route('profile') }}">Profile</a></li>
+                                    <li class="menu-item"><a href="{{ route('profile') }}">{{trans('words.profile')}}</a></li>
 
                                     <li class="menu-item ">
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -105,7 +105,7 @@
                                     <li class="menu-item "><a style="background: #009ad8;color: white;"
                                                               href="{{ route('login') }}">Login</a></li>
                                     <li class="menu-item "><a style="background: #009ad8;color: white;"
-                                                              href="{{ route('register') }}">Register</a></li>
+                                                              href="{{ route('register') }}">{{trans('words.register')}}</a></li>
 
 
                             @endauth
@@ -134,7 +134,7 @@
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>
