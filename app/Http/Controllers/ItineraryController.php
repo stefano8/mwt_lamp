@@ -853,6 +853,13 @@ class ItineraryController extends Controller
     public function showSingleItinerary($nameItinerary)
     {
 
+       /* $image = DB::table('images')->select('itinerary_id')->where('id', $nameItinerary)->where('title', '!=', 'bunner')->first();
+
+        $itinerario = DB::table('itineraries')->where('id', $image->itinerary_id)->first();
+
+        $id = $itinerario->id;
+
+        return $this->singleItinerary($id);*/
 
         $itinerario = DB::table('itineraries')->where('name', $nameItinerary)->first();
         $id = $itinerario->id;

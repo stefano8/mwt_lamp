@@ -18,11 +18,11 @@
                     <div class="content col-md-8">
                         @foreach($news as $newss)
                         <div class="post">
-                                <h2 class="entry-title"><a href="/mwt_1718/public/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
+                                <h2 class="entry-title"><a href="/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
 
 
                                 <p class="trunc">{{$newss->body}}</p>
-                            <a href="/mwt_1718/public/news/single/{{$newss->id}}" class="button">Read more</a>
+                            <a href="/news/single/{{$newss->id}}" class="button">Read more</a>
                         </div>
                         @endforeach
 
@@ -34,7 +34,7 @@
                             <h3 class="widget-title">Top News</h3>
                             <ul class="arrow-list">
                                 @foreach($topnews as $tnewss)
-                                <li><a href="/mwt_1718/public/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
+                                <li><a href="/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
                                 @endforeach
                         </div>
 
@@ -42,7 +42,7 @@
                             <h3 class="widget-title">Itineraries</h3>
                             <ul class="arrow-list">
                                 @foreach($itinerary as $itineraries)
-                                    <li><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                    <li><a href="/news/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
                                 @endforeach
 
                             </ul>

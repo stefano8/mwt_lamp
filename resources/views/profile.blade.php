@@ -38,7 +38,7 @@
 
                     <form action="#" class="contact-form">
                         @if(!isset($user->userImage()->first()->path))
-                            <div class="col-md-6"><img style="height: 150px; width: 150px;" src="/mwt_1718/public/images/profile.png"></div>
+                            <div class="col-md-6"><img style="height: 150px; width: 150px;" src="/images/profile.png"></div>
                         @else
 
                             <div class="col-md-6"><img style="height: 150px; width: 150px;" src="{{$user->userImage()->first()->path}}"></div>
@@ -82,7 +82,7 @@
                         <div class="row">
                         <div>
                              @foreach($arrayImageC as $arrayImages)
-                                    <img src="{{$arrayImages}}"  alt="foto" style="width: 100px; height: 100px;">
+                                <img src="{{$arrayImages}}"  alt="foto" style="width: 100px; height: 100px;">
                                 &nbsp;   &nbsp;
                             @endforeach
                         </div>
@@ -91,7 +91,7 @@
 
                         <div class="col-sm-6">
                             @foreach($arrayItinerary as $arrayItinerarys)
-                                      <a href="/mwt_1718/public/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
+                                      <a href="/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
                             &nbsp;   &nbsp;
                             @endforeach
                         </div>

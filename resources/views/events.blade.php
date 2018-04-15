@@ -11,24 +11,52 @@
             </div>
         </div>
 
+        <div style="height: 60%; width:100%; margin-top: 20px;" class="hero" data-bg-image="{!! asset('images/eventi3.jpg') !!}">
+            <div class="container">
+
+            </div>
+
+        </div>
+
         <div class="fullwidth-block">
             <div class="container">
 
         <div class="fullwidth-block" data-bg-color="#262936">
             <div class="container">
+
+
                 @foreach($event as $events)
+
                     <div class="col-md-4">
-                        <div class="news">
-                            <div class="date" style="line-height: 0.5;">{{$events->date}}</div>
-                            <h3 style="margin:1px 14px 20px;"><a href="{{route('event.single', $events->id)}}">{{$events->title}}</a></h3>
-                            <p style="margin:1px 14px 20px; display: inline-block; width: 200px; height: 100px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;">{{$events->body}}</p>
-                        </div>
+
+
+
+                            <div class="photo-preview photo-detail">
+                                <h1 style="margin:1px 14px 20px; color: #c8b7a5">{{$events->date}}</h1>
+
+                                @if(!isset($events->eventImage()->first()->path))
+                                    <img style="width: 175px; height: 190px;" src="/images/calendar.jpg">
+                                @else
+
+
+                                    <a href="{{route('event.single', $events->id)}}"><img src="{{$events->eventImage()->first()->path}}" alt="foto"
+                                                                                                 style="width: 175px; height: 190px;"></a>
+
+                                @endif
+                            </div>
+                        <a style="" href="{{route('event.single', $events->id)}}">
+                            <h3 style="margin:1px 14px 20px; overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        white-space: nowrap;
+                                        width: 150px;">{{$events->title}}</h3></a>
+
                     </div>
                 @endforeach
             </div>
         </div>
+                    </div>
 
-            </div>
+
             </div>
 
     </main> <!-- .main-content -->

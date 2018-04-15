@@ -24,7 +24,7 @@ class Event extends Model
     //un Evento per una image
     public function eventImage(){
 
-        return $this->hasOne('App\Image');
+        return $this->hasMany('App\Image', 'event_id');
 
     }
 

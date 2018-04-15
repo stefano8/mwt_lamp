@@ -223,7 +223,8 @@ class EventController extends Controller
     public function getEvent()
     {
         $permission = false;
-        $event = DB::table('events')->orderBy('date' , 'desc')->get();
+        //$event = DB::table('events')->orderBy('date' , 'desc')->get();
+        $event = Event::all();
 
         if (Auth::check()) {
 
@@ -260,6 +261,10 @@ class EventController extends Controller
 
         $event = Event::find($id);
         $permission = false;
+        $image = DB::table('images')
+            ->where('event_id', '=', $id)->get();
+        $itinerario = Itinerary::find(1)->where('id', $event->itinerary_id)->first();
+
 
         if (Auth::check()) {
 
@@ -282,12 +287,19 @@ class EventController extends Controller
             return \Illuminate\Support\Facades\View::make('singleEvent')
                 ->with('event', $event)
                 ->with('user', $user)
-                ->with('permission', $permission);
+                ->with('permission', $permission)
+                ->with('image', $image)
+                ->with('itinerario', $itinerario);
 
 
         } else {
+            return \Illuminate\Support\Facades\View::make('singleEvent')
+                ->with('event', $event)
+                ->with('image', $image)
+                ->with('itinerario', $itinerario);
 
-            return view('singleEvent', ['event' => $event]);
+
+            //return view('singleEvent', ['event' => $event], ['image' => $image], ['itinerario' => $itinerario]);
 
         }
 
