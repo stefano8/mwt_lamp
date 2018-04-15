@@ -23,11 +23,11 @@
                                         <img style="width: 7%; height: auto;" src="{!! asset('images/check.png') !!}">
 
                                 </div>
-                                <h2 class="entry-title"><a href="/mwt_1718/public/advices/single/{{$advice->id}}">{{$advice->title}}</a></h2>
+                                <h2 class="entry-title"><a href="/advices/single/{{$advice->id}}">{{$advice->title}}</a></h2>
 
 
                                 <p class="trunc">{{$advice->body}}</p>
-                                <a href="/mwt_1718/public/advices/single/{{$advice->id}}" class="button">{{trans('words.readmore')}}</a>
+                                <a href="/advices/single/{{$advice->id}}" class="button">{{trans('words.readmore')}}</a>
                             </div>
                         @endforeach
 
@@ -40,7 +40,10 @@
                             <h3 class="widget-title">Top News</h3>
                             <ul class="arrow-list">
                                 @foreach($topnews as $tnewss)
-                                    <li><a href="/mwt_1718/public/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
+                                    <li style="overflow: hidden;
+                                           text-overflow: ellipsis;
+                                           white-space: nowrap;
+                                           width: 150px;"><a href="/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
                             @endforeach
                         </div>
 
@@ -48,7 +51,10 @@
                             <h3 class="widget-title">{{trans('words.itineraies')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($itinerary as $itineraries)
-                                    <li><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                    <li style="overflow: hidden;
+                                           text-overflow: ellipsis;
+                                           white-space: nowrap;
+                                           width: 150px;"><a href="/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
                                 @endforeach
 
                             </ul>
@@ -58,7 +64,10 @@
                             <h3 class="widget-title">{{trans('words.cateit')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
-                                    <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                                    <li style="overflow: hidden;
+                                           text-overflow: ellipsis;
+                                           white-space: nowrap;
+                                           width: 150px;"><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
 
                             </ul>

@@ -49,7 +49,10 @@
                             <h3 class="widget-title">{{trans('words.itineraies')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($itinerary as $itineraries)
-                                    <li><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                    <li style="overflow: hidden;
+                                           text-overflow: ellipsis;
+                                           white-space: nowrap;
+                                           width: 150px;"><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
                                 @endforeach
 
                             </ul>
@@ -59,7 +62,10 @@
                             <h3 class="widget-title">{{trans('words.cateit')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
-                                    <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
+                                    <li style="overflow: hidden;
+                                           text-overflow: ellipsis;
+                                           white-space: nowrap;
+                                           width: 150px;"><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
 
                             </ul>

@@ -289,6 +289,8 @@ class NewsController extends Controller
 
         $event = DB::table('events')->limit(5)->get();
 
+        $category = DB::table('categories')->limit(5)->get();
+
         $permission = false;
 
         if (Auth::check()) {
@@ -312,14 +314,16 @@ class NewsController extends Controller
                 ->with('itinerary', $itinerary)
                 ->with('image', $image)
                 ->with('event', $event)
-                ->with('permission', $permission);
+                ->with('permission', $permission)
+                ->with('category' , $category);
         }else {
 
             return \Illuminate\Support\Facades\View::make('singleNews')
                 ->with('image', $image)
                 ->with('itinerary', $itinerary)
                 ->with('event', $event)
-                ->with('news', $news);
+                ->with('news', $news)
+                ->with('category' , $category);
         }
 
     }
