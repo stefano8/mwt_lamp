@@ -11,6 +11,15 @@
             </div>
         </div>
 
+        <div style="height: 90%; width:100%; margin-top: 20px;" class="hero" data-bg-image="{!! asset('/images/marmolada2.jpg') !!}">
+            <div class="boxtesto" style="margin-left: 550px; margin-right: 1px;">
+                <h1><span class="testo" style="color: black;">La montagna se praticata in un certo modo è una scuola indubbiamente dura,</span>
+                    <span style="color: black; margin-left: 595px;"><br> a volte anche crudele,</span>
+                    <span style="color: black; margin-left: 249px;"> <br> però sincera come non accade sempre nel quotidiano.<br></span>
+                     <span style="color: black; margin-left: 670px;">   <i>Walter Bonatti</i></span>
+                </h1>
+            </div>
+        </div>
 
         <div class="fullwidth-block">
             <div class="container">

@@ -20,8 +20,11 @@
         </div>
 
         <div style="height: 60%; width:100%; margin-top: 20px;" class="hero" data-bg-image="{!! asset('images/banner.jpg') !!}">
-            <div class="container">
+            <div class="boxtesto" style="margin-left: 1100px; margin-right: 1px;">
+                <h1><span class="testo" style="color: black; margin-left: 80px;">La meta è partire </span>
 
+                    <span style="color: black; margin-left: 55px;"> <i>Giuseppe Ungaretti</i></span>
+                </h1>
             </div>
 
         </div>
