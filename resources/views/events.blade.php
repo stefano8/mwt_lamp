@@ -7,7 +7,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
-                <span>Events</span>
+                <span>{{trans('words.events')}}</span>
             </div>
         </div>
 

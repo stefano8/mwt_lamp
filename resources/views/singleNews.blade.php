@@ -41,7 +41,7 @@
                     </div>
                     <div class="sidebar col-md-3 col-md-offset-1">
                     <div class="widget">
-                        <h3 class="widget-title">Top Itineraries</h3>
+                        <h3 class="widget-title">{{trans('words.topitineraries')}}</h3>
                         <ul class="arrow-list">
                             @foreach($itinerary as $itineraries)
                                 <li><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
@@ -51,7 +51,7 @@
                     </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Events</h3>
+                            <h3 class="widget-title">{{trans('words.cateit')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($event as $events)
                                     <li><a href="/mwt_1718/public/events/single/{{$events->id}}">{{$events->title}}</a></li>

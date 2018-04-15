@@ -7,7 +7,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
-                <span>Profile</span>
+                <span>{{trans('words.profile')}}</span>
             </div>
         </div>
 
@@ -16,7 +16,7 @@
 
 
                 <div class="col-md-6 col-md-offset-3">
-                    <h2 class="section-title">MyProfile</h2>
+                    <h2 class="section-title">{{trans('words.myprofile')}}</h2>
 
 
                     <div class="panel-body">
@@ -77,7 +77,7 @@
 
 
                 <div class="col-md-12 col-md-offset-1">
-                    <br><br><br><h2 class="section-title">Itinerary Collection</h2>
+                    <br><br><br><h2 class="section-title">I{{trans('words.collections')}}</h2>
 
                         <div class="row">
                         <div>
@@ -100,7 +100,7 @@
 
 
                 <div class="col-md-12 col-md-offset-1">
-                    <br><br><br><h2 class="section-title">Itinerary Wishlist</h2>
+                    <br><br><br><h2 class="section-title">Wishlist</h2>
 
                     <div class="row">
                         <div>

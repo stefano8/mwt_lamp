@@ -18,11 +18,16 @@
                     <div class="content col-md-8">
                         @foreach($news as $newss)
                         <div class="post">
-                                <h2 class="entry-title"><a href="/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
+                            <div class="photo-preview photo-detail">
+
+                                <img style="width: 25%; height: auto;" src="{!! asset('images/news1.png') !!}">
+
+                            </div>
+                                <h2 class="entry-title"><a href="/mwt_1718/public/news/single/{{$newss->id}}">{{$newss->title}} ({{$newss->date}})</a></h2>
 
 
                                 <p class="trunc">{{$newss->body}}</p>
-                            <a href="/news/single/{{$newss->id}}" class="button">Read more</a>
+                            <a href="/mwt_1718/public/news/single/{{$newss->id}}" class="button">{{trans('words.readmore')}}</a>
                         </div>
                         @endforeach
 
@@ -34,22 +39,22 @@
                             <h3 class="widget-title">Top News</h3>
                             <ul class="arrow-list">
                                 @foreach($topnews as $tnewss)
-                                <li><a href="/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
+                                <li><a href="/mwt_1718/public/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
                                 @endforeach
                         </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Itineraries</h3>
+                            <h3 class="widget-title">{{trans('words.itineraies')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($itinerary as $itineraries)
-                                    <li><a href="/news/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                    <li><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
                                 @endforeach
 
                             </ul>
                         </div>
 
                         <div class="widget">
-                            <h3 class="widget-title">Itineraries Categories</h3>
+                            <h3 class="widget-title">{{trans('words.cateit')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
                                     <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
