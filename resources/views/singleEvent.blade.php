@@ -57,7 +57,7 @@
                                 </div>
                                 @if(!isset($event->eventImage()->first()->path))
                                     <figure class="live-camera-cover">
-                                        <img src="/images/calendar.jpg" style="width: 175px; height: 190px; margin-left: 119px;">
+                                        <img src="{!! asset('images/calendar.png') !!}" style="width: 100%; height: 70%; margin-bottom: 60px; ">
                                     </figure>
                                 @else
                                     @foreach($image as $images)
@@ -65,7 +65,7 @@
                                         <figure class="live-camera-cover">
 
                                             <img src="{{$images->path}}" alt="foto"
-                                                 style="width: 300px; height: 223px; margin-left: 60px;">
+                                                 style="width: 80%; height: 50%; margin-bottom: 60px; margin-left: 45px; margin-top: auto; margin-right: auto;">
 
                                         </figure>
                                             @endforeach

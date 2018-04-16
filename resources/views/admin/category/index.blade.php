@@ -49,7 +49,7 @@
                                     <tr role="row" class="odd" data-id="1">
                                         <td>{{ $categories->id }}</td>
                                         <td>{{ $categories->name }}</td>
-                                        <td>{{ $categories->description }}</td>
+                                        <td style=" width: 300px;  float: left; overflow: hidden;text-overflow: ellipsis; white-space: nowrap;">{{ $categories->description }}</td>
                                         <td>
                                             <a href="{{$categories->id}}/edit" class="btn btn-primary">Edit</a>
                                         </td>

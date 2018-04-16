@@ -2,7 +2,6 @@
 
 @section('title', 'AdminLTE')
 
-
 @section('content')
     <input type="hidden" name="_token" id="_token"  value="{{csrf_token()}}"> <!--token che si ha in sessione-->
 
@@ -37,7 +36,7 @@
                                     <tr role="row" class="odd" data-id="1">
                                         <td>{{ $news->id }}</td>
                                         <td>{{ $news->title }}</td>
-                                        <td>{{$news->body}}</td>
+                                        <td style=" width: 300px;  float: left; overflow: hidden;text-overflow: ellipsis; white-space: nowrap;">{{$news->body}}</td>
                                         <td>
                                             <a href="{{$news->id}}/assignNews" class="btn btn-success">Assign</a>
                                         </td>

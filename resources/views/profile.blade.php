@@ -15,7 +15,7 @@
             <div class="container">
 
 
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-6 col-md-offset-3 post">
                     <h2 class="section-title">{{trans('words.myprofile')}}</h2>
 
 
@@ -68,15 +68,10 @@
                             </div>
                         </div>
                     </form>
-
-
-
-
-
                 </div>
 
 
-                <div class="col-md-12 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-1 post">
                     <br><br><br><h2 class="section-title">I{{trans('words.collections')}}</h2>
 
                         <div class="row">
@@ -99,20 +94,15 @@
                         </div>
 
 
-                <div class="col-md-12 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-1 post">
                     <br><br><br><h2 class="section-title">Wishlist</h2>
 
-                    <div class="row">
-                        <div>
+                        <div style="">
                             @foreach($arrayImageW as $arrayImageWs)
                                 <img src="{{$arrayImageWs}}"  alt="foto" style="width: 100px; height: 100px;">
                                 &nbsp;   &nbsp;
                             @endforeach
-                        </div>
 
-
-
-                        <div>
                             @foreach($arrayItineraryW as $arrayItineraryWs)
                                 <a href="itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
                                 &nbsp;   &nbsp;
