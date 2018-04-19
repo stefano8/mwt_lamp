@@ -39,7 +39,7 @@
                                 <h1 style="margin:1px 14px 20px; color: #c8b7a5">{{$events->date}}</h1>
 
                                 @if(!isset($events->eventImage()->first()->path))
-                                    <img style="width: 175px; height: 190px;" src="/images/calendar.jpg">
+                                    <img style="width: 195px; height: 190px;" src="{!! asset('images/calendar.png') !!}">
                                 @else
 
 
@@ -48,7 +48,7 @@
 
                                 @endif
                             </div>
-                        <a style="" href="{{route('event.single', $events->id)}}">
+                        <a  style="" href="{{route('event.single', $events->id)}}">
                             <h3 style="margin:1px 14px 20px; overflow: hidden;
                                         text-overflow: ellipsis;
                                         white-space: nowrap;

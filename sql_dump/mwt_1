@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Apr 06, 2018 alle 12:30
+-- Creato il: Apr 16, 2018 alle 18:07
 -- Versione del server: 5.6.35
 -- Versione PHP: 7.1.1
 
@@ -34,9 +34,8 @@ CREATE TABLE `advices` (
 --
 
 INSERT INTO `advices` (`id`, `title`, `body`, `description`, `created_at`, `updated_at`) VALUES
-(2, 'Gran Sasso', 'Stagione Consigliata -> Estate', 'desc consiglio 1', '2018-03-17 12:15:21', '2018-03-23 14:56:21'),
-(3, 'Scarponi', 'Scarponi consigiati: bla bla bla  bla bla bla  bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'bla bla bla', '2018-03-23 15:07:35', NULL),
-(4, 'Ospitalità Abruzzesi', 'ecco alcuni hotel che possono interessarti: https://www.booking.com/searchresults.it.html?aid=324801;label=gran-sasso-T2vs88dE3IsBfwjybupZwgS247112320063%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap1t1%3Aneg%3Afi%3Atikwd-36737032691%3Alp1008064%3Ali%3Adec%3Adm;sid=7f0b3ed2b5000e088174f75fb8227630;keep_landing=1;redirected=1;region=3078;src=region;gclid=Cj0KCQjwy9LVBRDOARIsAGqoVnvJoJFt-GWWhOAerGfu5io2JixDIWjFG0KZi2JXmRO2xK0wnf98LwQaAnWrEALw_wcB;ptlrs=1', 'descrizione hotel', '2018-03-23 15:10:28', NULL);
+(4, 'UN MOTIVO PER INIZIARE ', 'Purtroppo non è facile farlo durante la settimana, il lavoro e gli impegni quotidiani ci obbligano spesso ad essere dei veri e propri maghi dell’organizzazione cercando di far combaciare tutti gli impegni alla perfezione.\n\nQuesto stile di vita però rischia di essere dannoso per la nostra salute fisica e mentale, ogni tanto abbiamo bisogno di disconnetterci e di concederci del tempo per trascorrere una giornata seguendo ritmi più naturali.\n\nUn ottimo modo modo per concedersi una pausa e recuperare le energie è proprio il trekking, ogni anno infatti sempre più persone decidono di mettersi in cammino, per andare alla scoperta di parchi, boschi o anche di un borgo storico, purché lo si faccia a passo lento e attento rispettando i propri tempi per immergersi nella realtà che ci circonda.\n\nSiamo fatti per camminare, il nostro corpo e la nostra anima hanno bisogno di muoversi a piedi per cogliere la bellezza della natura che ci circonda ed evadere dalla frenesia che il nostro quotidiano lavorativo ci impone.\n\nQuesto probabilmente è il motivo per cui, ogni anno, milioni di persone decidono di viaggiare e passare il loro tempo libero in modo diverso, camminando o andando in bicicletta.\n\nIn questo articolo abbiamo voluto approfondire la questione, cercando di spiegare perché iniziare (o continuare) a camminare è un’ottima idea per stare in salute e recuperare le energie.\n\nAlcuni di questi probabilmente sono proprio quelli che vi hanno spinto a mettervi in cammino altri forse potrebbero essere una fonte di ulteriore ispirazione.', '1. Per vedere e vivere davvero quello che ci circonda\nC’è stata un’epoca, per alcuni dura ancora, in cui viaggiare voleva dire prendere un aereo o un treno per raggiungere una località, passare qualche serata in un locale o in un ristorante alla moda e tornare indietro.\n\nAlcuni preferivano, nel giro di pochissimi giorni, toccare molte località diverse tanto per ampliare la propria collezione di timbri sul passaporto, come fossero punti del supermercato.\n\nQueste persone però viaggiavano senza conoscere, si concedevano frettolose esperienze artificiali che poco lasciavano nella loro memoria.\n\nScegliere una destinazione e attraversarla usando le nostre gambe è l’unica strada per conoscerla davvero, poco importa che si tratti di una località alpina, di un paese dell’est asiatico o di una città antica, il passo lento e attento vi permetterà di addentrarvi nella storia, nella cultura, nei sapori e nelle tradizioni di quello che visiterete.\n\nGli incontri per le strade, il pranzo consumato nella piccola trattoria scoperta quasi per caso e la possibilità anche di “perdersi” ogni tanto vi consentirà di vivere esperienze che formeranno i vostri ricordi e vi lasceranno la consapevolezza di conoscere davvero quello che visitate.\n\n\nTutte piccole accortezze che, nel loro insieme, ci permetterebbero di raggiungere la nostra quota giornaliera di cammino.\n\n', '2018-03-23 15:10:28', NULL),
+(5, 'Camminiamo per perdere peso', 'Abbiamo dedicato un interessante articolo alla ricerca sviluppata dall’Università di Verona che ha avuto il grande merito di sfatare un mito, dimostrando come camminare sia un’ottima disciplina per perdere peso e rimanere in forma, i ricercatori hanno scoperto che  il segreto è la regolarità, se si cammina più volte a settimana per almeno 20/30 minuti i risultati sul dimagrimento possono essere migliori anche rispetto alla corsa.\r\n\r\nAltre ricerche si sono unite a questo filone e tutte hanno evidenziato elementi diversi a sostegno di questa tesi, ve ne riportiamo alcuni.\r\n\r\nAnzitutto camminare è un’attività intensa, specie se fatto su un sentiero di montagna, che però mantiene l’organismo sotto quella soglia di sforzo che provocherebbe il consumo di zuccheri e carboidrati per ricavarne energia a scapito dei grassi, più difficili da trasformare in energia.\r\n\r\nL’altro aspetto importante riguarda le articolazioni.\r\n\r\nCorrere infatti, specie in soggetti sovrappeso, mette sotto stress le articolazioni delle gambe col rischio di incorrere in lesioni o infortuni, camminare invece è un movimento molto più dolce e accomodante per il nostro corpo.', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -60,7 +59,12 @@ INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at
 (1, 'Alpinismo', 'descrizione della categoria alpinismo', NULL, NULL),
 (2, 'Trekking', 'categoria di trekking', '2018-03-21 08:01:20', '2018-03-21 08:02:29'),
 (3, 'Ciaspole', 'Categorie ciaspole', '2018-03-21 08:01:50', '2018-03-21 16:12:18'),
-(4, 'Scialpinistico', 'categoria sciaplinistico', '2018-03-21 08:02:06', '2018-03-21 14:47:33');
+(4, 'Scialpinistico', 'categoria sciaplinistico', '2018-03-21 08:02:06', '2018-03-21 14:47:33'),
+(5, 'Sci', '', NULL, NULL),
+(6, 'Passeggiata', '', NULL, NULL),
+(7, 'Corsa', '', NULL, NULL),
+(8, 'Allenamento', '', NULL, NULL),
+(9, 'Snowboard', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -101,7 +105,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `information`, `created_at`, `updated_at`) VALUES
-(1, 'Stefano Corsetti, s.corsetti@hotmailit', '2018-03-20 23:00:00', NULL);
+(1, 'La nostra mission è quella di divulgare la cultura del camminare come stile di vita salutare, approccio alla conoscenza del mondo e all’incontro con gli altri, nonché risorsa per uno sviluppo del territorio sostenibile e rispettoso delle identità culturali e paesaggistiche locali.\n\nQuesto è il cammino che abbiamo intrapreso. ', '2018-03-20 23:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +131,8 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`id`, `date`, `title`, `body`, `address`, `description`, `created_at`, `updated_at`, `itinerary_id`) VALUES
 (2, '2018-03-14', 'Nuovo itinerario', '', 'via portonaccio, 33', 'description evento 1', '2018-03-14 15:16:43', '2018-03-15 08:08:38', 1),
-(5, '2018-03-21', 'evento sulla neve', 'finalemnte', 'via roma', 'desc', '2018-03-21 14:47:58', NULL, 1);
+(5, '2018-03-21', 'evento sulla neve', 'finalemnte', 'via roma', 'desc', '2018-03-21 14:47:58', NULL, 1),
+(6, '2018-04-06', 'Escursione Monte Bianco', 'Escursione monte bianoc lunedi 03 marzo 2018 ore 15:00', 'via monte', 'descrizione', '2018-04-06 10:53:03', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -179,7 +184,15 @@ INSERT INTO `images` (`id`, `path`, `title`, `created_at`, `updated_at`, `itiner
 (3, '/mwt_1718/public/images/montebianco.jpg', 'montebianco', NULL, '2018-03-22 19:42:41', 4, NULL, NULL, NULL),
 (4, '/mwt_1718/public/images/dolomiti.jpeg', 'Dolomiti', '2018-03-23 14:24:41', '2018-03-23 14:25:33', 14, NULL, NULL, NULL),
 (5, '/mwt_1718/public/images/etna.jpeg', 'Etna', '2018-03-23 14:25:10', '2018-03-23 14:26:38', 15, NULL, NULL, NULL),
-(6, '/mwt_1718/public/images/1523002368.png ', 'foto', NULL, '2018-04-06 06:12:48', NULL, 1, NULL, NULL);
+(7, '/mwt_1718/public/images/bunnergransasso2.jpg ', 'bunner', NULL, NULL, 1, NULL, NULL, NULL),
+(8, '/mwt_1718/public/images/bunneretna.jpg', 'bunner', NULL, NULL, 15, NULL, NULL, NULL),
+(9, '/mwt_1718/public/images/bunnerdolomiti.jpg ', 'bunner', NULL, NULL, 14, NULL, NULL, NULL),
+(10, '/mwt_1718/public/images/bunnermontebianco.jpg ', 'bunner', NULL, NULL, 4, NULL, NULL, NULL),
+(11, '/mwt_1718/public/images/campoimperatore.JPG', 'campoimperatore', NULL, NULL, 16, NULL, NULL, NULL),
+(12, '/mwt_1718/public/images/bunnercampoimperatore.jpg', 'bunner', NULL, NULL, 16, NULL, NULL, NULL),
+(13, '/mwt_1718/public/images/featured-image-1.jpg', 'news', NULL, NULL, NULL, NULL, 2, NULL),
+(14, '/mwt_1718/public/images/featured-image-2.jpg', 'news', NULL, NULL, NULL, NULL, 4, NULL),
+(15, '/mwt_1718/public/images/evento1.jpg ', 'evento1', NULL, NULL, NULL, NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -206,10 +219,11 @@ CREATE TABLE `itineraries` (
 --
 
 INSERT INTO `itineraries` (`id`, `name`, `difficolty`, `difference`, `remember_token`, `created_at`, `updated_at`, `description`, `duration`, `latitude`, `longitude`) VALUES
-(1, 'Gran Sasso', 'difficile', 2912, NULL, NULL, NULL, 'Il Gran Sasso (o Gran Sasso d\'Italia) è il massiccio montuoso più alto degli Appennini continentali, situato nell\'Appennino centrale, interamente in Abruzzo, come parte della dorsale più orientale dell\'Appennino abruzzese, al confine fra le province di L\'Aquila, Teramo e Pescara.\r\n\r\nConfina a nord con i territori di Fano Adriano, Pietracamela, Isola del Gran Sasso d\'Italia, Castelli e Arsita, a est con le Gole di Popoli, a sud-ovest direttamente con la piana di Assergi, più a valle con L\'Aquila, a sud è limitato da Campo Imperatore e a valle dalla Piana di Navelli, mentre a ovest-nord-ovest confina con la catena dei Monti della Laga e il Lago di Campotosto, da questi separato dall\'alta Valle del Vomano e la Strada statale 80 del Gran Sasso d\'Italia che l\'attraversa.\r\n\r\nIl Gran Sasso d\'Italia è un\'area ambientale tutelata con l\'istituzione del Parco nazionale del Gran Sasso e Monti della Laga. Su di esso ricade la Comunità montana Gran Sasso e la Comunità montana Campo Imperatore-Piana di Navelli.', 123, 0, 0),
-(4, 'Monte Bianco', 'facile', 12, NULL, NULL, '2018-03-27 10:16:59', 'Monte Bianco Mont Blanc, Mont Maudit, Mont Blanc du Tacul.jpg Il Monte Bianco con a destra il Monte Maudit e il Mont Blanc du Tacul Stati	Italia Italia  Francia Francia Regione	Valle d\'Aosta Valle d\'Aosta Rodano-Alpi Rodano-Alpi Provincia	Valle d\'Aosta Valle d\'Aosta Blason département fr Haute-Savoie.svg Alta Savoia Altezza	4 808,72 m s.l.m. Prominenza	4 696 m Catena	Alpi Coordinate	45°49′58.46″N 6°51′52.88″ECoordinate: 45°49′58.46″N 6°51′52.88″E (Mappa) Altri nomi e significati	Il Bianco, Tetto d\'Europa, Tetto delle Alpi, la Dama bianca Data prima ascensione	8 agosto 1786 Autore/i prima ascensione	Jacques Balmat, Michel Gabriel Paccard Mappa di localizzazione Mappa di localizzazione: ItaliaMonte BiancoMonte Bianco Mappa di localizzazione: AlpiMonte Bianco Dati SOIUSA Grande Parte	Alpi Occidentali Grande Settore	Alpi Nord-occidentali Sezione	Alpi Graie Sottosezione	Alpi del Monte Bianco Supergruppo	Massiccio del Monte Bianco Gruppo	Gruppo del Monte Bianco Sottogruppo	Monte Bianco Codice	I/B-7.V-B.2.b Modifica dati su Wikidata · Manuale Il Monte Bianco (Mont Blanc in francese e in arpitano) è una montagna situata nel settore delle Alpi Nord-occidentali, lungo la sezione alpina delle Alpi Graie, sulla linea spartiacque tra la Valle d\'Aosta (val Veny e val Ferret in Italia) e l\'Alta Savoia (valle dell\'Arve in Francia), nei territori comunali di Courmayeur[1] e Chamonix, che dà il nome all\'omonimo Massiccio del Monte Bianco, appartenente alla sottosezione delle Alpi del Monte Bianco.  Con i suoi 4.808,72 m d\'altezza (ultima misura ufficiale il 13 settembre 2017)[2] è la montagna più alta delle Alpi, d\'Italia, di Francia e in generale dell\'Europa se si esclude il Caucaso[3]: da qui il suo soprannome di Re delle Alpi.[4] Condivide assieme al Monte Elbrus nel Caucaso un posto tra le cosiddette Sette Sommità del Pianeta.  Prevalentemente di natura granitica, irta di guglie e di creste, intagliata da profondi valloni nei quali scorrono numerosi ghiacciai, è considerata una montagna di grande richiamo per l\'alpinismo internazionale[5] e, da un punto di vista della storiografia alpinistica, la nascita dell\'alpinismo coincide con la data della sua prima ascensione: l\'8 agosto 1786.', 3, 0, 0),
-(14, 'Dolomiti', 'difficile', 12121, NULL, '2018-03-23 14:22:38', NULL, 'Le Dolomiti, anche dette Monti pallidi (Dolomiten in tedesco, Dolomites in ladino, Dolomitis in friulano), sono un insieme di gruppi montuosi delle Alpi Orientali italiane, a sud della catena principale alpina, comprese tra Veneto, Trentino-Alto Adige e Friuli, tra le province di Belluno, Bolzano, Trento, Udine e Pordenone.', 14, 0, 0),
-(15, 'Etna', 'media', 33334, NULL, '2018-03-23 14:23:11', NULL, 'l\'Etna nevoso, colonna del cielo / d\'acuto gelo perenne nutrice / lo comprime. / Sgorgano da segrete caverne / fonti purissime d\'orrido fuoco, / fiumi nel giorno riversano / corrente di livido fumo / e nella notte rotola / con bagliori di sangue / rocce portando alla discesa / profonda del mare, con fragore.', 45, 0, 0);
+(1, 'Gran Sasso', 'difficile', 2912, NULL, '2018-04-16 22:00:00', '2018-04-06 09:07:44', 'Il Gran Sasso (o Gran Sasso d\'Italia) è il massiccio montuoso più alto degli Appennini continentali, situato nell\'Appennino centrale, interamente in Abruzzo, come parte della dorsale più orientale dell\'Appennino abruzzese, al confine fra le province di L\'Aquila, Teramo e Pescara.Confina a nord con i territori di Fano Adriano, Pietracamela, Isola del Gran Sasso d\'Italia, Castelli e Arsita, a est con le Gole di Popoli, a sud-ovest direttamente con la piana di Assergi, più a valle con L\'Aquila, a sud è limitato da Campo Imperatore e a valle dalla Piana di Navelli, mentre a ovest-nord-ovest confina con la catena dei Monti della Laga e il Lago di Campotosto, da questi separato dall\'alta Valle del Vomano e la Strada statale 80 del Gran Sasso d\'Italia che l\'attraversa.Il Gran Sasso d\'Italia è un\'area ambientale tutelata con l\'istituzione del Parco nazionale del Gran Sasso e Monti della Laga. Su di esso ricade la Comunità montana Gran Sasso e la Comunità montana Campo Imperatore-Piana di Navelli.', 123, 42.50324, 13.65721),
+(4, 'Monte Bianco', 'facile', 12, NULL, NULL, '2018-03-27 10:16:59', 'Monte Bianco Mont Blanc, Mont Maudit, Mont Blanc du Tacul.jpg Il Monte Bianco con a destra il Monte Maudit e il Mont Blanc du Tacul Stati	Italia Italia  Francia Francia Regione	Valle d\'Aosta Valle d\'Aosta Rodano-Alpi Rodano-Alpi Provincia	Valle d\'Aosta Valle d\'Aosta Blason département fr Haute-Savoie.svg Alta Savoia Altezza	4 808,72 m s.l.m. Prominenza	4 696 m Catena	Alpi Coordinate	45°49′58.46″N 6°51′52.88″ECoordinate: 45°49′58.46″N 6°51′52.88″E (Mappa) Altri nomi e significati	Il Bianco, Tetto d\'Europa, Tetto delle Alpi, la Dama bianca Data prima ascensione	8 agosto 1786 Autore/i prima ascensione	Jacques Balmat, Michel Gabriel Paccard Mappa di localizzazione Mappa di localizzazione: ItaliaMonte BiancoMonte Bianco Mappa di localizzazione: AlpiMonte Bianco Dati SOIUSA Grande Parte	Alpi Occidentali Grande Settore	Alpi Nord-occidentali Sezione	Alpi Graie Sottosezione	Alpi del Monte Bianco Supergruppo	Massiccio del Monte Bianco Gruppo	Gruppo del Monte Bianco Sottogruppo	Monte Bianco Codice	I/B-7.V-B.2.b Modifica dati su Wikidata · Manuale Il Monte Bianco (Mont Blanc in francese e in arpitano) è una montagna situata nel settore delle Alpi Nord-occidentali, lungo la sezione alpina delle Alpi Graie, sulla linea spartiacque tra la Valle d\'Aosta (val Veny e val Ferret in Italia) e l\'Alta Savoia (valle dell\'Arve in Francia), nei territori comunali di Courmayeur[1] e Chamonix, che dà il nome all\'omonimo Massiccio del Monte Bianco, appartenente alla sottosezione delle Alpi del Monte Bianco.  Con i suoi 4.808,72 m d\'altezza (ultima misura ufficiale il 13 settembre 2017)[2] è la montagna più alta delle Alpi, d\'Italia, di Francia e in generale dell\'Europa se si esclude il Caucaso[3]: da qui il suo soprannome di Re delle Alpi.[4] Condivide assieme al Monte Elbrus nel Caucaso un posto tra le cosiddette Sette Sommità del Pianeta.  Prevalentemente di natura granitica, irta di guglie e di creste, intagliata da profondi valloni nei quali scorrono numerosi ghiacciai, è considerata una montagna di grande richiamo per l\'alpinismo internazionale[5] e, da un punto di vista della storiografia alpinistica, la nascita dell\'alpinismo coincide con la data della sua prima ascensione: l\'8 agosto 1786.', 3, 45.833333, 6.866667),
+(14, 'Dolomiti', 'difficile', 12121, NULL, '2018-03-23 14:22:38', NULL, 'Le Dolomiti, anche dette Monti pallidi (Dolomiten in tedesco, Dolomites in ladino, Dolomitis in friulano), sono un insieme di gruppi montuosi delle Alpi Orientali italiane, a sud della catena principale alpina, comprese tra Veneto, Trentino-Alto Adige e Friuli, tra le province di Belluno, Bolzano, Trento, Udine e Pordenone.', 14, 46.383333, 11.85),
+(15, 'Etna', 'media', 33334, NULL, '2018-03-23 14:23:11', NULL, 'l\'Etna nevoso, colonna del cielo / d\'acuto gelo perenne nutrice / lo comprime. / Sgorgano da segrete caverne / fonti purissime d\'orrido fuoco, / fiumi nel giorno riversano / corrente di livido fumo / e nella notte rotola / con bagliori di sangue / rocce portando alla discesa / profonda del mare, con fragore.', 45, 37.75, 15),
+(16, 'Campo Imperatore', 'facile', 44444, NULL, NULL, NULL, 'Nel cuore dell\'Abruzzo il comprensorio sciistico di Campo Imperatore è tra i piu\' moderni e attrezzati del Centro Italia: 20 Km di piste, 4 modernissimi impianti (1 funivia, 2 seggiovie, 1 manovia) con una portata complessiva di 4000 persone. La quota elevata favorisce un ottimo innevamento per buona parte dell\'inverno (fino a 5 mt in alcune stagioni). A valle di Campo Imperatore, la conca di Monte Cristo (1.450 metri) ospita alcune piste piu\' brevi. L\'altopiano di Campo Imperatore offre un impianto per lo snowboard. Inoltre è noto anche per il freeride: Valle Fredda da quota 2200 a quota 1200, I Tre Valloni 2100-1100 (il più famoso), Monte Portella 2200-1750, lo Schioppatore 2200-1750, sia per i più esperti che non.\nCompletano l\'offerta ca 60 Km adibiti allo sci di fondo, con una serie di anelli che si snodano lungo lo splendido altopiano.\n\nMeno\nALTITUDINE\n2200m\nIN QUOTA\n0m\nDISLIVELLO\n1100m\nA VALLE\nIMPIANTI RISALITA\n10020003\nTOTALE\nAREA SCIISTICA\nPISTE BLU\n\n38%\n\nPISTE ROSSE\n\n35%\n\nPISTE NERE\n\n27%\n\nTOTALE PISTE\n\n8\n\nKM DI PISTE\n\n13 km\n\nDATI DELLA STAGIONE\nApertura stagione sciistica: 08/12/2017Chiusura stagione sciistica: 02/04/2018\nGALLERIA FOTO\nVedi tutte\n\nCampo Imperatore - Scindarella\n  - © ldm090670Campo Imperatore - ATTENZIONE!!! INFORMARSI PRIMA DI INTRAPRENDERE QUALSIASI ATTIVITA\' IN MONTAGNA!!! ALLERTA VALANGHE 4 SU 5!!! 21-1-2016  - © chef.paolettoCampo Imperatore - Domenica 10 aprile gran bella giornata peccato che hanno aperto tardi 9:45/10:00 però hanno fatto pagare funivia e skipass tutto 18€ le piste chiudono alle 14 ma gran bella giornata  - © iPhoneCampo Imperatore - Oggi giornata tutto sommato buona la neve farinosa già dal mattino ma comunque sciabile....nel primo pomeriggio condizioni molto mediocri neve acquosa....molto....chiusura impianti ore 14:00  - © proteus523\nSTORICO NEVE\nLeggi tutto: Annuale | Confronto | Altezza neve\n\n10 cm\n0 cm\n13 mar 2018Ultime 2 settimaneIeri\nMOSTRA STORICO NEVE\nMIGLIORI HOTEL IN CAMPO IMPERATORE\n\nTUTTI GLI HOTEL CAMPO IMPERATORE\nUFFICIO TURISTICO\nCampo Imperatore\n\n67010 Pescara\n\nItalia\n\nTelefono:\n\nbiglietteriagransasso@gmail.com\n\n', 5555, 42.416667, 13.666667);
 
 -- --------------------------------------------------------
 
@@ -304,7 +318,8 @@ CREATE TABLE `news` (
 
 INSERT INTO `news` (`id`, `date`, `title`, `body`, `created_at`, `updated_at`, `image_id`, `itinerary_id`) VALUES
 (2, '2018-03-16', 'Nuovo Itinerario: Gran Sasso', 'Il Gran Sasso d\'Italia è un\'area ambientale tutelata con l\'istituzione del Parco nazionale del Gran Sasso e Monti della Laga. Su di esso ricade la Comunità montana Gran Sasso e la Comunità montana Campo Imperatore-Piana di Navelli.\n\nIndice\n1	Descrizione\n1.1	Conformazione\n1.2	Rilievi principali\n1.3	Nevati, nevai, cascate di ghiaccio\n1.4	Cascate\n2	Ambiente\n2.1	Flora\n2.2	Fauna\n3	L\'uomo\n3.1	Origine del nome\n3.2	Seconda guerra mondiale\n3.3	Istituto nazionale di fisica nucleare\n3.4	Il parco nazionale\n3.5	Comuni interessati\n3.6	Territorio e tradizioni\n3.7	Monumenti e luoghi d\'interesse\n3.8	Tragedie ed incidenti\n4	Sport\n4.1	Alpinismo\n4.2	Escursionismo\n4.2.1	Ippovia del Gran Sasso\n4.2.2	Marcia dei Tre Prati\n4.2.3	Rifugi e ostelli\n4.3	Sci alpino\n4.4	Sci nordico\n4.5	Sci alpinismo\n4.6	Ciclismo su strada\n4.7	Ciclismo in mountain bike\n5	Note\n6	Bibliografia\n7	Galleria d\'immagini\n8	Voci correlate\n9	Altri progetti\n10	Collegamenti esterni\nDescrizione\n\nVista del paretone del Corno Grande (versante teramano) prima della frana del 22 agosto 2006\nDai suoi punti più distanti, ovvero il Passo delle Capannelle a nord-ovest e le Gole di Popoli a sud-est, il Gruppo del Gran Sasso misura circa 50 km in lunghezza e 15 km in larghezza con un perimetro di circa 130 km. Orientato da nord-ovest e a ovest a sud-est, come la grande maggioranza dei gruppi montuosi appenninici e preappenninici, ma con caratteristiche ben più aspre di alta montagna, fa parte della dorsale più orientale dell\'Appennino abruzzese assieme alla Maiella più a sud e consta di due sottocatene principali parallele in senso longitudinale: la prima, più orientale e più aspra, si estende dal Monte Corvo (2623 m; nord-ovest) al Vado di Sole (sud-est).\n\nLa sottocatena occidentale, meno elevata e aspra, si estende dal Passo delle Capannelle e dal Monte San Franco (2132 m; nord-ovest) al Monte Capo di Serre (1771 m; sud-est). Al di là di questa zona centrale vi è un\'ampia zona sud-orientale, chiamata dei \"contrafforti occidentali\". Questi sono caratterizzati da numerosi rilievi meno elevati: Monte Ruzza (1643 m), Monte Bolza (1904 m), Monte Camarda (1384 m), Monte Cappucciata (1802 m), Monte Picca (1405 m) e molti altri, fino alle Gole di Popoli.\n\nLe cime maggiori si trovano nella sottocatena settentrionale: il Corno Grande - che consta di quattro vette principali[1]: quella orientale (2903 m), la centrale (2893 m) il torrione cambi (2875 m) e la maggiore, quella occidentale (2912 m,[2] che è anche la vetta più alta di tutti gli Appennini continentali) - e il Corno Piccolo (2655 m). Incastonato dentro una conca e protetto dalle quattro vette che costituiscono il Corno Grande si trova il Ghiacciaio del Calderone, il secondo ghiacciaio più meridionale d\'Europa[3].\n\nAlternativamente il massiccio può essere suddiviso in tre grandi aree latitudinali: la parte settentrionale dal Passo delle Capannelle al Monte Portella che raggruppa le cime maggiori, la parte centrale corrispondente all\'altopiano di Campo Imperatore con le sue cime e la parte meridionale che degrada dolcemente da Campo Imperatore fino alla Valle del Tirino e all\'Altopiano di Navelli con i suoi borghi montani.\n\nNel cuore del massiccio, tra le due sottocatene, è presente il vasto altopiano di Campo Imperatore e tra le cime maggiori la conca di Campo Pericoli, oltre che profonde valli che ridiscendono tra le suddette cime (es. Val Chiarino, Val Maone, Valle del Venacquaro, Valle dell\'Inferno).\n\n', '2018-03-16 11:42:56', '2018-03-16 11:48:25', NULL, 1),
-(3, '2018-03-23', 'Nuovo Itinerario:Monte Bianco', 'Monte Bianco Mont Blanc, Mont Maudit, Mont Blanc du Tacul.jpg Il Monte Bianco con a destra il Monte Maudit e il Mont Blanc du Tacul Stati	Italia Italia  Francia Francia Regione	Valle d\'Aosta Valle d\'Aosta Rodano-Alpi Rodano-Alpi Provincia	Valle d\'Aosta Valle d\'Aosta Blason département fr Haute-Savoie.svg Alta Savoia Altezza	4 808,72 m s.l.m. Prominenza	4 696 m Catena	Alpi Coordinate	45°49′58.46″N 6°51′52.88″ECoordinate: 45°49′58.46″N 6°51′52.88″E (Mappa) Altri nomi e significati	Il Bianco, Tetto d\'Europa, Tetto delle Alpi, la Dama bianca Data prima ascensione	8 agosto 1786 Autore/i prima ascensione	Jacques Balmat, Michel Gabriel Paccard Mappa di localizzazione Mappa di localizzazione: ItaliaMonte BiancoMonte Bianco Mappa di localizzazione: AlpiMonte Bianco Dati SOIUSA Grande Parte	Alpi Occidentali Grande Settore	Alpi Nord-occidentali Sezione	Alpi Graie Sottosezione	Alpi del Monte Bianco Supergruppo	Massiccio del Monte Bianco Gruppo	Gruppo del Monte Bianco Sottogruppo	Monte Bianco Codice	I/B-7.V-B.2.b Modifica dati su Wikidata · Manuale Il Monte Bianco (Mont Blanc in francese e in arpitano) è una montagna situata nel settore delle Alpi Nord-occidentali, lungo la sezione alpina delle Alpi Graie, sulla linea spartiacque tra la Valle d\'Aosta (val Veny e val Ferret in Italia) e l\'Alta Savoia (valle dell\'Arve in Francia), nei territori comunali di Courmayeur[1] e Chamonix, che dà il nome all\'omonimo Massiccio del Monte Bianco, appartenente alla sottosezione delle Alpi del Monte Bianco.  Con i suoi 4.808,72 m d\'altezza (ultima misura ufficiale il 13 settembre 2017)[2] è la montagna più alta delle Alpi, d\'Italia, di Francia e in generale dell\'Europa se si esclude il Caucaso[3]: da qui il suo soprannome di Re delle Alpi.[4] Condivide assieme al Monte Elbrus nel Caucaso un posto tra le cosiddette Sette Sommità del Pianeta.', '2018-03-23 09:21:11', '2018-03-27 10:19:08', NULL, 4);
+(3, '2018-03-23', 'Nuovo Itinerario:Monte Bianco', 'Monte Bianco Mont Blanc, Mont Maudit, Mont Blanc du Tacul.jpg Il Monte Bianco con a destra il Monte Maudit e il Mont Blanc du Tacul Stati	Italia Italia  Francia Francia Regione	Valle d\'Aosta Valle d\'Aosta Rodano-Alpi Rodano-Alpi Provincia	Valle d\'Aosta Valle d\'Aosta Blason département fr Haute-Savoie.svg Alta Savoia Altezza	4 808,72 m s.l.m. Prominenza	4 696 m Catena	Alpi Coordinate	45°49′58.46″N 6°51′52.88″ECoordinate: 45°49′58.46″N 6°51′52.88″E (Mappa) Altri nomi e significati	Il Bianco, Tetto d\'Europa, Tetto delle Alpi, la Dama bianca Data prima ascensione	8 agosto 1786 Autore/i prima ascensione	Jacques Balmat, Michel Gabriel Paccard Mappa di localizzazione Mappa di localizzazione: ItaliaMonte BiancoMonte Bianco Mappa di localizzazione: AlpiMonte Bianco Dati SOIUSA Grande Parte	Alpi Occidentali Grande Settore	Alpi Nord-occidentali Sezione	Alpi Graie Sottosezione	Alpi del Monte Bianco Supergruppo	Massiccio del Monte Bianco Gruppo	Gruppo del Monte Bianco Sottogruppo	Monte Bianco Codice	I/B-7.V-B.2.b Modifica dati su Wikidata · Manuale Il Monte Bianco (Mont Blanc in francese e in arpitano) è una montagna situata nel settore delle Alpi Nord-occidentali, lungo la sezione alpina delle Alpi Graie, sulla linea spartiacque tra la Valle d\'Aosta (val Veny e val Ferret in Italia) e l\'Alta Savoia (valle dell\'Arve in Francia), nei territori comunali di Courmayeur[1] e Chamonix, che dà il nome all\'omonimo Massiccio del Monte Bianco, appartenente alla sottosezione delle Alpi del Monte Bianco.  Con i suoi 4.808,72 m d\'altezza (ultima misura ufficiale il 13 settembre 2017)[2] è la montagna più alta delle Alpi, d\'Italia, di Francia e in generale dell\'Europa se si esclude il Caucaso[3]: da qui il suo soprannome di Re delle Alpi.[4] Condivide assieme al Monte Elbrus nel Caucaso un posto tra le cosiddette Sette Sommità del Pianeta.', '2018-03-23 09:21:11', '2018-03-27 10:19:08', NULL, 4),
+(4, '2018-04-12', 'Apuane: dal mare alla montagna', 'Dalle acque del Tirreno alla vetta delle Apuane a quasi 2000 metri.                          Un itinerario di Trail Running unico in Italia per la varietà e la bellezza del paesaggio, oltreché per le caratteristiche della competizione.\n\nStiamo parlando della Quinta Edizione del Grande Trekking delle Apuane, un “Trail Running & Walk Trail 27 Km 2000 D+”, evento garantito da TREKKING&Outdoor, ormai un appuntamento fisso per gli appassionati e che si svolgerà il 28 maggio all’ombra delle montagne toscane.\n\nLa quota 0 dell’itinerario sarà anche quest’anno la spiaggia di Marina di Carrara, da dove i partecipanti saliranno ai 1753 metri della vetta del Monte Sagro, dopo aver percorso 27 chilometri e un dislivello in salita di ben 2000 metri seguendo un tracciato su 19% asfalto, 24% carrozzabile, 57% sentiero/single track.\n\nDalla vetta si potrà godere – meritatamente, dopo tanta fatica – della vista sulle Apuane settentrionali a quelle meridionali, sulla costa fino a Livorno e il golfo della Spezia. Se la giornata lo consentirà sarà possibile apprezzare il profilo e le montagne  della Corsica, le isole dell’arcipelago Toscano (Capraia, Gorgona e Elba) e se il cielo sarà sufficientemente terso, si potranno scorgere le vette innevate delle Alpi Marittime,  l’Argentera ed il Monviso.\n\nParlare solo della gara sarebbe però riduttivo. L’evento è ormai diventato un classico ed è anche un’occasione per visitare un territorio che offre la possibilità di bagnarsi i piedi nelle acque del mar Tirreno, e di trovarsi, dopo solo poche ore di cammino, a calpestare le rocce sulla vetta del monte Sagro a 1753 m. di quota.\n\nL’importanza dell’evento è confermata dal fatto che da questa edizione la gara di Trail Running è stata riconosciuta come gara di qualificazione per la UMTB, , Ultra Trail du Mont Blanc, la corsa internazionale sulla distanza in semi-autonomia che si svolge sui tre versanti del Monte Bianco. Come fare per cimentarsi in questa esperienza?\n\nLa scadenza per le iscrizioni è fissata 24 Maggio 2018 e conviene fare in fretta. Infatti chi si iscrive prima paga meno.\n\nIl costo della quota di iscrizione alla GT TRAIL Running (corsa agonistica) è di € 30 fino al 30/4/2018 e di € 35 fino al 24/5/2018. Per i soci C.A.I. € 20.\n\nIl costo per l’iscrizione alla GT WALK Trail (trekking) è di € 15 fino al 15/5/2018 e di € 20 fino al 24/5/2018. Per i soci C.A.I. (Club Alpino Italiano) € 10.\n\nI soci CAI per usufruire dello sconto dovranno mostrare la tessera nei punti convenzionati al momento dell’iscrizione o al ritiro del pettorale.\n\nOgni altra informazione può essere trovata sul sito ufficiale del Grande Trekking', '2018-04-12 05:36:33', NULL, NULL, 14);
 
 -- --------------------------------------------------------
 
@@ -409,7 +424,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Stefano', 's.corsetti@hotmail.it', '$2y$10$fSnQYa4Mnf7CVrxHgs6eEujI/54FnljbZ6MdBR/PdtcJiXchrrb4K', 'lt0KclcsjqsN7xnr4Xvhk7qeZr6DKb6IR5vkvezQyavpgnqszLaSEWNDYxHc', '2018-03-13 15:30:59', '2018-03-13 15:30:59'),
+(1, 'Stefano', 's.corsetti@hotmail.it', '$2y$10$fSnQYa4Mnf7CVrxHgs6eEujI/54FnljbZ6MdBR/PdtcJiXchrrb4K', 'areT4YkvxMam8M44bX7IMRPBeuYc52CayWQuj75FMwuEXkiRD9OK0e9C443T', '2018-03-13 15:30:59', '2018-03-13 15:30:59'),
 (4, 'Mario', 'mario@prova.it', '$2y$10$Wvh/QLxxedPlQRoUXDqdtOaNJcYfblc.PLJNS0wh2ducbHhsDVffG', 'MiUvdBTuCC2WDUzBMC62gjHBt4ZglOcnfcdgF4lJcOfgD9p1MbsCa0JJIkjN', '2018-03-16 07:34:11', '2018-03-16 07:34:11'),
 (5, 'prova', 'prova1@info.it', '$2y$10$DRzp7ABnq62GC8DVx2AwXe/gw4NUFGIUCiFB39JE5xcSna2SUsrNi', NULL, '2018-03-20 20:33:31', '2018-03-20 20:33:31'),
 (7, 'prova', 'prova14@info.it', '$2y$10$1d7SJThs3DvBrkqSGm/UB.daQEIscWuYfVdl1zSM61dg6uVlGdCqe', NULL, '2018-03-20 20:35:10', '2018-03-20 20:35:10'),
@@ -457,7 +472,9 @@ CREATE TABLE `views` (
 --
 
 INSERT INTO `views` (`id`, `user_id`, `itinerary_id`, `created_at`, `updated_at`) VALUES
-(7, 1, 1, '2018-03-22 19:51:07', NULL);
+(8, 1, 1, '2018-04-14 07:46:55', NULL),
+(9, 1, 4, '2018-04-16 13:44:11', NULL),
+(10, 1, 16, '2018-04-16 13:53:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -503,7 +520,9 @@ CREATE TABLE `wishlists` (
 --
 
 INSERT INTO `wishlists` (`id`, `itinerary_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(4, 14, 1, '2018-03-25 11:51:28', NULL);
+(4, 14, 1, '2018-03-25 11:51:28', NULL),
+(5, 15, 1, '2018-04-13 12:01:46', NULL),
+(6, 16, 1, '2018-04-16 13:53:04', NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -653,12 +672,12 @@ ALTER TABLE `wishlists`
 -- AUTO_INCREMENT per la tabella `advices`
 --
 ALTER TABLE `advices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT per la tabella `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT per la tabella `cities`
 --
@@ -673,7 +692,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT per la tabella `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT per la tabella `groups`
 --
@@ -683,12 +702,12 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT per la tabella `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT per la tabella `itineraries`
 --
 ALTER TABLE `itineraries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT per la tabella `itineraries_categories`
 --
@@ -703,7 +722,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT per la tabella `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT per la tabella `regions`
 --
@@ -728,7 +747,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT per la tabella `views`
 --
 ALTER TABLE `views`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT per la tabella `votes`
 --
@@ -738,7 +757,7 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT per la tabella `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Limiti per le tabelle scaricate
 --

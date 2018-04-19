@@ -54,7 +54,7 @@
                             <h3 class="widget-title">{{trans('words.categories')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
-                                    <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a>
+                                    <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a>
                                     </li>
                                 @endforeach
 

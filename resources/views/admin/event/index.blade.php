@@ -56,9 +56,9 @@
                                         <td>{{ $events->id }}</td>
                                         <td>{{ $events->date }}</td>
                                         <td>{{ $events->title }}</td>
-                                        <td>{{ $events->body }}</td>
+                                        <td style=" width: 300px;  float: left; overflow: hidden;text-overflow: ellipsis; white-space: nowrap;">{{ $events->body }}</td>
                                         <td>{{ $events->address }}</td>
-                                        <td>{{ $events->description}}</td>
+                                        <td >{{ $events->description}}</td>
                                         <td>{{ $events->itinerary_id}}</td>
 
                                         <td>

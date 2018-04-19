@@ -57,7 +57,7 @@
                                         <td>{{ $itineraries->difficolty}}</td>
                                         <td>{{ $itineraries->difference }}</td>
                                         <td>{{ $itineraries->duration }}</td>
-                                        <td>{{ $itineraries->description }}</td>
+                                        <td style=" width: 300px;  float: left; overflow: hidden;text-overflow: ellipsis; white-space: nowrap;">{{ $itineraries->description }}</td>
                                         <td>
                                             <a href="{{$itineraries->id}}/assign" class="btn btn-success">Assign Category</a>
                                         </td>
