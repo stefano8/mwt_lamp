@@ -11,6 +11,18 @@
             </div>
         </div>
 
+        <div style="height: 60%; width:100%; margin-top: -7px;" class="hero" data-bg-image="{!! asset('images/newsingle.jpg') !!}">
+            <div class="boxtesto" style=" margin-left: 1100px; margin-right: 1px;">
+                <h1 style="margin-top: -67px;">
+                    <span class="testo" style="color: black; margin-left: 109px;">Chi più alto sale,</span>
+                    <span style="color: black; margin-left: 103px;"><br> più lontano vede; <br></span>
+                    <span style="color: black; margin-left: 65px;"> chi più lontano vede, <br></span>
+                    <span style="color: black; margin-left: 95px;"> più a lungo sogna <br></span>
+                    <span style="color: black; margin-left: 131px;"> <i>Walter Bonatti</i></span>
+
+                </h1>
+            </div>
+        </div>
 
         <div class="fullwidth-block">
             <div class="container">

@@ -10,6 +10,16 @@
                 <span>News</span>
             </div>
         </div>
+        <div style="height: 60%; width:100%; margin-top: -7px;" class="hero" data-bg-image="{!! asset('images/bunnercampoimperatore.jpg') !!}">
+            <div class="boxtesto" style=" margin-left: 1100px; margin-right: 1px;">
+                <h1 style="margin-top: -67px;">
+                    <span class="testo" style="color: black; margin-left: -210px;">Vado in montagna più per la paura di non vivere</span>
+                    <span style="color: black; margin-left: 50px;"><br> che per quella di morire<br></span>
+                    <span style="color: black; margin-left: 172px;"> <i>Ada Gobetti</i></span>
+
+                </h1>
+            </div>
+        </div>
 
 
         <div class="fullwidth-block">
