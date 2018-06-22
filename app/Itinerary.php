@@ -9,7 +9,7 @@ class Itinerary extends Model
     protected $table = 'itineraries';
 
     protected $fillable = [
-        'id', 'name', 'difficolty', 'difference', 'duration', 'description', 'created_at'
+        'id', 'name', 'difficolty', 'difference', 'duration', 'description', 'city_id', 'created_at'
     ];
 
     /**
@@ -34,7 +34,6 @@ class Itinerary extends Model
         return $this->belongsToMany('App\User', 'views')->withPivot('id', 'user_id', 'itinerary_id');
 
     }
-
 
     //un Itinerario N Eventi
     public function eventRel(){
@@ -71,10 +70,18 @@ class Itinerary extends Model
 
     }
 
-    //
+    //un itinerario N review
     public function itineraryRewiew(){
 
         return $this->hasMany('App\Image', 'itinerary_id');
+
+    }
+
+    //un itinerario una città
+    public function cityItinerary(){
+
+        return $this->hasOne('App\City', 'city_id');
+
 
     }
 

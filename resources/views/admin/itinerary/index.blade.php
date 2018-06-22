@@ -42,6 +42,7 @@
                                     <th>Difference</th>
                                     <th>Duration</th>
                                     <th>Description</th>
+                                    <th>City ID</th>
 
                                     <td>Assign Category</td>
                                     <th>Edit</th>
@@ -58,6 +59,7 @@
                                         <td>{{ $itineraries->difference }}</td>
                                         <td>{{ $itineraries->duration }}</td>
                                         <td style=" width: 300px;  float: left; overflow: hidden;text-overflow: ellipsis; white-space: nowrap;">{{ $itineraries->description }}</td>
+                                        <td>{{ $itineraries->city_id }}</td>
                                         <td>
                                             <a href="{{$itineraries->id}}/assign" class="btn btn-success">Assign Category</a>
                                         </td>

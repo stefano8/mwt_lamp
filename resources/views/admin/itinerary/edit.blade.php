@@ -62,6 +62,19 @@
                                    value="{{$itinerary->description}}" rows="5">
                         </div>
                     </div>
+                    <!-- selectbox per itinerari -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="city_id">City</label>
+                        <div class="col-md-9">
+                            <select class="form-control resize_vertical"  id="city_id" name="city_id" required>
+                                @foreach($city as $cities)
+                                    <option value="{{$cities->id}}" {{$itinerary->city_id == $cities->id ? 'selected="selected"' : ''}}>
+                                        {{$cities->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
 
                     <!-- Form actions -->
