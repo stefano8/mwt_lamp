@@ -787,32 +787,40 @@ class ImageController extends Controller
         ]);
 
 
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $imageName = $request->image->getClientOriginalName();
         $request->image->move(public_path('images'), $imageName);
 
 
 
         //se già esiste un immagine con user_id uguale a id_user allora update altrimenti insert
 
-        $image_user = Image::all()->where('user_id', $id_user)->first();
+        $image_user = Image::all()->where('user_id', $id_user)
+                                    ->where('new_id', '=' , null)
+                                    ->where('event_id', '=' , null)
+                                    ->where('itinerary_id', '=' , null)
+                                    ->first();
 
         if(isset($image_user)){
 
             DB::table('images')
-                ->where('user_id', $id_user)
+                ->where('user_id','=', $id_user)
+                ->where('new_id', '=' , null)
+                ->where('itinerary_id', '=' , null)
+                ->where('event_id', '=' , null)
                 ->update([
-                    'path' => "/mwt_1718/public/images/$imageName ",
+                    'path' => "images/$imageName ",
                     'user_id' => $id_user,
                     'title' => 'foto',
                     'updated_at' => now()
                 ]);
+
 
         }else{
 
             DB::table('images')
                 ->insert([
                     'user_id' => $id_user,
-                    'path' => "/mwt_1718/public/images/$imageName ",
+                    'path' => "images/$imageName ",
                     'title' => 'foto'
                 ]);
 

@@ -38,7 +38,7 @@
 
                     <form action="#" class="contact-form">
                         @if(!isset($user->userImage()->first()->path))
-                            <div class="col-md-6"><img style="height: 150px; width: 150px;" src="/images/profile.png"></div>
+                            <div class="col-md-6"><img style="height: 150px; width: 150px;" src="images/profile.png"></div>
                         @else
 
                             <div class="col-md-6"><img style="height: 150px; width: 150px;" src="{{$user->userImage()->first()->path}}"></div>
@@ -55,7 +55,7 @@
                         <div class="alert alert-success alert-block">
                             <strong>{{ $message }}</strong>
                         </div>
-                       {{--<img src="/images/{{ Session::get('path') }}">--}}
+
                     @endif
                     <form action="{{ url('image-upload', $user->id) }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }}
@@ -71,44 +71,33 @@
                 </div>
 
 
-                <div class="col-md-12 col-md-offset-1 post">
-                    <br><br><br><h2 class="section-title">I{{trans('words.collections')}}</h2>
+                <div class="col-md-12 wishlist">
+                    <h2 style="margin-left: 5px;" class="section-title">I{{trans('words.collections')}}</h2>
 
-                        <div class="row">
-                        <div>
-                             @foreach($arrayImageC as $arrayImages)
-                                <img src="{{$arrayImages}}"  alt="foto" style="width: 100px; height: 100px;">
-                                &nbsp;   &nbsp;
-                            @endforeach
-                        </div>
+                    <div>
+                        @foreach($dCollection as $k => $v)
 
+                            <a href="itinerario/{{$k}}"> <img src="{{$v}}"  alt="foto" style="width: 100px; height: 100px; margin-left: 5px;"></a>
 
-
-                        <div class="col-sm-6">
-                            @foreach($arrayItinerary as $arrayItinerarys)
-                                      <a href="/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
-                            &nbsp;   &nbsp;
-                            @endforeach
-                        </div>
-                        </div>
-                        </div>
-
-
-                <div class="col-md-12 col-md-offset-1 post">
-                    <br><br><br><h2 class="section-title">Wishlist</h2>
-
-                        <div style="">
-                            @foreach($arrayImageW as $arrayImageWs)
-                                <img src="{{$arrayImageWs}}"  alt="foto" style="width: 100px; height: 100px;">
-                                &nbsp;   &nbsp;
-                            @endforeach
-
-                            @foreach($arrayItineraryW as $arrayItineraryWs)
-                                <a href="itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
-                                &nbsp;   &nbsp;
-                            @endforeach
-                        </div>
+                        @endforeach
                     </div>
+                </div>
+
+
+                <div class="col-md-12 wishlist">
+                    <h2 style="margin-left: 5px;" class="section-title">Wishlist</h2>
+
+                    <div style="">
+                        @foreach($dWishlist as $k => $v)
+
+                                    <a href="itinerario/{{$k}}"> <img src="{{$v}}"  alt="foto" style="width: 100px; height: 100px; margin-left: 5px;"></a>
+
+                        @endforeach
+                    </div>
+
+
+
+                </div>
                 </div>
 
 

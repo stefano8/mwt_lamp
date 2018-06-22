@@ -28,15 +28,14 @@
         <div class="fullwidth-block" data-bg-color="#262936">
             <div class="container">
 
+                <h1 style="text-align: center; font-size: 50px;">Eventi</h1>
 
                 @foreach($event as $events)
+                    <div class="row">
+                    <div class="col-md-12 post">
 
-                    <div class="col-md-4">
-
-
-
-                            <div class="photo-preview photo-detail">
-                                <h1 style="margin:1px 14px 20px; color: #c8b7a5">{{$events->date}}</h1>
+                            <div class="col-md-3 photo-preview photo-detail">
+                                <h1 style="margin:1px 22px 20px; color: #c8b7a5; padding-top: 50px;">{{$events->date}}</h1>
 
                                 @if(!isset($events->eventImage()->first()->path))
                                     <img style="width: 195px; height: 190px;" src="{!! asset('images/calendar.png') !!}">
@@ -48,12 +47,13 @@
 
                                 @endif
                             </div>
-                        <a  style="" href="{{route('event.single', $events->id)}}">
-                            <h3 style="margin:1px 14px 20px; overflow: hidden;
-                                        text-overflow: ellipsis;
-                                        white-space: nowrap;
-                                        width: 150px;">{{$events->title}}</h3></a>
+                            <div clas="col-md-4">
+                       <!-- <a  style="" href="{{route('event.single', $events->id)}}">-->
+                            <h1 style="margin:1px 22px 20px; color: #c8b7a5; padding-top: 50px; overflow: hidden; white-space: nowrap; width: 500px;">{{$events->title}}</h1>
+                            <p style="margin:1px 22px 20px;overflow: hidden; padding-top: 2px; font-size: 18px; width: 600px;">{{$events->description}}</p>
+                            </div>
 
+                        </div>
                     </div>
                 @endforeach
             </div>

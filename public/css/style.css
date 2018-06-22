@@ -1522,7 +1522,7 @@ form textarea {
     color: white; }
 
 .post {
-  padding: 50px 0;
+  padding-bottom: 50px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
   .post.single {
     border-bottom: none; }
@@ -1543,6 +1543,13 @@ form textarea {
       display: block; }
   .post p {
     margin-bottom: 30px; }
+
+  .wishlist{
+
+    padding-left: 107px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
 
 .entry-content blockquote {
   margin-left: 50px;

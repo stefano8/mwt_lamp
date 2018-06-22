@@ -765,8 +765,6 @@ class ItineraryController extends Controller
     //lista collection sul profilo
     public function showProfile()
     {
-
-
         $id = Auth::user()->id;
 
         $user = User::find($id);
@@ -778,6 +776,7 @@ class ItineraryController extends Controller
 
         $arrayImageC = [];
         $arrayItinerary = [];
+
         $i = 0;
 
         foreach ($collection as $collections) {
@@ -791,6 +790,8 @@ class ItineraryController extends Controller
             $i++;
 
         }
+
+        $dCollection = array_combine($arrayItinerary, $arrayImageC);
 
         //wishlist
 
@@ -811,8 +812,16 @@ class ItineraryController extends Controller
             $arrayImageW[$a] = $image->path;
             $a++;
 
+
+
         }
 
+
+        $dWishlist = array_combine($arrayItineraryW, $arrayImageW);
+
+       // print_r($arrayItinerary);
+        //print_r($arrayImageW);
+        //print_r($dWishlist);
         if (Auth::check()) {
 
             $permission = false;
@@ -830,11 +839,10 @@ class ItineraryController extends Controller
                 ->with('arrayItinerary', $arrayItinerary)
                 ->with('user', $user)
                 ->with('userName', $userName)
-                ->with('arrayImageC', $arrayImageC)
-                ->with('arrayImageW', $arrayImageW)
-                ->with('arrayItineraryW', $arrayItineraryW)
                 ->with('user', $user)
-                ->with('permission', $permission);
+                ->with('permission', $permission)
+                ->with('dCollection' ,$dCollection)
+                ->with('dWishlist', $dWishlist);
 
         }
 
@@ -843,9 +851,11 @@ class ItineraryController extends Controller
             ->with('arrayItinerary', $arrayItinerary)
             ->with('user', $user)
             ->with('userName', $userName)
-            ->with('arrayImageC', $arrayImageC)
-            ->with('arrayImageW', $arrayImageW)
-            ->with('arrayItineraryW', $arrayItineraryW);
+            ->with('dCollection', $dCollection)
+            ->with('dWishlist', $dWishlist);
+           // ->with('arrayImageW', $arrayImageW)
+            //->with('arrayItineraryW', $arrayItineraryW);
+
 
     }
 
