@@ -10,27 +10,23 @@
                 <span>Advices</span>
             </div>
         </div>
+        <div style="height: 60%; width:100%; margin-top: -7px;" class="hero" data-bg-image="{!! asset('images/bunnerdolomiti.jpg') !!}">
+            <div class="boxtesto" style=" margin-left: 1100px; margin-right: 1px;">
+                <h1 style="margin-top: -67px;">
+                    <span class="testo" style="color: black; margin-left: -309px;">Il fascino delle montagne è dato dal fatto che sono belle..
+                    </span>
+                    <span style="color: black; margin-left: 225px;"> grandi.. <br></span>
+                    <span style="color: black; margin-left: 162px;"> e pericolose..</span>
+                    <span style="color: black; margin-left: 119px;"> <i>Reinold Messner</i></span>
 
+                </h1>
+            </div>
+        </div>
 
         <div class="fullwidth-block">
             <div class="container">
                 <div class="row">
                     <div class="content col-md-8">
-                        <div class="post">
-                            <div class="photo-preview photo-detail">
-
-                                <img style="width: 7%; height: auto;" src="{!! asset('images/check.png') !!}">
-
-                            </div>
-                            <h2 class="entry-title">{{$advices->title}}</h2>
-                            <div class="featured-image"><img src="" alt=""></div>
-                            <h3>{{$advices->body}}</h3>
-
-
-                            <blockquote>
-                                <h4>{{$advices->description}}</h4>
-                            </blockquote>
-                        </div>
 
                         <div class="col-md-9" id="social-links">
                             <div class="social-links" style="font-size: 200%;">Condividi:
@@ -44,40 +40,78 @@
                     </div>
 
 
-                    <div class="sidebar col-md-3 col-md-offset-1">
-                        <div class="widget">
-                            <h3 class="widget-title">{{trans('words.itineraies')}}</h3>
-                            <ul class="arrow-list">
-                                @foreach($itinerary as $itineraries)
-                                    <li style="overflow: hidden;
+                <div class="fullwidth-block">
+                    <div class="container">
+
+
+
+                        <div class="row">
+
+
+                            <div class="sidebar col-md-7">
+                                <div class="widget">
+
+                                    <div class="today-forecast">
+                                    <div class="forecast-header">
+                                        <div class="day"><h1 style="color:white;">{{$advices->title}}</h1></div>
+
+                                    </div> <!-- .forecast-header -->
+
+                                            <ul class="arrow-list">
+                                                ciaoooone
+                                            </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="content col-md-5">
+
+                                        <div class="sidebar col-md-9">
+                                            <div class="widget">
+                                                        <h3 class="widget-title">{{trans('words.itineraies')}}</h3>
+                                                        <ul class="arrow-list">
+                                                            @foreach($itinerary as $itineraries)
+                                                                <li style="overflow: hidden;
                                            text-overflow: ellipsis;
                                            white-space: nowrap;
                                            width: 150px;"><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
-                                @endforeach
+                                                            @endforeach
 
-                            </ul>
-                        </div>
+                                                        </ul>
+                                                    </div>
 
-                        <div class="widget">
-                            <h3 class="widget-title">{{trans('words.cateit')}}</h3>
-                            <ul class="arrow-list">
-                                @foreach($category as $categories)
-                                    <li style="overflow: hidden;
+                                                    <div class="widget">
+                                                        <h3 class="widget-title">{{trans('words.cateit')}}</h3>
+                                                        <ul class="arrow-list">
+                                                            @foreach($category as $categories)
+                                                                <li style="overflow: hidden;
                                            text-overflow: ellipsis;
                                            white-space: nowrap;
                                            width: 150px;"><a href="/itine/{{$categories->id}}">{{$categories->name}}</a></li>
-                                @endforeach
+                                                            @endforeach
 
-                            </ul>
+                                                        </ul>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                    </div>
+
+                            </div>
+
                         </div>
-
-
 
                     </div>
                 </div>
 
-            </div>
-        </div>
+
+
     </main> <!-- .main-content -->
 
 @endsection
