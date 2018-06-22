@@ -51,6 +51,17 @@
                 <div class="col-md-9">
                     <input id="longitude" name="longitude" type="text" placeholder="Longitude" class="form-control" required></div>
             </div>
+            <!-- selectbox per città -->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="city_id">City</label>
+                <div class="col-md-9">
+                    <select class="form-control resize_vertical" id="city_id" name="city_id" required>
+                        @foreach($city as $cities)
+                            <option value="{{$cities->id}}">{{$cities->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 
 
             <!-- Form actions -->

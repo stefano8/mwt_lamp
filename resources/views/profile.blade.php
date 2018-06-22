@@ -72,25 +72,18 @@
 
 
                 <div class="col-md-12 col-md-offset-1 post">
-                    <br><br><br><h2 class="section-title">I{{trans('words.collections')}}</h2>
+                    <br><br><br><h2 class="section-title">{{trans('words.collections')}}</h2>
 
-                        <div class="row">
                         <div>
                              @foreach($arrayImageC as $arrayImages)
                                 <img src="{{$arrayImages}}"  alt="foto" style="width: 100px; height: 100px;">
-                                &nbsp;   &nbsp;
+
                             @endforeach
-                        </div>
-
-
-
-                        <div class="col-sm-6">
-                            @foreach($arrayItinerary as $arrayItinerarys)
+                             @foreach($arrayItinerary as $arrayItinerarys)
                                       <a href="/itinerario/{{$arrayItinerarys}}">{{$arrayItinerarys}}</a>
-                            &nbsp;   &nbsp;
-                            @endforeach
+                             @endforeach
                         </div>
-                        </div>
+
                         </div>
 
 
@@ -100,12 +93,10 @@
                         <div style="">
                             @foreach($arrayImageW as $arrayImageWs)
                                 <img src="{{$arrayImageWs}}"  alt="foto" style="width: 100px; height: 100px;">
-                                &nbsp;   &nbsp;
                             @endforeach
 
                             @foreach($arrayItineraryW as $arrayItineraryWs)
                                 <a href="itinerario/{{$arrayItineraryWs}}">{{$arrayItineraryWs}}</a>
-                                &nbsp;   &nbsp;
                             @endforeach
                         </div>
                     </div>

@@ -90,9 +90,7 @@
                                             <a href="{{route('itinerary.single', $itinerary->id)}}">{{$itinerary->name}}</a>
                                         </h3>
                                         <p style="display: inline-block; width: 100px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; -o-text-overflow: ellipsis;  ">{{$itinerary->description}}</p>
-                                        <div class="star-rating" title="Rated 1 out of 5">
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>

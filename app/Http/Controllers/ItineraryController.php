@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\City;
 use App\Event;
 use App\Group;
 use App\Image;
@@ -62,10 +63,12 @@ class ItineraryController extends Controller
     {
 
         $permission = $this->authentication();
+        $city = DB::table('cities')->get();
 
         if($permission){
 
-            return view('admin/itinerary/create');
+            return view('admin/itinerary/create')
+                ->with('city', $city);
 
         }else{
 
@@ -74,6 +77,7 @@ class ItineraryController extends Controller
             return \Illuminate\Support\Facades\View::make('welcome')
                 ->with('permission', $permission )
                 ->with('itineraries', $itineraries)
+                ->with('city', $city)
                 ->with('events', $events);
         }
 
@@ -98,6 +102,7 @@ class ItineraryController extends Controller
                     'duration' => $request['duration'],
                     'latitude' => $request['latitude'],
                     'longitude' => $request['longitude'],
+                    'city_id'      => $request['city_id'],
                     'created_at' => now(),
                 ]);
 
@@ -136,7 +141,6 @@ class ItineraryController extends Controller
             $itinerary->eventRel()->where('itinerary_id', '=', $id)->delete();
 
             //news
-
             DB::table('images')
                 ->where('itinerary_id', '=', $id)
                 ->delete();
@@ -199,17 +203,22 @@ class ItineraryController extends Controller
             $itinerary = DB::table('itineraries')
                 ->where('id', $id)
                 ->first();
+            $city = DB::table('cities')
+                ->get();
 
-            return view('admin/itinerary/edit', ['itinerary' => $itinerary]);
+            return view('admin/itinerary/edit', ['itinerary' => $itinerary], ['city' => $city]);
 
         }else{
 
             $itineraries = Itinerary::take(4)->get();
             $events = Event::take(3)->get();
+            $city = DB::table('cities')->get();
+
             return \Illuminate\Support\Facades\View::make('welcome')
                 ->with('permission', $permission )
                 ->with('itineraries', $itineraries)
-                ->with('events', $events);
+                ->with('events', $events)
+                ->with('city', $city);
         }
 
 
@@ -238,6 +247,7 @@ class ItineraryController extends Controller
                     'duration' => $request['duration'],
                     'latitude' => $request['latitude'],
                     'longitude' => $request['longitude'],
+                    'city_id' => $request['city_id'],
                     'updated_at' => now()
                 ]);
 
@@ -249,10 +259,13 @@ class ItineraryController extends Controller
 
             $itineraries = Itinerary::take(4)->get();
             $events = Event::take(3)->get();
+            $city = City::take(3)->get();
+
             return \Illuminate\Support\Facades\View::make('welcome')
                 ->with('permission', $permission )
                 ->with('itineraries', $itineraries)
-                ->with('events', $events);
+                ->with('events', $events)
+                ->with('city', $city);
         }
 
 
@@ -270,13 +283,12 @@ class ItineraryController extends Controller
             'duration'      => 'required',
             'latitude'      => 'required',
             'longitude'     => 'required',
+            'city_id'       => 'required',
         ]);
     }
 
 
     //assegnamento di categorie a itinerari
-
-
     public function showAssignment($id)
     {
 
@@ -419,7 +431,6 @@ class ItineraryController extends Controller
 
         $category = Category::all();
 
-
         $permission = false;
 
         if (Auth::check()) {
@@ -427,8 +438,6 @@ class ItineraryController extends Controller
             $id = Auth::user()->id;
 
             $user = User::find($id);
-
-
 
             foreach ($user->groupRel as $item) {
 
@@ -461,14 +470,13 @@ class ItineraryController extends Controller
     public function singleItinerary($id)
     {
 
-        /*Mapper::map(42.5032400, 13.6572100)
-            ->circle([['latitude' => 42.5032400, 'longitude' => 13.6572100]],
-                ['strokeColor' => 'red', 'strokeOpacity' => 2, 'strokeWeight' => 200, 'fillColor' => 'red', 'radius' => 1000]
-            );*/
-
-
         $itinerary = DB::table('itineraries')
-            ->where('id', $id)->first();
+            ->where('id', $id)
+            ->first();
+
+        $city = DB::table('cities')
+            ->where('id', $itinerary->city_id)
+            ->first();
 
         Mapper::map($itinerary->latitude, $itinerary->longitude)
             ->circle([['latitude' => $itinerary->latitude, 'longitude' => $itinerary->longitude]],
@@ -506,9 +514,6 @@ class ItineraryController extends Controller
         } else {
             $media = 0;
         }
-
-
-
 
 
         $permission = false;
@@ -561,6 +566,7 @@ class ItineraryController extends Controller
                 ->with('bottoneWishlist', $bottoneWishlist)
                 ->with('user', $user)
                 ->with('var', $var)
+                ->with('city', $city)
                 ->with('permission', $permission);
 
         }else {
@@ -574,6 +580,7 @@ class ItineraryController extends Controller
                 //->with('voteUser', $voteUser)
                 ->with('media', $media)
                 ->with('var', $var)
+                ->with('city', $city)
                 ->with('category', $category);
                 //->with('bottoneCollection', $bottoneCollection)
             // ->with('bottoneWishlist', $bottoneWishlist);
@@ -620,11 +627,6 @@ class ItineraryController extends Controller
 
         }else{
 
-            /*$voteUser = Vote::all()
-                ->where('itinerary_id', $itineraryId)
-                ->where('user_id', $userId)
-                ->first();*/
-
             $itinerary = Itinerary::find($itineraryId);
             $review = DB::table('reviews')
                 ->where('approved', 1)
@@ -666,8 +668,6 @@ class ItineraryController extends Controller
                 ->with('var', $var)
                 ->with('media', $media)
                 ->with('category', $category);
-            //->with('bottoneCollection', $bottoneCollection)
-            // ->with('bottoneWishlist', $bottoneWishlist);
         }
     }
 
