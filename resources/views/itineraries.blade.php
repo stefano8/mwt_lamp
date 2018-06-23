@@ -1,6 +1,5 @@
 @extends('frame')
 
-
 @section('content')
 
     <!-- Font Awesome Icon Library -->

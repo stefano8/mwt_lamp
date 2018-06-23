@@ -71,7 +71,7 @@
             <div class="main-navigation" style="float: left; margin-left: 80px">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item current-menu-item"><a href="{{ url('/') }}">Home</a></li>
+                    <li class="menu-item"><a href="{{ url('/') }}">Home</a></li>
                     <li class="menu-item"><a href="{{ url('/itineraries') }}">{{trans('words.itineraies')}}</a></li>
                     <li class="menu-item"><a href="{{ url('/advices') }}">{{trans('words.advices')}}</a></li>
                     <li class="menu-item"><a href="{{ url('/news') }}">News</a></li>

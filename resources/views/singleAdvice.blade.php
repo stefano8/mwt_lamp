@@ -58,7 +58,7 @@
                                     </div> <!-- .forecast-header -->
 
                                             <ul class="arrow-list">
-                                                ciaoooone
+                                                {{$advices->body}}
                                             </ul>
 
                                     </div>
