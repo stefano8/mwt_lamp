@@ -34,7 +34,7 @@
 
 
                     <div class="country filter-control">
-                        <form action="{{route('search')}}">
+                        <form action="{{route('search')}}" class="find-location1">
                             <input style="background-color: transparent; color: white;" type="text" size="170%"
                                    name="itinerary_name" id="itinerary_name" placeholder="{{trans('words.finditineraries')}}">
                             <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
@@ -53,7 +53,7 @@
                             <h3 class="widget-title">{{trans('words.categories')}}</h3>
                             <ul class="arrow-list">
                                 @foreach($category as $categories)
-                                    <li><a href="/mwt_1718/public/itine/{{$categories->id}}">{{$categories->name}}</a>
+                                    <li><a href="/itine/{{$categories->id}}">{{$categories->name}}</a>
                                     </li>
                                 @endforeach
 
@@ -62,7 +62,7 @@
 
                     </div>
 
-                    <div class="content col-md-8">
+                    <div class="content col-md-9">
 
                         @foreach($itineraries as $itinerary)
 

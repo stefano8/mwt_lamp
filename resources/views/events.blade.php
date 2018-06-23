@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <div style="height: 60%; width:100%; margin-top: -7px;" class="hero" data-bg-image="{!! asset('images/eventi3.jpg') !!}">
+        <div style="height: 60%; width:100%; margin-top: 20px;" class="hero" data-bg-image="{!! asset('images/eventi3.jpg') !!}">
             <div class="boxtesto" style=" margin-left: 1100px; margin-right: 1px;">
                 <h1 style="margin-top: -67px;">
                     <span class="testo" style="color: black; margin-left: -149px;">Quando uomini e montagne si incontrano,</span>

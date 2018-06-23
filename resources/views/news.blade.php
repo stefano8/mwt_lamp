@@ -10,7 +10,7 @@
                 <span>News</span>
             </div>
         </div>
-        <div style="height: 60%; width:100%; margin-top: -7px;" class="hero" data-bg-image="{!! asset('images/bunnercampoimperatore.jpg') !!}">
+        <div style="height: 60%; width:100%; margin-top: 20px;" class="hero" data-bg-image="{!! asset('images/bunnercampoimperatore.jpg') !!}">
             <div class="boxtesto" style=" margin-left: 1100px; margin-right: 1px;">
                 <h1 style="margin-top: -67px;">
                     <span class="testo" style="color: black; margin-left: -210px;">Vado in montagna più per la paura di non vivere</span>
