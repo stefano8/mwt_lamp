@@ -77,7 +77,7 @@
                     <div>
                         @foreach($dCollection as $k => $v)
 
-                            <a href="itinerario/{{$k}}"> <img src="{{$v}}"  alt="foto" style="width: 100px; height: 100px; margin-left: 5px;"></a>
+                            <a href="itinerario/{{$k}}" title="{{$k}}"> <img src="{{$v}}"  alt="foto" style="width: 100px; height: 100px; margin-left: 5px;"></a>
 
                         @endforeach
                     </div>

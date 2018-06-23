@@ -10,7 +10,7 @@
                 <span>Advices</span>
             </div>
         </div>
-        <div style="height: 60%; width:100%; margin-top: -7px;" class="hero" data-bg-image="{!! asset('images/bunnerdolomiti.jpg') !!}">
+        <div style="height: 60%; width:100%; margin-top: 20px;" class="hero" data-bg-image="{!! asset('images/bunnerdolomiti.jpg') !!}">
             <div class="boxtesto" style=" margin-left: 1100px; margin-right: 1px;">
                 <h1 style="margin-top: -67px;">
                     <span class="testo" style="color: black; margin-left: -309px;">Il fascino delle montagne è dato dal fatto che sono belle..
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="content col-md-8">
 
-                        <div class="col-md-9" id="social-links">
+                        <div class="col-md-9" id="social-links" style="margin-left: 55px;">
                             <div class="social-links" style="font-size: 200%;">Condividi:
                                 <a href="https://www.facebook.com/sharer/sharer.php?u=http://montaintrack.it" class="btn btn-facebook btn-lg" id=""><span class="fa fa-facebook"></span></a>
                                 <a href="https://twitter.com/intent/tweet?text=my share text&amp;url=http://montaintrack.it" class="social-button " id=""><span class="fa fa-twitter"></span></a>
@@ -40,7 +40,7 @@
                     </div>
 
 
-                <div class="fullwidth-block">
+                <div class="fullwidth-block"  style="margin-left: 55px;">
                     <div class="container">
 
 
