@@ -37,8 +37,8 @@
 .modal-content {
   margin: auto;
   display: block;
-  width: 100%;
-  max-width: 1000px;
+  /*width: 100%;*/
+  max-width: 500px;
 }
 
 /* Add Animation */
