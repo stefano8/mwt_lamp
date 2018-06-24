@@ -42,11 +42,12 @@
                                 @else
 
 
-                                    <img id="myImg" onclick="showImage(this)" src="{{$events->eventImage()->first()->path}}" alt="foto" style="width: 175px; height: 190px;">
+                                  <img id="myImg" onclick="showImage(this)" src="{{$events->eventImage()->first()->path}}" alt="foto" style="width: 175px; height: 190px;">
 
                                     <div id="myModal" class="modal">
                                         <span class="close">&times;</span>
                                         <img class="modal-content" id="img01">
+
                                         <div id="caption"></div>
                                     </div>
 
@@ -54,10 +55,15 @@
                             </div>
                             <div clas="col-md-4">
                        <!-- <a  style="" href="{{route('event.single', $events->id)}}">-->
-                            <h1 style="margin:1px 22px 20px; color: #c8b7a5; padding-top: 50px; overflow: hidden; white-space: nowrap; width: 500px;">{{$events->title}}</h1>
-                            <p style="margin:1px 22px 20px;overflow: hidden; padding-top: 2px; font-size: 18px; width: 600px;">{{$events->description}}</p>
-                            </div>
+                           <button class="collapsible" style="margin-left: 40px;" title="Clicca per vedere i dettagli dell'evento"><h1 style="margin:1px 22px 20px; padding-top: 19px; overflow: hidden; white-space: nowrap; width: 500px;">{{$events->title}}</h1></button>
 
+                              <div class="content">
+                                  <p style="margin:1px 22px 20px; padding-top: 2px; font-size: 18px; width: 600px;">{{$events->date}}</p>
+                                 <p style="margin:1px 22px 20px; padding-top: 2px; font-size: 18px; width: 600px;">{{$events->body}}</p>
+                              </div>
+
+
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -94,11 +100,16 @@
 
     var modal = document.getElementById('myModal');
     var modalImg = document.getElementById('img01');
+    var captionText = document.getElementById("caption");
+
 
     function showImage(imgElement) {
         var src = imgElement.getAttribute("src");
         modal.style.display = "block";
+
         modalImg.src = src;
+
+
     }
 
     // Get the <span> element that closes the modal
@@ -109,6 +120,22 @@
         modal.style.display = "none";
     }
 
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
 </script>
 
 @endsection
