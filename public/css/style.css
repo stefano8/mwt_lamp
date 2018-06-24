@@ -86,7 +86,7 @@
 
 
 /* Style the button that is used to open and close the collapsible content */
-.collapsible {
+.collapsible1 {
 
   color: #444;
   cursor: pointer;
@@ -104,7 +104,7 @@
 }
 
 /* Style the collapsible content. Note: hidden by default */
-.content {
+.content1 {
   padding: 0 18px;
   display: none;
   overflow: hidden;
