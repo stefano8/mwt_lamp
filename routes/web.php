@@ -165,10 +165,10 @@ Route::get('admin/region/index', 'RegionController@index')->name('region')->midd
 //rotte per CRUD su image
 Route::get('admin/image/index', 'ImageController@index')->name('image')->middleware('auth');
 Route::get('admin/image/create', 'ImageController@create')->name('image.create')->middleware('auth');
-Route::get('admin/image/save', 'ImageController@save')->name('image.save')->middleware('auth');
+Route::post('admin/image/save', 'ImageController@save')->name('image.save')->middleware('auth');
 Route::get('admin/image/{id}/edit', 'ImageController@edit')->name('image.edit')->middleware('auth');
 Route::get('admin/image/{id}/delete', 'ImageController@delete')->name('image.delete')->middleware('auth');
-Route::get('admin/image/{id}/store', 'ImageController@store')->name('image.store')->middleware('auth');
+Route::post('admin/image/{id}/store', 'ImageController@store')->name('image.store')->middleware('auth');
 
 
 //rotte per assegnamento immagini a itinerari

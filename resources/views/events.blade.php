@@ -42,8 +42,13 @@
                                 @else
 
 
-                                    <a href="{{route('event.single', $events->id)}}"><img src="{{$events->eventImage()->first()->path}}" alt="foto"
-                                                                                                 style="width: 175px; height: 190px;"></a>
+                                    <img id="myImg" onclick="showImage(this)" src="{{$events->eventImage()->first()->path}}" alt="foto" style="width: 175px; height: 190px;">
+
+                                    <div id="myModal" class="modal">
+                                        <span class="close">&times;</span>
+                                        <img class="modal-content" id="img01">
+                                        <div id="caption"></div>
+                                    </div>
 
                                 @endif
                             </div>
@@ -64,6 +69,46 @@
             </div>
 
     </main> <!-- .main-content -->
+<script>
 
+    /*var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }*/
+
+
+    var modal = document.getElementById('myModal');
+    var modalImg = document.getElementById('img01');
+
+    function showImage(imgElement) {
+        var src = imgElement.getAttribute("src");
+        modal.style.display = "block";
+        modalImg.src = src;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+</script>
 
 @endsection

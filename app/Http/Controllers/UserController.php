@@ -272,10 +272,11 @@ class UserController extends Controller
     public function settings(){
 
         $permission = $this->authentication();
+        $id = Auth::user()->id;
 
         if($permission){
 
-            $user = DB::table('users')
+            $user = DB::table('users')->where('id', $id)
                 ->first();
 
             return view('admin/settings', ['user' => $user]);

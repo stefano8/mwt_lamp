@@ -82,22 +82,32 @@ class ImageController extends Controller
 
     public function save(Request $request)
     {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ]);
+
+
+
         $permission = $this->authentication();
 
         if($permission){
 
-            $this->validateItems($request);
+            $imageName = $request->image->getClientOriginalName();
+            $request->image->move(public_path('images'), $imageName);
+
+
 
             DB::table('images')
                 ->insert([
                     'title'         => $request['title'],
-                    'path'          => $request['path'],
+                    'path'          => "/images/$imageName",
                     'created_at'    => now()
                 ]);
 
-            flash('Success')->success();
-
-            return redirect('admin/image/index');
+            return back()
+                ->with('success','Image Uploaded successfully.')
+                ->with('path',$imageName);
 
 
         }else{
@@ -173,27 +183,46 @@ class ImageController extends Controller
     }
 
 
-    public function store($id, Request $request)
+    public function store(Request $request, $id)
     {
 
+        $this->validate($request, [
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
         $permission = $this->authentication();
 
+
         if($permission){
+            if ($request->image == null){
 
-            $this->validateItems($request);
+                DB::table('images')
+                    ->where('id', $id)
+                    ->update([
+                        'title' => $request['title'],
+                        'updated_at' => now(),
+                    ]);
+                return back()
+                    ->with('success', 'Image Uploaded successfully.');
 
-            DB::table('images')
-                ->where('id', $id)
-                ->update([
-                    'title'         => $request['title'],
-                    'path'          => $request['path'],
-                    'updated_at'    => now(),
-                ]);
 
-            flash('Success')->success();
+            }else {
 
-            return redirect('admin/image/index');
+                $imageName = $request->image->getClientOriginalName();
+                $request->image->move(public_path('images'), $imageName);
+
+                DB::table('images')
+                    ->where('id', $id)
+                    ->update([
+                        'title' => $request['title'],
+                        'path' => "/images/$imageName",
+                        'updated_at' => now(),
+                    ]);
+
+                return back()
+                    ->with('success', 'Image Uploaded successfully.')
+                    ->with('path', $imageName);
+            }
 
         }else{
 
