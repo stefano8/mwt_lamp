@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Apr 16, 2018 alle 18:07
+-- Creato il: Giu 23, 2018 alle 11:03
 -- Versione del server: 5.6.35
 -- Versione PHP: 7.1.1
 
@@ -85,7 +85,9 @@ CREATE TABLE `cities` (
 --
 
 INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`, `region_id`) VALUES
-(1, 'L\'aquila', '2018-03-17 13:37:00', '2018-03-21 14:48:39', NULL);
+(1, 'L\'aquila', '2018-03-17 13:37:00', '2018-03-21 14:48:39', NULL),
+(2, 'Roma', NULL, '2018-06-23 06:36:39', NULL),
+(3, 'Cuneo', NULL, '2018-06-23 06:36:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -184,6 +186,7 @@ INSERT INTO `images` (`id`, `path`, `title`, `created_at`, `updated_at`, `itiner
 (3, '/mwt_1718/public/images/montebianco.jpg', 'montebianco', NULL, '2018-03-22 19:42:41', 4, NULL, NULL, NULL),
 (4, '/mwt_1718/public/images/dolomiti.jpeg', 'Dolomiti', '2018-03-23 14:24:41', '2018-03-23 14:25:33', 14, NULL, NULL, NULL),
 (5, '/mwt_1718/public/images/etna.jpeg', 'Etna', '2018-03-23 14:25:10', '2018-03-23 14:26:38', 15, NULL, NULL, NULL),
+(6, '/mwt_1718/public/images/1523881259.jpeg ', 'foto', NULL, '2018-04-16 10:20:59', NULL, 1, NULL, NULL),
 (7, '/mwt_1718/public/images/bunnergransasso2.jpg ', 'bunner', NULL, NULL, 1, NULL, NULL, NULL),
 (8, '/mwt_1718/public/images/bunneretna.jpg', 'bunner', NULL, NULL, 15, NULL, NULL, NULL),
 (9, '/mwt_1718/public/images/bunnerdolomiti.jpg ', 'bunner', NULL, NULL, 14, NULL, NULL, NULL),
@@ -192,7 +195,13 @@ INSERT INTO `images` (`id`, `path`, `title`, `created_at`, `updated_at`, `itiner
 (12, '/mwt_1718/public/images/bunnercampoimperatore.jpg', 'bunner', NULL, NULL, 16, NULL, NULL, NULL),
 (13, '/mwt_1718/public/images/featured-image-1.jpg', 'news', NULL, NULL, NULL, NULL, 2, NULL),
 (14, '/mwt_1718/public/images/featured-image-2.jpg', 'news', NULL, NULL, NULL, NULL, 4, NULL),
-(15, '/mwt_1718/public/images/evento1.jpg ', 'evento1', NULL, NULL, NULL, NULL, NULL, 2);
+(15, '/mwt_1718/public/images/evento1.jpg ', 'evento1', NULL, NULL, NULL, NULL, NULL, 2),
+(16, '/mwt_1718/public/images/marmolada.jpg', 'Marmolada', NULL, NULL, 18, NULL, NULL, NULL),
+(17, '/mwt_1718/public/images/cornogrande.jpg', 'Corno grande', NULL, NULL, 19, NULL, NULL, NULL),
+(18, '/mwt_1718/public/images/bunnermarmolada.jpg', 'bunner', NULL, NULL, 18, NULL, NULL, NULL),
+(19, '/mwt_1718/public/images/bunnercornogrande.jpg', 'bunner', NULL, NULL, 19, NULL, NULL, NULL),
+(20, '/mwt_1718/public/images/monviso.jpg', 'Monviso', NULL, NULL, 20, NULL, NULL, NULL),
+(21, '/mwt_1718/public/images/bunnermonviso.jpg', 'bunner', NULL, NULL, 20, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -211,19 +220,23 @@ CREATE TABLE `itineraries` (
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `duration` double NOT NULL,
   `latitude` double NOT NULL,
-  `longitude` double NOT NULL
+  `longitude` double NOT NULL,
+  `city_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `itineraries`
 --
 
-INSERT INTO `itineraries` (`id`, `name`, `difficolty`, `difference`, `remember_token`, `created_at`, `updated_at`, `description`, `duration`, `latitude`, `longitude`) VALUES
-(1, 'Gran Sasso', 'difficile', 2912, NULL, '2018-04-16 22:00:00', '2018-04-06 09:07:44', 'Il Gran Sasso (o Gran Sasso d\'Italia) è il massiccio montuoso più alto degli Appennini continentali, situato nell\'Appennino centrale, interamente in Abruzzo, come parte della dorsale più orientale dell\'Appennino abruzzese, al confine fra le province di L\'Aquila, Teramo e Pescara.Confina a nord con i territori di Fano Adriano, Pietracamela, Isola del Gran Sasso d\'Italia, Castelli e Arsita, a est con le Gole di Popoli, a sud-ovest direttamente con la piana di Assergi, più a valle con L\'Aquila, a sud è limitato da Campo Imperatore e a valle dalla Piana di Navelli, mentre a ovest-nord-ovest confina con la catena dei Monti della Laga e il Lago di Campotosto, da questi separato dall\'alta Valle del Vomano e la Strada statale 80 del Gran Sasso d\'Italia che l\'attraversa.Il Gran Sasso d\'Italia è un\'area ambientale tutelata con l\'istituzione del Parco nazionale del Gran Sasso e Monti della Laga. Su di esso ricade la Comunità montana Gran Sasso e la Comunità montana Campo Imperatore-Piana di Navelli.', 123, 42.50324, 13.65721),
-(4, 'Monte Bianco', 'facile', 12, NULL, NULL, '2018-03-27 10:16:59', 'Monte Bianco Mont Blanc, Mont Maudit, Mont Blanc du Tacul.jpg Il Monte Bianco con a destra il Monte Maudit e il Mont Blanc du Tacul Stati	Italia Italia  Francia Francia Regione	Valle d\'Aosta Valle d\'Aosta Rodano-Alpi Rodano-Alpi Provincia	Valle d\'Aosta Valle d\'Aosta Blason département fr Haute-Savoie.svg Alta Savoia Altezza	4 808,72 m s.l.m. Prominenza	4 696 m Catena	Alpi Coordinate	45°49′58.46″N 6°51′52.88″ECoordinate: 45°49′58.46″N 6°51′52.88″E (Mappa) Altri nomi e significati	Il Bianco, Tetto d\'Europa, Tetto delle Alpi, la Dama bianca Data prima ascensione	8 agosto 1786 Autore/i prima ascensione	Jacques Balmat, Michel Gabriel Paccard Mappa di localizzazione Mappa di localizzazione: ItaliaMonte BiancoMonte Bianco Mappa di localizzazione: AlpiMonte Bianco Dati SOIUSA Grande Parte	Alpi Occidentali Grande Settore	Alpi Nord-occidentali Sezione	Alpi Graie Sottosezione	Alpi del Monte Bianco Supergruppo	Massiccio del Monte Bianco Gruppo	Gruppo del Monte Bianco Sottogruppo	Monte Bianco Codice	I/B-7.V-B.2.b Modifica dati su Wikidata · Manuale Il Monte Bianco (Mont Blanc in francese e in arpitano) è una montagna situata nel settore delle Alpi Nord-occidentali, lungo la sezione alpina delle Alpi Graie, sulla linea spartiacque tra la Valle d\'Aosta (val Veny e val Ferret in Italia) e l\'Alta Savoia (valle dell\'Arve in Francia), nei territori comunali di Courmayeur[1] e Chamonix, che dà il nome all\'omonimo Massiccio del Monte Bianco, appartenente alla sottosezione delle Alpi del Monte Bianco.  Con i suoi 4.808,72 m d\'altezza (ultima misura ufficiale il 13 settembre 2017)[2] è la montagna più alta delle Alpi, d\'Italia, di Francia e in generale dell\'Europa se si esclude il Caucaso[3]: da qui il suo soprannome di Re delle Alpi.[4] Condivide assieme al Monte Elbrus nel Caucaso un posto tra le cosiddette Sette Sommità del Pianeta.  Prevalentemente di natura granitica, irta di guglie e di creste, intagliata da profondi valloni nei quali scorrono numerosi ghiacciai, è considerata una montagna di grande richiamo per l\'alpinismo internazionale[5] e, da un punto di vista della storiografia alpinistica, la nascita dell\'alpinismo coincide con la data della sua prima ascensione: l\'8 agosto 1786.', 3, 45.833333, 6.866667),
-(14, 'Dolomiti', 'difficile', 12121, NULL, '2018-03-23 14:22:38', NULL, 'Le Dolomiti, anche dette Monti pallidi (Dolomiten in tedesco, Dolomites in ladino, Dolomitis in friulano), sono un insieme di gruppi montuosi delle Alpi Orientali italiane, a sud della catena principale alpina, comprese tra Veneto, Trentino-Alto Adige e Friuli, tra le province di Belluno, Bolzano, Trento, Udine e Pordenone.', 14, 46.383333, 11.85),
-(15, 'Etna', 'media', 33334, NULL, '2018-03-23 14:23:11', NULL, 'l\'Etna nevoso, colonna del cielo / d\'acuto gelo perenne nutrice / lo comprime. / Sgorgano da segrete caverne / fonti purissime d\'orrido fuoco, / fiumi nel giorno riversano / corrente di livido fumo / e nella notte rotola / con bagliori di sangue / rocce portando alla discesa / profonda del mare, con fragore.', 45, 37.75, 15),
-(16, 'Campo Imperatore', 'facile', 44444, NULL, NULL, NULL, 'Nel cuore dell\'Abruzzo il comprensorio sciistico di Campo Imperatore è tra i piu\' moderni e attrezzati del Centro Italia: 20 Km di piste, 4 modernissimi impianti (1 funivia, 2 seggiovie, 1 manovia) con una portata complessiva di 4000 persone. La quota elevata favorisce un ottimo innevamento per buona parte dell\'inverno (fino a 5 mt in alcune stagioni). A valle di Campo Imperatore, la conca di Monte Cristo (1.450 metri) ospita alcune piste piu\' brevi. L\'altopiano di Campo Imperatore offre un impianto per lo snowboard. Inoltre è noto anche per il freeride: Valle Fredda da quota 2200 a quota 1200, I Tre Valloni 2100-1100 (il più famoso), Monte Portella 2200-1750, lo Schioppatore 2200-1750, sia per i più esperti che non.\nCompletano l\'offerta ca 60 Km adibiti allo sci di fondo, con una serie di anelli che si snodano lungo lo splendido altopiano.\n\nMeno\nALTITUDINE\n2200m\nIN QUOTA\n0m\nDISLIVELLO\n1100m\nA VALLE\nIMPIANTI RISALITA\n10020003\nTOTALE\nAREA SCIISTICA\nPISTE BLU\n\n38%\n\nPISTE ROSSE\n\n35%\n\nPISTE NERE\n\n27%\n\nTOTALE PISTE\n\n8\n\nKM DI PISTE\n\n13 km\n\nDATI DELLA STAGIONE\nApertura stagione sciistica: 08/12/2017Chiusura stagione sciistica: 02/04/2018\nGALLERIA FOTO\nVedi tutte\n\nCampo Imperatore - Scindarella\n  - © ldm090670Campo Imperatore - ATTENZIONE!!! INFORMARSI PRIMA DI INTRAPRENDERE QUALSIASI ATTIVITA\' IN MONTAGNA!!! ALLERTA VALANGHE 4 SU 5!!! 21-1-2016  - © chef.paolettoCampo Imperatore - Domenica 10 aprile gran bella giornata peccato che hanno aperto tardi 9:45/10:00 però hanno fatto pagare funivia e skipass tutto 18€ le piste chiudono alle 14 ma gran bella giornata  - © iPhoneCampo Imperatore - Oggi giornata tutto sommato buona la neve farinosa già dal mattino ma comunque sciabile....nel primo pomeriggio condizioni molto mediocri neve acquosa....molto....chiusura impianti ore 14:00  - © proteus523\nSTORICO NEVE\nLeggi tutto: Annuale | Confronto | Altezza neve\n\n10 cm\n0 cm\n13 mar 2018Ultime 2 settimaneIeri\nMOSTRA STORICO NEVE\nMIGLIORI HOTEL IN CAMPO IMPERATORE\n\nTUTTI GLI HOTEL CAMPO IMPERATORE\nUFFICIO TURISTICO\nCampo Imperatore\n\n67010 Pescara\n\nItalia\n\nTelefono:\n\nbiglietteriagransasso@gmail.com\n\n', 5555, 42.416667, 13.666667);
+INSERT INTO `itineraries` (`id`, `name`, `difficolty`, `difference`, `remember_token`, `created_at`, `updated_at`, `description`, `duration`, `latitude`, `longitude`, `city_id`) VALUES
+(1, 'Gran Sasso', 'difficile', 2912, NULL, '2018-04-16 22:00:00', '2018-06-22 08:08:10', 'Il Gran Sasso (o Gran Sasso d\'Italia) è il massiccio montuoso più alto degli Appennini continentali, situato nell\'Appennino centrale, interamente in Abruzzo, come parte della dorsale più orientale dell\'Appennino abruzzese, al confine fra le province di L\'Aquila, Teramo e Pescara.Confina a nord con i territori di Fano Adriano, Pietracamela, Isola del Gran Sasso d\'Italia, Castelli e Arsita, a est con le Gole di Popoli, a sud-ovest direttamente con la piana di Assergi, più a valle con L\'Aquila, a sud è limitato da Campo Imperatore e a valle dalla Piana di Navelli, mentre a ovest-nord-ovest confina con la catena dei Monti della Laga e il Lago di Campotosto, da questi separato dall\'alta Valle del Vomano e la Strada statale 80 del Gran Sasso d\'Italia che l\'attraversa.Il Gran Sasso d\'Italia è un\'area ambientale tutelata con l\'istituzione del Parco nazionale del Gran Sasso e Monti della Laga. Su di esso ricade la Comunità montana Gran Sasso e la Comunità montana Campo Imperatore-Piana di Navelli.', 123, 42.50324, 13.65721, 1),
+(4, 'Monte Bianco', 'facile', 12, NULL, NULL, '2018-03-27 10:16:59', 'Monte Bianco Mont Blanc, Mont Maudit, Mont Blanc du Tacul.jpg Il Monte Bianco con a destra il Monte Maudit e il Mont Blanc du Tacul Stati	Italia Italia  Francia Francia Regione	Valle d\'Aosta Valle d\'Aosta Rodano-Alpi Rodano-Alpi Provincia	Valle d\'Aosta Valle d\'Aosta Blason département fr Haute-Savoie.svg Alta Savoia Altezza	4 808,72 m s.l.m. Prominenza	4 696 m Catena	Alpi Coordinate	45°49′58.46″N 6°51′52.88″ECoordinate: 45°49′58.46″N 6°51′52.88″E (Mappa) Altri nomi e significati	Il Bianco, Tetto d\'Europa, Tetto delle Alpi, la Dama bianca Data prima ascensione	8 agosto 1786 Autore/i prima ascensione	Jacques Balmat, Michel Gabriel Paccard Mappa di localizzazione Mappa di localizzazione: ItaliaMonte BiancoMonte Bianco Mappa di localizzazione: AlpiMonte Bianco Dati SOIUSA Grande Parte	Alpi Occidentali Grande Settore	Alpi Nord-occidentali Sezione	Alpi Graie Sottosezione	Alpi del Monte Bianco Supergruppo	Massiccio del Monte Bianco Gruppo	Gruppo del Monte Bianco Sottogruppo	Monte Bianco Codice	I/B-7.V-B.2.b Modifica dati su Wikidata · Manuale Il Monte Bianco (Mont Blanc in francese e in arpitano) è una montagna situata nel settore delle Alpi Nord-occidentali, lungo la sezione alpina delle Alpi Graie, sulla linea spartiacque tra la Valle d\'Aosta (val Veny e val Ferret in Italia) e l\'Alta Savoia (valle dell\'Arve in Francia), nei territori comunali di Courmayeur[1] e Chamonix, che dà il nome all\'omonimo Massiccio del Monte Bianco, appartenente alla sottosezione delle Alpi del Monte Bianco.  Con i suoi 4.808,72 m d\'altezza (ultima misura ufficiale il 13 settembre 2017)[2] è la montagna più alta delle Alpi, d\'Italia, di Francia e in generale dell\'Europa se si esclude il Caucaso[3]: da qui il suo soprannome di Re delle Alpi.[4] Condivide assieme al Monte Elbrus nel Caucaso un posto tra le cosiddette Sette Sommità del Pianeta.  Prevalentemente di natura granitica, irta di guglie e di creste, intagliata da profondi valloni nei quali scorrono numerosi ghiacciai, è considerata una montagna di grande richiamo per l\'alpinismo internazionale[5] e, da un punto di vista della storiografia alpinistica, la nascita dell\'alpinismo coincide con la data della sua prima ascensione: l\'8 agosto 1786.', 3, 45.833333, 6.866667, 2),
+(14, 'Dolomiti', 'difficile', 12121, NULL, '2018-03-23 14:22:38', NULL, 'Le Dolomiti, anche dette Monti pallidi (Dolomiten in tedesco, Dolomites in ladino, Dolomitis in friulano), sono un insieme di gruppi montuosi delle Alpi Orientali italiane, a sud della catena principale alpina, comprese tra Veneto, Trentino-Alto Adige e Friuli, tra le province di Belluno, Bolzano, Trento, Udine e Pordenone.', 14, 46.383333, 11.85, 2),
+(15, 'Etna', 'media', 33334, NULL, '2018-03-23 14:23:11', NULL, 'l\'Etna nevoso, colonna del cielo / d\'acuto gelo perenne nutrice / lo comprime. / Sgorgano da segrete caverne / fonti purissime d\'orrido fuoco, / fiumi nel giorno riversano / corrente di livido fumo / e nella notte rotola / con bagliori di sangue / rocce portando alla discesa / profonda del mare, con fragore.', 45, 37.75, 15, 2),
+(16, 'Campo Imperatore', 'facile', 44444, NULL, NULL, NULL, 'Nel cuore dell\'Abruzzo il comprensorio sciistico di Campo Imperatore è tra i piu\' moderni e attrezzati del Centro Italia: 20 Km di piste, 4 modernissimi impianti (1 funivia, 2 seggiovie, 1 manovia) con una portata complessiva di 4000 persone. La quota elevata favorisce un ottimo innevamento per buona parte dell\'inverno (fino a 5 mt in alcune stagioni). A valle di Campo Imperatore, la conca di Monte Cristo (1.450 metri) ospita alcune piste piu\' brevi. L\'altopiano di Campo Imperatore offre un impianto per lo snowboard. Inoltre è noto anche per il freeride: Valle Fredda da quota 2200 a quota 1200, I Tre Valloni 2100-1100 (il più famoso), Monte Portella 2200-1750, lo Schioppatore 2200-1750, sia per i più esperti che non.\nCompletano l\'offerta ca 60 Km adibiti allo sci di fondo, con una serie di anelli che si snodano lungo lo splendido altopiano.\n\nMeno\nALTITUDINE\n2200m\nIN QUOTA\n0m\nDISLIVELLO\n1100m\nA VALLE\nIMPIANTI RISALITA\n10020003\nTOTALE\nAREA SCIISTICA\nPISTE BLU\n\n38%\n\nPISTE ROSSE\n\n35%\n\nPISTE NERE\n\n27%\n\nTOTALE PISTE\n\n8\n\nKM DI PISTE\n\n13 km\n\nDATI DELLA STAGIONE\nApertura stagione sciistica: 08/12/2017Chiusura stagione sciistica: 02/04/2018\nGALLERIA FOTO\nVedi tutte\n\nCampo Imperatore - Scindarella\n  - © ldm090670Campo Imperatore - ATTENZIONE!!! INFORMARSI PRIMA DI INTRAPRENDERE QUALSIASI ATTIVITA\' IN MONTAGNA!!! ALLERTA VALANGHE 4 SU 5!!! 21-1-2016  - © chef.paolettoCampo Imperatore - Domenica 10 aprile gran bella giornata peccato che hanno aperto tardi 9:45/10:00 però hanno fatto pagare funivia e skipass tutto 18€ le piste chiudono alle 14 ma gran bella giornata  - © iPhoneCampo Imperatore - Oggi giornata tutto sommato buona la neve farinosa già dal mattino ma comunque sciabile....nel primo pomeriggio condizioni molto mediocri neve acquosa....molto....chiusura impianti ore 14:00  - © proteus523\nSTORICO NEVE\nLeggi tutto: Annuale | Confronto | Altezza neve\n\n10 cm\n0 cm\n13 mar 2018Ultime 2 settimaneIeri\nMOSTRA STORICO NEVE\nMIGLIORI HOTEL IN CAMPO IMPERATORE\n\nTUTTI GLI HOTEL CAMPO IMPERATORE\nUFFICIO TURISTICO\nCampo Imperatore\n\n67010 Pescara\n\nItalia\n\nTelefono:\n\nbiglietteriagransasso@gmail.com\n\n', 5555, 42.416667, 13.666667, 2),
+(18, 'Marmolada', 'difficile', 34234, NULL, NULL, NULL, 'La Marmolada è il gruppo montuoso più alto delle Dolomiti, montagne uniche al mondo dichiarate Patrimonio dell’Umanità UNESCO, un patrimonio da custodire e valorizzare.\r\nIn inverno e in estate la Marmolada è il luogo ideale per le tue vacanze, accessibili a tutti: gli sportivi più esigenti e le famiglie più tranquille sentiranno le stesse emozioni.', 7777, 46.43333, 11.85, 2),
+(19, 'Corno Grande', 'facile', 2190, NULL, NULL, NULL, 'Corno Grande\r\nGran sasso.jpg\r\nIl Corno Grande da Forca di Valle\r\nStato	Italia Italia\r\nRegione	Abruzzo Abruzzo\r\nProvincia	Teramo Teramo\r\nAltezza	2 912 m s.l.m.\r\nProminenza	2 476 m\r\nCatena	Appennini\r\nCoordinate	42°28′09.35″N 13°33′54.76″ECoordinate: 42°28′09.35″N 13°33′54.76″E (Mappa)\r\nAltri nomi e significati	Monte Corno\r\nData prima ascensione	1573\r\nAutore/i prima ascensione	Francesco De Marchi\r\nMappa di localizzazione\r\nMappa di localizzazione: ItaliaCorno GrandeCorno Grande\r\nModifica dati su Wikidata · Manuale\r\nIl Corno Grande (2912 m s.l.m.) è la cima più alta del massiccio montuoso del Gran Sasso d\'Italia e degli Appennini continentali. È situata nell\'appennino centrale abruzzese all\'interno del territorio dei comuni di Pietracamela e Isola del Gran Sasso d\'Italia (TE), all\'interno del parco nazionale del Gran Sasso e Monti della Laga, a sud del Corno Piccolo, da cui è separato dal Vallone delle Cornacchie.', 43434, 42.466667, 13.566667, 1),
+(20, 'Monviso', 'media', 324234, NULL, NULL, NULL, 'Monviso\r\nVisoColleGianna.jpg\r\nIl Monviso dal colle della Gianna\r\nStato	Italia Italia\r\nRegione	Piemonte Piemonte\r\nProvincia	Cuneo Cuneo\r\nAltezza	3 841 m s.l.m.\r\nProminenza	2 062 m\r\nCatena	Alpi\r\nCoordinate	44°40′06.71″N 7°05′24.47″ECoordinate: 44°40′06.71″N 7°05′24.47″E (Mappa)\r\nAltri nomi e significati	Vísol (occitano)\r\nViso (piemontese)\r\nData prima ascensione	30 agosto 1861\r\nAutore/i prima ascensione	William Mathews, Frederick Jacomb, Jean-Baptiste Croz e Michel Croz.\r\nMappa di localizzazione\r\nMappa di localizzazione: ItaliaMonvisoMonviso\r\nMappa di localizzazione: AlpiMonviso\r\nDati SOIUSA\r\nGrande Parte	Alpi Occidentali\r\nGrande Settore	Alpi Sud-occidentali\r\nSezione	Alpi Cozie\r\nSottosezione	Alpi del Monviso\r\nSupergruppo	Gruppo del Monviso in senso ampio\r\nGruppo	Gruppo del Monviso propriamente detto\r\nSottogruppo	Nodo del Monviso\r\nCodice	I/A-4.I-C.8.a\r\nModifica dati su Wikidata · Manuale\r\nUNESCO white logo.svg Bene protetto dall\'UNESCO\r\nGnome-globe.svg Riserva della biosfera\r\nMonviso\r\n(EN) Monviso\r\nRIO6dc.JPG\r\nRiconosciuto dal	2013\r\nManuale\r\nIl Monviso (Vísol [\'vizʊl] in occitano, Viso [\'vizʊ] in piemontese - 3.841 m s.l.m.) – detto anche Re di Pietra[1] – è la montagna più alta delle Alpi Cozie. La montagna è ben visibile dalla pianura padana occidentale per via della sua forma piramidale e la sua altezza di oltre 500 metri superiore ai picchi circostanti. Con 2.062 metri la sua prominenza è la decima dell\'intero arco alpino e la ventitreesima in tutta Europa. È anche conosciuto perché ai suoi piedi si trova la sorgente del fiume Po, il corso d\'acqua più lungo d\'Italia. Dal 29 maggio 2013 è diventato patrimonio dell\'Unesco come riserva della biosfera transfrontaliera con la Francia[2]. Inoltre dal 2016 esso fa parte del Parco Naturale del Monviso sul settore italiano, mentre su quello francese insiste il Parco Naturale del Queyras.', 234432, 44.668531, 7.09013, 3);
 
 -- --------------------------------------------------------
 
@@ -293,7 +306,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2018_03_13_155744_add_foreign_key_to_votes_table', 1),
 (29, '2018_03_16_204420_add_foreign_key_to_image_table', 2),
 (30, '2018_03_20_094852_add_foreign_key_to_votes_table', 3),
-(31, '2018_04_06_102627_add_column_to_itineraries_table', 4);
+(31, '2018_04_06_102627_add_column_to_itineraries_table', 4),
+(32, '2018_06_22_093802_add_column_city_id_to_itineraries_table', 5);
 
 -- --------------------------------------------------------
 
@@ -424,11 +438,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Stefano', 's.corsetti@hotmail.it', '$2y$10$fSnQYa4Mnf7CVrxHgs6eEujI/54FnljbZ6MdBR/PdtcJiXchrrb4K', 'areT4YkvxMam8M44bX7IMRPBeuYc52CayWQuj75FMwuEXkiRD9OK0e9C443T', '2018-03-13 15:30:59', '2018-03-13 15:30:59'),
+(1, 'Stefano', 's.corsetti@hotmail.it', '$2y$10$fSnQYa4Mnf7CVrxHgs6eEujI/54FnljbZ6MdBR/PdtcJiXchrrb4K', 'TQphIBENvWtIZtPqtbfzu2kdcj1V7RZXSrniV906B90pxP5dRXrDzkhRqyzr', '2018-03-13 15:30:59', '2018-03-13 15:30:59'),
 (4, 'Mario', 'mario@prova.it', '$2y$10$Wvh/QLxxedPlQRoUXDqdtOaNJcYfblc.PLJNS0wh2ducbHhsDVffG', 'MiUvdBTuCC2WDUzBMC62gjHBt4ZglOcnfcdgF4lJcOfgD9p1MbsCa0JJIkjN', '2018-03-16 07:34:11', '2018-03-16 07:34:11'),
 (5, 'prova', 'prova1@info.it', '$2y$10$DRzp7ABnq62GC8DVx2AwXe/gw4NUFGIUCiFB39JE5xcSna2SUsrNi', NULL, '2018-03-20 20:33:31', '2018-03-20 20:33:31'),
 (7, 'prova', 'prova14@info.it', '$2y$10$1d7SJThs3DvBrkqSGm/UB.daQEIscWuYfVdl1zSM61dg6uVlGdCqe', NULL, '2018-03-20 20:35:10', '2018-03-20 20:35:10'),
-(9, 'paolo', 'paolo@info.it', '$2y$10$7UwhIH4wimJjeDQ8cUpuHujV0zJJj7Q4v0hpixzZw8ENGXwxiNoh6', 'cgSFOQb12K9kDbONsaqJ0FgIXTyjdNGJRJd6DtzkcXqaoTcdTf0qZ3buLEwY', '2018-03-21 07:42:51', '2018-03-21 07:42:51');
+(9, 'paolo', 'paolo@info.it', '$2y$10$7UwhIH4wimJjeDQ8cUpuHujV0zJJj7Q4v0hpixzZw8ENGXwxiNoh6', 'cgSFOQb12K9kDbONsaqJ0FgIXTyjdNGJRJd6DtzkcXqaoTcdTf0qZ3buLEwY', '2018-03-21 07:42:51', '2018-03-21 07:42:51'),
+(10, 'testuuu', 'testuu@info.it', '$2y$10$WMdVXQTS.VF/GUDGMi1WtekYe11uNT7nXkcBVAcUx98hqXolkTISK', 'nLq1K0NN2hONebZBdMvpBYHup1sfmJ2ag8vlzQoVxoI9zmhgCYbZWLXkI4kZ', '2018-06-23 06:57:01', '2018-06-23 06:57:01');
 
 -- --------------------------------------------------------
 
@@ -451,7 +466,8 @@ CREATE TABLE `users_groups` (
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`, `created_at`, `updated_at`) VALUES
 (11, 4, 2, NULL, NULL),
 (13, 1, 1, NULL, NULL),
-(14, 1, 2, NULL, NULL);
+(14, 1, 2, NULL, NULL),
+(15, 10, 2, '2018-06-23 06:57:01', '2018-06-23 06:57:01');
 
 -- --------------------------------------------------------
 
@@ -581,7 +597,8 @@ ALTER TABLE `images`
 -- Indici per le tabelle `itineraries`
 --
 ALTER TABLE `itineraries`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `itineraries_city_id_foreign` (`city_id`);
 
 --
 -- Indici per le tabelle `itineraries_categories`
@@ -682,7 +699,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT per la tabella `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT per la tabella `contacts`
 --
@@ -702,12 +719,12 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT per la tabella `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT per la tabella `itineraries`
 --
 ALTER TABLE `itineraries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT per la tabella `itineraries_categories`
 --
@@ -717,7 +734,7 @@ ALTER TABLE `itineraries_categories`
 -- AUTO_INCREMENT per la tabella `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT per la tabella `news`
 --
@@ -737,12 +754,12 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT per la tabella `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT per la tabella `views`
 --
@@ -782,6 +799,12 @@ ALTER TABLE `images`
   ADD CONSTRAINT `images_itinerary_id_foreign` FOREIGN KEY (`itinerary_id`) REFERENCES `itineraries` (`id`),
   ADD CONSTRAINT `images_new_id_foreign` FOREIGN KEY (`new_id`) REFERENCES `news` (`id`),
   ADD CONSTRAINT `images_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Limiti per la tabella `itineraries`
+--
+ALTER TABLE `itineraries`
+  ADD CONSTRAINT `itineraries_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`);
 
 --
 -- Limiti per la tabella `itineraries_categories`
