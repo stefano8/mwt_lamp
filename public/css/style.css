@@ -110,6 +110,18 @@
   overflow: hidden;
 
 }
+.hover_color{
+
+  color: grey;
+}
+.hover_color:hover {
+
+  color: #c8b7a5;
+}
+
+
+
+
 
 
 .trunc{
