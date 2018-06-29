@@ -55,10 +55,12 @@
                             </div>
                             <div clas="col-md-4">
                        <!-- <a  style="" href="{{route('event.single', $events->id)}}">-->
-                           <button class="collapsible1" style="margin-left: 40px;  margin-top: 54px;"  title="Clicca per vedere i dettagli dell'evento"><h1 style="margin:1px 22px 20px; padding-top: 19px; overflow: hidden; white-space: nowrap; width: 500px;">{{$events->title}}</h1></button>
+                           <button class="collapsible1" style="background-color: transparent; margin-left: 40px;  margin-top: 54px;"  title="Clicca per vedere i dettagli dell'evento">
+
+                               <h1 style="color: white; margin:1px 22px 20px; padding-top: 19px; overflow: hidden; white-space: nowrap; width: 500px; text-align: center;">{{$events->title}}</h1></button>
 
                               <div class="content1">
-                                  <p style="margin:1px 22px 20px; padding-top: 2px; font-size: 18px; width: 600px;">{{$events->date}}</p>
+
                                  <p style="margin:1px 22px 20px; padding-top: 2px; font-size: 18px; width: 600px;">{{$events->body}}</p>
                               </div>
 
