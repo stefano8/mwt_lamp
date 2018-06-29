@@ -31,11 +31,11 @@
                                         <img style="width: 7%; height: auto;" src="{!! asset('images/check.png') !!}">
 
                                 </div>
-                                <h2 class="entry-title"><a href="/mwt_1718/public/advices/single/{{$advice->id}}">{{$advice->title}}</a></h2>
+                                <h2 class="entry-title"><a href="/advices/single/{{$advice->id}}">{{$advice->title}}</a></h2>
 
 
                                 <p class="trunc">{{$advice->body}}</p>
-                                <a href="/mwt_1718/public/advices/single/{{$advice->id}}" class="button">{{trans('words.readmore')}}</a>
+                                <a href="/advices/single/{{$advice->id}}" class="button">{{trans('words.readmore')}}</a>
                             </div>
                         @endforeach
 
