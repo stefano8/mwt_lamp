@@ -36,7 +36,7 @@
                                     @endif
                                 @endforeach
                                 <div class="featured-image"><img src="" alt=""></div>
-                                <h4><p>{{$news->body}}</p></h4>
+                                <h4><p style="font-size: 18px;">{{$news->body}}</p></h4>
 
 
                                 <div class="col-md-9" id="social-links">
@@ -59,7 +59,7 @@
                                 <li style="overflow: hidden;
                                            text-overflow: ellipsis;
                                            white-space: nowrap;
-                                           width: 150px;"><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                           width: 150px;"><a href="/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
                             @endforeach
 
                         </ul>

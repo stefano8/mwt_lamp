@@ -32,7 +32,7 @@
 
                 @foreach($event as $events)
                     <div class="row">
-                    <div class="col-md-12 post">
+                    <div class="col-md-12 post2">
 
                             <div class="col-md-3 photo-preview photo-detail">
                                 <h1 style="margin:1px 22px 20px; color: #c8b7a5; padding-top: 50px;">{{$events->date}}</h1>

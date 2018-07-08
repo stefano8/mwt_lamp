@@ -77,7 +77,7 @@
                                                                 <li style="overflow: hidden;
                                            text-overflow: ellipsis;
                                            white-space: nowrap;
-                                           width: 150px;"><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                           width: 150px;"><a href="/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
                                                             @endforeach
 
                                                         </ul>

@@ -51,7 +51,7 @@
                                     <li style="overflow: hidden;
                                            text-overflow: ellipsis;
                                            white-space: nowrap;
-                                           width: 150px;"><a href="/mwt_1718/public/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
+                                           width: 150px;"><a href="/news/single/{{$tnewss->id}}">{{$tnewss->title}}</a></li>
                             @endforeach
                         </div>
 
@@ -62,7 +62,7 @@
                                     <li style="overflow: hidden;
                                            text-overflow: ellipsis;
                                            white-space: nowrap;
-                                           width: 150px;"><a href="/mwt_1718/public/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
+                                           width: 150px;"><a href="/single/{{$itineraries->id}}">{{$itineraries->name}}</a></li>
                                 @endforeach
 
                             </ul>

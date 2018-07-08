@@ -54,7 +54,7 @@
                 <div style="height: 60%; width:100%;" class="hero" src="{!! asset('images/seconda.jpg') !!}">
                     <div class="container">
                         <div class="play-video" >
-                        <a id="video" href="https://www.youtube.com/watch?v=Q6dsRpVyyWs">
+                        <a id="video" href="https://www.youtube.com/watch?v=7yLhCg9xupI">
                             <img  src="{!! asset('images/play.png') !!}" alt="" /></a>
                         <p>
                             {{trans('words.video')}}

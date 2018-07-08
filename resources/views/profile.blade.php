@@ -41,7 +41,7 @@
                             <div class="col-md-6"><img style="height: 150px; width: 150px;" src="images/profile.png"></div>
                         @else
 
-                            <div class="col-md-6"><img style="height: 150px; width: 150px;" src="{{$user->userImage()->first()->path}}"></div>
+                            <div class="col-md-6"><img style="height: 190px; width: 180px;" src="{{$user->userImage()->first()->path}}"></div>
 
                         @endif
                         <div class="row">
