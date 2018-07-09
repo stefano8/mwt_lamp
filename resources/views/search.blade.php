@@ -15,7 +15,12 @@
             <div class="fullwidth-block">
             <div class="container">
                 <div class="row">
+                    {{$itinerary}}
+                    @if($itinerary->isEmpty())
+                        <h1 style="text-align: center;">Nessun itinerario con questo nome!</h1>
+                    @else
                     @foreach($itinerary as $itineraries)
+
                         <div class="col-md-6">
                             <div class="photo">
                                 <div class="photo-preview photo-detail">
@@ -32,6 +37,7 @@
                         </div>
 
                     @endforeach
+                        @endif
                 </div>
                 <div style="margin-left: 50%; font-size: 15px; font-family: Verdana; ">{{$itinerary->links('vendor.pagination.semantic-ui')}}</div>
             </div>

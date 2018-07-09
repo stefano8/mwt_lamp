@@ -9,6 +9,14 @@
  *===========================================*/
 /*menu*/
 
+.faee {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-size: 20px;
+
+    -webkit-font-smoothing: antialiased;
+}
 
 #myImg {
   border-radius: 5px;
@@ -194,7 +202,7 @@ audio:not([controls]) {
   display: none; }
 
 html {
-  background: #fff;
+  background: #1f202c;
   color: #000;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
@@ -1679,7 +1687,6 @@ form textarea {
 
 .post2 {
   padding-bottom: 50px;
-
 }
   .wishlist{
 

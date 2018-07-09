@@ -129,13 +129,15 @@
                 <div class="col-md-8">
 
                 </div>
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="social-links">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
+                <div class="col-md-3 col-md-offset-1" id="social-links">
+
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://montaintrack.it" class="btn btn-facebook btn-lg" id=""><span class="faee fa-facebook"></span></a>
+                            <a href="https://twitter.com/intent/tweet?text=my share text&amp;url=http://montaintrack.it" class="social-button " id=""><span class="faee fa-twitter"></span></a>
+                            <a href="https://plus.google.com/share?url=http://montaintrack.it" class="social-button " id=""><span class="faee fa-google-plus"></span></a>
+                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://montaintrack.it&amp;title=my share text&amp;summary=dit is de linkedin summary" class="social-button " id=""><span class="faee fa-linkedin"></span></a>
+                        </div>
+
                 </div>
             </div>
 

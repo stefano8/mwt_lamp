@@ -30,7 +30,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>PANEL',
+    'logo' => '<b>MountainTrack</b> <img style="width: 100px; height: 100px" src="http://127.0.0.1:8000/images/logom.png" alt="" class="logo">
+',
 
     'logo_mini' => '<b>P</b>ANEL',
 

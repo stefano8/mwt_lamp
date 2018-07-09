@@ -36,7 +36,7 @@
                                     @endif
                                 @endforeach
                                 <div class="featured-image"><img src="" alt=""></div>
-                                <h4><p style="font-size: 18px;">{{$news->body}}</p></h4>
+                                <h4 class="entry-title" style="font-size: 18px;">{{$news->body}}</h4>
 
 
                                 <div class="col-md-9" id="social-links">
